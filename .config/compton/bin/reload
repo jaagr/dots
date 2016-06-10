@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# Tell compton to reload its configuration file
+#
+
+# pkill -USR1 compton
+
+# Hard reload to make sure custom theme configs gets procecessed
+killall compton
+
+"$LOCAL_ETC/compton/init.sh" &
