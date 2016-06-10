@@ -1,0 +1,144 @@
+"
+" Vimperator configuration
+"
+
+set runtimepath=/home/jaagr/etc/vimperator/
+
+"
+" Hilights
+"
+hi Hint font-family: monospace;
+hi -a Hint padding: 1px 3px;
+hi -a Hint transform: translate(-50%, -50%);
+hi -a Hint font-family: monospace;
+hi -a Hint font-size: 11px;
+hi -a Hint font-weight: bold;
+hi -a Hint border: 0;
+hi -a Hint color: #ffffff;
+hi -a Hint background-color: #3971ed;
+hi -a Hint box-shadow: 0px 1px 2px #444;
+hi -a Hint border: 1px solid transparent;
+hi -a Hint text-align: center;
+hi -a Hint z-index: 2147483647;
+
+hi HintElem background-color: rgba(230, 230, 230, .75);
+hi -a HintElem outline: 1px solid rgba(200, 200, 200, .75);
+hi -a HintElem color: #000;
+
+hi HintActive background-color: #3970ed; color: #fff;
+
+hi CmdLine color: #000;
+hi -a CmdLine transition: all 0.25s;
+hi -a CmdLine background-color: transparent;
+
+"
+" Keybindings
+"
+
+" Show the open command when opening a new tab
+nnoremap <C-t> :tabopen<CR>:open <Nop>
+
+nnoremap j 10j
+nnoremap k 10k
+nnoremap e 50k
+nnoremap d 50j
+nnoremap u 50k
+
+nnoremap h 3h
+nnoremap l 3l
+
+nnoremap J gt
+nnoremap K gT
+
+nnoremap x :tabclose<CR>
+nnoremap U :undo<CR>
+
+nnoremap : ;
+nnoremap ; :
+
+inoremap jj <Esc>
+nnoremap ,q  :q<CR>
+
+"autocmd  DOMLoad .* :echo "Page loaded"
+nnoremap ,, :buffer<Space>
+nnoremap ,o  :open<Space>
+nnoremap ,r  :reload<CR>
+nnoremap ,l  :sourcerc<CR>
+
+" Eliminate annoying mappings.
+noremap <C-j> <Nop>
+noremap <C-k> <Nop>
+noremap ~ <Nop>
+
+"
+" General
+"
+set toolbars=nonavigation,tabs
+set maxitems=10
+set status=input,ssl,location,bookmark
+set showstatuslinks=1
+set animations
+"set titlestring="Firefox"
+set newtab=all
+set messagetimeout=2000
+
+" don't focus any "input" elements automatically when open pages.
+set focuscontent
+
+" autocomplete with smart Firefox stuff and open tabs
+set complete=lt
+
+" search
+set ignorecase
+set smartcase
+
+" Only use characters that don't suck to press.
+set hintchars="qwertasdfguophjk;"
+
+" need <CR> anytime in hints mode
+set followhints=1
+
+" Disable vimperator on Stylish pages
+autocmd LocationChange .* js modes.passAllKeys = /^about:stylish.*/.test(buffer.URL)
+
+" Load configuration file into current browser, useful for
+" updating after editing this file.
+command! sourcerc :source /home/jaagr/.local/etc/vimperator/vimperatorrc
+
+"
+" Browser settings
+"
+set! browser.urlbar.trimURLs=false
+set! browser.newtab.url=about:blank
+set! browser.tabs.onTop=true
+set! browser.tabs.showAudioPlayingIcon=false
+set! browser.tabs.warnOnClose=false
+set! browser.tabs.warnOnCloseOtherTabs=false
+set! browser.tabs.warnOnOpen=false
+set! browser.tabs.insertRelatedAfterCurrent=true
+set! browser.tabs.insertRelatedAfterCurrent.override=true
+
+set! browser.fullscreen.animate=false
+
+set! privacy.donottrackheader.enabled=true
+set! privacy.donottrackheader.value=1
+
+set! browser.shell.checkDefaultBrowser=false
+
+" enable dialog enable button immidiately
+set! security.dialog_enable_delay=0
+
+set! view_source.syntax_highlight=true
+set! view_source.wrap_long_lines=true
+
+set! devtools.theme="dark"
+
+" disable cache with devtools open
+set! devtools.cache.disabled=true
+
+" disable history jumping using shift+mousewheel
+set! mousewheel.with_shift.action=1
+
+echo "Vimperator configuration loaded"
+
+" vim:ft=vim
