@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+killall -q bspc lemonbuddy lemonbar xdrawrect
+"$LOCAL_ETC/bspwm/bin/save_state"
+bspc quit $?

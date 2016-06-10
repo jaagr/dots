@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+current_wid=$(xdo id)
+
+bspc query -N | while read -r id; do
+  [[ "$(xdo id "$id")" == "$current_wid" ]] && continue
+
+  class=$(xprop -id "$id" WM_CLASS 2>/dev/null);
+
+  [[ $? -ne 0 ]] && continue
+
+  name=${class##*\", \"}
+  name=${name%\"}
+
+  if [[ $name == "Termite" ]]; then
+    tree=$(pstree -c -A "$(xprop -id "$id" _NET_WM_PID | egrep -o "=.*" | cut -c3-)" | head -1)
+    cmdname=$(echo "$tree" | egrep -o "\-[[:alnum:]]+" | tail -1 | cut -c2-)
+
+    if [[ $cmdname != "zsh" ]]; then
+      name=$cmdname
+    fi
+
+    if [[ $cmdname == "python" ]] && grep -q vim <<< "$tree"; then
+      name="vim"
+    fi
+  fi
+
+  echo "${name}:${id}" | tr '[:upper:]' '[:lower:]'
+done | sort

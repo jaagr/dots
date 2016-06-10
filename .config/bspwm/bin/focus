@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#
+# Makes subsequent focus failures to "break the wall"
+#
+# Required event listener that purges the cache when needed:
+#
+#   bspc subscribe node_focus | while read -r ev; do
+#     rm "$XDG_CACHE_HOME/bspwm/focus" &>/dev/null
+#   done
+#
+
+bspc node -f "$1" || {
+  retval=$?
+  max_attempts=5
+  cache_file="$XDG_CACHE_HOME/bspwm/focus"
+
+  [[ -s "$cache_file" ]] && {
+    read -r attempts < "$cache_file"
+  }
+
+  attempts=$(( attempts + 1 ))
+
+  if [[ $attempts -ge $max_attempts ]]; then
+    case "$1" in
+      west) bspc desktop -f "prev" ;;
+      east) bspc desktop -f "next" ;;
+    esac
+  fi
+
+  echo "$attempts" >"$cache_file"
+
+  exit $retval
+}

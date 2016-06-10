@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+function parse_state
+{
+  workspaces=""
+  IFS=':'
+  set -- ${line#?}
+  while [ $# -gt 0 ] ; do
+    item=$1
+    name=${item#?}
+    case $item in
+      [mM]*)
+        [[ "$num_mon" -lt 2 ]] && shift && continue
+
+        case $item in
+          m*) FG=$COLOR_MONITOR_FG ; BG=$COLOR_MONITOR_BG ;;
+          # focused monitor
+          M*) FG=$COLOR_FOCUSED_MONITOR_FG ; BG=$COLOR_FOCUSED_MONITOR_BG ;;
+        esac
+
+        workspaces="${workspaces}%{F${FG}}%{B${BG}}%{A:bspc monitor -f ${name}:} ${name} %{A}%{B-}%{F-}"
+        ;;
+
+      [fFoOuU]*)
+        case $item in
+          # free desktop
+          f*) FG=$COLOR_FREE_FG ; BG=$COLOR_FREE_BG ;;
+
+          # focused free desktop
+          F*) FG=$COLOR_FOCUSED_FREE_FG ; BG=$COLOR_FOCUSED_FREE_BG ;;
+
+          # occupied desktop
+          o*) FG=$COLOR_OCCUPIED_FG ; BG=$COLOR_OCCUPIED_BG ;;
+
+          # focused occupied desktop
+          O*) FG=$COLOR_FOCUSED_OCCUPIED_FG ; BG=$COLOR_FOCUSED_OCCUPIED_BG ;;
+
+          # urgent desktop
+          u*) FG=$COLOR_URGENT_FG ; BG=$COLOR_URGENT_BG ;;
+
+          # focused urgent desktop
+          U*) FG=$COLOR_FOCUSED_URGENT_FG ; BG=$COLOR_FOCUSED_URGENT_BG ;;
+        esac
+        workspaces="${workspaces}%{F${FG}}%{B${BG}}%{A:bspc desktop -f ${name}:} ${name} %{A}%{B-}%{F-}"
+        ;;
+
+      [LTG]*)
+        # layout, state and flags
+        workspaces="${workspaces}%{F$COLOR_STATE_FG}%{B$COLOR_STATE_BG} ${name} %{B-}%{F-}"
+        ;;
+    esac
+    shift
+  done
+
+  echo $workspaces
+}
+
+bspc subscribe report | while read -r line; do
+  case $line in
+    W*) parse_state "${line#?}" ;;
+  esac
+done

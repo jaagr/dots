@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if ! [[ -s "$BSPWM_STATE" ]]; then
+  exit 1
+fi
+echo "[bspwm/bin/restore_state] Restoring state using snapshot $BSPWM_STATE"
+bspc wm -l "$BSPWM_STATE"
+rm "$BSPWM_STATE"
+exec "$LOCAL_ETC/bspwm/bspwmrc"

@@ -1,0 +1,236 @@
+#!/usr/bin/env bash
+#
+# Bspwm configuration
+#
+
+if ! bspc wm -g &>/dev/null; then
+  exit 1
+fi
+
+if [[ -s "$BSPWM_STATE" ]]; then
+  "$LOCAL_ETC/bspwm/bin/restore_state"; exit 0
+fi
+
+if [[ $BSPWM_COUNTER -eq 1 ]] && bspc query -M -m HDMI-1 >/dev/null; then
+  xrandr --output HDMI-1 --auto --above eDP-1
+
+  pos_x=$(xrandr | grep eDP-1 | sed -nr 's/.*[0-9]+x[0-9]+\+([0-9]+).*/\1/p')
+  pos_y=$(xrandr | grep eDP-1 | sed -nr 's/.*[0-9]+x[0-9]+\+[0-9]+\+([0-9]+).*/\1/p')
+  pos_y=$(( pos_y + 100 ))
+  xrandr --output eDP-1 --pos "${pos_x}x${pos_y}"
+
+  [[ -e "${HOME}/.fehbg" ]] && source ~/.fehbg 2>/dev/null
+fi
+
+# Config vars {{{
+
+size_border=1
+size_gap=-1
+
+pad=0
+
+padding_top=$pad
+padding_bottom=$pad
+padding_left=$pad
+padding_right=$pad
+
+color_normal_border="#666666"
+color_active_border="#666666"
+color_focused_border="#cccccc"
+color_presel_feedback="#888888"
+
+[[ -e "${CURRENT_THEME}/bspwm" ]] && {
+  source "${CURRENT_THEME}/bspwm"
+}
+
+# }}}
+# General {{{
+
+bspc config split_ratio "${setting_split_ratio:-0.5}"
+bspc config focus_by_distance "${setting_focus_by_distance:-true}"
+bspc config history_aware_focus "${setting_history_aware_focus:-true}"
+bspc config focus_follows_pointer "${setting_focus_follows_pointer:-true}"
+bspc config ignore_ewmh_focus "${setting_ignore_ewmh_focus:-true}"
+
+# }}}
+# Monitors and desktops {{{
+
+if bspc query -M -m HDMI-1 >/dev/null; then
+  bspc monitor eDP-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
+  bspc monitor HDMI-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
+else
+  bspc monitor eDP-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
+fi
+
+bspc config pointer_follows_monitor "${setting_pointer_follow_monitor:-true}"
+bspc config remove_unplugged_monitors "${setting_remove_unplugged_monitors:-true}"
+
+# }}}
+# Appearance {{{
+
+bspc config top_padding ${padding_top:-0}
+bspc config bottom_padding ${padding_bottom:-0}
+bspc config left_padding ${padding_left:-0}
+bspc config right_padding ${padding_right:-0}
+
+bspc config border_width ${size_border:-0}
+bspc config window_gap ${size_gap:-0}
+
+bspc config borderless_monocle "${setting_borderless_monocle:-true}"
+bspc config gapless_monocle "${setting_gapless_monocle:-false}"
+bspc config single_monocle "${setting_single_monocle:-true}"
+
+bspc config normal_border_color $color_normal_border
+bspc config active_border_color $color_active_border
+bspc config focused_border_color $color_focused_border
+bspc config presel_feedback_color $color_presel_feedback
+
+for node in $(bspc query -N); do
+  xprop -id "$node" &>/dev/null || continue
+  bspc config -n "$node" border_width $size_border
+  bspc config -n "$node" window_gap $size_gap
+done ; unset node
+
+for desktop in $(bspc query -D); do
+  bspc config -d "$desktop" border_width $size_border
+  bspc config -d "$desktop" window_gap $size_gap
+done ; unset desktop
+
+for monitor in $(bspc query -M); do
+  bspc config -m "$monitor" border_width $size_border
+done ; unset desktop
+
+# }}}
+# Rules {{{
+
+bspc rule -a Lastpass "state=floating"
+bspc rule -a Pcmanfm "state=floating"
+bspc rule -a Gimp "state=floating"
+bspc rule -a Steam "state=floating"
+bspc rule -a Yad "state=floating"
+
+bspc config external_rules_command "$LOCAL_ETC/bspwm/bin/external_rules"
+
+# }}}
+
+# Event listener :: monocle see-through fix {{{
+
+# This routine is needed since, with true transparency, when in monocle mode
+# all nodes in the desktop will be visible behind the focused node.
+# And since the WM doesn't set the proper states (above, below, hidden, etc)
+# I have to do it manually...
+
+function push_window_state {
+  while read -r id; do
+    xsetprop --id="$id" --mode="${2:-replace}" --format=32a --propname=_NET_WM_STATE --value="$1" 2>/dev/null
+  done
+}
+
+function pop_window_state {
+  while read -r id; do
+    xprop -id "$id" -remove _NET_WM_STATE 2>/dev/null
+  done
+}
+
+bspc subscribe desktop_layout node_focus | while read -r event; do
+  if [[ $(bspc query -T -d | json layout | tr -d '"') == "monocle" ]]; then
+    bspc query -N -n | pop_window_state _NET_WM_STATE_HIDDEN
+    bspc query -N -n '.local.!focused' | push_window_state _NET_WM_STATE_HIDDEN
+  else
+    bspc query -N -d | pop_window_state _NET_WM_STATE_HIDDEN
+  fi
+done &
+
+# }}}
+# Event listener :: theme {{{
+
+if [[ -n "$(type theme::event_listeners 2>/dev/null)" ]]; then
+  theme::event_listeners 2>/dev/null &
+fi
+
+# }}}
+
+# Lemonbar {{{
+
+if command -v lemonbuddy >/dev/null; then
+  { pgrep -f lemonbuddy_wrapper.sh | awk '{print $1}' | xargs kill -9
+    killall -9 -q lemonbuddy lemonbar xdrawrect
+  } &>/dev/null
+
+  # HDMI-1 doesn't have a top bar
+  bspc config -m HDMI-1 top_padding 0
+
+  config="${lemonbuddy_config:-${LOCAL_ETC}/lemonbuddy/bspwm.conf}"
+
+  # Launch bars
+  for bar in top bottom external_bottom; do
+    [[ -e "$config" ]] || {
+      echo "Lemonbuddy config does not exist..." >&2; break
+    }
+
+    monitor="$(lemonbuddy "$bar" -c "$config" --dump=monitor)"
+
+    if ! xrandr | grep "^$monitor connected" &>/dev/null; then
+      continue
+    fi
+
+    bar_wmname=$(lemonbuddy "$bar" -c "$config" --print-wmname)
+    monitor_geom=$(xrandr | grep "$monitor" | egrep -o "[0-9]+x[0-9]+\+[0-9]*\+[0-9]*")
+
+    if [[ -z "$bar_wmname" ]]; then
+      continue
+    fi
+
+    lemonbuddy_wrapper.sh "$bar" -c "$LOCAL_ETC/lemonbuddy/bspwm.conf" &
+
+    while (( retries++ < 10 )); do
+      root_id=$(xwininfo -root -children | grep "$monitor_geom" | sed -nr 's/(0x[[:xdigit:]]+) .*root.*/\1/p')
+      bar_id=$(xwininfo -root -children | sed -nr "s/(0x[[:xdigit:]]+) .*${bar_wmname}.*/\1/p")
+      # root_id=$(lsw -r)
+      # bar_id=$(xdo id -a "$bar_wmname")
+
+      # Raise bar above root when we've found it
+      [[ "$root_id" ]] && [[ "$bar_id" ]] && {
+        xdo above -t "${root_id:0:9}" "${bar_id:0:9}" ; break
+      }
+
+      sleep 1
+    done
+  done
+
+  # Create highlight lines
+  # TODO: Store data about each line in a list -> iterate
+
+  # monitor alignment width height x offset_y color wm_name target_wm_name
+  #create_highlight_line() {
+  #  # XXX: Move the offset(x/y) functionality into xdrawrect
+  #  height=$(xwininfo -root -children | grep "$9" | egrep -o "[0-9]+x[0-9]+\+[0-9]*\+[0-9]*" | sed -nr 's/.*x([0-9]+)+.*/\1/p')
+  #  height=${height//[^[:digit:]]/}
+  #  xdrawrect "$1" "$2" "$3" "$4" "$5" $(( height + ${6:-0} )) "$7" "$8" "$9" &
+  #}
+
+  #color_xdrawrect_bar_1a="#ff000000"
+  #color_xdrawrect_bar_1b="#ff3f3f3f"
+  #color_xdrawrect_bar_2a="#ff3f3f3f"
+  #color_xdrawrect_bar_2b="#ff5a5a5a"
+  #color_xdrawrect_bar_3a="#ff3f3f3f"
+  #color_xdrawrect_bar_3b="#ff5a5a5a"
+
+  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 0 "#ff000000" "xdrawrect_bar_1b" "lemonbuddy-top_eDP-1" &
+  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 1 "#11dddddd" "xdrawrect_bar_1a" "lemonbuddy-top_eDP-1" &
+
+  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 0 "$color_xdrawrect_bar_1a" "xdrawrect_bar_1a" "lemonbuddy-top_eDP-1" &
+  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 1 "$color_xdrawrect_bar_1b" "xdrawrect_bar_1b" "lemonbuddy-top_eDP-1" &
+  #create_highlight_line "eDP-1"  "bottom" "100%" 1 0 0 "$color_xdrawrect_bar_2b" "xdrawrect_bar_2b" "lemonbuddy-bottom_eDP-1" &
+  #create_highlight_line "eDP-1"  "bottom" "100%" 2 0 1 "$color_xdrawrect_bar_2a" "xdrawrect_bar_2a" "lemonbuddy-bottom_eDP-1" &
+  #create_highlight_line "HDMI-1" "bottom" "100%" 1 0 0 "$color_xdrawrect_bar_3b" "xdrawrect_bar_3b" "lemonbuddy-external_bottom_HDMI-1" &
+  #create_highlight_line "HDMI-1" "bottom" "100%" 2 0 1 "$color_xdrawrect_bar_3a" "xdrawrect_bar_3a" "lemonbuddy-external_bottom_HDMI-1" &
+fi
+
+# }}}
+
+echo "bspwm configuration loaded..."
+
+if [[ -n "$(type theme::post_bspwmrc 2>/dev/null)" ]]; then
+  theme::post_bspwmrc 2>/dev/null &
+fi

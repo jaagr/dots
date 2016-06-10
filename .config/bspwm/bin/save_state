@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+echo "[bspwm/bin/save_state] Saving snapshot of current state to $BSPWM_STATE"
+bspc wm -d > "$BSPWM_STATE"

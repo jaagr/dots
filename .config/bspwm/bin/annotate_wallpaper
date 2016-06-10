@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+annotate_wallpaper() {
+  local font="FontAwesome"
+  local text="$1" ; shift
+  local wallpaper="$1" ; shift
+  local save="result.png"
+
+  [[ $# -gt 0 ]] && {
+    save="$1" ; shift
+  }
+
+  [[ $# -gt 0 ]] && {
+    font="$1" ; shift
+  }
+
+  save="${save%%.*}.png"
+
+  convert -channel RGBA -fill "rgba(255, 255, 255, 0.9)" -font "$font" -pointsize 480 -gravity center -annotate 0 "$text" "$wallpaper" "$save"
+
+  if [[ $? -eq 0 ]]; then
+    echo "Saved file at $save"
+  else
+    echo "Failed..."; exit 1
+  fi
+}
+
+main() {
+  local -A workspace_icons
+  local active_ws ws_name ws_icon
+
+  workspace_icons[term]=""
+  workspace_icons[web]=""
+  workspace_icons[code]=""
+  workspace_icons[ws_4]=""
+  workspace_icons[ws_5]=""
+  workspace_icons[ws_6]=""
+  workspace_icons[ws_7]=""
+  workspace_icons[ws_8]=""
+  workspace_icons[music]=""
+  workspace_icons[irssi]=""
+
+  if [[ -d "/tmp/.wps_dir" ]]; then
+    rm -r /tmp/.wps_dir
+  fi
+
+  mkdir /tmp/.wps_dir
+
+  bspc subscribe desktop_focus | while read -r line; do
+    ws_name="${line##* }"
+
+    if [[ "$ws_name" == "$active_ws" ]]; then
+      continue
+    fi
+
+    ws_icon="${workspace_icons[$ws_name]}"
+    active_ws="$ws_name"
+    target="/tmp/.wps_dir/${ws_name}.png"
+
+    if ! [[ -e $target ]]; then
+      convert -channel RGBA -fill "rgba(255, 255, 255, 0.8)" -font "FontAwesome" \
+        -pointsize 480 -gravity center -annotate 0 "$ws_icon" \
+        "$HOME/.wallpapers/1.png" "$target"
+    fi
+
+    feh --bg-fill "$target"
+  done
+}
+
+main "$@"
