@@ -1,2 +1,0 @@
-#!/usr/bin/env bash
-exec firefox -vimperator "++cmd 'source $LOCAL_ETC/vimperator/vimperatorrc'" "$@"

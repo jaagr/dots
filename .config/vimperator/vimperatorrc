@@ -2,7 +2,7 @@
 " Vimperator configuration
 "
 
-set runtimepath=/home/jaagr/.vimperator/
+set runtimepath=/home/jaagr/.config/vimperator/
 
 "
 " Hilights
@@ -103,7 +103,7 @@ autocmd LocationChange .* js modes.passAllKeys = /^about:stylish.*/.test(buffer.
 
 " Load configuration file into current browser, useful for
 " updating after editing this file.
-command! sourcerc :source /home/jaagr/.local/etc/vimperator/vimperatorrc
+command! sourcerc :source /home/jaagr/.config/vimperator/vimperatorrc
 
 "
 " Browser settings

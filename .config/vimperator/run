@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec firefox -vimperator "++cmd 'source $XDG_CONFIG_HOME/vimperator/vimperatorrc'" "$@"

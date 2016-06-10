@@ -57,6 +57,8 @@ alias tv="tvremote"
 alias lemonbar-striptags='sed -u -r "s/%\{[^}]+\}//g"'
 alias lemonbar-striptags-trim='lemonbar-striptags | tr -s " "'
 
+alias vimperator="firefox -vimperator \"++cmd 'source \$XDG_CONFIG_HOME/vimperator/vimperatorrc'\""
+
 alias grepr="grep -r"
 alias egrepr="egrep -r"
 
@@ -87,13 +89,6 @@ alias info="info --vi-keys"
 alias pgrep="pgrep -l"
 alias grep="grep -i --color=auto"
 alias egrep="egrep --color=auto"
-
-alias vimperator="firefox -vimperator \"++cmd 'source \$HOME/.vimperator/vimperatorrc'\""
-alias feh="feh --no-fehbg"
-alias pacman="pacman --color=always"
-alias cower="cower --sort=votes"
-alias ncmpcpp='ncmpcpp --config $LOCAL_ETC/ncmpcpp/config --bindings $LOCAL_ETC/ncmpcpp/bindings'
-alias vimprobable2='vimprobable2 --configfile $LOCAL_ETC/vimprobable/config'
 
 # Sudo cmds
 alias sv="sudo sv"
