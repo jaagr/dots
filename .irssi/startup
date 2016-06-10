@@ -1,0 +1,11 @@
+load perl
+#script load uberprompt
+script load adv_windowlist
+script load chansort
+script load go
+script load mpd
+script load notify
+script load openurl
+script load trackbar22
+#script load vim_mode
+script load znc_timestamp

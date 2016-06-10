@@ -1,0 +1,508 @@
+#
+# Irssi configuration
+#
+
+# Networks {{{
+
+servers = (
+{
+  address = "znc.local";
+  port = "9242";
+  chatnet = "freenode";
+  autoconnect = "no";
+  use_ssl = "yes";
+  ssl_verify = "no";
+  password = "jaagr/freenode:ZNC_PASSWORD";
+},
+{
+  address = "znc.local";
+  port = "9242";
+  chatnet = "efnet";
+  autoconnect = "no";
+  use_ssl = "yes";
+  ssl_verify = "no";
+  password = "jaagr/efnet:ZNC_PASSWORD";
+},
+{
+  address = "znc.local";
+  port = "9242";
+  chatnet = "quakenet";
+  autoconnect = "no";
+  use_ssl = "yes";
+  ssl_verify = "no";
+  password = "jaagr/quakenet:ZNC_PASSWORD";
+},
+{
+  address = "znc.local";
+  port = "9242";
+  chatnet = "dalnet";
+  autoconnect = "no";
+  use_ssl = "yes";
+  ssl_verify = "no";
+  password = "jaagr/dalnet:ZNC_PASSWORD";
+},
+{
+  address = "znc.local";
+  port = "9242";
+  chatnet = "rizon";
+  autoconnect = "no";
+  use_ssl = "yes";
+  ssl_verify = "no";
+  password = "jaagr/rizon:ZNC_PASSWORD";
+},
+{
+  address = "znc.local";
+  port = "9242";
+  chatnet = "oftc";
+  autoconnect = "no";
+  use_ssl = "yes";
+  ssl_verify = "no";
+  password = "jaagr/oftc:ZNC_PASSWORD";
+}
+);
+
+chatnets = {
+freenode = { type = "IRC"; };
+efnet = { type = "IRC"; };
+quakenet = { type = "IRC"; };
+dalnet = { type = "IRC"; };
+rizon = { type = "IRC"; };
+oftc = { type = "IRC"; };
+nixers = { type = "IRC"; };
+};
+
+# ZNC handles the channels
+channels = ();
+
+# }}}
+# Keybindings {{{
+
+keyboard = (
+  { key = "meta-up"; id = "command"; data = "goto -50"; },
+  { key = "meta-down"; id = "command"; data = "goto +50"; },
+  { key = "meta-left"; id = "command"; data = "window left"; },
+  { key = "meta-right"; id = "command"; data = "window right"; },
+  { key = "meta-h"; id = "command"; data = "window left"; },
+  { key = "meta-l"; id = "command"; data = "window right"; },
+  { key = "meta-k"; id = "command"; data = "goto -50"; },
+  { key = "meta-j"; id = "command"; data = "goto +50"; },
+
+  # { key = "^H"; id = "command"; data = "window left"; },
+  # { key = "^L"; id = "command"; data = "window right"; },
+  # { key = "^K"; id = "command"; data = "window up"; }
+  # { key = "^J"; id = "command"; data = "window down"; }
+);
+
+# }}}
+# Aliases {{{
+
+aliases = {
+  save = "echo edit config instead (or use //save)";
+  reload_config = "/reload ; /run awl";
+  themereload = "/script exec Irssi::themes_reload()";
+  znc = "query *status";
+  sowhat = "say ┐(￣ー￣)┌";
+  sbg = "scrollback goto";
+  sbe = "scrollback end";
+  sbs = "scrollback status";
+  sbh = "scrollback home";
+  hee = "say ( ﾟ◡◡ﾟ)";
+  SE = "SCRIPT EXEC use Irssi (@Irssi::EXPORT_OK)\\; $0-";
+  /* vm_add = "/^eval /^statusbar prompt add -after input -alignment left vim_mode ; /^statusbar prompt add -after input -alignment right vim_windows"; */
+  /* vm_del = "/^eval /^statusbar prompt remove vim_mode ; /^statusbar prompt remove vim_windows"; */
+  identify = "/^msg nickserv NICKSERV_PASSWORD";
+  letme = "http://lmgtfy.com/?q=$-1";
+  type = "IRC";
+  clear = "clear";
+  sayup = "uptime | say";
+
+  close = "window close";
+  wclose = "window close";
+  wjoin = "join -window";
+  wquery = "query -window";
+  wlist = "/script exec for my $$win (sort { $$a->{refnum} <=> $$b->{refnum} } Irssi::windows) { Irssi::active_win->print(join \", \", map { $$win->{refnum} . \": /\" . $$_->{name} . \"/\" . $$_->{server}->{tag} } $$win->items)\\; Irssi::active_win->print($$win->{name}) unless $$win->items }";
+
+  j = "join";
+  leave = "part";
+  describe = "action";
+  date = "time";
+  host = "userhost";
+  last = "lastlog";
+  say = "msg *";
+  N = "names";
+  M = "msg";
+  T = "topic";
+  C = "clear";
+  CL = "clear";
+  K = "kick";
+  KB = "kickban";
+  KN = "knockout";
+  BANS = "ban";
+  B = "ban";
+  MUB = "unban *";
+  UB = "unban";
+  IG = "ignore";
+  UNIG = "unignore";
+  SB = "scrollback";
+  UMODE = "mode $N";
+  W = "window";
+  WC = "window close";
+  WN = "window new hide";
+  SV = "say Irssi $J ($V) - http://irssi.org/";
+  GOTO = "sb goto";
+  CHAT = "dcc chat";
+  RUN = "SCRIPT LOAD";
+  SBAR = "STATUSBAR";
+  INVITELIST = "mode $C +I";
+  Q = "QUERY";
+  "MANUAL-WINDOWS" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
+  EXEMPTLIST = "mode $C +e";
+  ATAG = "WINDOW SERVER";
+  UNSET = "set -clear";
+  RESET = "set -default";
+  CUBES = "SCRIPT EXEC my$$w=Irssi::active_win \\; my$$C=MSGLEVEL_CLIENTCRAP \\; my$$N=MSGLEVEL_NEVER|$$C \\; sub P{$$w->print(@_)} \\; P(\"%_bases\", $$C) \\; P( do { join '', map { \"%x0$${_}0$$_\" } '0'..'9','A'..'F' }, $$N) \\; P(\"%_cubes\", $$C) \\; P( do { my $$y = $$_*6 \\; join '', map { my $$x = $$_ \\; map { \"%x$$x$$_$$x$$_\" } @{['0'..'9','A'..'Z']}[$$y .. $$y+5] } 1..6 }, $$N) for 0..5 \\; P(\"%_grays\", $$C) \\; P( do { join '', map { \"%x7$${_}7$$_\" } 'A'..'X' }, $$N) \\; P(\"%_mIRC extended colours\", $$C) \\; my $$x \\; $$x .= sprintf \"\\cC99,%02d%02d\",$$_,$$_ for 0..15 \\; P($$x, $$N) \\; for my $$z (0..6) { my $$x \\; $$x .= sprintf \"\\cC99,%02d%02d\",$$_,$$_ for 16+($$z*12)..16+($$z*12)+11 \\; P($$x, $$N) }";
+  1 = "WINDOW GOTO 1";
+  2 = "WINDOW GOTO 2";
+  3 = "WINDOW GOTO 3";
+  4 = "WINDOW GOTO 4";
+  5 = "WINDOW GOTO 5";
+  6 = "WINDOW GOTO 6";
+  7 = "WINDOW GOTO 7";
+  8 = "WINDOW GOTO 8";
+  9 = "WINDOW GOTO 9";
+  10 = "WINDOW GOTO 10";
+  11 = "WINDOW GOTO 11";
+  12 = "WINDOW GOTO 12";
+  13 = "WINDOW GOTO 13";
+  14 = "WINDOW GOTO 14";
+  15 = "WINDOW GOTO 15";
+  16 = "WINDOW GOTO 16";
+  17 = "WINDOW GOTO 17";
+  18 = "WINDOW GOTO 18";
+  19 = "WINDOW GOTO 19";
+  20 = "WINDOW GOTO 20";
+  21 = "WINDOW GOTO 21";
+  22 = "WINDOW GOTO 22";
+  23 = "WINDOW GOTO 23";
+  24 = "WINDOW GOTO 24";
+  25 = "WINDOW GOTO 25";
+  26 = "WINDOW GOTO 26";
+  27 = "WINDOW GOTO 27";
+  28 = "WINDOW GOTO 28";
+  29 = "WINDOW GOTO 29";
+  30 = "WINDOW GOTO 30";
+  31 = "WINDOW GOTO 31";
+  32 = "WINDOW GOTO 32";
+  33 = "WINDOW GOTO 33";
+  34 = "WINDOW GOTO 34";
+  35 = "WINDOW GOTO 35";
+  36 = "WINDOW GOTO 36";
+  37 = "WINDOW GOTO 37";
+  38 = "WINDOW GOTO 38";
+  39 = "WINDOW GOTO 39";
+  40 = "WINDOW GOTO 40";
+  41 = "WINDOW GOTO 41";
+  42 = "WINDOW GOTO 42";
+  43 = "WINDOW GOTO 43";
+  44 = "WINDOW GOTO 44";
+  45 = "WINDOW GOTO 45";
+  46 = "WINDOW GOTO 46";
+  47 = "WINDOW GOTO 47";
+  48 = "WINDOW GOTO 48";
+  49 = "WINDOW GOTO 49";
+  50 = "WINDOW GOTO 50";
+  51 = "WINDOW GOTO 51";
+  52 = "WINDOW GOTO 52";
+  53 = "WINDOW GOTO 53";
+  54 = "WINDOW GOTO 54";
+  55 = "WINDOW GOTO 55";
+  56 = "WINDOW GOTO 56";
+  57 = "WINDOW GOTO 57";
+  58 = "WINDOW GOTO 58";
+  59 = "WINDOW GOTO 59";
+  60 = "WINDOW GOTO 60";
+  61 = "WINDOW GOTO 61";
+  62 = "WINDOW GOTO 62";
+  63 = "WINDOW GOTO 63";
+  64 = "WINDOW GOTO 64";
+  65 = "WINDOW GOTO 65";
+  66 = "WINDOW GOTO 66";
+  67 = "WINDOW GOTO 67";
+  68 = "WINDOW GOTO 68";
+  69 = "WINDOW GOTO 69";
+  70 = "WINDOW GOTO 70";
+  71 = "WINDOW GOTO 71";
+  72 = "WINDOW GOTO 72";
+  73 = "WINDOW GOTO 73";
+  74 = "WINDOW GOTO 74";
+  75 = "WINDOW GOTO 75";
+  76 = "WINDOW GOTO 76";
+  77 = "WINDOW GOTO 77";
+  78 = "WINDOW GOTO 78";
+  79 = "WINDOW GOTO 79";
+  80 = "WINDOW GOTO 80";
+  81 = "WINDOW GOTO 81";
+  82 = "WINDOW GOTO 82";
+  83 = "WINDOW GOTO 83";
+  84 = "WINDOW GOTO 84";
+  85 = "WINDOW GOTO 85";
+  86 = "WINDOW GOTO 86";
+  87 = "WINDOW GOTO 87";
+  88 = "WINDOW GOTO 88";
+  89 = "WINDOW GOTO 89";
+  90 = "WINDOW GOTO 90";
+  91 = "WINDOW GOTO 91";
+  92 = "WINDOW GOTO 92";
+  93 = "WINDOW GOTO 93";
+  94 = "WINDOW GOTO 94";
+  95 = "WINDOW GOTO 95";
+  96 = "WINDOW GOTO 96";
+  97 = "WINDOW GOTO 97";
+  98 = "WINDOW GOTO 98";
+  99 = "WINDOW GOTO 99";
+};
+
+# }}}
+# Statusbars {{{
+
+statusbar = {
+  # formats:
+  # when using {templates}, the template is shown only if it's argument isn't
+  # empty unless no argument is given. for example {sb} is printed always,
+  # but {sb $T} is printed only if $T isn't empty.
+
+  items = {
+    # start/end text in statusbars
+    barstart = "{sbstart}";
+    barend = "{sbend}";
+
+    topicbarstart = "{topicsbstart}";
+    topicbarend = "{topicsbend}";
+
+    # treated "normally", you could change the time/user name to whatever
+    time = "{sb $Z}";
+    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+
+    # treated specially .. window is printed with non-empty windows,
+    # window_empty is printed with empty windows
+    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window_empty = "{sb $winref{sbservertag $tag}}";
+    #prompt = "{prompt $[.15]itemname}";
+    #prompt = "$c >> ";
+    #prompt = "$c%K             └─ ";
+    prompt = "$c%#%w $0%B$[-12]8 %K└─ ";
+    prompt_empty = "{tag_reverse ${tag}}{prompt}";
+    topic = " $topic";
+    topic_empty = " Irssi v$J - http://www.irssi.org";
+
+    # all of these treated specially, they're only displayed when needed
+    lag = "{sb Lag: $0-}";
+    act = "{sb Act: $0-}";
+    more = "-- more --";
+
+    vim_mode = { };
+    vim_windows = { };
+
+    # awl_divider {{{
+awl_divider="%K────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────";
+    # }}}
+
+  };
+
+  #
+  # Statusbar types:
+  # root: top/bottom of screen
+  # window: top/bottom of each split
+  #
+
+  default = {
+    window = {
+      disabled = "yes";
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "active";
+
+      # items in the statusbar (in display order)
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    # statusbar to use in inactive split windows
+    window_inact = {
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "inactive";
+      items = {
+        barstart = { priority = "100"; };
+        window = { };
+        window_empty = { };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    # we treat input line as yet another statusbar :) It's possible to
+    # add other items before or after the input line item.
+    prompt = {
+      type = "window";
+      placement = "bottom";
+      # we want to be at the bottom always
+      position = "100";
+      visible = "active";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        # treated specially, this is the real input line.
+        vim_mode = { alignment = "left"; };
+        vim_windows = { alignment = "right"; };
+        input = { priority = "10"; };
+      };
+    };
+
+    prompt = {
+      type = "window";
+      placement = "bottom";
+      # we want to be at the bottom always
+      position = "100";
+      visible = "active";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        # treated specially, this is the real input line.
+        vim_mode = { alignment = "left"; };
+        vim_windows = { alignment = "right"; };
+        input = { priority = "10"; };
+      };
+    };
+
+    # topicbar
+    topic = {
+      type = "root";
+      placement = "top";
+      position = "0";
+      visible = "inactive";
+      items = {
+        topicbarstart = { priority = "100"; };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
+      };
+      disabled = "yes";
+    };
+    awl_0 = {
+      placement = "top";
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    awl_1 = {
+      placement = "top";
+      items = {
+        barstart = { priority = "100"; };
+        awl_1 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    awl_divider= {
+      placement = "top";
+      position = "1";
+      visible = "always";
+      items = {
+        awl_divider = { };
+      }
+    }
+  };
+};
+
+# }}}
+# Settings {{{
+
+settings = {
+
+  core = {
+    real_name = "jaagr";
+    user_name = "jaagr";
+    nick = "jaagr";
+    server_reconnect_time = "60";
+    recode_autodetect_utf8 = "yes";
+    recode_fallback = "ISO8859-1";
+    recode_transliterate = "yes";
+    recode = "yes";
+    timestamp_format = "%H:%M";
+    settings_autosave = "no";
+  };
+  "irc/dcc" = {
+    dcc_autoget = "yes";
+    dcc_autoresume = "yes";
+    dcc_autoget_max_size = "0k";
+    dcc_download_path = "/home/jaagr/downloads";
+    dcc_port = "4000";
+    dcc_mirc_ctcp = "yes";
+    dcc_autoaccept_lowports = "yes";
+  };
+  "fe-text" = {
+    autostick_split_windows = "off";
+    actlist_sort = "refnum";
+    indent = "16";
+  };
+  "fe-common/core" = {
+    theme = "themes/jaagr.theme";
+    timestamps = "no";
+  };
+  "perl/core/scripts" = {
+    splitlong_max_length = "60";
+
+    awl_sort = "active/server/tag+refnum";
+    awl_viewer = "OFF";
+    awl_mouse = "OFF";
+    awl_placement = "top";
+    awl_separator = "\\ ";
+    awl_viewer_custom_command = "/home/jaagr/.irssi/viewer /home/jaagr/.irssi/_windowlist %A";
+    awl_viewer_xwin_command = "";
+
+    chansort_autosort = "ON";
+
+    openurl_app_http = "vimperator --new-window $1";
+    openurl_app_https = "vimperator --new-window $1";
+
+    # vim_mode_cmd_seq = "j";
+
+    # uberprompt_format = "$*$uber";
+    # uberprompt_format_empty = "$*";
+    # uberprompt_load_hook = "/^vm_add ; /^prompt off";
+    # uberprompt_unload_hook = "/^vm_del";
+    # uberprompt_debug = "OFF";
+  };
+};
+
+# }}}
+# Hilighting {{{
+
+hilights = (
+  { text = "jaagr"; nick = "yes"; word = "yes"; }
+);
+
+# }}}
+# Logs {{{
+
+logs = {
+  "/home/jaagr/.irssi/logs/hilights" = {
+    auto_open = "yes";
+    level = "HILIGHTS";
+  };
+};
+
+# }}}
+
+# vim:ft=conf

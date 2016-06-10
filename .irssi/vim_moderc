@@ -1,0 +1,8 @@
+map <C-X> :servernext
+map <C-L> /clear
+map H /window prev
+map L /window next
+map J /scrollback goto +10
+map K /scrollback goto -10
+map gg /scrollback home
+map G /scrollback end
