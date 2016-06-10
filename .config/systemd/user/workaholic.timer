@@ -1,0 +1,9 @@
+[Unit]
+Description=Workaholic insulin shot timer
+
+[Timer]
+OnUnitActiveSec=60min
+OnBootSec=60min
+
+[Install]
+WantedBy=timers.target

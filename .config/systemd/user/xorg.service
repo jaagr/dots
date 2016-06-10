@@ -1,0 +1,21 @@
+#
+# Minimal Xorg service file - launches Xorg as a service unit
+#
+
+# The Xorg launch helper forks, launches Xorg and waits for Xorg to
+# accept incoming connections to $DISPLAY, and then signals READY
+# to systemd. This guarantees that services that require access to
+# $DISPLAY during the session don't start too early.
+#
+# If you implement a service that requires access to $DISPLAY, your
+# service unit file needs to include 'After=xorg.target'.
+
+[Unit]
+Description=Xorg server launch helper
+Before=xorg.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/xorg-launch-helper -nolisten tcp -noreset vt1
+Restart=always
+RestartSec=10

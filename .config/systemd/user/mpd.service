@@ -1,0 +1,9 @@
+[Unit]
+Description=Music Player Daemon
+After=sound.target
+
+[Service]
+ExecStart=/usr/bin/mpd --no-daemon "${LOCAL_ETC}/mpd/mpd.conf" --stdout
+
+[Install]
+WantedBy=xlauncher.target

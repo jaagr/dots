@@ -1,0 +1,13 @@
+[Unit]
+Description=Binary space partitioning window manager
+Requires=xorg.target
+Before=environment.target
+After=xorg.target
+
+[Service]
+ExecStart=/usr/bin/bspwm
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=wm.target

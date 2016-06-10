@@ -1,0 +1,10 @@
+[Unit]
+Description=gpg-agent daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/gpg-agent --daemon --write-env-file "${HOME}/.gpg-agent-info"
+Restart=always
+
+[Install]
+WantedBy=xlauncher.target

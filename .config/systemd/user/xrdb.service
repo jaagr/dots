@@ -1,0 +1,12 @@
+[Unit]
+Description=xrdb
+Requires=xorg.target
+After=xorg.target
+Before=i3.service bspwm.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xrdb -I"${X11_HOME}" "${X11_HOME}/xresources"
+
+[Install]
+WantedBy=xlauncher.target

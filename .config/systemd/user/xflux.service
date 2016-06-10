@@ -1,0 +1,10 @@
+[Unit]
+Description=f.lux for X
+Requires=xorg.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/xflux -l 57.7 -g 12.0
+
+[Install]
+WantedBy=xorg.target

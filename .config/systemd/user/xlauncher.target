@@ -1,0 +1,6 @@
+[Unit]
+Description=Xorg launcher
+Wants=wm.target
+
+[Install]
+Alias=default.target

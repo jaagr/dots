@@ -1,0 +1,10 @@
+[Unit]
+Description=ZNC irc bouncer
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/znc -f -d "${LOCAL_ETC}/znc"
+User=znc
+
+[Install]
+WantedBy=multi-user.target

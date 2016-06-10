@@ -1,0 +1,18 @@
+" Put the following two lines in the cVim options page in Chrome
+let configpath = "/home/jaagr/etc/config/cvimrc"
+set localconfig " Update settings via local file (and the `:source` command) rather
+                " than the default options page in chrome"
+
+let blacklists = ["https://design.google.com/icons/*"]
+
+getIP() -> {{
+    httpRequest({
+        url: "http://api.ipify.org/?format=json",
+        json: true
+    }, function(res){
+        Status.setMessage("IP: " + res.ip);
+    });
+}}
+
+" Displays your public IP address in the status bar
+map ci :call getIP<CR>

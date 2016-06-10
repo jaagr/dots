@@ -1,0 +1,5 @@
+[Socket]
+ListenStream=7700
+
+[Install]
+WantedBy=xlauncher.target

@@ -1,0 +1,21 @@
+# Commands to ignore
+$_FASD_IGNORE = "fasd ls echo"
+
+# Strings to blacklsit
+$_FASD_BLACKLIST = "--help"
+
+# Supported backends:
+# - recently-used: GTK's recently-used file (Usually available on Linux)
+# - current: Provides everything in $PWD (whereever you are executing fasd)
+# - viminfo: Vim's editing history, useful if you want to define an alias just for editing things in vim
+$_FASD_BACKENDS = ""
+
+# Redirect of stderr
+$_FASD_SINK = /dev/null
+
+# Path to .viminfo
+$_FASD_VIMINFO = "$HOME/.viminfo"
+
+# Level of "fuzziness" when doing fuzzy matching. Number of characters
+# that can be skipped to generate a match. 0 will disable fuzzy matching.
+$_FASD_FUZZY = 2

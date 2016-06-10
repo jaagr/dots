@@ -1,0 +1,9 @@
+[Unit]
+Description=Workaholic insulin shot
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/notify-send 'Reality calling' 'Time to stretch your three legs'
+
+[Install]
+WantedBy=graphical.target
