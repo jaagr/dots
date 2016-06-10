@@ -1,0 +1,135 @@
+"
+" Setup vim environment
+
+if &compatible
+  set nocompatible
+endif
+
+set runtimepath^=$HOME/.vim
+set runtimepath^=$HOME/.vim/after
+set runtimepath^=$HOME/.vim/contrib
+set runtimepath^=$HOME/.vim/plugin
+set runtimepath^=/usr/share/vim/vimfiles/eclim
+
+call plug#begin(expand('$HOME/.vim/contrib'))
+
+Plug 'junegunn/vim-plug'
+
+Plug 'Shougo/vimshell', { 'rev': '3787e5' }
+
+"Plug 'Shougo/neosnippet.vim' " Snippet engine
+"Plug 'Shougo/neosnippet-snippets' " Repository of snippets
+
+if has('python') || has('python3')
+  Plug 'SirVer/ultisnips' " Snippet engine
+  Plug 'honza/vim-snippets' " Repository of snippets
+  Plug 'Valloric/YouCompleteMe'
+endif
+
+" dlang.org
+"Plug 'Shougo/vimproc.vim'
+"Plug 'idanarye/vim-vebugger'
+"Plug 'idanarye/vim-dutyl'
+
+Plug 'ervandew/supertab'
+
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'zchee/deoplete-clang'
+"Plug 'Rip-Rip/clang_complete'
+"Plug 'zchee/deoplete-go'
+"Plug 'zchee/deoplete-go', { 'do': 'make'}
+"Plug 'zchee/deoplete-jedi' " python
+" Requires: github.com/davidhalter/jedi
+"Plug 'zchee/deoplete-zsh'
+
+Plug 'artur-shaik/vim-javacomplete2'
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
+"Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
+
+" C/C++
+Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'vim-scripts/OmniCppComplete'
+
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
+
+Plug 'ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic' " Syntax checker
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'rstacruz/sparkup', {'rtp': 'vim/'} " Write fast html/css
+Plug 'tomtom/tcomment_vim'
+Plug 'majutsushi/tagbar'
+"Plug 'Raimondi/delimitMate'
+"Plug 'groenewege/vim-less'
+"Plug 'othree/html5.vim'
+"Plug 'kchmck/vim-coffee-script'
+Plug 'baskerville/vim-sxhkdrc'
+"Plug 'vim-perl/vim-perl'
+"Plug 'fatih/vim-go'
+"Plug 'syngan/vim-vimlint'
+"Plug 'ynkdir/vim-vimlparser'
+"Plug 'blueyed/vim-diminactive'
+
+Plug 'airblade/vim-gitgutter'
+
+"Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'suan/vim-instant-markdown'
+Plug 'nelstrom/vim-markdown-folding'
+
+Plug 'jeetsukumaran/vim-buffergator'
+"Plug 'szw/vim-ctrlspace'
+"Plug 't9md/vim-choosewin'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'paranoida/vim-airlineish'
+
+Plug 'tomtom/tlib_vim'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'unblevable/quick-scope'
+
+Plug 'chrisbra/Colorizer'
+Plug 'ap/vim-css-color'
+Plug 'KabbAmine/vCoolor.vim'
+
+Plug 'MattesGroeger/vim-bookmarks'
+
+"Plug 'tek/proteome.nvim' (doesn't work - fix the remote host stuff)
+Plug 'amix/vim-zenroom2'
+Plug 'junegunn/goyo.vim'
+Plug 'jaagr/vim-brogrammer-theme'
+Plug 'dracula/vim'
+Plug 'joshdick/onedark.vim'
+Plug 'joshdick/airline-onedark.vim'
+
+"Plug 'baeuml/summerfruit256.vim'
+Plug 'chriskempson/base16-vim'
+"Plug 'mkarmona/colorsbox'
+"Plug 'KabbAmine/yowish.vim'
+Plug 'flazz/vim-colorschemes'
+"Plug 'edkolev/promptline.vim'
+"Plug 'morhetz/gruvbox'
+Plug 'ScrollColors'
+
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'chrisbra/unicode.vim'
+"Plug 'mhinz/vim-startify'
+
+call plug#end()
+
+filetype plugin indent on
+
+" Source configurations
+for g:rc in split(glob('$HOME/.vim/vimrc.d/*.vim'), '\n')
+  exe 'source' rc
+endfor
+
+" Source plugin configurations
+for g:rc in split(glob('$HOME/.vim/vimrc.d/plugins/*.vim'), '\n')
+  exe 'source' rc
+endfor
