@@ -1,22 +1,67 @@
 #!/usr/bin/env bash
 
+source bootstrap.sh
+
+include utils/lemonbuddy.sh
+include utils/json.sh
+
+bootstrap::finish
+
 size_border=4
 size_gap=10
 
-padding_top=20
-padding_bottom=20
+padding_top=32
+padding_bottom=0
 padding_left=0
 padding_right=0
 
-color_focused_border="#5f627a"
+color_focused_border="#6162ae"
 color_normal_border="#282a37"
 color_active_border="#282a37"
 color_presel_feedback="#9966cc"
 
-theme::event_listeners() {
-  :
-}
+lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
+lemonbuddy_bars=(top)
+
+# Too slow...
+#theme::event_listeners() {
+#  bspc subscribe node_flag node_state desktop_layout | while read -r evt; do
+#    local -i offset=0
+#
+#    [[ "${evt##* }" == "monocle" ]] && offset+=19
+#
+#    for flag in locked sticky private; do
+#      echo "$evt" | grep "$flag on" &>/dev/null && offset+=19
+#    done
+#
+#    theme::draw_separators $offset
+#  done
+#}
 
 theme::post_bspwmrc() {
-  :
+  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#ff5f627a" 21 100% 0 0 'true'
+  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#dd45485f" 1 100% 0 23
+  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#22ffffff" 1 100% 0 24
+
+  theme::draw_separators
+}
+
+theme::draw_separators() {
+  local x_offset="${1:-0}"
+  local x_pos=0
+  local sep=0
+  local step=37
+
+  while (( sep++ < 10 )); do
+    x_pos=$(( sep * step ))
+
+    [[ $sep -ge 10 ]] && {
+      x_pos=$(( x_pos + 7 ))
+    }
+
+    pgrep -f "xdrawrect\-ws\-separator\-${sep}" 2>/dev/null | xargs kill 2>/dev/null
+
+    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos-1)) 8 "#33000000" "xdrawrect-ws-separator-${sep}a" &
+    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos)) 8 "#11ffffff" "xdrawrect-ws-separator-${sep}b" &
+  done
 }
