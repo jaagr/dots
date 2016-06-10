@@ -5,8 +5,9 @@ function dots {
   # If a git alias is a passed as the first argument
   # prepend the custom arguments to the command
   if [[ $# -gt 0 ]] && [[ "${aliases[$1]}" ]]; then
-    local cmd=${aliases[$1]} ; shift
+    local cmd=${aliases[$1]}
     if [[ "${cmd%% *}" == "git" ]]; then
+      shift
       eval "GIT_DIR=$HOME/.dots.git GIT_WORK_TREE=$HOME $cmd "$@""
       return;
     fi
