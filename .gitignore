@@ -1,5 +1,26 @@
+*.bak
+*.tmp
+*.pyc
+*.o
+
 /.dots.git
 /.local/include
 /.local/share
-*.bak
-*.tmp
+/.local/lib/python2.7
+/.local/lib/python3.4
+
+# unclutter untracked
+/.cache
+/.dbus
+/.lesshst
+/.npm
+/.mozilla
+/.vim-bookmarks
+/.viminfo
+
+# symlinks
+/bin
+/etc
+/lib
+/src
+/var
