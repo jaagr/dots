@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+export X11_HOME="$LOCAL_ETC/xorg"
+export X11_INIT="$X11_HOME/init.sh"
+
+export X11_DISPLAY=":0"
+export X11_VT="vt12"
+export X11_CLIENT="/usr/bin/xinit $X11_HOME/xsession"
+export X11_SERVER="/usr/bin/Xorg -keeptty $X11_DISPLAY $X11_VT -nolisten TCP"

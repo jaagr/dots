@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+setxkbmap -layout "${1:-us}" -model evdev -option "" \
+  -option terminate:ctrl_alt_bksp \
+  -option caps:escape \
+  -option altwin:swap_lalt_lwin

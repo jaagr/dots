@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+xrandr --addmode VIRTUAL1 1280x800_60.00 || {
+  xrandr --newmode "1280x800_60.00" 83.46 1280 1344 1480 1680 800 801 804 828 -HSync +Vsync
+  xrandr --addmode VIRTUAL1 1280x800_60.00
+}
+
+xrandr --output VIRTUAL1 --mode 1280x800_60.00 --left-of eDP1
+x11vnc -nopw -clip 1280x800+0+0 &
+
+# Re-enable key repeat
+xset r on ; xset r on ; xset r on

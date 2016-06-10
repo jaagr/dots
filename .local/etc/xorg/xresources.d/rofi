@@ -1,0 +1,26 @@
+!
+! Rofi configuration
+!
+rofi.fullscreen: true
+rofi.padding: 300
+
+rofi.font: Anonymous Pro, Regular, 20
+
+rofi.color-enabled: true
+rofi.color-normal: argb:ffffffff , #353535 , argb:ffffffff , #ff372c , #1b2b34
+rofi.color-urgent: argb:ffffffff , #ff372c , argb:ffffffff , #ff372c , #1b2b34
+rofi.color-active: argb:ffffffff , #6699cc , argb:ffffffff , #6699cc , #1b2b34
+rofi.color-window: argb:ffffffff
+
+! none, dash, solid
+rofi.separator-style: solid
+
+rofi.kb-remove-word-back: Control+w
+rofi.kb-row-up: Up,Control+n,Control+k
+rofi.kb-row-down: Down,Control+p,Control+j
+rofi.kb-row-tab:
+
+rofi.terminal: zsh
+rofi.tokenize: false
+
+! vim:ft=xdefaults

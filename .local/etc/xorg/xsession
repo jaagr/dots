@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -s "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
+{ # Set keyboard layout and apply keymap changes
+  "$X11_HOME/xkbmaprc"
+
+  # Remap alt gr solo keypress to something useful
+  xcape -e "Alt_R=Alt_R|Mode_switch"
+
+  # Replace the fugly cross
+  xsetroot -cursor_name left_ptr
+
+  # Merge xresources
+  xrdb -merge -I"$X11_HOME" "$X11_HOME/xresources"
+
+  # set the screen server to blank at 1h
+  xset s 3600 3600
+  xset s noblank
+
+  # Turn off power management
+  xset -dpms
+
+  # Disable HDMI audio
+  xrandr --output HDMI1 --auto --above eDP1
+  xrandr --output HDMI1 --set audio force-dvi
+
+  # Laziness
+  numlockx
+
+  # Sync clipboards (some bad decisions really stick around...)
+  autocutsel -fork
+  autocutsel -selection PRIMARY -fork
+
+  # Set wallpaper
+  if [ -s "$HOME/.fehbg" ]; then
+    "$HOME/.fehbg"
+  elif [ -e "$HOME/.wallpapers/1.png" ]; then
+    feh --bg-center --image-bg black "$HOME/.wallpapers/1.png"
+  fi
+
+  # Start the notification daemon
+  dunst &
+} > "$XDG_CACHE_HOME/xorg/xsession.log" 2>&1
+
+# Launch the window manager
+exec "$LOCAL_ETC/${X_WM:-bspwm}/init.sh" >"$XDG_CACHE_HOME/xorg/wm.log" 2>&1

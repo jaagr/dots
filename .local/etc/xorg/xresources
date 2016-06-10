@@ -1,0 +1,7 @@
+#include "xresources.d/rofi"
+#include "xresources.d/vt100"
+#include "xresources.d/xft"
+#include "xresources.d/xterm"
+!#include "xresources.d/colors/jellybeans"
+
+! vim:ft=xdefaults

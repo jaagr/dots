@@ -1,0 +1,5 @@
+*VT100*utf8:            1
+*VT100*eightBitControl: false
+*VT100*eightBitOutput:  true
+*VT100*eightBitInput:   false
+*VT100*metaSendsEscape: true

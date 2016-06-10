@@ -1,0 +1,3 @@
+#!/bin/sh
+ln -s "${HOME}/etc/sv/bspwm" "${HOME}/var/service"
+sv start "${HOME}/var/sv/bspwm"
