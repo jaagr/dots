@@ -28,6 +28,7 @@ export BSPWM_FIFO="${XDG_CACHE_HOME}/bspwm/wm_state"
 
 export SXHKD_SHELL="/usr/bin/bash"
 export GOPATH="${LOCAL_SRC}/go"
+export GIMP2_DIRECTORY="${XDG_CONFIG_HOME}/gimp"
 
 export ARCH="x86_64"
 export ARCHFLAGS="-arch x86_64"
