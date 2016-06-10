@@ -2,9 +2,9 @@
 #
 # This file is written on GIMP startup and on every theme change.
 # It is NOT supposed to be edited manually. Edit your personal
-# gtkrc file instead (/home/jaagr/.gimp-2.8/gtkrc).
+# gtkrc file instead (/home/jaagr/.config/gimp/gtkrc).
 
-include "/home/jaagr/.gimp-2.8/themes/Dark Blue small/gtkrc"
-include "/home/jaagr/.gimp-2.8/gtkrc"
+include "/home/jaagr/.config/gimp/themes/Dark Blue small/gtkrc"
+include "/home/jaagr/.config/gimp/gtkrc"
 
 # end of themerc
