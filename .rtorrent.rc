@@ -1,0 +1,55 @@
+# reference: https://github.com/rakshasa/rtorrent/wiki/User-Guide
+
+port_range = 49165-49165
+
+min_peers = 1000
+max_peers = 1500
+
+min_peers_seed = 200
+max_peers_seed = 300
+
+download_rate = 0
+upload_rate = 0
+
+check_hash = no
+
+# Encryption
+encryption = allow_incoming,try_outgoing,enable_retry
+
+# DHT
+dht = auto
+dht_port = 49753
+peer_exchange = yes
+
+# Priority
+file.prioritize_toc.set=1
+file.prioritize_toc.first.set = {*.avi,*.mp4,*.mkv,*.gz}
+file.prioritize_toc.last.set = {*.zip}
+
+# Watch for new torrents
+schedule = watch_directory,5,5,load_start=~/downloads/*.torrent
+schedule = tied_directory,5,5,start_tied=
+schedule = untied_directory,5,5,stop_untied=
+
+# Session directory
+session = ~/.cache/rtorrent
+
+# Download path (incomplete)
+directory = /storage/data/torrents/incomplete
+
+# Download path (finished)
+system.method.set_key = event.download.finished,move_complete,"set_directory=/storage/data/torrents/;execute=mv,-u,$d.get_base_path=,/storage/data/torrents/"
+
+# color_active_bg = 4
+# color_active_fg = 7
+#
+# color_inactive_bg = 3
+# color_inactive_fg = 0
+#
+# color_dead_bg = 1
+# color_dead_fg = 7
+#
+# color_finished_bg = 2
+# color_finished_fg = 0
+
+# vim:ft=conf
