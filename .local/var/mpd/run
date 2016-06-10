@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+#
+# Synopsis:
+#   ${SCRIPT_NAME} [OPTION...]
+#
+# Options:
+#   -b, --batch  Batch mode (prints raw logging output)
+#   -k, --kill   Terminates any running MPD instance
+#   -f, --force  Restarts any running MPD instance
+#
+# Starts an instance of MPD
+#   jaagr <c@rlberg.se>
+#
+
+source  bootstrap.sh
+
+include utils/cli.sh
+include utils/log.sh
+include utils/log/defer.sh
+include utils/notification.sh
+include utils/tests.sh
+
+bootstrap::finish
+
+declare -r MPD_CONFIG="$HOME/.mpdconf"
+declare -r MPD_PID="$LOCAL_VAR/mpd/pid"
+
+declare CLI_ARG_BATCH='false'
+declare CLI_ARG_NOTIFY='false'
+declare CLI_ARG_KILL='false'
+declare CLI_ARG_FORCE='false'
+
+function mpd_get_path
+{
+  if [[ "$#" -ne 0 ]]; then
+    sed -n -r "s/^$2 \"([^\"]+)\"$/\1/p" < "$1"
+  fi
+}
+
+function mpd_kill
+{
+  local pid="$1" ; shift
+
+  log::defer "Killing MPD instance"
+
+  if ! [[ -s "${pid}" ]]; then
+    log::defer::failure "" "PID file missing" ; return 3
+  fi
+
+  if ! [[ -d "/proc/$(<"${pid}")" ]]; then
+    log::defer::failure "" "No running instance found" ; return 4
+  fi
+
+  pkill -F "${pid}" > /dev/null 2>&1
+
+  if previous_cmd_successful; then
+    log::defer::success ; return 0
+    [[ "${CLI_ARG_NOTIFY}" = true ]] && notification::low "Shut down previous MPD process"
+  fi
+
+  [[ "${CLI_ARG_NOTIFY}" = true ]] && notification::critical "Failed to kill running MPD instance"
+
+  log::defer::failure "Failed to kill running MPD instance ($?)" ; return 5
+}
+
+function main
+{
+  while [[ "${1:0:1}" = "-" ]]; do
+    case "$1" in
+      "-h"  | "--help")   cli::usage_from_commentblock; exit ;;
+      # "-c*" | "--config"*) MPD_CONFIG="$(cli::get_argument_value "$@")" && shift || exit $?;;
+      "-b"  | "--batch")  CLI_ARG_BATCH='true' ;;
+      "-n"  | "--notify") CLI_ARG_NOTIFY='true' ;;
+      "-k"  | "--kill")   CLI_ARG_KILL='true' ;;
+      "-f"  | "--force")  CLI_ARG_FORCE='true' ;;
+      *) cli::unrecognized_option "$1" ;;
+    esac
+    shift
+  done
+
+  if [[ "${CLI_ARG_BATCH}" = true ]]; then
+    log::batch_mode true
+    log::show_debug false
+  fi
+
+  if is_root; then
+    log::err "You should not run this script as root" ; exit 1
+  fi
+
+  if [[ "${CLI_ARG_KILL}" = true ]]; then
+    mpd_kill "${MPD_PID}"
+    exit $?
+  fi
+
+  log::defer "Checking for existing instances"
+
+  if [[ -s "${MPD_PID}" ]]; then
+    if [[ "${CLI_ARG_FORCE}" != true ]]; then
+      log::defer::failure "" "Found PID $(ansi::bold "$(<"$MPD_PID")") from $(ansi::bold "$MPD_PID"). Use --force to ignore."
+      exit 2
+    fi
+
+    [[ -d "/proc/$(<"${MPD_PID}")" ]] && mpd_kill "${MPD_PID}"
+  fi
+
+  log_file=$(mpd_get_path "${MPD_CONFIG}" "log_file")
+  music_dir=$(mpd_get_path "${MPD_CONFIG}" "music_directory")
+
+  log::defer "Making sure the music library is present"
+
+  # Verify that the music library is mounted
+  if [[ ! -d "${music_dir}" ]]; then
+    [[ "${CLI_ARG_NOTIFY}" = true ]] && notification::critical "The music library is not mounted"
+    log::defer::failure "The music library is not mounted" ; exit 6
+  fi
+
+  log::defer "Starting MPD"
+
+  /usr/bin/mpd "${MPD_CONFIG}" "$@" 2> "${log_file}"
+
+  if [[ $? -eq 0 ]]; then
+    [[ "${CLI_ARG_NOTIFY}" = true ]] && notification::normal "MPD is up and running!"
+    log::defer::success
+  else
+    [[ "${CLI_ARG_NOTIFY}" = true ]] && notification::critical "MPD could not be started"
+    log::defer::failure
+  fi
+}
+
+main "$@"
