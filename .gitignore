@@ -17,10 +17,3 @@
 /.mozilla
 /.vim-bookmarks
 /.viminfo
-
-# symlinks
-/bin
-/etc
-/lib
-/src
-/var
