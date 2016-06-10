@@ -1,7 +1,5 @@
 /.dots.git
 /.local/include
-/.local/lib/*
-!/.local/lib/.gitkeep
 /.local/share
 *.bak
 *.tmp
