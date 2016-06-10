@@ -1,0 +1,118 @@
+#!/usr/bin/env sh
+alias dots='git --git-dir=$HOME/.dots.git --work-tree=$HOME'
+alias dots-ls='dots ls-files'
+alias dots-ls-untracked='dots status -u .'
+
+alias reddit-feed='rsstail -i 297 -l -u "https://www.reddit.com/.rss?feed=26d3851da4ec5fdbbe9adda0e3339049ba6ab722&user=jaagr" | sed -r "s/^Title: (.*)$/\n$(echo -e "\033[32;1m")\1$(echo -e "\033[0m")/"'
+
+alias connect.pi="ssh root@pi.local"
+alias connect.work="ssh michael@workbox.local"
+
+alias externalip="curl -s checkip.dyndns.org | sed 's/[^0-9.]//g'"
+
+alias launch.wm='$X11_HOME/init.sh'
+alias launch.xvnc='$X11_HOME/xvnc'
+alias launch.compton='bash -c "$LOCAL_ETC/compton/init.sh &"'
+alias launch.sxhkd='bash -c "$LOCAL_ETC/sxhkd/init.sh &"'
+alias launch.dunst="dunst &"
+
+alias reload.compton='$LOCAL_ETC/compton/bin/reload'
+alias reload.sxhkd='$LOCAL_ETC/sxhkd/bin/reload'
+alias reload.bspwm='$LOCAL_ETC/bspwm/bin/reload'
+alias reload.lemonbuddy='$LOCAL_ETC/lemonbuddy/bin/reload'
+
+alias xupd="xbps-install -Su"
+alias xquery="xbps-query"
+alias xrem="xbps-remove"
+alias xbelongs="xbps-query -o"
+alias xrequiredby="xbps-query -X"
+alias xlistcontents="xbps-query -f"
+alias xbuild="./xbps-src" ;
+alias xbuild-clean="./xbps-src zap && ./xbps-src binary-bootstrap"
+alias xbuild-test="./xbps-src-testbuild"
+alias xcd='cd $XBPS_DISTDIR'
+
+alias xorglog="vim /var/log/Xorg.0.log"
+alias xorglogbumblebee="vim /var/log/Xorg.8.log"
+alias xorgconf="vim /etc/X11/xorg.conf.d/20-gpu.conf"
+alias xorgconfbumblebee="vim /etc/bumblebee/xorg.conf.nvidia"
+
+alias ga="git add"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias gco="git checkout"
+alias gst="git status"
+alias ggpur="git pull --rebase"
+
+# TODO: Create a symlink to vim/nvim instead to make
+# sure that the same version is used everywhere
+alias vim="nvim"
+alias vi="nvim"
+alias xrdb-reload='xrdb -merge -I$LOCAL_ETC/xorg $LOCAL_ETC/xorg/xresources'
+alias gpg-decrypt-clipboard='xclip -o | gpg --decrypt | xclip'
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
+alias halt="sudo halt"
+alias tv="tvremote"
+alias lemonbar-striptags='sed -u -r "s/%\{[^}]+\}//g"'
+alias lemonbar-striptags-trim='lemonbar-striptags | tr -s " "'
+
+alias grepr="grep -r"
+alias egrepr="egrep -r"
+
+alias ghub='cd $GITHUB_HOME'
+alias ghubl='cd $GITHUB_HOME/jaagr'
+alias ghublemonbuddy='cd $GITHUB_HOME/jaagr/lemonbuddy'
+alias ghubbarlib='cd $GITHUB_HOME/jaagr/barlib'
+alias ghubxlib-drawrect='cd $GITHUB_HOME/jaagr/xlib-drawrect'
+
+alias perlcd='cd $PERL_HOME'
+alias cpan="perlcd && perl -MCPAN -e shell"
+
+alias cmake-debug="cmake -DCMAKE_BUILD_TYPE=debug"
+alias cmake-release="cmake -DCMAKE_BUILD_TYPE=release"
+alias cmake-release-globalinstall="cmake -DCMAKE_BUILD_TYPE=release -DCMAKE_INSTALL_PREFIX=/usr"
+alias cmake-uninstall='if [ -e install_manifest.txt ]; then sudo rm -i -v "$(cat install_manifest.txt)" install_manifest.txt; else echo "Cannot find install_manifest.txt"; fi'
+alias cmake-clean='[[ $(basename $(pwd)) == "build" ]] && cd .. && rm -rf build && mkdir build && cd build && cmake ..'
+
+# Default command flags
+alias mv="mv -v"
+alias ln="ln -v"
+alias cp="cp -v"
+alias rm="rm -v"
+alias ls="ls --group-directories-first --dereference-command-line-symlink-to-dir --color=auto"
+alias ll="ls --dereference-command-line-symlink-to-dir -lh"
+alias l="ls -la --dereference-command-line-symlink-to-dir"
+alias info="info --vi-keys"
+alias pgrep="pgrep -l"
+alias grep="grep -i --color=auto"
+alias egrep="egrep --color=auto"
+
+alias feh="feh --no-fehbg"
+alias pacman="pacman --color=always"
+alias cower="cower --sort=votes"
+alias ncmpcpp='ncmpcpp --config $LOCAL_ETC/ncmpcpp/config --bindings $LOCAL_ETC/ncmpcpp/bindings'
+alias vimprobable2='vimprobable2 --configfile $LOCAL_ETC/vimprobable/config'
+
+# Sudo cmds
+alias sv="sudo sv"
+alias lvs="sudo lvs"
+alias vgs="sudo vgs"
+alias lvdisplay="sudo lvdisplay"
+alias vgdisplay="sudo vgdisplay"
+alias xbps-install="sudo xbps-install"
+alias xbps-query="sudo xbps-query"
+alias xbps-remove="sudo xbps-remove"
+alias xbps-pkgdb="sudo xbps-pkgdb"
+alias xbps-reconfigure="sudo xbps-reconfigure"
+
+# Spelling corrections
+alias vmi="vim"
+alias exi="exit"
+alias exti="exit"
+alias eitx="exit"
+alias eixt="exit"
+alias exiyt="exit"
+alias exity="exit"
+
+# vim:ft=sh

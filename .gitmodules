@@ -1,0 +1,9 @@
+[submodule ".zsh/zprezto"]
+	path = .zsh/zprezto
+	url = https://github.com/sorin-ionescu/prezto.git
+[submodule ".vimperator/plugins"]
+	path = .vimperator/plugins
+	url = https://github.com/vimpr/vimperator-plugins
+[submodule ".vimperator/colors"]
+	path = .vimperator/colors
+	url = https://github.com/vimpr/vimperator-colors

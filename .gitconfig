@@ -1,0 +1,23 @@
+[user]
+  name = Michael Carlberg
+  email = c@rlberg.se
+  signingkey = 2556B554
+[color]
+  ui = true
+[push]
+  default = matching
+[alias]
+  untracked = status -u .
+  ls = ls-files
+  st = status
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  lg2 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+[credential]
+  helper = lastpass -l c@rlberg.se
+  username = jaagr
+[github]
+  user = jaagr
+[ghi]
+  token = ! lpass show --notes 8820807511722437577
+#[commit]
+#  gpgsign = true
