@@ -1,0 +1,40 @@
+#
+# My zsh prompt
+#
+
+function prompt_jaagr_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+  autoload -Uz add-zsh-hook
+
+  # Add hook called before each command
+  add-zsh-hook precmd prompt_jaagr_precmd
+
+  # Set git-info parameters
+  zstyle ":prezto:module:git:info" verbose "yes"
+  zstyle ":prezto:module:git:info:dirty"  format " %B%F{red}±%f"
+  zstyle ":prezto:module:git:info:branch" format " %B%F{yellow}%b%f"
+  zstyle ":prezto:module:git:info:keys"   format "rprompt" "%b%c%s%D"
+
+  # Set editor-info parameters
+  zstyle ":prezto:module:editor:info:keymap:alternate" format "%B%F{white} -- NORMAL --%f%b"
+  # XXX: Disabled since it adds an annoying flickering
+  #zstyle ":prezto:module:editor:info:completing" format "%F{red}...%f"
+
+  # Define prompts
+  PROMPT='%B%F{1} %~ %(?.%F{yellow}#.%F{160}!)%f%b '
+  RPROMPT='${git_info[rprompt]}${editor_info[keymap]}%(?..%F{160} %?%f)'
+  SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
+}
+
+function prompt_jaagr_precmd {
+  if (( $+functions[git-info] )); then
+    git-info
+  fi
+
+  # window & icon title
+  print -Pn "\e]0;Terminal (%n@%m) %~\a"
+}
+
+prompt_jaagr_setup "$@"

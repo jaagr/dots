@@ -1,0 +1,24 @@
+# Compile the completion dump to increase startup speed.
+{ zcompdump="$ZDOTDIR/.zcompdump"
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+    zcompile "$zcompdump"
+  fi
+} &!
+
+# Launch X at tty1 login
+if ! [[ "$DISPLAY" ]] && [[ "${TTY##*tty}" == "1" ]]; then
+  printf "\n"
+
+  [[ -x $HOME/bin/checkforupdates ]] && $HOME/bin/checkforupdates
+
+  printf "\n"
+
+  if [[ -x $HOME/bin/logger ]]; then
+    printf "%s" "$($HOME/bin/logger info "Press enter to launch WM (Ctrl-C to skip to terminal)...")"
+  else
+    printf "%s" "Press enter to launch WM (Ctrl-C to skip to terminal)..."
+  fi
+
+  read -k 1 && printf "\n" && $X11_INIT
+
+fi
