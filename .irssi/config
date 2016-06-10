@@ -68,7 +68,6 @@ quakenet = { type = "IRC"; };
 dalnet = { type = "IRC"; };
 rizon = { type = "IRC"; };
 oftc = { type = "IRC"; };
-nixers = { type = "IRC"; };
 };
 
 # ZNC handles the channels
