@@ -55,6 +55,9 @@ alias tv="tvremote"
 alias lemonbar-striptags='sed -u -r "s/%\{[^}]+\}//g"'
 alias lemonbar-striptags-trim='lemonbar-striptags | tr -s " "'
 
+alias theme-edit="edit_theme"
+alias theme-activate="activate_theme"
+
 alias grepr="grep -r"
 alias egrepr="egrep -r"
 
