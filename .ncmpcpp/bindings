@@ -1,0 +1,24 @@
+def_key "k"
+    scroll_up
+def_key "j"
+    scroll_down
+
+def_key "ctrl-p"
+  previous_screen
+def_key "ctrl-n"
+  next_screen
+
+def_key "+"
+  run_external_command "amixer -q -c 0 set Master playback 2dB+"
+def_key "-"
+  run_external_command "amixer -q -c 0 set Master playback 2dB-"
+def_key "0"
+  run_external_command "$LOCAL_BIN/toggle_mute"
+def_key "m"
+  run_external_command "$LOCAL_BIN/toggle_mute"
+
+def_command "quit" [deferred]
+  quit
+def_command "quit!" [deferred]
+  stop
+  quit
