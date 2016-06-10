@@ -1,0 +1,82 @@
+# vim:ft=dosini
+#
+# Termite configuration
+#
+
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = true
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+scrollback_lines = 10000
+search_wrap = true
+
+# "system", "on" or "off"
+cursor_blink = on
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+
+;font = Terminus 8
+;font = Dina,11
+;font = tewi 9
+;font = Hack 10
+;font = GohuFont,Regular,10
+;font = Literation Mono 11
+;font = CamingoCode,Bold 11
+;font = Fantasque Sans Mono,Regular 11
+;font = DejaVu Sans Mono for Powerline, 10
+;font = Droid Sans Mono for Powerline 10
+;font = Source Code Pro for Powerline, 10
+;font = Inconsolata for Powerline,Regular 10
+;font = termsyn, 9
+;font = Terminess Powerline, 10
+;font = Ohsnap, Regular, 9
+;font = Fira Mono, 9
+;font = Roboto Mono for Powerline, 8
+;font = Literation Mono Powerline, 8
+;font = Literation Mono Powerline, 9
+;font = envypn, regular, 10
+;font = Inconsolata for Powerline, Regular 10
+;font = Roboto Mono for Powerline, 8
+font = termsyn, 9
+font = envypn, regular, 10
+
+[colors]
+
+# do not edit anything below this line since it will
+# get overridden when changing theme
+
+# themer::placeholder
+# -- start of script output --
+
+background = rgba(40, 42, 54, .98)
+foreground = #cccccc
+cursor = #b9b9b9
+
+color0 = #666666
+color1 = #cc6699
+color2 = #99cc66
+color3 = #cc9966
+color4 = #6699cc
+color5 = #9966cc
+color6 = #66cc99
+color7 = #cccccc
+color8 = #999999
+color9 = #ff99cc
+color10 = #ccff99
+color11 = #ffcc99
+color12 = #99ccff
+color13 = #cc99ff
+color14 = #99ffcc
+color15 = #ffffff
+# -- end of script output --

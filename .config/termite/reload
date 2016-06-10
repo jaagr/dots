@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Tell all running instances of termite to
+# reload the configuration
+#
+
+killall -q -USR1 termite
