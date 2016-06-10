@@ -1,1 +1,1 @@
-/home/michael/.profile
+../.profile

@@ -1,1 +1,1 @@
-/home/michael/.aliases
+../../.aliases
