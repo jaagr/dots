@@ -22,7 +22,7 @@ include utils/tests.sh
 
 bootstrap::finish
 
-declare -r MPD_CONFIG="$HOME/.mpdconf"
+declare -r MPD_CONFIG="${XDG_CONFIG_HOME}/mpd/mpd.conf"
 declare -r MPD_PID="$LOCAL_VAR/mpd/pid"
 
 declare CLI_ARG_BATCH='false'
