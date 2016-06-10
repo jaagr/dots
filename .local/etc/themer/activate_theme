@@ -1,0 +1,155 @@
+#!/usr/bin/env bash
+#
+# Synopsis:
+#   ${SCRIPT_NAME} -v theme_name
+#
+# Options:
+#   -h, --help              display this help and exit
+#   -l, --list              list all available themes and exit
+#
+# Author:
+#   jaagr <c@rlberg.se>
+#
+# TODO
+# Move all specific application handling (termite so far)
+# to custom scripts belonging to the theme...
+#
+# ./scripts/pre.theme_name
+# ./scripts/post.theme_name
+#
+
+source bootstrap.sh
+
+include utils/tests.sh
+include utils/cli.sh
+include utils/ansi.sh
+include utils/log.sh
+include utils/log/defer.sh
+
+bootstrap::finish
+
+BASE_DIR="$LOCAL_ETC/themer"
+
+main() {
+  local current_theme
+
+  [[ "$#" -eq 0 ]] && set -- "--list"
+
+  while [[ "${1:0:1}" = "-" ]]; do
+    case "$1" in
+      "-h" | "--help") cli::usage_from_commentblock; exit;;
+      "-l" | "--list")
+        log::info "Available themes:"
+
+        current_theme=$(dirname "$(readlink "$BASE_DIR"/current/*)" 2>/dev/null | tail -1 | xargs basename 2>/dev/null)
+        local theme
+
+        for theme in "${BASE_DIR}/themes"/*; do
+          [[ -d "$theme" ]] || continue
+
+          theme="${theme##*/}"
+
+          if [[ "$theme" == "$current_theme" ]]; then
+            log "$theme $(ansi::bold "(in use)")"
+          else
+            log "$theme"
+          fi
+        done
+
+        exit 0
+        ;;
+      *) cli::unrecognized_option "$1" ;;
+    esac
+    shift
+  done
+
+  local theme_name="$1"
+  local theme_dir="${BASE_DIR}/themes/${theme_name}"
+  local termite_config="${XDG_CONFIG_HOME}/termite/config"
+
+  if [[ -z "$1" ]]; then
+    log::err "No theme given. Use '--list' to show available themes." ; exit
+  fi
+
+  [[ -d "${theme_dir}" ]] || {
+    log::err "Could not find theme '${theme_name}'. Show available themes with '--list'" ; exit
+  }
+
+  log::info "Applying theme $(ansi::bold "$theme_name")"
+
+  silent! rm -f "${BASE_DIR}"/current/*
+
+  for file in "${theme_dir}"/*; do
+    log::defer "Creating symlink to $(basename "${file}")"
+    ln -sf "${file}" "${BASE_DIR}/current/$(basename "${file}")"
+    if previous_cmd_successful; then
+      log::defer::success
+    else
+      log::defer::failure
+    fi
+  done
+
+  [[ -e "${BASE_DIR}/current/termite" ]] && {
+    if [[ -e "${termite_config}" ]]; then
+      local termite_tag="themer::placeholder"
+
+      if silent! grep -q "${termite_tag}" "${termite_config}"; then
+        log::defer "Creating backup of termite config"
+        cp "${termite_config}" "${termite_config}.bak"
+
+        if previous_cmd_successful; then
+          log::defer::success
+        else
+          log::defer::failure "Failed with status $?" ; exit 1
+        fi
+
+        log::defer "Removing termite config"
+
+        rm "${termite_config}"
+
+        if previous_cmd_successful; then
+          log::defer::success
+        else
+          log::defer::failure "Failed with status $?" ; exit 1
+        fi
+
+        line=$(sed -nr "/\[colors\]/q ; /font/=" "${termite_config}.bak" | tail -1)
+        if grep -q "font" "${BASE_DIR}/current/termite" && [[ "$line" ]] && [[ "$(grep "font" "${BASE_DIR}/current/termite")" != "$(sed -n "${line}p" "${termite_config}.bak")" ]]; then
+          tmp=$(mktemp)
+          log::info "Adding font to termite configuration"
+          {
+            sed "${line}q" "${termite_config}.bak"
+            grep "font" "${BASE_DIR}/current/termite"
+            sed "$((line+1))~1!d" "${termite_config}.bak"
+          } > "$tmp"
+          mv "$tmp" "${termite_config}.bak"
+        fi
+
+        log::info "Adding new colors to termite configuration"
+        {
+          sed "/${termite_tag}/q" "${termite_config}.bak"
+          echo "# -- start of script output --"
+          egrep -v "\[colors\]|font|^#" "${BASE_DIR}/current/termite"
+          echo "# -- end of script output --"
+        } >> "${termite_config}"
+
+        killall -USR1 termite
+      else
+        log::debug "Could not find placeholder in termite config"
+      fi
+    else
+      log::debug "Could not find termite config file"
+    fi
+  }
+
+  # TODO: Move all wallpaper stuff to post prcessing script
+  rm -f "$HOME/.wallpapers/*"
+
+  if [[ -e "${BASE_DIR}/current/wallpaper" ]]; then
+    bash "${BASE_DIR}/current/wallpaper" 2>/dev/null
+  fi
+
+  log::ok "All done! Enjoy..."
+}
+
+main "$@"

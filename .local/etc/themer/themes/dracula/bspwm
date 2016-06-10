@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+size_border=4
+size_gap=10
+
+padding_top=20
+padding_bottom=20
+padding_left=0
+padding_right=0
+
+color_focused_border="#5f627a"
+color_normal_border="#282a37"
+color_active_border="#282a37"
+color_presel_feedback="#9966cc"
+
+theme::event_listeners() {
+  :
+}
+
+theme::post_bspwmrc() {
+  :
+}

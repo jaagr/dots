@@ -1,0 +1,4 @@
+" vim:ft=vim
+set background=dark
+let g:theme_name = 'dracula'
+let g:airline_theme = 'airlineish'

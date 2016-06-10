@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+#
+# Synopsis:
+#   ${SCRIPT_NAME} [(current|theme_name).]<app_name>
+#
+# Options:
+#   -h, --help       display this help and exit
+#   -c, --create     will create the theme file if it doesn't exist
+#
+# Author:
+#   jaagr <c@rlberg.se>
+#
+
+source bootstrap.sh
+
+include utils/tests.sh
+include utils/cli.sh
+include utils/ansi.sh
+include utils/log.sh
+include utils/log/defer.sh
+
+bootstrap::finish
+
+BASE_DIR="$LOCAL_ETC/themer"
+
+main() {
+  local create='false'
+
+  [[ "$#" -eq 0 ]] && set -- "--help"
+
+  while [[ "${1:0:1}" = "-" ]]; do
+    case "$1" in
+      "-h" | "--help") cli::usage_from_commentblock; exit ;;
+      "-c" | "--create") create='true' ;;
+      *) cli::unrecognized_option "$1" ;;
+    esac
+    shift
+  done
+
+  local theme_name
+  local app_name
+  local app_file
+
+  if [[ "${1//[^.]/}" ]]; then
+    theme_name="${1%%.*}"
+    app_name="${1##*.}"
+  else
+    theme_name="current"
+    app_name="$1"
+  fi
+
+  if ! [[ "$theme_name" ]] || ! [[ "$app_name" ]]; then
+    cli::usage_from_commentblock; exit
+  fi
+
+  if [[ "$theme_name" == "current" ]]; then
+    app_file="${BASE_DIR}/current/${app_name}"
+  else
+    app_file="${BASE_DIR}/themes/${theme_name}/${app_name}"
+  fi
+
+  if ! [[ -e "$app_file" ]]; then
+    if ! $create; then
+      log::err "Could not find ${app_file}. Use --create to add the app file"; exit
+    elif [[ "$theme_name" == "current" ]]; then
+      log::err "Use a named theme when creating a new file"; exit
+    fi
+  fi
+
+  log::info "Opening $app_file"
+  vim "$app_file"
+  log::ok "Done!"
+}
+
+main "$@"

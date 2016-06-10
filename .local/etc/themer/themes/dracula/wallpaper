@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+ln -sf "$LOCAL_ETC"/themer/current/dracula.png "$HOME"/.wallpapers/1.png
+feh --bg-fill "$HOME"/.wallpapers/1.png

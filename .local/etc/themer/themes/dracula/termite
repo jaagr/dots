@@ -1,0 +1,22 @@
+font = envypn, regular, 10
+
+background = rgba(40, 42, 54, .98)
+foreground = #cccccc
+cursor = #b9b9b9
+
+color0 = #666666
+color1 = #cc6699
+color2 = #99cc66
+color3 = #cc9966
+color4 = #6699cc
+color5 = #9966cc
+color6 = #66cc99
+color7 = #cccccc
+color8 = #999999
+color9 = #ff99cc
+color10 = #ccff99
+color11 = #ffcc99
+color12 = #99ccff
+color13 = #cc99ff
+color14 = #99ffcc
+color15 = #ffffff
