@@ -39,11 +39,11 @@ export VISUAL="nvim"
 
 export PAGER="less"
 export PERLDOC_PAGER="more"
-export LESS="-g -i -M -R -S -w -K -z-4 --lesskey-file=${LOCAL_ETC}/config/lesskey"
+export LESS="-g -i -M -R -S -w -K -z-4 --lesskey-file=${XDG_CONFIG_HOME}/lesskey"
 export LESSHISTFILE="${XDG_CACHE_HOME}/.lesshst"
 export GREP_COLORS="mt=30;43"
 
-export NOTMUCH_CONFIG="${LOCAL_ETC}/notmuch/config"
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/config"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 export WINEPREFIX="${XDG_DATA_HOME}/wine"
 export NO_AT_BRIDGE=1
@@ -63,11 +63,17 @@ path_prepend() {
   esac
 }
 
-if [ -d "$LOCAL_LIB" ] || [ -d "$LOCAL_BIN" ]; then
-  for dir in "$LOCAL_LIB"/* "$LOCAL_LIB" "$LOCAL_BIN"/* "$LOCAL_BIN"; do
+[ -d "$LOCAL_LIB" ] && {
+  for dir in "$LOCAL_LIB"/* "$LOCAL_LIB"; do
     [ -d "$dir" ] && path_prepend "$dir"
   done
-fi
+}
+
+[ -d "$LOCAL_BIN" ] && {
+  for dir in "$LOCAL_BIN"/* "$LOCAL_BIN"; do
+    [ -d "$dir" ] && path_prepend "$dir"
+  done
+}
 
 unset dir
 unset -f path_prepend
