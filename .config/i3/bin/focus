@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+direction="$1"
+pid="$(dirname "$0")/focus.pid"
+
+if [[ -f "${pid}" ]]; then
+  pkill -F "${pid}"
+fi
+
+(
+  if [[ -n "${direction}" ]]; then
+    i3-msg -q border none
+    i3-msg -q focus "${direction}"
+  fi
+  i3-msg -q border 1pixel
+  sleep 1
+  i3-msg -q border none
+  rm "${pid}"
+) &
+
+echo "$!" > "${pid}"

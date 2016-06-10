@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+xprop -format I3_MODE 8s -set I3_MODE "floating"
+i3-msg floating toggle
+xprop -format I3_MODE 7s -set I3_MODE "default"

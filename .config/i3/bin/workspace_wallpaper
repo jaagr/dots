@@ -1,0 +1,136 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use IPC::Run qw(start pump);
+use AnyEvent::I3;
+use Digest::MD5;
+use Data::Dumper;
+use v5.10;
+
+my $stdin;
+my $workspaces = [];
+my $last_line = "";
+my $w = AnyEvent->timer(
+    after => 2,
+    cb => sub {
+        say "Connection to i3 timed out. Verify socket path";
+        exit 1;
+    }
+);
+
+my $i3 = i3();
+my $previous_wallpaper="";
+my %wallpapers = ();
+
+# Disable buffering
+$| = 1;
+
+sub reconnect { #{{{
+    # Wait a short amount of time and try to connect to i3 again
+    my $timer;
+    if (!defined($w)) {
+        $w = AnyEvent->timer(
+            after => 2,
+            cb => sub {
+                say "Connection to i3 timed out.";
+                exit 1;
+            }
+        );
+    }
+
+    my $c = sub {
+        $timer = AnyEvent->timer(
+            after => 0.01,
+            cb => sub { $i3->connect->cb(\&connected) }
+        );
+    };
+    $c->();
+} #}}}
+
+sub connected { #{{{
+    my ($cv) = @_;
+
+    if (!$cv->recv) {
+        reconnect();
+        return;
+    }
+
+    $w = undef;
+
+    $i3->subscribe({
+        workspace => \&ws_change,
+        _error => sub { reconnect() }
+    });
+    ws_change();
+} #}}}
+
+sub ws_change { #{{{
+    my $event = shift;
+
+    return unless $event->{change} && $event->{change} eq 'focus';
+
+    set_wallpaper($event->{current}->{num});
+} #}}}
+
+sub set_wallpaper { #{{{
+    my $num = shift;
+    my $new_wallpaper = '/home/jaagr/.wallpapers/'. $num .'.png';
+
+    if (-e $new_wallpaper) {
+        my $md51=md5sum($previous_wallpaper);
+        my $md52=md5sum($new_wallpaper);
+
+        # Useful when you only want to assign a custom wallpaper to one or two
+        # worksapaces
+        if ($md51 ne $md52) {
+            system("/usr/bin/feh --bg-center --image-bg white --no-fehbg ". $new_wallpaper);
+            $previous_wallpaper=$new_wallpaper;
+        }
+    } else {
+        print "No wallpaper assigned to workspace #". $num ."\n";
+        print "Filepath: ". $new_wallpaper ."\n";
+    }
+} #}}}
+
+sub md5sum { #{{{
+    my %cache = ();
+    my $file = shift;
+    my $digest = "";
+
+    return $cache{$file} if exists $cache{$file};
+
+    eval{
+        open(FILE, $file) or return "";
+        my $ctx = Digest::MD5->new;
+        $ctx->addfile(*FILE);
+        $digest = $ctx->hexdigest;
+        $cache{$file} = $digest;
+        close(FILE);
+    };
+
+    if ($@){
+        print $@;
+        return "";
+    }
+
+    return $digest;
+} #}}}
+
+$i3->connect->cb(\&connected);
+
+$stdin = AnyEvent->io(
+    fh => \*STDIN,
+    poll => 'r',
+    cb => sub {
+        my $line = <STDIN>;
+        if (!defined($line)) {
+            undef $stdin;
+            return;
+        }
+        chomp($line);
+        $last_line = $line;
+    });
+
+# let AnyEvent do the rest ("endless loop")
+AnyEvent->condvar->recv

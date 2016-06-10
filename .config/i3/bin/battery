@@ -1,0 +1,11 @@
+#!/bin/bash
+STATUS=$(ibam | head -1 | cut -d ' ' -f 1)
+
+if [[ "$STATUS" == "Charge" ]]; then
+  PERCENTAGE=$(ibam --percentcharge | grep % | cut -d ':' -f 2 | tr -d ' ')
+  echo "Charging: ${PERCENTAGE}"
+else
+  PERCENTAGE=$(ibam --percentbattery | grep % | cut -d ':' -f 2 | tr -d ' ')
+  TIME_LEFT=$(ibam | head -1 | tr -s ' ' | cut -d ' ' -f 4)
+  echo "Battery: ${PERCENTAGE} (${TIME_LEFT})"
+fi

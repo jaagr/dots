@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+scrot /tmp/lock.png
+
+if [[ $(which convert > /dev/null 2>&1) -eq 0 ]]; then
+    convert /tmp/lock.png -blur 0x5 /tmp/lock_blur.png
+fi
+
+i3lock --no-unlock-indicator --image /tmp/lock_blur.png --color 000000
+rm /tmp/lock.png /tmp/lock_blur.png

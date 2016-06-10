@@ -1,0 +1,238 @@
+#
+# i3 config
+#
+# http://i3wm.org/docs/userguide.html
+#
+
+set $mod Mod1
+set $win Mod4
+
+# Colors {{{
+
+set $color-primary #ff9900
+set $color-secondary #000000
+set $color-tertiary #204a87
+set $color-alert #bd2c40
+set $color-light-gray #acacac
+set $color-medium-gray #777777
+set $color-dark-gray #444444
+set $color-black #000000
+set $color-white #e6e6e6
+
+#set $color-primary #bd2c40
+#set $color-secondary #000000
+
+set $color-dark-gray #fba922
+set $color-medium-gray #fba922
+
+set $color-dark-gray #555555
+set $color-medium-gray #777777
+
+# set $color-black #ffffff
+# set $color-dark-gray #ffffff
+
+# XXX: To note confuse border with background color the i3 docs says this:
+#
+# Note that for the window decorations, the color around the child window is the
+# background color, and the border color is only the two thin lines at the top
+# of the window.
+
+# state                    border              background          text                 indicator
+client.focused             $color-dark-gray    $color-dark-gray    $color-white         $color-medium-gray
+client.focused_inactive    $color-black        $color-black        $color-medium-gray   $color-black
+client.unfocused           $color-black        $color-black        $color-dark-gray     $color-black
+client.urgent              $color-alert        $color-alert        $color-black         $color-black
+client.placeholder         $color-black        $color-black        $color-white         $color-black
+client.background          $color-black
+
+# }}}
+# Fonts {{{
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+#font pango:Terminus Bold 8
+#font pango:Inconsolata for Powerline Bold 12
+#font pango:Meslo LG S for Powerline Bold 11
+#font pango:Droid Sans Mono for Powerline Bold 10
+font pango:Source Code Pro for Powerline, Bold, 10
+
+# }}}
+# Gaps and borders {{{
+
+#smart_gaps on
+#smart_borders on
+
+gaps outer 60
+gaps inner 15
+
+#workspace "2. web" gaps outer 45
+#workspace "9. music" gaps outer 45
+#workspace "10. irssi" gaps outer 45
+
+set $borderwidth 1
+
+# }}}
+# Windows {{{
+
+# Use Mouse+$win to drag floating windows to their wanted position
+floating_modifier $win
+
+# Set the border width for all windows
+for_window [class="^.*"] border pixel $borderwidth
+
+# Application specific setups
+for_window [class="Skype"] floating enable
+for_window [class="Lastpass"] floating enable
+for_window [class="chromium" window_role="app"] floating enable
+
+# }}}
+# Keybindings {{{
+
+# kill focused window
+bindsym $win+q kill
+
+# move focused window
+bindsym $win+Shift+Control+h exec --no-startup-id ~/code/github/wmutils-contrib/snap.sh h
+bindsym $win+Shift+Control+j exec --no-startup-id ~/code/github/wmutils-contrib/snap.sh j
+bindsym $win+Shift+Control+k exec --no-startup-id ~/code/github/wmutils-contrib/snap.sh k
+bindsym $win+Shift+Control+l exec --no-startup-id ~/code/github/wmutils-contrib/snap.sh l
+
+# change focus
+#bindsym $win+h exec --no-startup-id ~/.i3/bin/focus left
+#bindsym $win+j exec --no-startup-id ~/.i3/bin/focus down
+#bindsym $win+k exec --no-startup-id ~/.i3/bin/focus up
+#bindsym $win+l exec --no-startup-id ~/.i3/bin/focus right
+bindsym $win+h focus left
+bindsym $win+j focus down
+bindsym $win+k focus up
+bindsym $win+l focus right
+
+# move focused window
+bindsym $win+Shift+h move left
+bindsym $win+Shift+j move down
+bindsym $win+Shift+k move up
+bindsym $win+Shift+l move right
+
+# split in horizontal orientation
+#bindsym $win+v exec --no-startup-id ~/.i3/bin/focus; split h
+bindsym $win+v split h
+
+# split in vertical orientation
+#bindsym $win+c exec --no-startup-id ~/.i3/bin/focus; split v
+bindsym $win+c split v
+
+# enter fullscreen mode for the focused container
+bindsym $win+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $win+s layout stacking
+bindsym $win+w layout tabbed
+bindsym $win+e layout toggle split
+
+# toggle tiling / floating
+bindsym $win+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $win+Control+space focus mode_toggle
+
+# focus the parent container
+bindsym $win+a focus parent
+
+# focus the child container
+bindsym $win+d focus child
+
+# locks the screen
+bindsym $win+F12 exec --no-startup-id ~/etc/i3/bin/lock
+
+# toggle keyboard map
+bindsym $win+F8 exec --no-startup-id ~/bin/kblayout && killall -USR1 i3status
+
+# switch to workspace
+bindsym $win+1 workspace 1.console
+bindsym $win+2 workspace 2.web
+bindsym $win+3 workspace 3.code
+bindsym $win+4 workspace 4.ws
+bindsym $win+5 workspace 5.ws
+bindsym $win+6 workspace 6.ws
+bindsym $win+7 workspace 7.ws
+bindsym $win+8 workspace 8.ws
+bindsym $win+9 workspace 9.music
+bindsym $win+0 workspace 0.irssi
+
+# move focused container to workspace
+bindsym $win+Shift+1 move container to workspace 1.console
+bindsym $win+Shift+2 move container to workspace 2.web
+bindsym $win+Shift+3 move container to workspace 3.code
+bindsym $win+Shift+4 move container to workspace 4.ws
+bindsym $win+Shift+5 move container to workspace 5.ws
+bindsym $win+Shift+6 move container to workspace 6.ws
+bindsym $win+Shift+7 move container to workspace 7.ws
+bindsym $win+Shift+8 move container to workspace 8.ws
+bindsym $win+Shift+9 move container to workspace 9.music
+bindsym $win+Shift+0 move container to workspace 0.irssi
+
+# resize the current window to given percentage * 10
+bindsym $win+Control+Shift+1 exec --no-startup-id ~/etc/i3/bin/resize 10
+bindsym $win+Control+Shift+2 exec --no-startup-id ~/etc/i3/bin/resize 20
+bindsym $win+Control+Shift+3 exec --no-startup-id ~/etc/i3/bin/resize 30
+bindsym $win+Control+Shift+4 exec --no-startup-id ~/etc/i3/bin/resize 40
+bindsym $win+Control+Shift+5 exec --no-startup-id ~/etc/i3/bin/resize 50
+bindsym $win+Control+Shift+6 exec --no-startup-id ~/etc/i3/bin/resize 60
+bindsym $win+Control+Shift+7 exec --no-startup-id ~/etc/i3/bin/resize 70
+bindsym $win+Control+Shift+8 exec --no-startup-id ~/etc/i3/bin/resize 80
+bindsym $win+Control+Shift+9 exec --no-startup-id ~/etc/i3/bin/resize 90
+
+bindsym $win+Shift+grave workspace prev_on_output
+bindsym $win+grave workspace next_on_output
+bindsym $win+minus workspace next_on_output
+
+bindsym $mod+shift+h workspace prev_on_output
+bindsym $mod+shift+l workspace next_on_output
+
+# move workspace between outputs
+# bindsym $win+y move workspace to output left
+bindsym $win+y move workspace to output down
+
+# reload the configuration file
+bindsym $win+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $win+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $win+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Mark a container with a single character:
+bindsym $win+m exec --no-startup-id i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+# Go to the container marked with above example:
+bindsym $win+Tab exec --no-startup-id i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Go to: '
+
+# }}}
+# Resize mode {{{
+
+mode "resize" {
+    # Pressing left will shrink the window’s width.
+    bindsym h resize grow width 10 px or 10 ppt
+
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink height 10 px or 10 ppt
+
+    # Pressing up will shrink the window’s height.
+    bindsym k resize grow height 10 px or 10 ppt
+
+    # Pressing right will grow the window’s width.
+    bindsym l resize shrink width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+#bindsym $win+Control+r mode "resize"
+
+# }}}
+
+exec_always --no-startup-id "$LOCAL_ETC/i3/bin/autostart"

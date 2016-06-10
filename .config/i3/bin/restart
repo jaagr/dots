@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+i3-msg "$@" -t command restart
