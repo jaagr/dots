@@ -8,12 +8,31 @@
 /.local/share
 /.local/lib/python2.7
 /.local/lib/python3.4
+/.local/var/*
+!/.local/var/mpd
 
 # unclutter untracked
 /.cache
+/.ccache
+/.config/chromium
+/.cpan
 /.dbus
 /.lesshst
+/.gem
+/.gnome
 /.npm
 /.mozilla
 /.vim-bookmarks
 /.viminfo
+/.eclipse
+/.thumbnails
+/.steam
+/.openshot_qt
+/.lyrics
+/.lpass
+/unsorted
+/wallpapers
+/.wallpapers
+/sandbox
+/downloads
+/documents

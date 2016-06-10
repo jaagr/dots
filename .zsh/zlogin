@@ -19,6 +19,8 @@ if ! [[ "$DISPLAY" ]] && [[ "${TTY##*tty}" == "1" ]]; then
     printf "%s" "Press enter to launch WM (Ctrl-C to skip to terminal)..."
   fi
 
-  read -k 1 && printf "\n" && $X11_INIT
+  [[ "$X11_INIT" ]] && {
+    read -k 1 && printf "\n" && $X11_INIT
+  }
 
 fi
