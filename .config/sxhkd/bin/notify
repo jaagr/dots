@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+echo Disabled ; exit 1
+
+main() {
+  status_fifo="${1:-$LOCAL_ETC/sxhkd/fifo}"
+
+  [[ -e "$status_fifo" ]] && rm "$status_fifo"
+
+  mkfifo "$status_fifo"
+
+  while read -r line ; do
+    notify-send -a "sxhkd" "${line#?}"
+  done < "$status_fifo"
+}
+
+main "$@"

@@ -1,0 +1,258 @@
+#
+# Defines keymap for sxhkd
+#
+
+# TMP
+#super + a:
+#  bspc node -f @parent
+#super + d:
+#  bspc node -f @first
+
+# WM {{{
+
+# Focus node
+# If no window exist, target monitor/desktop instead
+super + k
+  bspc node -f north || bspc monitor -f north
+super + j
+  bspc node -f south || bspc monitor -f south
+super + h
+  bspc node -f west || bspc monitor -f west || bspc desktop -f prev
+super + l
+  bspc node -f east || bspc monitor -f east || bspc desktop -f next
+
+# Swap node
+# If no node exist, send node to monitor instead
+super + shift + h
+  if ! bspc node -s west.local; then bspc node -m west && bspc node $(bspc query -N -n last) -f; fi
+super + shift + l
+  if ! bspc node -s east.local; then bspc node -m east && bspc node $(bspc query -N -n last) -f; fi
+super + shift + k
+  if ! bspc node -s north.local; then bspc node -m north && bspc node $(bspc query -N -n last) -f; fi
+super + shift + j
+  if ! bspc node -s south.local; then bspc node -m south && bspc node $(bspc query -N -n last) -f; fi
+
+# Resize current window
+super + r : {_,shift + ,super + ,shift + super + }h
+  val={200,100,50,10}; bspc node @west -r -${val} || bspc node @east -r -${val}
+super + r : {_,shift + ,super + ,shift + super + }l
+  val={200,100,50,10}; bspc node @west -r +${val} || bspc node @east -r +${val}
+super + r : {_,shift + ,super + ,shift + super + }k
+  val={200,100,50,10}; bspc node @north -r -${val} || bspc node @south -r -${val}
+super + r : {_,shift + ,super + ,shift + super + }j
+  val={200,100,50,10}; bspc node @north -r +${val} || bspc node @south -r +${val}
+
+# Set splitting area
+super + ctrl + {h,j,k,l}
+  bspc node -p ~{west,south,north,east}
+
+# Adjust splitting ratio
+super + {minus,equal}
+  bspc node -r $(bspwm_noderatio {+10,-10})
+
+# Clear splitting indication
+super + ctrl + space
+  bspc node -p cancel
+
+# Clear splitting indicators for all nodes on the focused desktop
+super + ctrl + shift + space
+  bspc query -N | xargs -I id -n 1 bspc node id -p cancel
+
+# Cycle non-empty between desktops and monitors
+super + {_,ctrl + }bracket{left,right}
+  bspc {desktop,monitor} -f {prev.occupied,next.occupied}
+
+# Cycle between all desktops and monitors
+super + shift + {_,ctrl + }bracket{left,right}
+  bspc {desktop,monitor} -f {prev,next}
+
+# Focus desktop / transfer node to desktop
+super + {_,shift + }{1-9,0}
+  bspc {desktop -f,node -d} focused:^{1-9,10}
+
+# Toggle fullscreen/floating state
+super + shift + f
+  bspc node -t \~fullscreen
+super + ctrl + f
+  bspc node -t \~floating
+
+# Close/kill current window
+super + {_,shift + }q
+  bspc node -{c,k}
+
+# swap the current node and the biggest node
+super + s
+  bspc node -s biggest
+
+# Move focused desktop/node to previously focused monitor
+super + {_,shift + }y
+  bspc {desktop,node focused} -m next && bspc {desktop,node} -f last
+
+# Rotate the tree that the current window belongs to
+super + {_,shift + }c
+  bspc node @parent -R {90,270}
+
+# Cycle desktop layout
+#super + m
+super + f
+  bspc desktop -l next
+
+# Cycle between windows
+super + {_,shift + }n
+  bspc node -f {prev,next}
+
+# Balance the size of all nodes in the current desktop
+super + b
+  bspc desktop -B
+
+# Focus previously current window
+super + Tab
+  bspc node -f last
+
+# super + shift + o
+#   xmatch -v -x "termite\([0-9]+\)-\+-zsh\([0-9]+\)" > /tmp/xx
+
+# Toggle locked state of current window
+super + ctrl + comma
+  bspc node -g locked && notify-send "Toggled locked state"
+
+# Toggle sticky state of current window
+super + ctrl + period
+  bspc node -g sticky && notify-send "Toggled sticky state"
+
+# Toggle private state of current window
+super + ctrl + slash
+  bspc node -g private && notify-send "Toggled private state"
+
+# Focus clicked node
+~button1
+  bspc pointer -g focus
+
+super + button{1-3}
+  ; bspc pointer -g {move,resize_side,resize_corner}
+
+super + @button{1-3}
+  bspc pointer -u
+
+# Reload configuration
+super + Escape
+  $LOCAL_ETC/sxhkd/bin/reload && \
+    notify-send -u low "sxhkd reloaded successfully" || \
+    notify-send -u low "failed to reload sxhkd"; \
+  $LOCAL_ETC/bspwm/bin/reload && \
+    notify-send -u low "bspwm reloaded successfully" || \
+    notify-send -u low "failed to reload bspwm"; \
+  $LOCAL_ETC/compton/bin/reload && \
+    notify-send -u low "compton reloaded successfully" || \
+    notify-send -u low "failed to reload compton"
+
+# Quit
+super + shift + Escape
+  bspc quit 1 ; silent! $LOCAL_ETC/lemonbar/kill
+
+# }}}
+# Audio {{{
+
+@XF86AudioMute
+  $LOCAL_BIN/toggle_mute
+
+@XF86Audio{Raise,Lower}Volume
+  amixer -q -c 0 set Master playback 1dB{+,-}
+
+@XF86AudioPlay
+  mpc -q toggle
+
+@XF86AudioStop
+  mpc stop
+
+@XF86Audio{Prev,Next}
+  mpc -q {prev,next}
+
+super + @button{8,9}
+  mpc -q {prev,next}
+
+# }}}
+# Application launcher {{{
+
+super + Return
+  termite
+
+super + d
+  $LOCAL_BIN/rofi_run
+
+alt + Mode_switch
+  $LOCAL_BIN/rofi_run
+
+# # vi; launch vimperator
+alt + Mode_switch + v
+  $LOCAL_BIN/apps/vimperator
+
+super + F12
+  authy
+super + F11
+  lastpass
+super + F10
+  vimperator
+super + F9
+  pcmanfm
+# }}}
+# Misc {{{
+
+# Toggle keyboard layouts
+super + F8
+  $LOCAL_BIN/kblayout
+
+{shift + ,_} Print
+  scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/ ' && notify-send 'Screenshot captured'
+  #scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/vault/screenshots/ ' && notify-send 'Screenshot captured'
+#@Print
+#  maim "/tmp/$(date +%W.%A)-scrot$(date +%s | tail -c 5).png" && \
+#  notify-send -a maim "Took a screenshot (full screen)."
+#ctrl + @Print
+#  maim -i $(xdotool getactivewindow) "/tmp/$(date +%W.%A)-window$(date +%s | tail -c 5).png" && \
+#  notify-send -a maim "Took a screenshot (window)."
+#ctrl + shift + @Print
+#  maim -s -c 0.1,0.05,0.3,1 "/tmp/$(date +%W.%A)-slop$(date +%s | tail -c 5).png" && \
+#  notify-send -a maim "Took a screenshot (area)."
+
+super + ctrl + shift + r
+  $XDG_CONFIG_HOME/termite/reload; \
+  $LOCAL_ETC/compton/bin/reload; \
+  $LOCAL_ETC/sxhkd/bin/reload; \
+  silent! xrdb -merge -I$LOCAL_ETC/xorg $LOCAL_ETC/xorg/xresources
+
+# Convenient scroll in terminal
+alt + shift + {j,k}
+  xmatch -x "termite\([0-9]+\)-\+-zsh\([0-9]+\)" && \
+    xdotool keyup Alt_L j k key Page_{Down,Up} keydown Alt_L
+
+super + Pause
+  $LOCAL_BIN/random_wallpaper "/storage/media/wallpapers/rave_collection2"
+
+# TODO: Find out how to exec a cmd when entering/leaving chord chain
+# Change key repeat rate to 50ms
+# xset r rate 50
+# Reset key repeat rate
+# xset r rate
+
+# Move cursor
+super + ctrl + m : {_,shift + ,shift + super + }{h,j,k,l}
+  m={20,100,200} {x=-1 y=0,x=0 y=1,x=0 y=-1,x=1 y=0}; \
+  xdotool mousemove_relative -- $(( m*x )) $(( m*y ))
+
+# Move cursor to monitor corners
+super + ctrl + m : super + {h,j,k,l}
+  x=$(bspc query -T -d | json root.rectangle.x); x=$(( x + 50 )); \
+  y=$(bspc query -T -d | json root.rectangle.y); y=$(( y + 50 ));  \
+  w=$(bspc query -T -d | json root.rectangle.width); w=$(( w - 100 )); \
+  h=$(bspc query -T -d | json root.rectangle.height); h=$(( h - 100 )); \
+  dx=$(( x + w ));  dy=$(( y + h )); \
+  xdotool mousemove {$x $y,$x $dy,$dx $y,$dx $dy}
+
+# Simulate mouse button click
+super + ctrl + m : {_,shift + ,ctrl + }space
+  xdotool click {1,3,2}
+
+super + ctrl + @F{1,2,3,4,5,6,7,8,9,10,11,12}
+  sudo chvt {1,2,3,4,5,6,7,8,9,10,11,12}
+# }}}
