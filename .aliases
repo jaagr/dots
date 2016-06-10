@@ -3,8 +3,6 @@ alias dots='git --git-dir=$HOME/.dots.git --work-tree=$HOME'
 alias dots-ls='dots ls-files'
 alias dots-ls-untracked='dots status -u .'
 
-alias reddit-feed='rsstail -i 297 -l -u "https://www.reddit.com/.rss?feed=26d3851da4ec5fdbbe9adda0e3339049ba6ab722&user=jaagr" | sed -r "s/^Title: (.*)$/\n$(echo -e "\033[32;1m")\1$(echo -e "\033[0m")/"'
-
 alias connect.pi="ssh root@pi.local"
 alias connect.work="ssh michael@workbox.local"
 
