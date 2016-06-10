@@ -1,0 +1,29 @@
+; This config uses the new syntax (which isn't merged upstream)
+
+[bar/test]
+monitor = eDP-1
+width = 200
+height = 50
+dock = false
+lineheight = 10
+background = #ff184f
+foreground = #fff4fa
+linecolor = #c51850
+offset_x = 850
+offset_y = 450
+font-0 = envypn:pixelsize=13;0
+
+modules-center = volume
+
+
+[module/volume]
+type = internal/volume
+
+;speaker_mixer = Speaker
+
+headphone_mixer = Headphone
+headphone_control_numid = 9
+
+label-muted = muted
+
+; vim:ft=dosini
