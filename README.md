@@ -54,6 +54,7 @@ dots ls-files .config/lemonbuddy/
 #### Replication
 ~~~ sh
 git clone --recursive --separate-git-dir=$HOME/.dots.git https://github.com/jaagr/dots.git /tmp/dots
-rsync -rv --exclude ".git" /tmp/dots $HOME/
+rsync -rvl --exclude ".git" /tmp/dots $HOME/
 rm -r /tmp/dots
+dots submodule update --init --recursive
 ~~~
