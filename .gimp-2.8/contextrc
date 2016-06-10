@@ -1,0 +1,12 @@
+# GIMP user context
+
+(tool "gimp-dodge-burn-tool")
+(paint-info "gimp-dodge-burn")
+(brush "Clipboard")
+(dynamics "Pressure Opacity")
+(pattern "Pine")
+(gradient "FG to BG (RGB)")
+(palette "Default")
+(font "Sans")
+
+# end of user context

@@ -1,0 +1,17 @@
+# GIMP gimprc
+# 
+# This is your personal gimprc file.  Any variable defined in this file takes
+# precedence over the value defined in the system-wide gimprc:
+# /etc/gimp/2.0/gimprc
+# Most values can be set within GIMP by changing some options in the
+# Preferences dialog.
+
+(monitor-xresolution 75.000000)
+(monitor-yresolution 75.000000)
+(save-tool-options yes)
+(theme "Dark Blue small")
+(user-manual-online yes)
+(dock-window-hint normal)
+
+
+# end of gimprc
