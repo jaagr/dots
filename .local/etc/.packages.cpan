@@ -1,0 +1,53 @@
+"Module" local::lib
+    *   "installed into: /home/jaagr/perl5/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 2.000018"
+    *   "EXE_FILES: "
+
+"Module" Text::CharWidth
+    *   "installed into: /home/jaagr/var/perl5/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 0.04"
+    *   "EXE_FILES: "
+
+"Module" HTML::Tagset
+    *   "installed into: /home/jaagr/.local/var/perl/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 3.20"
+    *   "EXE_FILES: "
+
+"Module" HTML::Parser
+    *   "installed into: /home/jaagr/.local/var/perl/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 3.72"
+    *   "EXE_FILES: "
+
+"Module" IO::HTML
+    *   "installed into: /home/jaagr/.local/var/perl/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 1.001"
+    *   "EXE_FILES: "
+
+"Module" LWP::MediaTypes
+    *   "installed into: /home/jaagr/.local/var/perl/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 6.02"
+    *   "EXE_FILES: "
+
+"Module" Encode::Locale
+    *   "installed into: /home/jaagr/.local/var/perl/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 1.05"
+    *   "EXE_FILES: "
+
+"Module" HTTP::Date
+    *   "installed into: /home/jaagr/.local/var/perl/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 6.02"
+    *   "EXE_FILES: "
+
+"Module" HTTP::Message
+    *   "installed into: /home/jaagr/.local/var/perl/lib/perl5"
+    *   "LINKTYPE: dynamic"
+    *   "VERSION: 6.11"
+    *   "EXE_FILES: "
