@@ -2,7 +2,7 @@
 " Vimperator configuration
 "
 
-set runtimepath=/home/jaagr/etc/vimperator/
+set runtimepath=/home/jaagr/.vimperator/
 
 "
 " Hilights

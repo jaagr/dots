@@ -88,6 +88,7 @@ alias pgrep="pgrep -l"
 alias grep="grep -i --color=auto"
 alias egrep="egrep --color=auto"
 
+alias vimperator="firefox -vimperator \"++cmd 'source \$HOME/.vimperator/vimperatorrc'\""
 alias feh="feh --no-fehbg"
 alias pacman="pacman --color=always"
 alias cower="cower --sort=votes"
