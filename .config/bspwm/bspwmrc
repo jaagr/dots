@@ -152,7 +152,7 @@ fi
 
 # Lemonbar {{{
 
-if command -v lemonbuddy >/dev/null; then
+if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; then
   { pgrep -f lemonbuddy_wrapper.sh | awk '{print $1}' | xargs kill -9
     killall -9 -q lemonbuddy lemonbar xdrawrect
   } &>/dev/null
@@ -163,10 +163,13 @@ if command -v lemonbuddy >/dev/null; then
   config="${lemonbuddy_config:-${LOCAL_ETC}/lemonbuddy/bspwm.conf}"
 
   # Launch bars
-  for bar in top bottom external_bottom; do
+  #for bar in top bottom external_bottom; do
+  for bar in "${lemonbuddy_bars[@]}"; do
     [[ -e "$config" ]] || {
       echo "Lemonbuddy config does not exist..." >&2; break
     }
+
+    echo "Using lemonbuddy config: $config"
 
     monitor="$(lemonbuddy "$bar" -c "$config" --dump=monitor)"
 
@@ -181,7 +184,7 @@ if command -v lemonbuddy >/dev/null; then
       continue
     fi
 
-    lemonbuddy_wrapper.sh "$bar" -c "$LOCAL_ETC/lemonbuddy/bspwm.conf" &
+    lemonbuddy_wrapper.sh "$bar" -c "$config" &
 
     while (( retries++ < 10 )); do
       root_id=$(xwininfo -root -children | grep "$monitor_geom" | sed -nr 's/(0x[[:xdigit:]]+) .*root.*/\1/p')
