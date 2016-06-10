@@ -144,7 +144,8 @@ super + Escape
     notify-send -u low "failed to reload bspwm"; \
   $LOCAL_ETC/compton/bin/reload && \
     notify-send -u low "compton reloaded successfully" || \
-    notify-send -u low "failed to reload compton"
+    notify-send -u low "failed to reload compton"; \
+  bash -c 'sleep 3 && xdotool click 1' &
 
 # Quit
 super + shift + Escape
