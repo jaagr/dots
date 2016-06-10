@@ -57,8 +57,6 @@ alias tv="tvremote"
 alias lemonbar-striptags='sed -u -r "s/%\{[^}]+\}//g"'
 alias lemonbar-striptags-trim='lemonbar-striptags | tr -s " "'
 
-alias vimperator="firefox -vimperator \"++cmd 'source \$XDG_CONFIG_HOME/vimperator/vimperatorrc'\""
-
 alias grepr="grep -r"
 alias egrepr="egrep -r"
 
