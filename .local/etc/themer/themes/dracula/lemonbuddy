@@ -155,10 +155,10 @@ bar:used:indicator:font = 4
 bar:used:indicator:foreground = #ffaaf5
 bar:used:fill = ─
 bar:used:fill:font = 4
-bar:used:fill:foreground = #934e94
+bar:used:fill:foreground = #ffaaf5
 bar:used:empty = ─
 bar:used:empty:font = 4
-bar:used:empty:foreground = #ffaaf5
+bar:used:empty:foreground = #934e94
 
 
 
