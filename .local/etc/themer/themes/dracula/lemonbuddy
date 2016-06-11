@@ -185,15 +185,14 @@ format-volume-foreground = #43433a
 format-volume-underline = #fffb8f
 format-volume-overline = #fffb8f
 format-volume-padding = 4
-; format-muted-background = #ff4279
-format-muted-foreground = #33ffffff
-; format-muted-underline = #ff63a5
-; format-muted-overline = #ff63a5
-; format-muted-padding = 4
+
+format-muted-background = #77ffffff
+format-muted-foreground = #666666
+format-muted-padding = 4
 
 label-volume = volume %percentage%
 label-volume-font = 3
-label-muted = sound is muted
+label-muted = sound muted
 label-muted-font = 3
 
 
