@@ -13,8 +13,8 @@ echo -e "---- STARTUP $timestamp ----" >> "$XDG_CACHE_HOME/i3/stderr"
 
 sleep 1
 
-lemonbuddy_wrapper.sh i3 -c examples/config.i3.edp1 &
-lemonbuddy_wrapper.sh i3 -c examples/config.i3.hdmi1 &
+lemonbuddy_wrapper i3 -c examples/config.i3.edp1 &
+lemonbuddy_wrapper i3 -c examples/config.i3.hdmi1 &
 echo Bar runners are up...
 
 # TODO: Implement bspwm-looping

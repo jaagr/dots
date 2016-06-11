@@ -5,7 +5,7 @@ function main
   if pgrep -f lemonbuddy_wrapper &>/dev/null; then
     tmp=$(mktemp -u)
 
-    pgrep -f lemonbuddy_wrapper.sh | cut -d ' ' -f 1 | while read -r pid; do
+    pgrep -f lemonbuddy_wrapper | cut -d ' ' -f 1 | while read -r pid; do
       ps --pid "$pid" -o cmd -h >>"$tmp"
     done
 

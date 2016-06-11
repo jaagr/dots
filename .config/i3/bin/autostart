@@ -4,10 +4,10 @@ killall -q lemonbuddy lemonbar
 
 { cd "$LEMONBUDDY_HOME" || exit 1
 
-  lemonbuddy_wrapper.sh i3_top -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
-  lemonbuddy_wrapper.sh i3_top_hdmi -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
-  # lemonbuddy_wrapper.sh i3_bottom -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
-  lemonbuddy_wrapper.sh i3_bottom_hdmi -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
+  lemonbuddy_wrapper i3_top -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
+  lemonbuddy_wrapper i3_top_hdmi -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
+  # lemonbuddy_wrapper i3_bottom -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
+  lemonbuddy_wrapper i3_bottom_hdmi -c "${LOCAL_ETC}/lemonbuddy/i3.conf" &
 
   echo Bar runners are up...
 } &
