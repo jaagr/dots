@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function main {
+  local image="$CURRENT_THEME/lockscreen.png"
+
+  if ! [[ -e "$image" ]]; then
+    unset image
+  fi
+
+  i3lock -n -u -e ${image:+-i $image}
+}
+
+main "$@"
