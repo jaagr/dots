@@ -2,6 +2,7 @@
 
 source bootstrap.sh
 
+include utils/_.sh
 include utils/lemonbuddy.sh
 include utils/json.sh
 
@@ -23,23 +24,13 @@ color_presel_feedback="#9966cc"
 lemonbuddy_config="$CURRENT_THEME/lemonbuddy.plain"
 lemonbuddy_bars=(top)
 
-# Too slow...
-#theme::event_listeners() {
-#  bspc subscribe node_flag node_state desktop_layout | while read -r evt; do
-#    local -i offset=0
-#
-#    [[ "${evt##* }" == "monocle" ]] && offset+=19
-#
-#    for flag in locked sticky private; do
-#      echo "$evt" | grep "$flag on" &>/dev/null && offset+=19
-#    done
-#
-#    theme::draw_separators $offset
-#  done
-#}
-
 theme::post_bspwmrc()
 {
+  [[ "$(xdo id -a lemonbuddy-top_eDP-1)" ]] || {
+    _::stderr "Failed to get the lemonbar X Window ID"
+    return 1
+  }
+
   # main background
   lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#ff5f627a" 21 100% 0 0 'true'
 
@@ -62,6 +53,8 @@ theme::draw_separators() {
   local sep=0
   local step=37
 
+  lname="$(lemonbuddy top -c "$config" --print-wmname)"
+
   while (( sep++ < 10 )); do
     x_pos=$(( sep * step ))
 
@@ -71,7 +64,7 @@ theme::draw_separators() {
 
     pgrep -f "xdrawrect\-ws\-separator\-${sep}" 2>/dev/null | xargs kill 2>/dev/null
 
-    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos-1)) 8 "#33000000" "xdrawrect-ws-separator-${sep}a" &
-    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos)) 8 "#11ffffff" "xdrawrect-ws-separator-${sep}b" &
+    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos-1)) 8 "#33000000" "xdrawrect-ws-separator-${sep}a" "$lname" &
+    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos)) 8 "#11ffffff" "xdrawrect-ws-separator-${sep}b" "$lname" &
   done
 }
