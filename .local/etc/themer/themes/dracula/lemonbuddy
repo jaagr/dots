@@ -157,8 +157,8 @@ label-muted-font = 3
 
 [module/xtitle]
 type = custom/script
-exec = xtitle -i
-interval = 0.25
+exec = xtitle -i -s
+tail = true
 format = %{T3} <output> %{T-}
 
 ; vim:ft=dosini
