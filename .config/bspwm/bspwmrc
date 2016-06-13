@@ -114,7 +114,7 @@ bspc config external_rules_command "$LOCAL_ETC/bspwm/bin/external_rules"
 # }}}
 
 if [[ $BSPWM_COUNTER -eq 1 ]]; then
-  termite --title=init_term --exec="bash -c 'xdo id -a init_term | xargs -I% bspc node % -t floating; xdo id -a init_term | xargs -I% wmv 0 200 %; clear; zsh -l'" &
+  termite --title=init_term --exec="bash -c 'xdo id -a init_term | xargs -I% bspc node % -t floating; xdo id -a init_term | xargs -I% wmv 0 200 %; clear; zsh -l'" 2>/dev/null &
 fi
 
 # Event listener :: monocle see-through fix {{{
@@ -156,6 +156,8 @@ fi
 
 # Lemonbar {{{
 
+# TODO: Break out the lemonbuddy startup code to a custom script
+
 if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; then
   { pgrep -f lemonbuddy_wrapper | awk '{print $1}' | xargs kill -9
     killall -9 -q lemonbuddy lemonbar xdrawrect
@@ -170,7 +172,7 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
   #for bar in top bottom external_bottom; do
   for bar in "${lemonbuddy_bars[@]}"; do
     [[ -e "$config" ]] || {
-      echo "Lemonbuddy config does not exist..." >&2; break
+      echo "Lemonbuddy config \"$config\" does not exist, aborting..." >&2; break
     }
 
     echo "Using lemonbuddy config: $config"
@@ -184,9 +186,9 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
     bar_wmname=$(lemonbuddy "$bar" -c "$config" --print-wmname)
     monitor_geom=$(xrandr | grep "$monitor" | egrep -o "[0-9]+x[0-9]+\+[0-9]*\+[0-9]*")
 
-    if [[ -z "$bar_wmname" ]]; then
-      continue
-    fi
+    [[ "$bar_wmname" ]] || {
+      echo "Could not get Lemonbuddy WM_NAME, skipping..." >&2; continue
+    }
 
     lemonbuddy_wrapper "$bar" -c "$config" &
 
