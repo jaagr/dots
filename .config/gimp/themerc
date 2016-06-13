@@ -4,7 +4,7 @@
 # It is NOT supposed to be edited manually. Edit your personal
 # gtkrc file instead (/home/jaagr/.config/gimp/gtkrc).
 
-include "/home/jaagr/.config/gimp/themes/Dark Blue small/gtkrc"
+include "/home/jaagr/.config/gimp/themes/Light Blue small/gtkrc"
 include "/home/jaagr/.config/gimp/gtkrc"
 
 # end of themerc
