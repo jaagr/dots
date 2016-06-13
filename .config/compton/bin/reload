@@ -3,6 +3,10 @@
 # Tell compton to reload its configuration file
 #
 
+if ! pidof compton >/dev/null; then
+  exit 1
+fi
+
 # pkill -USR1 compton
 
 # Hard reload to make sure custom theme configs gets procecessed
