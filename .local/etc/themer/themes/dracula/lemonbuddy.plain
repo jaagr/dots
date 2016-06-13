@@ -1,0 +1,134 @@
+[settings]
+throttle_ms = 50
+throttle_limit = 5
+
+[bar/top]
+monitor = eDP-1
+width = 100%
+height = 27
+offset_y = 5
+
+background = #005f627a
+foreground = #f2f2f2
+linecolor = #bc92f8
+
+spacing = 3
+lineheight = 2
+padding_right = 4
+module_margin_left = 0
+module_margin_right = 6
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = FontAwesome:size=8;-2
+font-2 = envypn-regular:size=10;-1
+font-3 = Termsynu:size=8;-1
+font-4 = Unifont:size=6;-3
+
+modules-left = bspwm
+modules-center = xtitle
+modules-right = volume cpu memory clock
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+
+label-active = %index%
+label-active-padding = 4
+label-active-margin = 1
+label-active-font = 3
+label-active-foreground = #fff
+label-active-background = #2fbbf2
+label-active-overline = #148ebe
+label-active-underline = #148ebe
+
+label-occupied = %index%
+label-occupied-padding = 4
+label-occupied-margin = 1
+label-occupied-font = 3
+label-occupied-background = #eeeeee
+label-occupied-foreground = #dd222222
+label-occupied-overline = #c5c5c5
+label-occupied-underline = #c5c5c5
+
+label-urgent = %index%
+label-urgent-padding = 4
+label-urgent-margin = 1
+label-urgent-font = 3
+
+label-empty = %index%
+label-empty-padding = 4
+label-empty-margin = 1
+label-empty-font = 3
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+
+format = <label> <ramp-load_per_core>
+format-padding = 4
+
+label = cpu
+label-font = 3
+
+ramp-load_per_core-0 = ▁
+ramp-load_per_core-0-font = 5
+ramp-load_per_core-1 = ▂
+ramp-load_per_core-1-font = 5
+ramp-load_per_core-2 = ▃
+ramp-load_per_core-2-font = 5
+ramp-load_per_core-3 = ▄
+ramp-load_per_core-3-font = 5
+ramp-load_per_core-4 = ▅
+ramp-load_per_core-4-font = 5
+ramp-load_per_core-5 = ▆
+ramp-load_per_core-5-font = 5
+ramp-load_per_core-6 = ▇
+ramp-load_per_core-6-font = 5
+ramp-load_per_core-7 = █
+ramp-load_per_core-7-font = 5
+
+[module/memory]
+type = internal/memory
+
+format = <label> <bar-used>
+format-padding = 4
+
+label = memory
+label-font = 3
+
+bar-used-width = 20
+bar-used-indicator = |
+bar-used-indicator-font = 4
+bar-used-fill = ─
+bar-used-fill-font = 4
+bar-used-empty = ─
+bar-used-empty-font = 4
+bar-used-empty-foreground = #99ffffff
+
+[module/clock]
+type = internal/date
+date = %%{T3}%Y-%m-%d %H:%M%%{T-}
+format-padding = 4
+
+[module/volume]
+type = internal/volume
+speaker_mixer = Speaker
+headphone_mixer = Headphone
+headphone_control_numid = 9
+
+format-volume-padding = 4
+format-muted-padding = 4
+format-muted-foreground = #99ffffff
+
+label-volume = volume %percentage%
+label-volume-font = 3
+label-muted = sound muted
+label-muted-font = 3
+
+[module/xtitle]
+type = custom/script
+exec = xtitle -i
+interval = 0.25
+format = %{T3} <output> %{T-}
+
+; vim:ft=dosini

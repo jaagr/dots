@@ -20,7 +20,7 @@ color_normal_border="#282a37"
 color_active_border="#282a37"
 color_presel_feedback="#9966cc"
 
-lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
+lemonbuddy_config="$CURRENT_THEME/lemonbuddy.plain"
 lemonbuddy_bars=(top)
 
 # Too slow...
@@ -44,14 +44,16 @@ theme::post_bspwmrc()
   lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#ff5f627a" 21 100% 0 0 'true'
 
   # right-side module rails
-  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#22000000" 1 611 1309 5 'true'
-  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#11ffffff" 1 610 1310 -5 'true'
+  #lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#22000000" 1 611 1309 5 'true'
+  #lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#11ffffff" 1 610 1310 -5 'true'
 
   # bevel effect lines
   lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#dd45485f" 1 100% 0 23
   lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#22ffffff" 1 100% 0 24
 
   theme::draw_separators
+
+  #"$XDG_CONFIG_HOME"/lemonbuddy/bin/autohide setup
 }
 
 theme::draw_separators() {
