@@ -113,6 +113,10 @@ bspc config external_rules_command "$LOCAL_ETC/bspwm/bin/external_rules"
 
 # }}}
 
+if [[ $BSPWM_COUNTER -eq 1 ]]; then
+  termite --title=init_term --exec="bash -c 'xdo id -a init_term | xargs -I% bspc node % -t floating; xdo id -a init_term | xargs -I% wmv 0 200 %; clear; zsh -l'" &
+fi
+
 # Event listener :: monocle see-through fix {{{
 
 # This routine is needed since, with true transparency, when in monocle mode
