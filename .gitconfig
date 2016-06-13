@@ -11,6 +11,7 @@
   unstage = reset HEAD
   untracked = status -u .
   untracked-at = status -u
+  assume-unchanged = update-index --assume-unchanged
   ls = ls-files
   st = status
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
