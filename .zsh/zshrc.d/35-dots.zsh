@@ -12,7 +12,7 @@ function dots {
       return;
     fi
   elif [[ $# -eq 0 ]]; then
-    set -- "status"
+    set -- status .
   fi
   git --git-dir=$HOME/.dots.git --work-tree=$HOME "$@"
 }
