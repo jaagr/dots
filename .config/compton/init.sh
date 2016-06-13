@@ -12,6 +12,5 @@ fi
 # Make sure there's no process up and running
 killall -q compton &> /dev/null
 
-# NOTE: --logpath is required when using --daemon since compton freopen() all output to /dev/null
-#exec compton --xrender-sync-fence --daemon --config "$config" --logpath "$log"
+# NOTE: --logpath is used since all output is sent to /dev/null when using --daemon
 exec compton --daemon --config "$config" --logpath "$log"
