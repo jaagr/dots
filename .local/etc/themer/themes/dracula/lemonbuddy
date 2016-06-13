@@ -2,11 +2,8 @@
 throttle_ms = 50
 throttle_limit = 5
 
-
-
 [bar/top]
 monitor = eDP-1
-;bottom = true
 width = 100%
 height = 27
 offset_y = 5
@@ -31,31 +28,20 @@ modules-left = bspwm
 modules-center = xtitle
 modules-right = volume cpu memory clock
 
-
-
 [module/bspwm]
 type = internal/bspwm
 
-;workspace_icon-0 = term;
-;workspace_icon-1 = web;
-;workspace_icon-2 = code;
-;workspace_icon-3 = music;
-;workspace_icon-4 = irssi;
-workspace_icon-default = 
-
 format = <label-state> <label-mode>
 
-;label-active = %icon%
 label-active = %index%
+label-active-padding = 4
+label-active-margin = 1
+label-active-font = 3
 label-active-foreground = #fff
 label-active-background = #2fbbf2
 label-active-overline = #148ebe
 label-active-underline = #148ebe
-label-active-padding = 4
-label-active-margin = 1
-label-active-font = 3
 
-;label-occupied = %icon%
 label-occupied = %index%
 label-occupied-padding = 4
 label-occupied-margin = 1
@@ -65,35 +51,15 @@ label-occupied-overline = #c5c5c5
 label-occupied-underline = #c5c5c5
 label-occupied-font = 3
 
-;label-urgent = %icon%
 label-urgent = %index%
 label-urgent-padding = 4
 label-urgent-margin = 1
 label-urgent-font = 3
 
-;label-empty = %icon%
 label-empty = %index%
 label-empty-padding = 4
 label-empty-margin = 1
 label-empty-font = 3
-
-;label-monocle = 
-;label-monocle-margin = 2
-;label-monocle-foreground = #ffd804
-
-;label-locked = 
-;label-locked-margin = 2
-;label-locked-foreground = #ffd804
-
-;label-sticky = 
-;label-sticky-margin = 2
-;label-sticky-foreground = #ffd804
-
-;label-private = 
-;label-private-margin = 2
-;label-private-foreground = #ffd804
-
-
 
 [module/cpu]
 type = internal/cpu
@@ -134,17 +100,15 @@ ramp-load_per_core-7 = █
 ramp-load_per_core-7-font = 5
 ramp-load_per_core-7-foreground = #ff3b51
 
-
-
 [module/memory]
 type = internal/memory
 
 format = <label> <bar-used>
+format-padding = 4
 format-background = #cb66cc
 format-foreground = #ffe3ff
 format-underline = #e58de6
 format-overline = #e58de6
-format-padding = 4
 
 label = memory
 label-font = 3
@@ -160,19 +124,15 @@ bar-used-empty = ─
 bar-used-empty-font = 4
 bar-used-empty-foreground = #934e94
 
-
-
 [module/clock]
 type = internal/date
 date = %%{T3}%Y-%m-%d %H:%M%%{T-}
 
+format-padding = 4
 format-background = #ff4279
 format-foreground = #ffcddc
 format-underline = #ff63a5
 format-overline = #ff63a5
-format-padding = 4
-
-
 
 [module/volume]
 type = internal/volume
@@ -180,22 +140,20 @@ speaker_mixer = Speaker
 headphone_mixer = Headphone
 headphone_control_numid = 9
 
+format-volume-padding = 4
 format-volume-background = #fff85a
 format-volume-foreground = #43433a
 format-volume-underline = #fffb8f
 format-volume-overline = #fffb8f
-format-volume-padding = 4
 
+format-muted-padding = 4
 format-muted-background = #77ffffff
 format-muted-foreground = #666666
-format-muted-padding = 4
 
 label-volume = volume %percentage%
 label-volume-font = 3
 label-muted = sound muted
 label-muted-font = 3
-
-
 
 [module/xtitle]
 type = custom/script

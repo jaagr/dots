@@ -65,7 +65,6 @@ type = internal/cpu
 interval = 0.5
 
 format = <label> <ramp-load_per_core>
-format-padding = 4
 
 label = cpu
 label-font = 3
@@ -91,7 +90,6 @@ ramp-load_per_core-7-font = 5
 type = internal/memory
 
 format = <label> <bar-used>
-format-padding = 4
 
 label = memory
 label-font = 3
@@ -108,7 +106,6 @@ bar-used-empty-foreground = #99ffffff
 [module/clock]
 type = internal/date
 date = %%{T3}%Y-%m-%d %H:%M%%{T-}
-format-padding = 4
 
 [module/volume]
 type = internal/volume
@@ -116,14 +113,11 @@ speaker_mixer = Speaker
 headphone_mixer = Headphone
 headphone_control_numid = 9
 
-format-volume-padding = 4
-format-muted-padding = 4
-format-muted-foreground = #99ffffff
-
 label-volume = volume %percentage%
 label-volume-font = 3
 label-muted = sound muted
 label-muted-font = 3
+label-muted-foreground = #99ffffff
 
 [module/xtitle]
 type = custom/script
