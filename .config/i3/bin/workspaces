@@ -1,0 +1,145 @@
+#!/usr/bin/env perl
+#
+# Basically a stripped down version of on i3-wsbar:
+# http://code.stapelberg.de/git/i3/tree/contrib/i3-wsbar
+
+use strict;
+use warnings;
+use AnyEvent::I3;
+use AnyEvent;
+use v5.10;
+
+my $stdin;
+my ($workspaces, $outputs) = ([], {});
+my $last_line = "";
+my $w = AnyEvent->timer(
+  after => 2,
+  cb => sub {
+    say "Connection to i3 timed out. Verify socket path";
+    exit 1;
+  }
+);
+
+my $i3 = i3();
+
+# Disable buffering
+$| = 1;
+
+# Wait a short amount of time and try to connect to i3 again
+sub reconnect {
+  my $timer;
+  if (!defined($w)) {
+    $w = AnyEvent->timer(
+      after => 2,
+      cb => sub {
+        say "Connection to i3 timed out.";
+        exit 1;
+      }
+    );
+  }
+
+  my $c = sub {
+    $timer = AnyEvent->timer(
+      after => 0.01,
+      cb => sub { $i3->connect->cb(\&connected) }
+    );
+  };
+  $c->();
+}
+
+# Connection attempt succeeded or failed
+sub connected {
+  my ($cv) = @_;
+
+  if (!$cv->recv) {
+    reconnect();
+    return;
+  }
+
+  $w = undef;
+
+  $i3->subscribe({
+    workspace => \&ws_change,
+    output => \&output_change,
+    _error => sub { reconnect() }
+  });
+
+  ws_change();
+  output_change();
+}
+
+# Called when a ws changes
+sub ws_change {
+  # Request the current workspaces and update the output afterwards
+  $i3->get_workspaces->cb(
+    sub {
+      my ($cv) = @_;
+      $workspaces = $cv->recv;
+      update_output();
+    });
+}
+
+# Called when the reply to the GET_OUTPUTS message arrives
+# Compares old outputs with new outputs and starts/kills
+# $command for each output (if specified)
+sub got_outputs {
+  my %new = map { ($_->{name}, $_) } grep { $_->{active} } @{shift->recv};
+
+  for my $name (keys %new) {
+    $outputs->{$name} = $new{$name};
+  }
+
+  update_output();
+}
+
+sub output_change {
+  $i3->get_outputs->cb(\&got_outputs)
+}
+
+sub update_output {
+  my $workspace_str;
+
+  for my $name (keys %{$outputs}) {
+    $workspace_str .= "WS|start";
+    $workspace_str .= "\x01";
+
+    for my $ws (@{$workspaces}) {
+      my $name = $ws->{name};
+      my $state = undef;
+
+      $state = "WS|ST_I|";
+      $state = "WS|ST_A|" if $ws->{visible};
+      $state = "WS|ST_U|" if $ws->{urgent};
+      $state = "WS|ST_F|" if $ws->{focused};
+
+      $workspace_str .= "$state$name";
+      $workspace_str .= "\x01";
+    }
+
+    $workspace_str .= "WS|end";
+    $workspace_str .= "\x01";
+    # $workspace_str .= "\x02";
+    $workspace_str .= "\n";
+
+    print $workspace_str;
+  }
+}
+
+$i3->connect->cb(\&connected);
+
+$stdin = AnyEvent->io(
+  fh => \*STDIN,
+  poll => 'r',
+  cb => sub {
+    my $line = <STDIN>;
+    if (!defined($line)) {
+      undef $stdin;
+      return;
+    }
+    chomp($line);
+    $last_line = $line;
+    update_output();
+  });
+
+# let AnyEvent do the rest ("endless loop")
+AnyEvent->condvar->recv
