@@ -26,7 +26,8 @@ font-4 = Unifont:size=6;-3
 
 modules-left = bspwm
 modules-center = xtitle
-modules-right = volume cpu memory clock
+;modules-right = volume battery cpu memory clock
+modules-right = volume battery clock
 
 [module/bspwm]
 type = internal/bspwm
@@ -106,6 +107,7 @@ bar-used-empty-foreground = #99ffffff
 [module/clock]
 type = internal/date
 date = %%{T3}%Y-%m-%d %H:%M%%{T-}
+interval = 5
 
 [module/volume]
 type = internal/volume
@@ -118,6 +120,15 @@ label-volume-font = 3
 label-muted = sound muted
 label-muted-font = 3
 label-muted-foreground = #99ffffff
+
+[module/battery]
+type = internal/battery
+full_at = 98
+format-charging = %{T3}Battery <label-charging>
+format-discharging = %{T3}Battery <label-discharging>
+label-charging-font = 3
+label-discharging-font = 3
+label-full =
 
 [module/xtitle]
 type = custom/script
