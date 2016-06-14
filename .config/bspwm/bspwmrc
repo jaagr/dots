@@ -163,13 +163,9 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
     killall -9 -q lemonbuddy lemonbar xdrawrect
   } &>/dev/null
 
-  # HDMI-1 doesn't have a top bar
-  bspc config -m HDMI-1 top_padding 0
-
   config="${lemonbuddy_config:-${LOCAL_ETC}/lemonbuddy/bspwm.conf}"
 
   # Launch bars
-  #for bar in top bottom external_bottom; do
   for bar in "${lemonbuddy_bars[@]}"; do
     [[ -e "$config" ]] || {
       echo "Lemonbuddy config \"$config\" does not exist, aborting..." >&2; break
@@ -195,8 +191,6 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
     while (( retries++ < 10 )); do
       root_id=$(xwininfo -root -children | grep "$monitor_geom" | sed -nr 's/(0x[[:xdigit:]]+) .*root.*/\1/p')
       bar_id=$(xwininfo -root -children | sed -nr "s/(0x[[:xdigit:]]+) .*${bar_wmname}.*/\1/p")
-      # root_id=$(lsw -r)
-      # bar_id=$(xdo id -a "$bar_wmname")
 
       # Raise bar above root when we've found it
       [[ "$root_id" ]] && [[ "$bar_id" ]] && {
@@ -206,34 +200,6 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
       sleep 1
     done
   done
-
-  # Create highlight lines
-  # TODO: Store data about each line in a list -> iterate
-
-  # monitor alignment width height x offset_y color wm_name target_wm_name
-  #create_highlight_line() {
-  #  # XXX: Move the offset(x/y) functionality into xdrawrect
-  #  height=$(xwininfo -root -children | grep "$9" | egrep -o "[0-9]+x[0-9]+\+[0-9]*\+[0-9]*" | sed -nr 's/.*x([0-9]+)+.*/\1/p')
-  #  height=${height//[^[:digit:]]/}
-  #  xdrawrect "$1" "$2" "$3" "$4" "$5" $(( height + ${6:-0} )) "$7" "$8" "$9" &
-  #}
-
-  #color_xdrawrect_bar_1a="#ff000000"
-  #color_xdrawrect_bar_1b="#ff3f3f3f"
-  #color_xdrawrect_bar_2a="#ff3f3f3f"
-  #color_xdrawrect_bar_2b="#ff5a5a5a"
-  #color_xdrawrect_bar_3a="#ff3f3f3f"
-  #color_xdrawrect_bar_3b="#ff5a5a5a"
-
-  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 0 "#ff000000" "xdrawrect_bar_1b" "lemonbuddy-top_eDP-1" &
-  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 1 "#11dddddd" "xdrawrect_bar_1a" "lemonbuddy-top_eDP-1" &
-
-  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 0 "$color_xdrawrect_bar_1a" "xdrawrect_bar_1a" "lemonbuddy-top_eDP-1" &
-  #create_highlight_line "eDP-1"  "top"    "100%" 1 0 1 "$color_xdrawrect_bar_1b" "xdrawrect_bar_1b" "lemonbuddy-top_eDP-1" &
-  #create_highlight_line "eDP-1"  "bottom" "100%" 1 0 0 "$color_xdrawrect_bar_2b" "xdrawrect_bar_2b" "lemonbuddy-bottom_eDP-1" &
-  #create_highlight_line "eDP-1"  "bottom" "100%" 2 0 1 "$color_xdrawrect_bar_2a" "xdrawrect_bar_2a" "lemonbuddy-bottom_eDP-1" &
-  #create_highlight_line "HDMI-1" "bottom" "100%" 1 0 0 "$color_xdrawrect_bar_3b" "xdrawrect_bar_3b" "lemonbuddy-external_bottom_HDMI-1" &
-  #create_highlight_line "HDMI-1" "bottom" "100%" 2 0 1 "$color_xdrawrect_bar_3a" "xdrawrect_bar_3a" "lemonbuddy-external_bottom_HDMI-1" &
 fi
 
 # }}}
