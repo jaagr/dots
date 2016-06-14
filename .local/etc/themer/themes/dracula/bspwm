@@ -22,38 +22,51 @@ color_active_border="#282a37"
 color_presel_feedback="#9966cc"
 
 lemonbuddy_config="$CURRENT_THEME/lemonbuddy.plain"
-lemonbuddy_bars=(top)
+lemonbuddy_bars=(top external_bottom)
 
 theme::post_bspwmrc()
 {
-  [[ "$(xdo id -a lemonbuddy-top_eDP-1)" ]] || {
-    _::stderr "Failed to get the lemonbar X Window ID"
-    return 1
-  }
+  bspc config -m HDMI-1 top_padding 0
+  bspc config -m HDMI-1 bottom_padding $padding_top
 
-  # main background
-  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#ff5f627a" 21 100% 0 0 'true'
+  for b in "${lemonbuddy_bars[@]}"; do
+    _::stdout "Initializing $b"
 
-  # right-side module rails
-  #lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#22000000" 1 611 1309 5 'true'
-  #lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#11ffffff" 1 610 1310 -5 'true'
+    [[ "$(xdo id -a "$(lemonbuddy::wm_name "$b" "$lemonbuddy_config")")" ]] || {
+      _::stderr "Failed to get the lemonbar X Window ID"
+      continue
+    }
 
-  # bevel effect lines
-  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#dd45485f" 1 100% 0 23
-  lemonbuddy::drawline "$lemonbuddy_config" "top" "below" "#22ffffff" 1 100% 0 24
+    # main background
+    lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#ff5f627a" 21 100% 0 0 'true'
 
-  theme::draw_separators
+    case "$b" in
+      top) local offset_y1=23 offset_y2=24;;
+      external_bottom) local offset_y1=3 offset_y2=2;;
+    esac
 
-  #"$XDG_CONFIG_HOME"/lemonbuddy/bin/autohide setup
+    # bevel effect lines
+    lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#dd45485f" 1 100% 0 $offset_y1
+    lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#22ffffff" 1 100% 0 $offset_y2
+
+    theme::draw_separators "$b"
+
+    # "$XDG_CONFIG_HOME"/lemonbuddy/bin/autohide setup
+  done
 }
 
 theme::draw_separators() {
-  local x_offset="${1:-0}"
+  local bar="$1"
+  local x_offset="${2:-0}"
   local x_pos=0
   local sep=0
   local step=37
 
-  lname="$(lemonbuddy top -c "$config" --print-wmname)"
+  local lname align monitor
+
+  lname="$(lemonbuddy::wm_name "$bar" "$lemonbuddy_config")"
+  align="$(lemonbuddy::alignment "$bar" "$lemonbuddy_config")"
+  monitor="$(lemonbuddy::monitor "$bar" "$lemonbuddy_config")"
 
   while (( sep++ < 10 )); do
     x_pos=$(( sep * step ))
@@ -62,9 +75,9 @@ theme::draw_separators() {
       x_pos=$(( x_pos + 7 ))
     }
 
-    pgrep -f "xdrawrect\-ws\-separator\-${sep}" 2>/dev/null | xargs kill 2>/dev/null
+    pgrep -f "xdrawrect\-ws\-separator\-${bar}\-${sep}" 2>/dev/null | xargs kill 2>/dev/null
 
-    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos-1)) 8 "#33000000" "xdrawrect-ws-separator-${sep}a" "$lname" &
-    xdrawrect eDP-1 top 1 20 $((x_offset+x_pos)) 8 "#11ffffff" "xdrawrect-ws-separator-${sep}b" "$lname" &
+    xdrawrect "$monitor" "$align" 1 20 $((x_offset+x_pos-1)) 8 "#33000000" "xdrawrect-ws-separator-${bar}-${sep}a" "$lname" &
+    xdrawrect "$monitor" "$align" 1 20 $((x_offset+x_pos)) 8 "#11ffffff" "xdrawrect-ws-separator-${bar}-${sep}b" "$lname" &
   done
 }

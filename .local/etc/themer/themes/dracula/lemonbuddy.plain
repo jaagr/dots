@@ -29,6 +29,32 @@ modules-center = xtitle
 ;modules-right = volume battery cpu memory clock
 modules-right = volume battery clock
 
+[bar/external_bottom]
+monitor = HDMI-1
+bottom = true
+width = 100%
+height = ${bar/top.height}
+offset_y = ${bar/top.offset_y}
+
+background = ${bar/top.background}
+foreground = ${bar/top.foreground}
+linecolor = ${bar/top.linecolor}
+
+spacing = ${bar/top.spacing}
+lineheight = ${bar/top.lineheight}
+padding_right = ${bar/top.padding_right}
+module_margin_left = ${bar/top.module_margin_left}
+module_margin_right = ${bar/top.module_margin_right}
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = FontAwesome:size=8;-2
+font-2 = envypn-regular:size=10;-1
+font-3 = Termsynu:size=8;-1
+font-4 = Unifont:size=6;-3
+
+modules-left = bspwm
+modules-right = clock
+
 [module/bspwm]
 type = internal/bspwm
 format = <label-state> <label-mode>
@@ -132,7 +158,7 @@ label-full =
 
 [module/xtitle]
 type = custom/script
-exec = xtitle -i -s
+exec = xwindowname tail
 tail = true
 format = %{T3} <output> %{T-}
 

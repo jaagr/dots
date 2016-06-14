@@ -157,7 +157,7 @@ label-muted-font = 3
 
 [module/xtitle]
 type = custom/script
-exec = xtitle -i -s
+exec = xwindowname tail
 tail = true
 format = %{T3} <output> %{T-}
 
