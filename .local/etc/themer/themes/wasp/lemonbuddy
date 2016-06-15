@@ -58,6 +58,7 @@ font-1 = FontAwesome:size=8;-2
 font-2 = envypn-regular:size=10;-1
 font-3 = Termsynu:size=8;-1
 font-4 = Unifont:size=6;-3
+font-5 = MaterialIcons:size=8;-3
 
 modules-left = bspwm
 modules-right = clock
