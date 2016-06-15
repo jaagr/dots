@@ -1,0 +1,193 @@
+[settings]
+throttle_ms = 50
+throttle_limit = 5
+
+[bar/top]
+monitor = eDP-1
+width = 100%
+height = 27
+
+background = #222222
+foreground = #eefafafa
+linecolor = #fba922
+
+;border-color = #ff0000
+;border-top = 0
+;border-top-color = #ff0000
+border-bottom = 2
+border-bottom-color = #333333
+
+spacing = 3
+lineheight = 2
+padding_right = 4
+module_margin_left = 0
+module_margin_right = 6
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = FontAwesome:size=8;-2
+font-2 = envypn-regular:size=10;-1
+font-3 = Termsynu:size=8;-1
+font-4 = Unifont:size=6;-3
+
+modules-left = bspwm
+;modules-center = xtitle
+;modules-right = volume battery cpu memory clock
+modules-right = volume battery clock
+
+[bar/external_bottom]
+monitor = HDMI-1
+bottom = true
+width = 100%
+height = ${bar/top.height}
+
+background = ${bar/top.background}
+foreground = ${bar/top.foreground}
+linecolor = ${bar/top.linecolor}
+
+border-top = 2
+border-top-color = #333333
+
+spacing = ${bar/top.spacing}
+lineheight = ${bar/top.lineheight}
+padding_right = ${bar/top.padding_right}
+module_margin_left = ${bar/top.module_margin_left}
+module_margin_right = ${bar/top.module_margin_right}
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = FontAwesome:size=8;-2
+font-2 = envypn-regular:size=10;-1
+font-3 = Termsynu:size=8;-1
+font-4 = Unifont:size=6;-3
+
+modules-left = bspwm
+modules-right = clock
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+
+workspace_icon-0 = term;
+workspace_icon-1 = web;
+workspace_icon-2 = code;
+workspace_icon-3 = music;
+workspace_icon-4 = irssi;
+workspace_icon-default = 
+
+label-active = %icon%
+label-active-foreground = #ffffff
+label-active-background = #3f3f3f
+label-active-underline = #fba922
+label-active-font = 4
+label-active-padding = 4
+
+label-occupied = %icon%
+label-occupied-underline = #555555
+label-occupied-font = 4
+label-occupied-padding = 4
+
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+label-urgent-font = 4
+label-urgent-padding = 4
+
+label-empty = %icon%
+label-empty-foreground = #55ffffff
+label-empty-font = 4
+label-empty-padding = 4
+
+label-monocle = 
+label-monocle-underline = ${module/bspwm.label-active-underline}
+label-monocle-padding = 2
+label-locked = 
+label-locked-foreground = #bd2c40
+label-locked-underline = ${module/bspwm.label-monocle-underline}
+label-locked-padding = ${module/bspwm.label-monocle-padding}
+label-sticky = 
+label-sticky-foreground = #fba922
+label-sticky-underline = ${module/bspwm.label-monocle-underline}
+label-sticky-padding = ${module/bspwm.label-monocle-padding}
+label-private = 
+label-private-foreground = #bd2c40
+label-private-underline = ${module/bspwm.label-monocle-underline}
+label-private-padding = ${module/bspwm.label-monocle-padding}
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+
+format = <label> <ramp-load_per_core>
+
+label = cpu
+label-font = 3
+
+ramp-load_per_core-0 = ▁
+ramp-load_per_core-0-font = 5
+ramp-load_per_core-1 = ▂
+ramp-load_per_core-1-font = 5
+ramp-load_per_core-2 = ▃
+ramp-load_per_core-2-font = 5
+ramp-load_per_core-3 = ▄
+ramp-load_per_core-3-font = 5
+ramp-load_per_core-4 = ▅
+ramp-load_per_core-4-font = 5
+ramp-load_per_core-5 = ▆
+ramp-load_per_core-5-font = 5
+ramp-load_per_core-6 = ▇
+ramp-load_per_core-6-font = 5
+ramp-load_per_core-7 = █
+ramp-load_per_core-7-font = 5
+
+[module/memory]
+type = internal/memory
+
+format = <label> <bar-used>
+
+label = memory
+label-font = 3
+
+bar-used-width = 20
+bar-used-indicator = |
+bar-used-indicator-font = 4
+bar-used-fill = ─
+bar-used-fill-font = 4
+bar-used-empty = ─
+bar-used-empty-font = 4
+bar-used-empty-foreground = #99ffffff
+
+[module/clock]
+type = internal/date
+date = %%{T3}%Y-%m-%d %H:%M%%{T-}
+interval = 5
+
+[module/volume]
+type = internal/volume
+speaker_mixer = Speaker
+headphone_mixer = Headphone
+headphone_control_numid = 9
+
+label-volume = volume %percentage%
+label-volume-font = 3
+label-muted = sound muted
+label-muted-font = 3
+label-muted-foreground = #99ffffff
+
+[module/battery]
+type = internal/battery
+full_at = 98
+format-charging = %{T3}Battery <label-charging>
+format-discharging = %{T3}Battery <label-discharging>
+;format-full = %{T3}Battery <label-full>
+label-charging-font = 3
+label-discharging-font = 3
+label-full =
+;label-full-font = 3
+
+[module/xtitle]
+type = custom/script
+exec = xwindowname tail
+tail = true
+format = %{T3} <output> %{T-}
+
+; vim:ft=dosini

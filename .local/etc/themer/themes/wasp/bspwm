@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+source bootstrap.sh
+
+include utils/_.sh
+include utils/lemonbuddy.sh
+include utils/json.sh
+
+bootstrap::finish
+
+size_border=1
+size_gap=5
+
+padding_top=32
+padding_bottom=0
+padding_left=0
+padding_right=0
+
+color_focused_border="#fba922"
+color_normal_border="#2e2e2e"
+color_active_border="#2e2e2e"
+color_presel_feedback="#aaaaaa"
+
+setting_borderless_monocle='false'
+
+lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
+lemonbuddy_bars=(top external_bottom)
+
+theme::post_bspwmrc()
+{
+  bspc config -m HDMI-1 top_padding 0
+  bspc config -m HDMI-1 bottom_padding $padding_top
+
+  # for b in "${lemonbuddy_bars[@]}"; do
+  #   _::stdout "Initializing $b"
+  #
+  #   [[ "$(xdo id -a "$(lemonbuddy::wm_name "$b" "$lemonbuddy_config")")" ]] || {
+  #     _::stderr "Failed to get the lemonbar X Window ID"
+  #     continue
+  #   }
+  #
+  #   case "$b" in
+  #     top) local offset_y1=23 offset_y2=24;;
+  #     external_bottom) local offset_y1=3 offset_y2=2;;
+  #   esac
+  #
+  #   # bevel effect lines
+  #   lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#dd424242" 1 100% 0 $offset_y1
+  #   lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#22ffffff" 1 100% 0 $offset_y2
+  # done
+}

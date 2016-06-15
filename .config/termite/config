@@ -59,24 +59,32 @@ font = envypn, regular, 10
 # themer::placeholder
 # -- start of script output --
 
-background = rgba(40, 42, 54, .98)
-foreground = #cccccc
-cursor = #b9b9b9
+foreground      = #d8d8d8
+foreground_bold = #d8d8d8
+cursor          = #d8d8d8
+background      = rgba(24, 24, 24, .98)
 
-color0 = #666666
-color1 = #cc6699
-color2 = #99cc66
-color3 = #cc9966
-color4 = #6699cc
-color5 = #9966cc
-color6 = #66cc99
-color7 = #cccccc
-color8 = #999999
-color9 = #ff99cc
-color10 = #ccff99
-color11 = #ffcc99
-color12 = #99ccff
-color13 = #cc99ff
-color14 = #99ffcc
-color15 = #ffffff
+color0  = #181818
+color1  = #ab4642
+color2  = #a1b56c
+color3  = #f7ca88
+color4  = #7cafc2
+color5  = #ba8baf
+color6  = #86c1b9
+color7  = #d8d8d8
+color8  = #585858
+color9  = #ab4642
+color10 = #a1b56c
+color11 = #f7ca88
+color12 = #7cafc2
+color13 = #ba8baf
+color14 = #86c1b9
+color15 = #f8f8f8
+
+color16 = #dc9656
+color17 = #a16946
+color18 = #282828
+color19 = #383838
+color20 = #b8b8b8
+color21 = #e8e8e8
 # -- end of script output --
