@@ -30,6 +30,13 @@ export SXHKD_SHELL="/usr/bin/bash"
 export GOPATH="${LOCAL_SRC}/go"
 export GIMP2_DIRECTORY="${XDG_CONFIG_HOME}/gimp"
 
+export TORRENTS="/storage/data/torrents"
+export MUSIC="/storage/media/music"
+export MOVIES="/storage/media/music"
+export WALLPAPERS="/storage/media/music"
+export BACKUPS="/storage/backups"
+export VAULT="/storage/vault"
+
 export ARCH="x86_64"
 export ARCHFLAGS="-arch x86_64"
 
