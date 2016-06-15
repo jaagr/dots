@@ -19,6 +19,11 @@ alias reload.sxhkd='$LOCAL_ETC/sxhkd/bin/reload'
 alias reload.bspwm='$LOCAL_ETC/bspwm/bin/reload'
 alias reload.lemonbuddy='$LOCAL_ETC/lemonbuddy/bin/reload'
 
+alias gothemes='cd $LOCAL_ETC/themer/themes'
+alias gobspwm='cd $LOCAL_ETC/bspwm'
+alias errbspwm='vim $XDG_CACHE_HOME/bspwm/stderr'
+alias errsxhkd='vim $XDG_CACHE_HOME/sxhkd/stderr'
+
 alias xupd="xbps-install -Su"
 alias xquery="xbps-query"
 alias xrem="xbps-remove"
