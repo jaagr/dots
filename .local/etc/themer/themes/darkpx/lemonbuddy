@@ -1,7 +1,6 @@
-; [settings]
-; throttle_ms = 50
-; throttle_limit = 5
-
+;
+; this config is written for an unreleased version (lemonbuddy "wip-lemonbar" branch)
+;
 
 [bar/top]
 monitor = eDP-1
