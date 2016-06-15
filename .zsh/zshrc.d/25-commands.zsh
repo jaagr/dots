@@ -1,3 +1,7 @@
+function unicode {
+  printf "%b\n" "\U$(printf "%6s\n" "$1" | tr ' ' 0)"
+}
+
 function field {
   cut -d ${2:- } -f $1
 }
