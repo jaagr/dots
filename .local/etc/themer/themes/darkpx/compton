@@ -1,0 +1,194 @@
+#
+# Compton configuration
+#
+
+# Backend {{{
+
+backend = "xrender";
+#backend = "glx";
+
+#glx-no-stencil = false;
+
+# GLX backend: Copy unmodified regions from front buffer instead of redrawing them all.
+# Useful with --glx-swap-method, as well.
+#glx-copy-from-front = false;
+
+# GLX backend: Use MESA_copy_sub_buffer to do partial screen update.
+# Overrides --glx-copy-from-front.
+#glx-use-copysubbuffermesa = false;
+
+# GLX backend: Avoid rebinding pixmap on window damage.
+#glx-no-rebind-pixmap = false;
+
+
+# GLX backend: GLX buffer swap method we assume.
+# Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1).
+# undefined is the slowest and the safest, and the default value.
+# copy is fastest, but may fail on some drivers,
+# 2-6 are gradually slower but safer (6 is still faster than 0).
+# Usually, double buffer means 2, triple buffer means 3.
+# buffer-age means auto-detect using GLX_EXT_buffer_age, supported by some drivers.
+# Useless with --glx-use-copysubbuffermesa.
+# Defaults to undefined.
+#glx-swap-method = "buffer-age";
+
+# }}}
+# Shadows {{{
+
+shadow = true;
+
+no-dnd-shadow = true;
+no-dock-shadow = true;
+clear-shadow = true;
+
+shadow-radius = 4;
+shadow-offset-x = -6;
+shadow-offset-y = -4;
+shadow-opacity = 0.10;
+
+shadow-red = 0.01;
+shadow-green = 0.01;
+shadow-blue = 0.01;
+
+# The "! name~=''" part excludes shadows on any "Unknown" windows
+shadow-exclude = [
+  # "! name~=''",
+  "name *?= 'jetbrains'",
+  "class_g *?= 'wine'",
+  "name *?= 'wine'",
+  "name *?= 'Unigine'",
+  "name *?= 'Android'",
+  "name *?= 'hidden_dzen_title'",
+  "name *?= 'shadowless'",
+  "name *?= 'xdrawrect'",
+  "class_g *?= 'xdrawrect'",
+  "name *?= 'tmp/flat'",
+  "class_g *?= 'presel_feedback'",
+  "class_g *?= 'lemonbar'",
+  "class_g *?= 'Bspwm'"
+];
+
+shadow-ignore-shaped = false;
+
+# }}}
+# Opacity {{{
+
+menu-opacity = 1;
+inactive-opacity = 0.99;
+#inactive-opacity-override = true;
+#active-opacity = 1;
+frame-opacity = 1;
+alpha-step = 0.05;
+
+inactive-dim = 0.06;
+#inactive-dim-fixed = false;
+
+opacity-rule = [
+  "20:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'",
+  "100:_NET_WM_STATE@:32a *= '_NET_WM_STATE_FULLSCREEN'",
+  "99:class_g *?= 'chromium*app'",
+  "99:class_g *?= 'Chromium'",
+  "99:class_g *?= 'Tor Browser'",
+  "99:class_g *?= 'irssi'",
+  "20:class_g *?= 'Bspwm'",
+  "100:class_g *?= 'Gimp'"
+];
+
+# }}}
+# Blur {{{
+
+#blur-background = true;
+#blur-kern = "5x5box"
+blur-kern = "7x7box"
+resize-damage = 2
+
+blur-background-frame = false;
+blur-background-fixed = false;
+blur-background-exclude = [];
+
+# }}}
+# Fading {{{
+
+fading = true;
+fade-delta = 8;
+fade-in-step = 0.07;
+fade-out-step = 0.07;
+no-fading-openclose = false;
+
+fade-exclude = [
+  "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
+];
+
+# }}}
+# Other {{{
+
+#mark-wmwin-focused = true;
+#mark-ovredir-focused = true;
+#use-ewmh-active-win = false;
+detect-rounded-corners = true;
+detect-client-opacity = true;
+
+# If not specified or 0, compton will try detecting this with X RandR extension.
+#refresh-rate = 60;
+
+# Set VSync method. VSync methods currently available:
+# none: No VSync
+# drm: VSync with DRM_IOCTL_WAIT_VBLANK. May only work on some drivers.
+# opengl: Try to VSync with SGI_video_sync OpenGL extension. Only work on some drivers.
+# opengl-oml: Try to VSync with OML_sync_control OpenGL extension. Only work on some drivers.
+# opengl-swc: Try to VSync with SGI_swap_control OpenGL extension. Only work on some drivers. Works only with GLX backend. Known to be most effective on many drivers. Does not actually control paint timing, only buffer swap is affected, so it doesn’t have the effect of --sw-opti unlike other methods. Experimental.
+# opengl-mswc: Try to VSync with MESA_swap_control OpenGL extension. Basically the same as opengl-swc above, except the extension we use.
+# (Note some VSync methods may not be enabled at compile time.)
+#vsync = "opengl-swc";
+
+# Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing.
+#dbe = true;
+
+# Painting on X Composite overlay window. Recommended.
+#paint-on-overlay = true;
+
+# Limit compton to repaint at most once every 1 / refresh_rate second to boost performance.
+# This should not be used with --vsync drm/opengl/opengl-oml as they essentially does --sw-opti's job already,
+# unless you wish to specify a lower refresh rate than the actual value.
+#sw-opti = true;
+
+# Unredirect all windows if a full-screen opaque window is detected, to maximize performance for full-screen windows, like games.
+unredir-if-possible = true;
+
+focus-exclude = [
+  "name *?= 'jetbrains'",
+  "name *?= 'sun-awt-X11'",
+  "class_g *?= 'wine'",
+  "name *?= 'Unigine'",
+  "name *?= 'Steam'",
+  "class_g *?= 'Steam'",
+  "name *?= 'Android'",
+  "name *?= 'Dunst'",
+  "name *?= 'tmp/flat'",
+  "class_g *?= 'xdrawrect'",
+  "name *?= 'Authy'"
+];
+
+detect-transient = true;
+detect-client-leader = true;
+
+# }}}
+# Window type settings {{{
+
+# All possible types are listed in `man compton`
+wintypes: {
+  tooltip = {
+    fading = true;
+    shadow = false;
+    opacity = 0.95;
+    focus = true;
+  };
+  menu = {
+    fade = true;
+    shadow = true;
+    opacity = 1;
+    focus = true;
+  };
+};
+
+# }}}
