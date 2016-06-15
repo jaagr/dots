@@ -1,5 +1,9 @@
+###### [my themes](https://github.com/jaagr/dots/tree/master/.local/etc/themer/themes)  ──  [lemonbuddy](https://github.com/jaagr/lemonbuddy)  ──  [ca.rlberg.se](https://ca.rlberg.se)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ##### dotfiles for my local setup
 ---------------------------------
+
 
 This simple yet effective technique lets you track the files you care about
 and it doesn't require any tools other than git. The files will be kept at
