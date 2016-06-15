@@ -1,3 +1,7 @@
+function field {
+  cut -d ${2:- } -f $1
+}
+
 function proc {
   ps wwwaux | egrep --color=always "($1|%CPU)" | grep -v grep
 }

@@ -23,9 +23,13 @@ function prompt_jaagr_setup {
   #zstyle ":prezto:module:editor:info:completing" format "%F{red}...%f"
 
   # Define prompts
-  PROMPT='%B%F{1} %~ %(?.%F{yellow}#.%F{160}!)%f%b '
+  # PROMPT='%B%F{1} %~ %(?.%F{yellow}#.%F{160}!)%f%b '
   RPROMPT='${git_info[rprompt]}${editor_info[keymap]}%(?..%F{160} %?%f)'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
+
+  PROMPT="
+%F{8}%~ %(?..%F{160}!)%f
+%F{8}────%f "
 }
 
 function prompt_jaagr_precmd {
