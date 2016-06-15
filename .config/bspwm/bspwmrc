@@ -186,7 +186,11 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
       echo "Could not get Lemonbuddy WM_NAME, skipping..." >&2; continue
     }
 
-    lemonbuddy_wrapper "$bar" -c "$config" &
+    if [[ "$(lemonbuddy -h | grep "pipe=FILE")" ]]; then
+      lemonbuddy_wrapper "$bar" -c "$config" &
+    else
+      lemonbuddy "$bar" -c "$config" &
+    fi
 
     while (( retries++ < 10 )); do
       root_id=$(xwininfo -root -children | grep "$monitor_geom" | sed -nr 's/(0x[[:xdigit:]]+) .*root.*/\1/p')
