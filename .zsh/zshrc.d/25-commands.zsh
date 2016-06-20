@@ -14,6 +14,10 @@ function fn {
   ls **/*$1*
 }
 
+function find-byname {
+  find ${2:-/} -name "*${1}*"
+}
+
 # List processes with most files open
 function list-open-files {
   lsof | field 2 | uniq -c | sort -rn | head
