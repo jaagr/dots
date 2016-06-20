@@ -12,6 +12,12 @@ endfunc
 
 " }}}
 
+func! GetUnicodeChar(code) " {{{
+  exe "read !source ~/.zsh/zshrc.d/25-commands.zsh 2>/dev/null ; unicode ". a:code
+endfunc
+
+" }}}
+
 func! GetCurrentWorkingDir(max_length) " {{{
   let l:cwd = substitute(getcwd(), '^/home/jaagr', '~', '').'/'
   if a:max_length && strlen(l:cwd) > a:max_length
