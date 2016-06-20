@@ -14,22 +14,21 @@ function prompt_jaagr_setup {
   # Set git-info parameters
   zstyle ":prezto:module:git:info" verbose "yes"
   zstyle ":prezto:module:git:info:dirty"  format " %B%F{red}±%f"
-  zstyle ":prezto:module:git:info:branch" format " %B%K{9}──%F{white} %b ──%%b%f%u"
+  zstyle ":prezto:module:git:info:branch" format " %B%K{9}%F{white} %b %%b%f"
   zstyle ":prezto:module:git:info:keys"   format "rprompt" "%b%c%s%D"
 
   # Set editor-info parameters
   zstyle ":prezto:module:editor:info:keymap:alternate" format "%B%F{white} -- NORMAL --%f%b"
-  # XXX: Disabled since it adds an annoying flickering
+  # XXX: Disabled since it adds annoying flickering
   #zstyle ":prezto:module:editor:info:completing" format "%F{red}...%f"
 
   # Define prompts
   # PROMPT='%B%F{1} %~ %(?.%F{yellow}#.%F{160}!)%f%b '
-  RPROMPT='${git_info[rprompt]}${editor_info[keymap]}'
-  SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
-
   PROMPT="
 %F{8}%~ %(?..%F{160}%?)%f
 %F{8}─────%f "
+  RPROMPT='${git_info[rprompt]}${editor_info[keymap]}'
+  SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }
 
 function prompt_jaagr_precmd {
