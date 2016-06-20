@@ -18,12 +18,9 @@ function prompt_jaagr_setup {
   zstyle ":prezto:module:git:info:keys"   format "rprompt" "%b%c%s%D"
 
   # Set editor-info parameters
-  zstyle ":prezto:module:editor:info:keymap:alternate" format "%B%F{white} -- NORMAL --%f%b"
-  # XXX: Disabled since it adds annoying flickering
-  #zstyle ":prezto:module:editor:info:completing" format "%F{red}...%f"
+  zstyle ":prezto:module:editor:info:keymap:alternate" format " ── NORMAL ──"
 
   # Define prompts
-  # PROMPT='%B%F{1} %~ %(?.%F{yellow}#.%F{160}!)%f%b '
   PROMPT="
 %F{8}%~ %(?..%F{160}%?)%f
 %F{8}─────%f "
