@@ -1,8 +1,8 @@
 ; This config uses the new syntax (which isn't merged upstream)
 
-[settings]
-throttle_ms = 50
-throttle_limit = 3
+; [settings]
+; throttle_ms = 50
+; throttle_limit = 3
 
 [bar/top]
 monitor = eDP-1
