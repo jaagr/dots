@@ -58,7 +58,7 @@ modules-right = date
 
 [module/bspwm]
 type = internal/bspwm
-format = <label-state>
+format = <label-state> <label-mode>
 
 workspace_icon-0 = term;
 workspace_icon-1 = web;
@@ -79,8 +79,13 @@ label-urgent-background = #bd2c40
 label-urgent-padding = 2
 
 label-empty = %icon%
-label-empty-foreground = #444444
+label-empty-foreground = #444
 label-empty-padding = 2
+
+label-monocle = 
+label-monocle-padding = 2
+label-monocle-background = #171717
+label-monocle-foreground = #fba922
 
 
 [module/cpu]
