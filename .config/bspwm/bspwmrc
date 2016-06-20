@@ -57,7 +57,7 @@ bspc config ignore_ewmh_focus "${setting_ignore_ewmh_focus:-true}"
 
 if bspc query -M -m HDMI-1 >/dev/null; then
   bspc monitor eDP-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
-  bspc monitor HDMI-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
+  bspc monitor HDMI-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 ws_9 ws_0
 else
   bspc monitor eDP-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
 fi
