@@ -13,17 +13,17 @@ function prompt_jaagr_setup {
 
   # Set git-info parameters
   zstyle ":prezto:module:git:info" verbose "yes"
-  zstyle ":prezto:module:git:info:dirty"  format " %B%F{red}±%f%%b"
+  zstyle ":prezto:module:git:info:dirty"  format " %B±%%b"
   zstyle ":prezto:module:git:info:branch" format " %B%K{9}%F{white} %b %%b%f"
-  zstyle ":prezto:module:git:info:keys"   format "rprompt" "%b%c%s%D"
+  zstyle ":prezto:module:git:info:keys"   format "rprompt" "%c%s%D%b"
 
   # Set editor-info parameters
   zstyle ":prezto:module:editor:info:keymap:alternate" format " ── NORMAL ──"
 
   # Define prompts
-  PROMPT="
-%F{8}%~%f
-%(?.%F{8}─────%f.%F{red}─────%f) "
+  PROMPT="%(?.%F{8}.%F{red})
+%~/
+─────%f "
   RPROMPT='${git_info[rprompt]}${editor_info[keymap]}%(?..%F{red} %?%f)'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }
