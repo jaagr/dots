@@ -172,7 +172,7 @@ ramp-capacity-foreground = #666
 [module/mpd]
 type = internal/mpd
 
-format-online = <label-song>  <bar-progress>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+format-online = <label-song>  <label-time>  <bar-progress>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
 
 icon-prev = 
 icon-seekb = 
@@ -197,5 +197,7 @@ bar-progress-fill-font = 3
 bar-progress-empty = ─
 bar-progress-empty-foreground = #44
 bar-progress-empty-font = 3
+
+label-time-foreground = #55
 
 ; vim:ft=dosini
