@@ -16,13 +16,20 @@ color_presel_feedback="#aaaaaa"
 setting_borderless_monocle='false'
 
 lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
-lemonbuddy_bars=(top external_bottom)
+lemonbuddy_bars=(top)
+
+if xrandr | grep -q "HDMI-1 connected"; then
+  lemonbuddy_bars+=(external_bottom)
+fi
 
 theme::post_bspwmrc()
 {
-  bspc config -m HDMI-1 top_padding 0
-  bspc config -m HDMI-1 bottom_padding $padding_top
-
   xdrawrect eDP-1 top 100% 3 0 27 '#ff000000' effectline-top "$(lemonbuddy top -c "$lemonbuddy_config" --print-wmname)" &
+
+  if xrandr | grep -q "HDMI-1 connected"; then
+    bspc config -m HDMI-1 top_padding 0
+    bspc config -m HDMI-1 bottom_padding $padding_top
+  fi
+
   xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(lemonbuddy external_bottom -c "$lemonbuddy_config" --print-wmname)" &
 }
