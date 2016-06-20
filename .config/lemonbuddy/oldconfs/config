@@ -483,6 +483,7 @@ ramp-load_per_core-7-foreground = #ff5555
 
 [module/date]
 type = internal/date
+interval = 5
 
 ; see "man date" for formatting
 ; if date_detailed is defined, clicking the area will toggle between formats
@@ -635,7 +636,7 @@ interval = 2.0
 ; Seconds to sleep between connectivity tests
 ; A value of 0 disables the testing
 ; Default- 0
-connectivity_test_interval = 10
+;connectivity_test_interval = 10
 
 ; Available tags:
 ;   <label-connected> (default)
