@@ -3,7 +3,7 @@ function unicode {
 }
 
 function field {
-  cut -d ${2:- } -f $1
+  tr -s ' ' | cut -d ${2:- } -f $1
 }
 
 function proc {
@@ -12,6 +12,11 @@ function proc {
 
 function fn {
   ls **/*$1*
+}
+
+# List processes with most files open
+function list-open-files {
+  lsof | field 2 | uniq -c | sort -rn | head
 }
 
 function list-top-fsize {
