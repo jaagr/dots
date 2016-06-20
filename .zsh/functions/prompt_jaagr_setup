@@ -22,9 +22,9 @@ function prompt_jaagr_setup {
 
   # Define prompts
   PROMPT="
-%F{8}%~ %(?..%F{160}%?)%f
-%F{8}─────%f "
-  RPROMPT='${git_info[rprompt]}${editor_info[keymap]}'
+%F{8}%~%f
+%(?.%F{8}─────%f.%F{red}─────%f) "
+  RPROMPT='${git_info[rprompt]}${editor_info[keymap]}%(?..%F{red} %?%f)'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }
 
