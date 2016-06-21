@@ -15,7 +15,7 @@ function fn {
 }
 
 function find-byname {
-  find ${2:-/} -name "*${1}*"
+  find ${2:-.} -name "*${1}*"
 }
 
 # List processes with most files open
