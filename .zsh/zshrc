@@ -18,4 +18,8 @@ unset rc
 
 prompt jaagr
 
+# compsys initialization
+autoload -Uz compinit
+compinit
+
 # vim:fdm=marker

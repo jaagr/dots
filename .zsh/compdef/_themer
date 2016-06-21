@@ -1,0 +1,27 @@
+#compdef activate_theme edit_theme
+
+function _list_themes {
+  compadd "$@" -- "$CURRENT_THEME"/../themes/*(:t)
+}
+
+function _list_current_configs {
+  local -a files=("$CURRENT_THEME"/^README.md*(:t))
+  compadd "$@" -- ${files%%*.png}
+}
+
+case "$service" in
+  activate_theme)
+    _arguments : \
+      "(-h --help)"{-h,--help}"[display help]" \
+      "(-l --list)"{-l,--list}"[list themes]" \
+      "1:available themes:_list_themes" \
+      "*::"
+    ;;
+  edit_theme)
+    _arguments : \
+      "(-h --help)"{-h,--help}"[display help]" \
+      "(-c --create)"{-c,--create}"[create configuration if it doesn't exist]" \
+      "1:current theme configurations:_list_current_configs" \
+      "*::"
+    ;;
+esac
