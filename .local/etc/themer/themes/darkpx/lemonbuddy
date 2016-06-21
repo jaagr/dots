@@ -1,5 +1,6 @@
 ;
 ; this config is written for an unreleased version (lemonbuddy "wip-lemonbar" branch)
+; it might need some tweaking to run on the latest released version... try for yourself
 ;
 
 [bar/top]
@@ -128,8 +129,9 @@ interval = 5
 type = internal/backlight
 card = intel_backlight
 format = <ramp> <label>
-ramp-0 = 
+ramp-0 = 
 ramp-1 = 
+ramp-2 = 
 ramp-foreground = #666
 
 
@@ -157,17 +159,20 @@ label-muted-foreground = #99
 type = internal/battery
 full_at = 98
 
-format-charging = <ramp-capacity> <label-charging>
+format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-full = <ramp-capacity> <label-full>
+format-full = %{F#666}%{F#ccfafafa} <label-full>
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
 ramp-capacity-foreground = #666
 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = #666
+animation-charging-framerate_ms = 750
 
 [module/mpd]
 type = internal/mpd
