@@ -176,7 +176,7 @@ super + @button{8,9}
 # Application launcher {{{
 
 super + Return
-  termite
+  termite 2>/dev/null
 
 super + d
   $LOCAL_BIN/rofi_run
