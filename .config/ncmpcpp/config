@@ -15,61 +15,20 @@ mpd_crossfade_time = 3
 # }}}
 # Music visualizer {{{
 
-# Path to the fifo, as specified in the mpd.conf
 visualizer_fifo_path = /tmp/mpd_visualizer.fifo
-
-# Note: Below parameter is needed for ncmpcpp
-# to determine which output provides data for
-# visualizer and thus allow syncing between
-# visualization and sound as currently there
-# are some problems with it.
 visualizer_output_name = Visualizer FIFO
-
-# Note: Below parameter defines how often ncmpcpp
-# has to "synchronize" visualizer and audio outputs.
-# 30 seconds is optimal value, but if you experience
-# synchronization problems, set it to lower value.
-# Keep in mind that sane values start with >=10.
 visualizer_sync_interval = 30
-
-# Note: To enable spectrum frequency visualization
-# you need to compile ncmpcpp with fftw3 support.
-# Available values: spectrum, wave, wave_filled, ellipse.
-visualizer_type = spectrum
-visualizer_look = ●▮
-
-# Color names or alternative subset of 256 colors for terminals that support it.
-# [1] blue, cyan, green, yellow, magenta, red
-# [2] 41, 83, 119, 155, 185, 215, 209, 203, 197, 161
-visualizer_color = red
-
-# If you set format to 44100:16:2, make it 'yes'.
 visualizer_in_stereo = yes
 
-# }}}
-# System encoding {{{
-
-# ncmpcpp should detect your charset encoding
-# but if it failed to do so, you can specify
-# charset encoding you are using here.
-#
-# Note: You can see whether your ncmpcpp build
-# supports charset detection by checking output
-# of `ncmpcpp --version`.
-#
-# Note: Since MPD uses utf8 by default, setting
-# this option makes sense only if your encoding
-# is different.
-
-#system_encoding = ""
+# Available values: spectrum, wave, wave_filled, ellipse
+visualizer_type = spectrum
+visualizer_look = ●▮
+visualizer_color = red
 
 # }}}
 # Delays {{{
 
-# delay after playlist highlighting will be disabled (0 = don't disable)
 playlist_disable_highlight_delay = 5
-
-# defines how long various messages are supposed to be visible
 message_delay_time = 4
 
 # }}}
@@ -151,7 +110,6 @@ song_library_format = {%n $8◦$9 }{%t}|{%f}
 alternative_header_first_line_format = $1$aqqu$/a$9 {$8%t$9}|{$8%f$9} $1$atqq$/a$9
 alternative_header_second_line_format = {{$6%a$9}{ $8◦$9 $4%b$9 $8◦$9 $7%y$9}}|{%D}
 
-# Note: Below variables also supports text attributes listed above.
 now_playing_prefix = $b
 now_playing_suffix = $/b
 
@@ -165,12 +123,7 @@ modified_item_prefix = $3> $9
 # colors are not supported for this variable
 song_window_title_format = {%t}|{%f} - {%a}
 
-# Note: Below variables are used for sorting songs in browser.
-# The sort mode determines how songs are sorted, and can be used
-# in combination with a sort format to specify a custom sorting format.
-# Available values for browser_sort_mode are "name", "mtime", "format"
-# and "noop".
-
+# Available values: name, mtime, format, noop
 #browser_sort_mode = name
 #browser_sort_format = {%a - }{%t}|{%f} {(%l)}
 
@@ -218,13 +171,6 @@ song_columns_list_format = (1f)[red]{} (40)[red]{t|f} (25)[yellow]{a} (25)[green
 # }}}
 # Various settings {{{
 
-# Note: Custom command that will be executed each
-# time song changes. Useful for notifications etc.
-#
-# Attention: It doesn't support song format anymore.
-# Use `ncmpcpp --now-playing SONG_FORMAT` instead.
-
-# XXX: Not needed now when the title is in the lemonbar
 #execute_on_song_change = "$HOME/.ncmpcpp/broadcast"
 
 #playlist_show_mpd_host = no
@@ -265,7 +211,7 @@ show_hidden_files_in_local_browser = no
 
 media_library_primary_tag = artist
 
-# classic or alternative
+# Available values: classic, alternative
 user_interface = classic
 
 # How shall key_screen_switcher work?
@@ -273,17 +219,13 @@ user_interface = classic
 # - "previous" - switch between the current and previous screen.
 # - "screen1,...,screenN" - switch between given sequence of screens.
 #
-# Screens available for use: help, playlist, browser, search_engine,
-# media_library, playlist_editor, tag_editor, outputs, visualizer, clock.
+# Available values: help, playlist, browser, search_engine,
+# media_library, playlist_editor, tag_editor, outputs, visualizer, clock
 screen_switcher_mode = playlist,media_library,visualizer,clock
 
-# Note: You can define startup screen for ncmpcpp
-# by choosing screen number from the list above.
 startup_screen = playlist
 
-# Note: You can define startup slave screen
-# by choosing screen from the list above or
-# an empty value "" for no slave screen.
+# Note: use "" for no slave screen.
 #startup_slave_screen = ""
 #startup_slave_screen_focus = no
 
@@ -296,12 +238,9 @@ display_volume_level = yes
 display_bitrate = yes
 display_remaining_time = no
 
-## Available values: none, basic, extended, perl.
+# Available values: none, basic, extended, perl
 regular_expressions = extended
 
-# Note: If below is enabled, ncmpcpp will ignore leading
-# "The" word while sorting items in browser, tags in
-# media library, etc.
 ignore_leading_the = no
 
 block_search_constraints_change_if_items_found = yes
@@ -313,19 +252,15 @@ empty_tag_marker = <empty>
 tags_separator = " | "
 tag_editor_extended_numeration = no
 
-# Note: You can choose default search mode for search
-# engine. Available modes are:
-#
-# - 1 - use mpd built-in searching (no regexes, pattern matching)
-# - 2 - use ncmpcpp searching (pattern matching with support for regexes,
-#       but if your mpd is on a remote machine, downloading big database
-#       to process it can take a while
-# - 3 - match only exact values (this mode uses mpd function for searching
-#       in database and local one for searching in current playlist)
-search_engine_default_search_mode = 2
-
-# Note: Will permanently remove the file
 allow_for_physical_item_deletion = no
+
+# 1: use mpd built-in searching (no regexes, pattern matching)
+# 2: use ncmpcpp searching (pattern matching with support for regexes,
+#    but if your mpd is on a remote machine, downloading big database
+#    to process it can take a while
+# 3: match only exact values (this mode uses mpd function for searching
+#    in database and local one for searching in current playlist)
+search_engine_default_search_mode = 2
 
 # }}}
 # Progressbar {{{

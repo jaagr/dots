@@ -1,7 +1,7 @@
 def_key "k"
-    scroll_up
+  scroll_up
 def_key "j"
-    scroll_down
+  scroll_down
 
 def_key "ctrl-p"
   previous_screen
@@ -9,9 +9,9 @@ def_key "ctrl-n"
   next_screen
 
 def_key "+"
-  run_external_command "amixer -q -c 0 set Master playback 2dB+"
+  run_external_command "$LOCAL_BIN/volume_change +5"
 def_key "-"
-  run_external_command "amixer -q -c 0 set Master playback 2dB-"
+  run_external_command "$LOCAL_BIN/volume_change -5"
 def_key "0"
   run_external_command "$LOCAL_BIN/toggle_mute"
 def_key "m"
