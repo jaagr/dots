@@ -12,10 +12,11 @@ alias launch.wm='$X11_HOME/init.sh'
 alias launch.xvnc='$X11_HOME/xvnc'
 alias launch.compton='bash -c "$LOCAL_ETC/compton/init.sh &"'
 alias launch.sxhkd='bash -c "$LOCAL_ETC/sxhkd/init.sh &"'
-alias launch.dunst="dunst &"
+alias launch.dunst='bash -c "$LOCAL_ETC/dunst/init.sh &"'
 
 alias reload.compton='$LOCAL_ETC/compton/bin/reload'
 alias reload.sxhkd='$LOCAL_ETC/sxhkd/bin/reload'
+alias reload.dunst='$LOCAL_ETC/dunst/bin/reload'
 alias reload.bspwm='$LOCAL_ETC/bspwm/bin/reload'
 alias reload.lemonbuddy='$LOCAL_ETC/lemonbuddy/bin/reload'
 

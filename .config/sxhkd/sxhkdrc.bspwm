@@ -136,6 +136,8 @@ super + @button{1-3}
 
 # Reload configuration
 super + Escape
+  $LOCAL_ETC/dunst/bin/reload ; \
+    sleep 0.1 ; \
   $LOCAL_ETC/sxhkd/bin/reload && \
     notify-send -u low "sxhkd reloaded successfully" || \
     notify-send -u low "failed to reload sxhkd"; \
@@ -217,7 +219,7 @@ super + F8
 #  notify-send -a maim "Took a screenshot (area)."
 
 super + ctrl + shift + r
-  $XDG_CONFIG_HOME/termite/reload; \
+  $LOCAL_ETC/termite/reload; \
   $LOCAL_ETC/compton/bin/reload; \
   $LOCAL_ETC/sxhkd/bin/reload; \
   silent! xrdb -merge -I$LOCAL_ETC/xorg $LOCAL_ETC/xorg/xresources
