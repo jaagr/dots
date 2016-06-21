@@ -9,9 +9,6 @@ timestamp=$(date +'%Y-%m-%d %H:%M:%S')
 echo -e "---- STARTUP $timestamp ----" >> "$XDG_CACHE_HOME/bspwm/stdout"
 echo -e "---- STARTUP $timestamp ----" >> "$XDG_CACHE_HOME/bspwm/stderr"
 
-"$LOCAL_ETC/sxhkd/init.sh" "$LOCAL_ETC/sxhkd/sxhkdrc.bspwm" &
-{ sleep 1; "$LOCAL_ETC/compton/init.sh" & } &
-
 run_count=0
 
 while true; do

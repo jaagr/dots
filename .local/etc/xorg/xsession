@@ -47,8 +47,11 @@ xrandr --auto
     feh --bg-center --image-bg black "$HOME/.wallpapers/1.png"
   fi
 
-  # Start the notification daemon
-  dunst &
+  # Launch daemons
+  ( sleep 1; "$LOCAL_ETC"/dunst/init.sh ) &
+  ( sleep 1; "$LOCAL_ETC"/sxhkd/init.sh "$LOCAL_ETC/sxhkd/sxhkdrc.${X_WM:-bspwm}" ) &
+  ( sleep 1; "$LOCAL_ETC"/compton/init.sh ) &
+
 } > "$XDG_CACHE_HOME/xorg/xsession.log" 2>&1
 
 # Launch the window manager
