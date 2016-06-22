@@ -2,6 +2,10 @@ def_key "k"
   scroll_up
 def_key "j"
   scroll_down
+def_key "h"
+  seek_backward
+def_key "l"
+  seek_forward
 
 def_key "ctrl-p"
   previous_screen

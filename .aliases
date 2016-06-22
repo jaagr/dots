@@ -53,6 +53,7 @@ alias ggpur="git pull --rebase"
 # sure that the same version is used everywhere
 alias vim="nvim"
 alias vi="nvim"
+alias ncmpcpp="ncmpcpp -b $XDG_CONFIG_HOME/ncmpcpp/bindings"
 alias xrdb-reload='xrdb -merge -I$LOCAL_ETC/xorg $LOCAL_ETC/xorg/xresources'
 alias gpg-decrypt-clipboard='xclip -o | gpg --decrypt | xclip'
 alias reboot="sudo reboot"
