@@ -19,6 +19,7 @@ alias reload.sxhkd='$LOCAL_ETC/sxhkd/bin/reload'
 alias reload.dunst='$LOCAL_ETC/dunst/bin/reload'
 alias reload.bspwm='$LOCAL_ETC/bspwm/bin/reload'
 alias reload.lemonbuddy='$LOCAL_ETC/lemonbuddy/bin/reload'
+alias reload.xkbmap='$LOCAL_ETC/xorg/xkbmaprc'
 
 alias gothemes='cd $LOCAL_ETC/themer/themes'
 alias gobspwm='cd $LOCAL_ETC/bspwm'
