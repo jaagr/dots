@@ -1,1 +1,152 @@
-zpreztorc
+#
+# Prezto options.
+#
+
+# General {{{
+
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':prezto:*:*' color 'yes'
+
+# }}}
+# Modules {{{
+
+# Set the Zsh modules to load (man zshmodules).
+# zstyle ':prezto:load' zmodule 'attr' 'stat'
+
+# Set the Zsh functions to load (man zshcontrib).
+# zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+
+# Set the Prezto modules to load (browse modules).
+# The order matters.
+zstyle ':prezto:load' pmodule \
+  'helper' \
+  'environment' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'archive' \
+  'history' \
+  'git' \
+  'syntax-highlighting' \
+  'completion' \
+  'fasd' \
+  'tmux' \
+  'prompt'
+
+# }}}
+# Editor {{{
+
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+# Auto convert .... to ../..
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+# }}}
+# Git {{{
+
+# Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
+# zstyle ':prezto:module:git:status:ignore' submodules 'all'
+
+# }}}
+# GNU Utility {{{
+
+# Set the command prefix on non-GNU systems.
+# zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+# }}}
+# History Substring Search {{{
+
+# Set the query found color.
+# zstyle ':prezto:module:history-substring-search:color' found ''
+
+# Set the query not found color.
+# zstyle ':prezto:module:history-substring-search:color' not-found ''
+
+# Set the search globbing flags.
+# zstyle ':prezto:module:history-substring-search' globbing-flags ''
+
+# }}}
+# Pacman {{{
+
+# Set the Pacman frontend.
+# zstyle ':prezto:module:pacman' frontend 'cower'
+
+# }}}
+# Prompt {{{
+
+# Set the prompt theme to load.
+# Setting it to 'random' loads a random theme.
+# Auto set to 'off' on dumb terminals.
+zstyle ':prezto:module:prompt' theme 'jaagr'
+
+# }}}
+# SSH {{{
+
+# Set the SSH identities to load into the agent.
+# zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_rsa2' 'id_github'
+
+# }}}
+# Syntax Highlighting {{{
+
+# Set syntax highlighters.
+# By default, only the main highlighter is enabled.
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'cursor' \
+  'root'
+
+# Set syntax highlighting styles.
+# zstyle ':prezto:module:syntax-highlighting' styles \
+#   'builtin' 'bg=blue' \
+#   'command' 'bg=blue' \
+#   'function' 'bg=blue'
+
+# }}}
+# Terminal {{{
+
+# Auto set the tab and window titles.
+# zstyle ':prezto:module:terminal' auto-title 'yes'
+
+# Set the window title format.
+# zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+
+# Set the tab title format.
+# zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+
+# }}}
+# Tmux {{{
+
+# Auto start a session when Zsh is launched in a local terminal.
+#zstyle ':prezto:module:tmux:auto-start' local 'yes'
+
+# Auto start a session when Zsh is launched in a SSH connection.
+zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
+# }}}
+# Fasd {{{
+
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+function z {
+  # bypass vim to avoid matching vimperator
+  [[ "$1" == "vim" ]] && {
+    cd "$LOCAL_ETC/vim"
+    return
+  }
+  fasd_cd -d "$@"
+}
+alias zz='fasd_cd -d -i' # cd with interactive selection
+alias v='fasd -f -e vim'
+alias vv='fasd -f -i -e vim'
+
+# }}}
+
+# vim:ft=zsh fdm=marker
