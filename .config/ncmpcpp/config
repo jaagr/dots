@@ -2,7 +2,7 @@
 # Ncmpcpp configuration
 #
 
-ncmpcpp_directory = /home/jaagr/.ncmpcpp
+ncmpcpp_directory = /home/jaagr/.config/ncmpcpp
 
 # MPD connection settings {{{
 
