@@ -22,6 +22,10 @@ xrandr --auto
   # Merge xresources
   xrdb -merge -I"$X11_HOME" "$X11_HOME/xresources"
 
+  if [ -e "$CURRENT_THEME/xresources" ]; then
+    xrdb -override "$CURRENT_THEME/xresources"
+  fi
+
   # set the screen server to blank at 1h
   xset s 3600 3600
   xset s noblank

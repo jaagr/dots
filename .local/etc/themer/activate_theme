@@ -156,9 +156,9 @@ main() {
     log::info "Setting wallpaper"
     bash "${CURRENT_DIR}/wallpaper" &>/dev/null
   }
-  [[ -e ${CURRENT_DIR}/rofi ]] && {
-    log::info "Applying xrdb overrides for rofi"
-    xrdb -override "${CURRENT_DIR}/rofi" &>/dev/null
+  [[ -e ${CURRENT_DIR}/xresources ]] && {
+    log::info "Applying xrdb overrides"
+    xrdb -override "${CURRENT_DIR}/xresources" &>/dev/null
   }
 
   log::ok "All done! Enjoy..."
