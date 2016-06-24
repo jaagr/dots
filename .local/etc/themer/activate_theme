@@ -138,27 +138,27 @@ main() {
 
   [[ -e ${CURRENT_DIR}/compton ]] && {
     log::info "Reloading compton"
-    bash "${LOCAL_ETC}/compton/bin/reload" &>/dev/null
+    bash "${LOCAL_ETC}/compton/bin/reload" &>/dev/null &
   }
   [[ -e ${CURRENT_DIR}/bspwm ]] && {
     log::info "Reloading bspwm"
-    bash "${LOCAL_ETC}/bspwm/bin/reload" &>/dev/null
+    bash "${LOCAL_ETC}/bspwm/bin/reload" &>/dev/null &
   }
   [[ -e ${CURRENT_DIR}/termite ]] && {
     log::info "Reloading termite"
-    bash "${LOCAL_ETC}/termite/reload" &>/dev/null
+    bash "${LOCAL_ETC}/termite/reload" &>/dev/null &
   }
   [[ -e ${CURRENT_DIR}/dunst ]] && {
     log::info "Reloading dunst"
-    bash "${LOCAL_ETC}/dunst/bin/reload" &>/dev/null
+    bash "${LOCAL_ETC}/dunst/bin/reload" &>/dev/null &
   }
   [[ -e ${CURRENT_DIR}/wallpaper ]] && {
     log::info "Setting wallpaper"
-    bash "${CURRENT_DIR}/wallpaper" &>/dev/null
+    bash "${CURRENT_DIR}/wallpaper" &>/dev/null &
   }
   [[ -e ${CURRENT_DIR}/xresources ]] && {
     log::info "Applying xrdb overrides"
-    xrdb -override "${CURRENT_DIR}/xresources" &>/dev/null
+    xrdb -override "${CURRENT_DIR}/xresources" &>/dev/null &
   }
 
   log::ok "All done! Enjoy..."
