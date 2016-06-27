@@ -88,6 +88,11 @@ label-monocle-padding = 2
 label-monocle-background = #171717
 label-monocle-foreground = #fba922
 
+label-floating = 
+label-floating-padding = 2
+label-floating-background = #171717
+label-floating-foreground = #fba922
+
 
 [module/cpu]
 type = internal/cpu
@@ -161,7 +166,7 @@ full_at = 98
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-full = %{F#666}%{F#ccfafafa} <label-full>
+format-full = %{F#666}%{F#ccfafafa}  <label-full>
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -178,6 +183,9 @@ animation-charging-framerate_ms = 750
 type = internal/mpd
 
 format-online = <label-song>  <label-time>  <bar-progress>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+format-offline = <label-offline>
+format-offline-foreground = #66
+label-offline = mpd is off
 
 icon-prev = 
 icon-seekb = 
