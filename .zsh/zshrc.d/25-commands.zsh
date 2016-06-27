@@ -67,7 +67,7 @@ function lsinitcpio-analyze-latest {
 compdef _mkinitcpio lsinitcpio-analyze-latest="lsinitcpio"
 
 function ggpush {
-  git push origin $(git-branch-current)
+  git push origin $(git-branch-current) "$@"
 }
 
 function gwip {
