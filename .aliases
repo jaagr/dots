@@ -80,8 +80,10 @@ alias cpan="perlcd && perl -MCPAN -e shell"
 
 alias cmake-debug="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cmake-debug-clang="cmake-debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
+alias cmake-debug-gcc="cmake-debug -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
 alias cmake-release="cmake -DCMAKE_BUILD_TYPE=Release"
 alias cmake-release-clang="cmake-release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
+alias cmake-release-gcc="cmake-release -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
 alias cmake-release-globalinstall="cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr"
 alias cmake-uninstall='if [ -e install_manifest.txt ]; then sudo rm -i -v "$(cat install_manifest.txt)" install_manifest.txt; else echo "Cannot find install_manifest.txt"; fi'
 alias cmake-clean='[[ $(basename $(pwd)) == "build" ]] && cd .. && rm -rf build && mkdir build && cd build && cmake ..'
