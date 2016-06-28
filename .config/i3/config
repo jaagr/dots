@@ -64,8 +64,8 @@ font pango:Source Code Pro for Powerline, Bold, 10
 #smart_gaps on
 #smart_borders on
 
-gaps outer 60
-gaps inner 15
+gaps outer 0
+gaps inner 5
 
 #workspace "2. web" gaps outer 45
 #workspace "9. music" gaps outer 45
@@ -235,4 +235,4 @@ mode "resize" {
 
 # }}}
 
-exec_always --no-startup-id "$LOCAL_ETC/i3/bin/autostart"
+exec_always --no-startup-id "$LOCAL_ETC/i3/startup.sh"

@@ -24,6 +24,7 @@ alias reload.xkbmap='$LOCAL_ETC/xorg/xkbmaprc'
 alias gothemes='cd $LOCAL_ETC/themer/themes'
 alias gobspwm='cd $LOCAL_ETC/bspwm'
 alias errbspwm='vim $XDG_CACHE_HOME/bspwm/stderr'
+alias erri3='vim $XDG_CACHE_HOME/i3/stderr'
 alias errsxhkd='vim $XDG_CACHE_HOME/sxhkd/stderr'
 
 alias xupd="xbps-install -Su"

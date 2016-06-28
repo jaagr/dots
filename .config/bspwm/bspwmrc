@@ -182,7 +182,7 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
       echo "Could not get Lemonbuddy WM_NAME, skipping..." >&2; continue
     }
 
-    if [[ "$(lemonbuddy -h | grep "pipe=FILE")" ]]; then
+    if lemonbuddy -h | grep -q "pipe=FILE"; then
       lemonbuddy_wrapper "$bar" -c "$config" &
     else
       lemonbuddy "$bar" -c "$config" &
