@@ -21,35 +21,33 @@ super + button{8,9}
 # Application launcher
 #
 
-super + r
-    ~/bin/show_dmenu
-
 super + Return
     termite
 
-# q; kill focused window
-alt + Mode_switch ; q
-    pfw | xargs killw
+# super + d
+#   $LOCAL_BIN/rofi_run
 
-# enter; open terminal
-alt + Mode_switch ; alt + Mode_switch
-    termite
+alt + Mode_switch
+  $LOCAL_BIN/rofi_run
 
-# vi; launch vimperator
-alt + Mode_switch ; v ; i
-    ~/dotfiles/vimperator/launch
+alt + Mode_switch + v
+  $LOCAL_BIN/apps/vimperator
 
-# vi; show dmenu
-alt + Mode_switch ; d ; m
-    ~/bin/show_dmenu
-
-# vi; enter window resize mode
-alt + Mode_switch ; w ; r
-    i3-msg mode resize
+super + F12
+  authy
+super + F11
+  lastpass
+super + F10
+  vimperator
+super + F9
+  pcmanfm
 
 #
 # Misc
 #
+
+super + r
+    i3-msg mode resize
 
 {shift + ,_}Print
     scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/vault/screenshots/ ' && notify-send 'Screenshot captured'
