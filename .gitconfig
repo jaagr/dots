@@ -25,3 +25,7 @@
   token = ! lpass show --notes 8820807511722437577
 #[commit]
 #  gpgsign = true
+[merge]
+  tool = vimdiff
+[mergetool]
+  prompt = false
