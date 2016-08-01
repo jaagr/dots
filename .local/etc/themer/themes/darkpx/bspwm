@@ -29,7 +29,6 @@ theme::post_bspwmrc()
   if xrandr | grep -q "HDMI-1 connected"; then
     bspc config -m HDMI-1 top_padding 0
     bspc config -m HDMI-1 bottom_padding $padding_top
+    xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(lemonbuddy external_bottom -c "$lemonbuddy_config" --print-wmname)" &
   fi
-
-  xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(lemonbuddy external_bottom -c "$lemonbuddy_config" --print-wmname)" &
 }

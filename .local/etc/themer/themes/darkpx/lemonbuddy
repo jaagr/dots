@@ -112,7 +112,7 @@ interface = net1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
+label-connected = %essid% %{F#66}%local_ip%
 label-disconnected = %{F#666}%{F#ccfafafa} not connected
 label-disconnected-foreground = #66
 
