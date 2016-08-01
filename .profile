@@ -33,6 +33,7 @@ export GIMP2_DIRECTORY="${XDG_CONFIG_HOME}/gimp"
 export TORRENTS="/storage/data/torrents"
 export MUSIC="/storage/media/music"
 export MOVIES="/storage/media/movies"
+export PHOTOS="/storage/media/photos"
 export WALLPAPERS="/storage/media/wallpapers"
 export BACKUPS="/storage/backups"
 export VAULT="/storage/vault"
@@ -87,3 +88,4 @@ unset dir
 unset -f path_prepend
 
 export PATH
+export MANPATH="/usr/local/share/man:$MANPATH"
