@@ -9,11 +9,6 @@
 if ! [[ "$DISPLAY" ]] && [[ "${TTY##*tty}" == "1" ]]; then
   printf "\n"
 
-  # Show information about disk usage
-  dfc -t btrfs 2>/dev/null -n -w -W -c always | cut -c29-
-
-  printf "\n"
-
   # Check for package updates
   [[ -x $HOME/bin/checkforupdates ]] && $HOME/bin/checkforupdates
 
