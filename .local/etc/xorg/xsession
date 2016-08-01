@@ -7,8 +7,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
+# shellcheck disable=SC2010
+if ls -l /etc/X11/xorg.conf.d/20-gpu.conf | grep -q /opt/etc/xorg/optimus.conf; then
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
+  xrandr --auto
+fi
 
 { # Set keyboard layout and apply keymap changes
   "$X11_HOME/xkbmaprc"
