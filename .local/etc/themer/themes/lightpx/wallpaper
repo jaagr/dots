@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+ln -sf "$LOCAL_ETC"/themer/current/pixel-gray.png "$HOME"/.wallpapers/1.png
+feh --bg-tile "$HOME"/.wallpapers/1.png

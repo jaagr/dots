@@ -1,0 +1,5 @@
+" vim:ft=vim
+set background=light
+let g:base16colorspace=256
+let g:theme_name = 'base16-google'
+let g:airline_theme = 'base16'
