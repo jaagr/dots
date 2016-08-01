@@ -1,0 +1,7 @@
+rofi.font: Anonymous Pro, Regular, 20
+
+rofi.color-enabled: true
+rofi.color-normal: argb:ffffffff , #353535 , argb:ffffffff , #ff372c , #1b2b34
+rofi.color-urgent: argb:ffffffff , #ff372c , argb:ffffffff , #ff372c , #1b2b34
+rofi.color-active: argb:ffffffff , #6699cc , argb:ffffffff , #6699cc , #1b2b34
+rofi.color-window: argb:ffffffff

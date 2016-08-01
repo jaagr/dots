@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+size_border=1
+size_gap=5
+
+padding_top=32
+padding_bottom=32
+padding_left=0
+padding_right=0
+
+color_normal_border="#666666"
+color_active_border="#666666"
+color_focused_border="#cccccc"
+color_presel_feedback="#888888"
+
+setting_borderless_monocle='false'
+
+lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
+lemonbuddy_bars=(top bottom)
+
+if xrandr | grep -q "HDMI-1 connected"; then
+  lemonbuddy_bars+=(external_bottom)
+fi

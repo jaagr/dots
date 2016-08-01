@@ -1,0 +1,28 @@
+" vim:ft=vim
+
+set background=dark
+let g:base16colorspace=256
+let g:theme_name = 'base16-google'
+let g:airline_theme = 'base16'
+
+" func! g:ThemeHookPost()
+"   hi SpellBad ctermbg=NONE guibg=NONE
+"   hi SpellLocal ctermbg=NONE guibg=NONE
+"   hi SpellCap ctermbg=NONE guibg=NONE
+"   hi SpellRare ctermbg=NONE guibg=NONE
+"   hi markdownError ctermbg=NONE guibg=NONE
+"   hi Normal ctermbg=NONE guibg=NONE
+"   hi MatchParen ctermbg=NONE guibg=NONE
+"   hi ErrorMsg ctermbg=NONE guibg=NONE
+"   hi Conceal ctermbg=NONE guibg=NONE
+"   hi Cursor ctermbg=NONE guibg=NONE
+"   hi DiffAdded ctermbg=NONE guibg=NONE
+"   hi DiffFile ctermbg=NONE guibg=NONE
+"   hi DiffNewFile ctermbg=NONE guibg=NONE
+"   hi DiffLine ctermbg=NONE guibg=NONE
+"   hi DiffRemoved ctermbg=NONE guibg=NONE
+"
+"   hi LineNr ctermbg=NONE guibg=NONE
+"   hi Folded ctermbg=NONE guibg=NONE
+"   hi CursorLineNr ctermbg=NONE guibg=NONE
+" endfunc
