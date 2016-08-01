@@ -20,9 +20,11 @@ alias reload.dunst='$LOCAL_ETC/dunst/bin/reload'
 alias reload.bspwm='$LOCAL_ETC/bspwm/bin/reload'
 alias reload.lemonbuddy='$LOCAL_ETC/lemonbuddy/bin/reload'
 alias reload.xkbmap='$LOCAL_ETC/xorg/xkbmaprc'
+alias reload.i3='$LOCAL_ETC/i3/bin/reload'
 
 alias gothemes='cd $LOCAL_ETC/themer/themes'
 alias gobspwm='cd $LOCAL_ETC/bspwm'
+alias gomedia='cd /storage/media'
 alias errbspwm='vim $XDG_CACHE_HOME/bspwm/stderr'
 alias erri3='vim $XDG_CACHE_HOME/i3/stderr'
 alias errsxhkd='vim $XDG_CACHE_HOME/sxhkd/stderr'
@@ -49,6 +51,9 @@ alias gds="git diff --staged"
 alias gco="git checkout"
 alias gst="git status"
 alias ggpur="git pull --rebase"
+alias grm="git rebase master"
+
+alias hdmi-reload='xrandr --output HDMI-1 --auto; $XDG_CONFIG_HOME/bspwm/bin/reload'
 
 # TODO: Create a symlink to vim/nvim instead to make
 # sure that the same version is used everywhere
