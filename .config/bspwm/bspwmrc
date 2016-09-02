@@ -3,23 +3,20 @@
 # Bspwm configuration
 #
 
+source bootstrap.sh
+
+include utils/color.sh
+include utils/lemonbuddy.sh
+include utils/x11.sh
+
+bootstrap::finish
+
 if ! bspc wm -g &>/dev/null; then
   exit 1
 fi
 
 if [[ -s "$BSPWM_STATE" ]]; then
   "$LOCAL_ETC/bspwm/bin/restore_state"; exit 0
-fi
-
-if [[ $BSPWM_COUNTER -eq 1 ]] && bspc query -M -m HDMI-1 >/dev/null; then
-  xrandr --output HDMI-1 --auto --above eDP-1
-
-  pos_x=$(xrandr | grep eDP-1 | sed -nr 's/.*[0-9]+x[0-9]+\+([0-9]+).*/\1/p')
-  pos_y=$(xrandr | grep eDP-1 | sed -nr 's/.*[0-9]+x[0-9]+\+[0-9]+\+([0-9]+).*/\1/p')
-  pos_y=$(( pos_y + 100 ))
-  xrandr --output eDP-1 --pos "${pos_x}x${pos_y}"
-
-  [[ -e "${HOME}/.fehbg" ]] && source ~/.fehbg 2>/dev/null
 fi
 
 # Config vars {{{
@@ -100,6 +97,12 @@ for monitor in $(bspc query -M); do
   bspc config -m "$monitor" border_width $size_border
 done ; unset desktop
 
+if [ -s "$HOME/.fehbg" ]; then
+  source "$HOME/.fehbg" 2>/dev/null
+elif [ -e "$HOME/.wallpapers/1.png" ]; then
+  feh --bg-center --image-bg -B black "$HOME/.wallpapers/1.png"
+fi
+
 # }}}
 # Rules {{{
 
@@ -132,14 +135,18 @@ function pop_window_state {
   done
 }
 
-bspc subscribe desktop_layout node_focus | while read -r event; do
-  if [[ $(bspc query -T -d | json layout | tr -d '"') == "monocle" ]]; then
-    bspc query -N -n | pop_window_state _NET_WM_STATE_HIDDEN
-    bspc query -N -n '.local.!focused' | push_window_state _NET_WM_STATE_HIDDEN
-  else
-    bspc query -N -d | pop_window_state _NET_WM_STATE_HIDDEN
-  fi
-done &
+# Only create the listener if the termite config uses a background color
+# with an alpha value lower than 1.0
+if egrep -q -o 'background.*rgba\(([0-9,]+){3}.*0?\.[0-9]+\)$' "${XDG_CONFIG_HOME}/termite/config"; then
+  bspc subscribe desktop_layout node_focus | while read -r event; do
+    if [[ $(bspc query -T -d | json layout | tr -d '"') == "monocle" ]]; then
+      bspc query -N -n | pop_window_state _NET_WM_STATE_HIDDEN
+      bspc query -N -n '.local.!focused' | push_window_state _NET_WM_STATE_HIDDEN
+    else
+      bspc query -N -d | pop_window_state _NET_WM_STATE_HIDDEN
+    fi
+  done &
+fi
 
 # }}}
 # Event listener :: theme {{{
