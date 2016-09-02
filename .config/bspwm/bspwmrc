@@ -157,7 +157,7 @@ fi
 
 # }}}
 
-# Lemonbar {{{
+# Lemonbuddy {{{
 
 # TODO: Break out the lemonbuddy startup code to a custom script
 
@@ -168,26 +168,26 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
 
   config="${lemonbuddy_config:-${LOCAL_ETC}/lemonbuddy/bspwm.conf}"
 
-  # Launch bars
-  for bar in "${lemonbuddy_bars[@]}"; do
-    [[ -e "$config" ]] || {
-      echo "Lemonbuddy config \"$config\" does not exist, aborting..." >&2; break
-    }
+  echo "Using lemonbuddy config: $config"
 
-    echo "Using lemonbuddy config: $config"
+  for bar in "${lemonbuddy_bars[@]}"; do
+    if ! [[ -e "$config" ]]; then
+      echo "Lemonbuddy config '$config' does not exist, aborting..." >&2; break
+    fi
 
     monitor="$(lemonbuddy "$bar" -c "$config" --dump=monitor)"
 
-    if ! xrandr | grep "^$monitor connected" &>/dev/null; then
-      continue
+    if ! x11::monitor_connected "$monitor"; then
+      echo "Skipping lemonbuddy bar '$bar' for disconnected monitor '$monitor'" >&2; continue
     fi
 
     bar_wmname=$(lemonbuddy "$bar" -c "$config" --print-wmname)
-    monitor_geom=$(xrandr | grep "$monitor" | egrep -o "[0-9]+x[0-9]+\+[0-9]*\+[0-9]*")
 
-    [[ "$bar_wmname" ]] || {
-      echo "Could not get Lemonbuddy WM_NAME, skipping..." >&2; continue
-    }
+    if [[ "$bar_wmname" ]]; then
+      echo "Got Lemonbuddy WM_NAME '$bar_wmname' for bar '$bar'"
+    else
+      echo "Could not get Lemonbuddy WM_NAME for bar '$bar', skipping..." >&2; continue
+    fi
 
     if lemonbuddy -h | grep -q "pipe=FILE"; then
       lemonbuddy_wrapper "$bar" -c "$config" &
@@ -195,16 +195,24 @@ if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; the
       lemonbuddy "$bar" -c "$config" &
     fi
 
+    if lemonbuddy -h | grep -q "restack"; then
+      continue
+    fi
+
+    retries=0
+
     while (( retries++ < 10 )); do
-      root_id=$(xwininfo -root -children | grep "$monitor_geom" | sed -nr 's/(0x[[:xdigit:]]+) .*root.*/\1/p')
-      bar_id=$(xwininfo -root -children | sed -nr "s/(0x[[:xdigit:]]+) .*${bar_wmname}.*/\1/p")
+      root_id=$(x11::monitor_root_wid "$monitor")
+      bar_id=$(x11::wmname_wid "$bar_wmname")
 
-      # Raise bar above root when we've found it
-      [[ "$root_id" ]] && [[ "$bar_id" ]] && {
-        xdo above -t "${root_id:0:9}" "${bar_id:0:9}" ; break
-      }
-
-      sleep 1
+      if [[ "$root_id" ]] && [[ "$bar_id" ]]; then
+        printf "Restacking bar window... (root=%s bar=%s)\n" "$root_id" "$bar_id"
+        xdo above -t "$root_id" "$bar_id"
+        break
+      else
+        printf "Could not get id of root/bar window (root=%s bar=%s)... retrying in 1s\n" "$root_id" "$bar_id" >&2
+        sleep 1
+      fi
     done
   done
 fi
