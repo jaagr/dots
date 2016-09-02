@@ -1,0 +1,51 @@
+[bar/test]
+monitor = eDP-1
+
+spacing = 1
+
+padding_left = 0
+padding_right = 0
+module_margin_left = 0
+module_margin_right = 0
+
+font-0 = envypn-regular:size=10;0
+font-1 = Siji:pixelsize=10;0
+
+modules-left = mpd
+
+
+[module/mpd]
+type = internal/mpd
+
+format-online = <label-song>                 <label-time>  <bar-progress>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+format-offline = <label-offline>
+format-offline-foreground = #66
+label-offline = mpd is off
+
+icon-prev = 
+icon-seekb = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+icon-seekf = 
+
+icon-random = 
+icon-repeat = 
+
+toggle_on-foreground = #fba922
+toggle_off-foreground = #66
+
+bar-progress-width = 15
+bar-progress-indicator = 
+bar-progress-indicator-foreground = #bb
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-foreground = #44
+bar-progress-empty-font = 3
+
+label-time-foreground = #55
+
+; vim:ft=dosini

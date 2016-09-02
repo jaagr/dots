@@ -1,18 +1,40 @@
-; This config uses the new syntax (which isn't merged upstream)
+;
+; This config probably contains work-in-progress stuff
+; so it might not work for your version of lemonbuddy
+;
 
-; [settings]
-; throttle_ms = 50
-; throttle_limit = 3
+[settings]
+;throttle_ms = 50
+;throttle_limit = 3
 
 [bar/top]
 monitor = eDP-1
 width = 100%
 height = 34
 clickareas = 35
+; locale = sv_SE.UTF-8
 
-background = #00000000
-foreground = #ccffffff
+background = #aa666600
+foreground = #ff000000
 linecolor = ${bar/bottom.background}
+
+border-color = #f90
+border-left = 2
+border-left-color = #f90
+border-right = 10
+border-right-color = #f90
+border-top = 5
+border-top-color = #ff0000ff
+border-bottom = 3
+border-bottom-color = #ddff0000
+
+; Position of the tray client container
+; Remove the parameter to disable the systray
+;
+; Available positions:
+;   left
+;   right
+tray-position = left
 
 spacing = 4
 ;spacing = 2
@@ -23,7 +45,6 @@ module_margin_right = 3
 ;module_margin_left = 1
 ;module_margin_right = 1
 
-;font-0 = envypn:pixelsize=13;0
 font-0 = NotoSans-Regular:size=8;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
@@ -55,8 +76,9 @@ font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8;-1
 
-modules-left = bspwm
-modules-right = cpu memory
+; modules-left = bspwm
+; modules-right = cpu memory
+modules-right = cpu
 
 [bar/external_bottom]
 ;inherit_from = bar/bottom
@@ -268,6 +290,9 @@ bar-used-empty-foreground = #444444
 type = internal/mpd
 clickable_progress = true
 format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+label-song-maxlen = 15
+label-song-ellipsis = true
 
 icon-play = 
 icon-pause = 
