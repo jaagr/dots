@@ -3,17 +3,11 @@
 # Bspwm configuration
 #
 
-source bootstrap.sh
-
-include utils/color.sh
-include utils/lemonbuddy.sh
-include utils/x11.sh
-
-bootstrap::finish
-
 if ! bspc wm -g &>/dev/null; then
   exit 1
 fi
+
+killall -q lemonbuddy lemonbar xdrawrect
 
 if [[ -s "$BSPWM_STATE" ]]; then
   "$LOCAL_ETC/bspwm/bin/restore_state"; exit 0
@@ -159,63 +153,9 @@ fi
 
 # Lemonbuddy {{{
 
-# TODO: Break out the lemonbuddy startup code to a custom script
-
-if command -v lemonbuddy >/dev/null && [[ "${#lemonbuddy_bars[@]}" -gt 0 ]]; then
-  { pgrep -f lemonbuddy_wrapper | awk '{print $1}' | xargs kill -9
-    killall -9 -q lemonbuddy lemonbar xdrawrect
-  } &>/dev/null
-
-  config="${lemonbuddy_config:-${LOCAL_ETC}/lemonbuddy/bspwm.conf}"
-
-  echo "Using lemonbuddy config: $config"
-
-  for bar in "${lemonbuddy_bars[@]}"; do
-    if ! [[ -e "$config" ]]; then
-      echo "Lemonbuddy config '$config' does not exist, aborting..." >&2; break
-    fi
-
-    monitor="$(lemonbuddy "$bar" -c "$config" --dump=monitor)"
-
-    if ! x11::monitor_connected "$monitor"; then
-      echo "Skipping lemonbuddy bar '$bar' for disconnected monitor '$monitor'" >&2; continue
-    fi
-
-    bar_wmname=$(lemonbuddy "$bar" -c "$config" --print-wmname)
-
-    if [[ "$bar_wmname" ]]; then
-      echo "Got Lemonbuddy WM_NAME '$bar_wmname' for bar '$bar'"
-    else
-      echo "Could not get Lemonbuddy WM_NAME for bar '$bar', skipping..." >&2; continue
-    fi
-
-    if lemonbuddy -h | grep -q "pipe=FILE"; then
-      lemonbuddy_wrapper "$bar" -c "$config" &
-    else
-      lemonbuddy "$bar" -c "$config" &
-    fi
-
-    if lemonbuddy -h | grep -q "restack"; then
-      continue
-    fi
-
-    retries=0
-
-    while (( retries++ < 10 )); do
-      root_id=$(x11::monitor_root_wid "$monitor")
-      bar_id=$(x11::wmname_wid "$bar_wmname")
-
-      if [[ "$root_id" ]] && [[ "$bar_id" ]]; then
-        printf "Restacking bar window... (root=%s bar=%s)\n" "$root_id" "$bar_id"
-        xdo above -t "$root_id" "$bar_id"
-        break
-      else
-        printf "Could not get id of root/bar window (root=%s bar=%s)... retrying in 1s\n" "$root_id" "$bar_id" >&2
-        sleep 1
-      fi
-    done
-  done
-fi
+"${XDG_CONFIG_HOME}"/lemonbuddy/launch.sh --kill-all \
+  "${lemonbuddy_config:-${XDG_CONFIG_HOME}/lemonbuddy/bspwm.conf}" \
+  "${lemonbuddy_bars[*]}"
 
 # }}}
 
