@@ -143,6 +143,13 @@ if egrep -q -o 'background.*rgba\(([0-9,]+){3}.*0?\.[0-9]+\)$' "${XDG_CONFIG_HOM
 fi
 
 # }}}
+# Event listener :: monocle-to-tiled on window open/close {{{
+
+bspc subscribe node_manage node_unmanage | while read -r a event; do
+  bspc desktop "${event%% *}:focused" -l tiled
+done &
+
+# }}}
 # Event listener :: theme {{{
 
 if [[ -n "$(type theme::event_listeners 2>/dev/null)" ]]; then
