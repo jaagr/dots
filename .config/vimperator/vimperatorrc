@@ -109,7 +109,7 @@ command! sourcerc :source /home/jaagr/.config/vimperator/vimperatorrc
 " Browser settings
 "
 set! browser.urlbar.trimURLs=false
-set! browser.newtab.url=about:blank
+set! browser.newtab.url=about:home
 set! browser.tabs.onTop=true
 set! browser.tabs.showAudioPlayingIcon=false
 set! browser.tabs.warnOnClose=false

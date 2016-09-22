@@ -6,458 +6,497 @@
  */
 
 :root {
-    --accent: #fba922;
+  --fonts: 'Noto Sans', monospace;
 
-    --bg-light: #3d3d3d;
-    --fg-light: #fff;
+  --color-accent: #fba922;
 
-    --bg-dark: #1c1c1c;
-    --fg-dark: #998;
+  --color-bg-light: #3d3d3d;
+  --color-fg-light: #fff;
 
-    --statusbar-bg: #eee;
-    --statusbar-fg: #000;
-    --statusbar-font-size: 10px;
-    --statusbar-outline: #fff;
-    --statusbar-border: #bbb;
-    --statusbar-bmark-fg: #f00;
-    --statusbar-cmd-fg: #000;
-    --statusbar-cmd-prompt-fg: #f00;
+  --color-bg-dark: #1c1c1c;
+  --color-fg-dark: #998;
 
-    --tab-height: 30px;
-    --tab-max-width: 180px;
-    --tab-icon-size: 12px;
-    --tab-strip-margin: 0;
-    --tab-fonts: 'Noto Sans',monospace;
-    --tab-font-size: 8pt;
-    --tab-text-align: center;
-    --tab-active-border-height: 2px;
+  --statusbar-bg: #eee;
+  --statusbar-fg: #000;
+  --statusbar-font-size: 10px;
+  --statusbar-outline: #fff;
+  --statusbar-border: #bbb;
+  --statusbar-bmark-fg: #f00;
+  --statusbar-cmd-fg: #000;
+  --statusbar-cmd-prompt-fg: #f00;
 
-    --url-background: var(--bg-light);
-    --url-color: var(--fg-dark);
-    --url-height: 18px;
-    --url-right-margin: 6px;
-    --url-fonts: 'Noto Sans',monospace;
-    --url-font-size: 8pt;
-    --url-text-align: center;
-    --url-position: absolute;
-    /* absolute == top (under tabs) || fixed == bottom of browser */
+  --tab-height: 30px;
+  --tab-max-width: 180px;
+  --tab-icon-size: 12px;
+  --tab-strip-margin: 0;
+  --tab-fonts: var(--fonts);
+  --tab-font-size: 11px;
+  --tab-text-align: center;
+  --tab-active-border-height: 2px;
+
+  --url-background: var(--color-bg-light);
+  --url-color: var(--color-fg-dark);
+  --url-height: 18px;
+  --url-right-margin: 6px;
+  --url-fonts: var(--fonts);
+  --url-font-size: 10px;
+  --url-text-align: center;
+  --url-position: absolute; /* absolute == top (under tabs) || fixed == bottom of browser */
+
+  --bookmarks-font-size: 9px;
+  --bookmarks-bg: #2a2a2a;
+  --bookmarks-fg: #bbb;
+  --bookmarks-hover-fg: #bbb;
+
+  --spinner: url("file:///home/jaagr/.config/vimperator/spinner-dark.gif")
 }
 
-
 @-moz-document url(chrome://browser/content/browser.xul) {
-    /* URL-BAR */
-    #back-button, #forward-button, #back-button *, #forward-button *, #identity-box, #urlbar-reload-button, #urlbar-stop-button, #urlbar-go-button,
-    #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,
-    #notification-popup-box, #new-tab-button, #private-browsing-indicator, #search-container, #nav-bar-overflow-button,
-    .tabs-newtab-button, .tab-close-button, .tab-close, .tab-throbber, .tab-background-start, .tab-background-end,
-    #pocket-button, #loop-button, #social-share-button, #window-controls,
-    .tab-icon-image, .tab-icon-image:not([pinned]) { display: none !important; }
+  /* URL-BAR */
+  #back-button, #forward-button, #back-button *, #forward-button *, #identity-box, #urlbar-reload-button, #urlbar-stop-button, #urlbar-go-button,
+  #PanelUI-button, #bookmarks-menu-button, #downloads-button, #home-button, #stylish-toolbar-button, #abp-toolbarbutton,
+  #notification-popup-box, #new-tab-button, #private-browsing-indicator, #search-container, #nav-bar-overflow-button,
+  .tabs-newtab-button, .tab-close-button, .tab-close, /*.tab-throbber,*/ .tab-background-start, .tab-background-end,
+  #pocket-button, #loop-button, #social-share-button, #window-controls,
+  .tab-icon-image, .tab-icon-image:not([pinned]) { display: none !important; }
 
-    * { box-sizing: border-box !important; }
+  * { box-sizing: border-box !important; }
 
-    .tab-drop-indicator { margin-bottom: 0 !important; }
+  .tab-drop-indicator { margin-bottom: 0 !important; }
 
-    /* --- Main menu --- */
-    #toolbar-menubar {
-        opacity: .5;
-    }
-    #toolbar-menubar .menubar-text {
-        color: #fff !important;
-    }
+  /* --- Main menu --- */
+  #toolbar-menubar {
+    opacity: .5;
+  }
+  #toolbar-menubar .menubar-text {
+    color: #fff !important;
+  }
 
-    #navigator-toolbox {
-        background: var(--url-background) !important;
-    }
-    #navigator-toolbox * {
-        clip: auto !important;
-        clip-path: none !important;
-    }
+  #navigator-toolbox {
+    background: var(--url-background) !important;
+  }
+  #navigator-toolbox * {
+    clip: auto !important;
+    clip-path: none !important;
+  }
 
-    #nav-bar {
-        position: var(--url-position) !important; bottom: 0 !important;
-        width: 100% !important; height: var(--url-height) !important;
-        margin: 0 !important; background: transparent !important;
-    }
-    #nav-bar-customization-target, #urlbar-container, #urlbar {
-        margin: 0 !important; padding: 0 !important;
-        width: 100% !important; height: 100% !important;
-        border-radius: 0 !important;
-    }
-    #nav-bar-customization-target {
-        position: absolute !important; top: -1px !important;
-        left: 0 !important; height: calc(100% - 1px) !important;
-        /* (bottom margin - height switch +/-) */
-    }
-    #urlbar {
-        border: none !important; padding: 0 2px 0 8px !important;
-        background: var(--url-background) !important;
-        color: var(--url-color) !important;
-        font-family: var(--url-fonts) !important;
-        font-size: var(--url-font-size) !important;
-        text-align: var(--url-text-align) !important;
-        height: 100% !important;
-    }
-
-
-    .urlbar-textbox-container .urlbar-input-box .textbox-input {
-        height: var(--url-height) !important;
-    }
-
-    /* --- Comment out the section below to make the url-bar visible --- */
-    #nav-bar {
-        width: 0 !important; height: 0 !important;
-        position: fixed !important; left: -1px !important; top: -1px !important;
-        overflow: hidden !important; visibility: hidden !important;
-    }
-
-    /* TABS */
-    .tabbrowser-tab[fadein]:not([pinned]) {
-        min-width: 100px !important;
-        max-width: var(--tab-max-width) !important;
-    }
-
-    tab {
-        font-family: var(--tab-fonts) !important;
-        height: var(--tab-height) !important;
-        min-height: var(--tab-height) /!important;
-        background: var(--bg-dark) !important;
-        color: var(--fg-dark) !important;
-        font-size: var(--tab-font-size);
-        text-shadow: none !important;
-        text-align: var(--tab-text-align) !important;
-    }
-
-    .tabbrowser-tab label {
-        padding: 0 22px 2px 22px !important;
-        text-transform: lowercase;
-    }
-
-    #tabbrowser-tabs .tabbrowser-tab[pinned]       { width: 48px !important; }
-    #tabbrowser-tabs .tabbrowser-tab[pinned] label { display: none !important; }
-
-    #tabbrowser-tabs .tabbrowser-tab .tab-icon-image {
-        margin: 0 -10px 0 16px !important;
-        width: var(--tab-icon-size) !important;
-        height: var(--tab-icon-size) !important;
-    }
-
-    .tabbrowser-tab *, .tabs-newtab-button * {
-        background: none !important;
-        list-style-image: none !important;
-        margin: 0 0 0 0 !important;
-        padding: 0 0 0 0 !important;
-        -moz-appearance: none !important;
-    }
-
-    #alltabs-button {
-        margin-left: -10px !important;
-    }
-
-    #tabbrowser-tabs .tab-stack {
-       text-align: center !important;
-    }
-    #tabbrowser-tabs .tabbrowser-tab[pinned] .tab-stack {
-        height: var(--tab-height) !important;
-        width: 100% !important;
-    }
-    #tabbrowser-tabs .tabbrowser-arrowscrollbox,
-    #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox {
-        max-height: var(--tab-height) !important;
-    }
-
-    #tabbrowser-tabs .tab-stack[flex] {
-       text-align: var(--tab-text-align) !important;
-    }
-
-    .tabbrowser-tab[selected="true"] .tab-stack {
-        background: var(--bg-light) !important;
-        color: var(--fg-light) !important;
-        border-radius: 0px !important;
-        position: relative !important;
-        border-top: var(--tab-active-border-height) solid var(--accent) !important;
-    }
-
-    #TabsToolbar, #tabbrowser-   tabs {
-        -moz-appearance: none !important;
-        height: var(--tab-height) !important;
-        min-height: var(--tab-height)!important;
-        margin: 0 var(--tab-strip-margin) !important;
-        background: var(--bg-dark) !important;
-    }
-    #TabsToolbar::after {
-        display: none !important;
-    }
-    .tabbrowser-tab::before,
-    .tabbrowser-tab::after {
-        background: none !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
+  #nav-bar {
+    position: var(--url-position) !important; bottom: 0 !important;
+    width: 100% !important; height: var(--url-height) !important;
+    margin: 0 !important; background: transparent !important;
+  }
+  #nav-bar-customization-target, #urlbar-container, #urlbar {
+    margin: 0 !important; padding: 0 !important;
+    width: 100% !important; height: 100% !important;
+    border-radius: 0 !important;
+  }
+  #nav-bar-customization-target {
+    position: absolute !important; top: -1px !important;
+    left: 0 !important; height: calc(100% - 1px) !important;
+    /* (bottom margin - height switch +/-) */
+  }
+  #urlbar {
+    border: none !important; padding: 0 2px 0 8px !important;
+    background: var(--url-background) !important;
+    color: var(--url-color) !important;
+    font-family: var(--url-fonts) !important;
+    font-size: var(--url-font-size) !important;
+    text-align: var(--url-text-align) !important;
+    height: 100% !important;
+  }
 
 
-    #navigator-toolbox::after {
-        height: 2px !important;
-        background: var(--bg-light) !important;
-    }
+  .urlbar-textbox-container .urlbar-input-box .textbox-input {
+    height: var(--url-height) !important;
+  }
 
-    #liberator-separator {
-        height: 0px !important;
-        background: var(--bg-light) !important;
-        border-top: 0 !important;
-    }
+  /* --- Comment out the section below to make the url-bar visible --- */
+  #nav-bar {
+    width: 0 !important; height: 0 !important;
+    position: fixed !important; left: -1px !important; top: -1px !important;
+    overflow: hidden !important; visibility: hidden !important;
+  }
 
+  /* TABS */
+  .tabbrowser-tab[fadein]:not([pinned]) {
+    min-width: 100px !important;
+    max-width: var(--tab-max-width) !important;
+  }
 
+  tab {
+    font-family: var(--tab-fonts) !important;
+    height: var(--tab-height) !important;
+    min-height: var(--tab-height) /!important;
+    background: var(--color-bg-dark) !important;
+    color: var(--color-fg-dark) !important;
+    font-size: var(--tab-font-size);
+    text-shadow: none !important;
+    text-align: var(--tab-text-align) !important;
+  }
 
-    /*---- Bookmarks bar -----*/
-    #PersonalToolbar {
-        background: #2a2a2a none !important;
-        color: #fff !important;
-    }
-    #personal-bookmarks {
-        font-size: 9px;
-        background-color: transparent !important;
-        padding-left: 15px;
-    }
-    #personal-bookmarks .toolbarbutton-menu-dropmarker {
-        margin-left: 7px !important;
-    }
-    #personal-bookmarks [context="toolbar-context-menu"] .toolbarbutton-text,
-    #personal-bookmarks [type="menu"] .toolbarbutton-text {
-        font-weight: bold !important;
-    }
-    #personal-bookmarks .toolbarbutton-icon {
-        display: none !important;
-    }
-    #personal-bookmarks .toolbarbutton-text {
-        margin-left: 4px !important;
-    }
-    toolbarbutton {
-        -moz-appearance: none !important;
-        color: #888 !important;
-    }
-    toolbarbutton:not(#toggle-button--supportlastpasscom-lastpass-button):hover {
-        text-decoration: underline !important;
-    }
-    toolbarbutton:hover {
-        cursor: pointer;
-    }
-    toolbarbutton:hover .toolbarbutton-text,
-    toolbarbutton:hover .toolbarbutton-icon {
-        color: #fff !important;
-    }
-    toolbarbutton:not(#toggle-button--supportlastpasscom-lastpass-button):hover {
-        filter: brightness(300%);
-    }
+  .tabbrowser-tab label {
+    padding: 0 22px 2px 22px !important;
+    text-transform: lowercase;
+  }
 
+  #tabbrowser-tabs .tabbrowser-tab[pinned]     { width: 48px !important; }
+  #tabbrowser-tabs .tabbrowser-tab[pinned] label { display: none !important; }
 
-    /* Menus */
-    menuitem + menuseparator, menu + menuseparator/*, .menu-iconic-left*/ {
-        display: none !important;
-    }
+  #tabbrowser-tabs .tabbrowser-tab .tab-icon-image {
+    margin: 0 -10px 0 16px !important;
+    width: var(--tab-icon-size) !important;
+    height: var(--tab-icon-size) !important;
+  }
 
-    /* Hide orange button */
-    #appmenu-toolbar-button, #appmenu-button-container { display: none !important; }
+  .tabbrowser-tab *, .tabs-newtab-button * {
+    background: none !important;
+    list-style-image: none !important;
+    margin: 0 0 0 0 !important;
+    padding: 0 0 0 0 !important;
+    -moz-appearance: none !important;
+  }
 
-    /* Hide status bar */
-    #status-bar, #statusbar-display, statuspanel { display: none !important; }
+  #alltabs-button {
+    margin-left: -10px !important;
+  }
 
-    /* Hide private browsing icon */
-    #main-window[privatebrowsingmode=temporary] #private-browsing-indicator,
-    #main-window[privatebrowsingmode=temporary] #private-browsing-indicator-titlebar {
-        display: none !important;
-    }
+  #tabbrowser-tabs .tab-stack {
+     text-align: center !important;
+  }
+  #tabbrowser-tabs .tabbrowser-tab[pinned] .tab-stack {
+    height: var(--tab-height) !important;
+    width: 100% !important;
+  }
+  #tabbrowser-tabs .tabbrowser-arrowscrollbox,
+  #tabbrowser-tabs .tabbrowser-arrowscrollbox .box-inherit.scrollbox-innerbox {
+    max-height: var(--tab-height) !important;
+  }
 
+  #tabbrowser-tabs .tab-stack[flex] {
+     text-align: var(--tab-text-align) !important;
+  }
 
+  .tabbrowser-tab[selected="true"] .tab-stack {
+    background: var(--color-bg-light) !important;
+    color: var(--color-fg-light) !important;
+    border-radius: 0px !important;
+    position: relative !important;
+    border-top: var(--tab-active-border-height) solid var(--color-accent) !important;
+  }
 
-
-    #liberator-bottombar {
-        border-top: 4px solid var(--statusbar-border) !important;
-        margin: 0 !important;
-        outline: 1px solid var(--statusbar-outline) !important;
-        padding: 0 12px !important;
-        background-color: var(--statusbar-bg) !important;
-    }
-    /* BEGIN INVERT */
-    /* #liberator-status-location {
-    /*     filter: invert(75%);
-    /* }
-    /* #liberator-bottombar {
-    /*     background-color: #111 !important;
-    /*     border-top-color: #222 !important;
-    /*     outline-color: #333 !important;
-    /* }
-    /* END INVERT */
-    #liberator-bottombar-deck {
-        background-color: transparent !important;
-    }
-    #liberator-statusline {
-        background-color: transparent !important;
-    }
-
-    /* Vimperator icon style */
-    #liberator-statusline:not([customizing="true"]) {
-        font-family: monospace !important;
-        font-family: "Noto Sans";
-        margin: 0 !important;
-        color: var(--statusbar-fg) !important;
-        font-weight: bold !important;
-        font-size: var(--statusbar-font-size) !important;
-        padding: 0 !important;
-        background-color: transparent !important;
-    }
-    #liberator-statusline > #liberator-status:not([customizing="true"]) :-moz-any(toolbarbutton) {
-        width: 16px !important;
-        height: 14px !important;
-        background-color: transparent !important;
-    }
-    #liberator-status-location {
-        color: var(--statusbar-fg) !important;
-        font-weight: bold !important;
-        font-size: var(--statusbar-font-size) !important;
-    }
-    #liberator-status-bookmark {
-        display: inline-block !important;
-        color: var(--statusbar-bmark-fg) !important;
-        padding-right: 8px !important;
-    }
-    #liberator-status {
-        padding: 0 !important;
-        background-color: transparent !important;
-    }
-    #liberator-status > * {
-        padding: 8px 3px 8px 5px !important;
-        margin: 0 !important;
-    }
-
-    .liberator-container > * {
-        font-family: 'Noto Sans' !important;
-        font-size: var(--statusbar-font-size) !important;
-    }
-    #liberator-message {
-        height: auto !important;
-        padding: 2px 8px !important;
-        border: 0px none !important;
-    }
-    #liberator-message-toolbar {
-        padding: 0 !important;
-    }
-    #liberator-statusline spacer {
-        outline: none !important;
-        margin: 0 !important;
-    }
-    #liberator-commandline {
-        font-family: "Noto Sans" !important;
-        font-size: var(--statusbar-font-size) !important;
-        font-weight: bold !important;
-        padding-left: 0px !important;
-    }
-    #liberator-commandline-command {
-        color: var(--statusbar-cmd-fg) !important;
-    }
-    #liberator-commandline-prompt {
-        padding-right: 8px !important;
-        background-position: center 12px !important;
-        color: var(--statusbar-cmd-prompt-fg) !important;
-        opacity: .6;
-    }
-    #liberator-completions-content,
-    #liberator-multiline-output-content,
-    #liberator-multiline-input {
-        background-color: transparent !important;
-    }
+  #TabsToolbar, #tabbrowser-   tabs {
+    -moz-appearance: none !important;
+    height: var(--tab-height) !important;
+    min-height: var(--tab-height)!important;
+    margin: 0 var(--tab-strip-margin) !important;
+    background: var(--color-bg-dark) !important;
+  }
+  #TabsToolbar::after {
+    display: none !important;
+  }
+  .tabbrowser-tab::before,
+  .tabbrowser-tab::after {
+    background: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
 
 
-    window[sizemode="fullscreen"] #liberator-statusline { display: none !important; }
-    window[sizemode="fullscreen"] #liberator-bottombar  {
-        margin-top: 0px !important;
-        transition: 1s ease !important; transition-delay: .3s !important;
-    }
+  #navigator-toolbox::after {
+    height: 2px !important;
+    background: var(--color-bg-light) !important;
+  }
 
-    /* Tabgroup margin top fix */
-    #tab-view-deck #tab-view { margin: 24px 12px 12px 12px !important; }
-    #tab-view-deck { background: var(--bg-light) !important ; }
+  #liberator-separator {
+    height: 0px !important;
+    background: var(--color-bg-light) !important;
+    border-top: 0 !important;
+  }
+
+  /* changes loading tab icons */
+  .tab-throbber {
+    display: inline-block;
+    transform: translate(8px, 0px);
+  }
+  .tab-throbber[busy] {
+    animation-name: none !important;
+    background: var(--spinner) 50% !important;
+    opacity: 1;
+  }
+  .tab-throbber[progress] {
+    animation-name: none !important;
+    background: var(--spinner) 50% !important;
+    opacity: 1;
+  }
+
+  /*---- Bookmarks bar -----*/
+  #PersonalToolbar {
+    background: var(--bookmarks-bg) none !important;
+    color: var(--bookmarks-fg) !important;
+  }
+  #personal-bookmarks {
+    font-size: var(--bookmarks-font-size);
+    background-color: transparent !important;
+    padding-left: 15px;
+  }
+  #personal-bookmarks .toolbarbutton-menu-dropmarker {
+    display: none !important;
+  }
+  #personal-bookmarks [type="menu"]:before {
+    content: "+";
+    position: absolute;
+    font-weight: bold;
+    color: var(--color-accent);
+    margin-right: -2px !important;
+  }
+  #personal-bookmarks [context="toolbar-context-menu"] .toolbarbutton-text,
+  #personal-bookmarks [type="menu"] .toolbarbutton-text {
+    font-weight: bold !important;
+    margin-right: 4px !important;
+  }
+  #personal-bookmarks .toolbarbutton-icon {
+    display: none !important;
+  }
+  #personal-bookmarks .toolbarbutton-text {
+    margin-left: 4px !important;
+  }
+  #personal-bookmarks toolbarbutton .icon {
+  }
+  toolbarbutton {
+    -moz-appearance: none !important;
+    color: var(--bookmarks-fg) !important;
+  }
+  toolbarbutton:not(#toggle-button--supportlastpasscom-lastpass-button):hover {
+    /* text-decoration: underline !important; */
+  }
+  toolbarbutton:hover {
+    cursor: pointer;
+  }
+  toolbarbutton:hover .toolbarbutton-text,
+  toolbarbutton:hover .toolbarbutton-icon {
+    color: var(--bookmarks-fg-hover) !important;
+  }
+  toolbarbutton:not(#toggle-button--supportlastpasscom-lastpass-button):hover {
+    filter: brightness(300%);
+  }
+  #bookmarks-menu-button {
+  }
+
+  /* Menus */
+  menuitem + menuseparator, menu + menuseparator/*, .menu-iconic-left*/ {
+    display: none !important;
+  }
+
+  /* Hide orange button */
+  #appmenu-toolbar-button, #appmenu-button-container { display: none !important; }
+
+  /* Hide status bar */
+  #status-bar, #statusbar-display, statuspanel { display: none !important; }
+
+  /* Hide private browsing icon */
+  #main-window[privatebrowsingmode=temporary] #private-browsing-indicator,
+  #main-window[privatebrowsingmode=temporary] #private-browsing-indicator-titlebar {
+    display: none !important;
+  }
 
 
-    #xmarks-toolbar {
-        width: 19px;
-        height: 19px;
-        background: transparent url("file:///home/jaagr/.config/vimperator/icon-xmarks.png") no-repeat 50% 50%;
-        background-size: 60%;
-        display: block;
-        margin: 0 5px !important;
-    }
-    #xmarks-toolbar:hover {
-        background-image: url("file:///home/jaagr/.config/vimperator/icon-xmarks-c.png") !important;
-    }
-    #xmarks-toolbar .toolbarbutton-icon {
-        display: none !important;
-    }
+  #liberator-bottombar {
+    border-top: 4px solid var(--statusbar-border) !important;
+    margin: 0 !important;
+    outline: 1px solid var(--statusbar-outline) !important;
+    padding: 0 12px !important;
+    background-color: var(--statusbar-bg) !important;
+  }
+  /* BEGIN INVERT */
+  /*
+  #liberator-status-location {
+    filter: invert(75%);
+  }
+  #liberator-bottombar {
+    background-color: #111 !important;
+    border-top-color: #222 !important;
+    outline-color: #333 !important;
+  }
+  /* END INVERT */
+  #liberator-bottombar-deck {
+    background-color: transparent !important;
+  }
+  #liberator-statusline {
+    background-color: transparent !important;
+  }
 
-    #toggle-button--supportlastpasscom-lastpass-button {
-        width: 19px;
-        height: 19px;
-        background: url("file:///home/jaagr/.config/vimperator/icon-lastpass.png") no-repeat 50% 50%;
-        background-size: 60%;
-        display: block;
-        margin: 0 8px 0 5px !important;
-    }
-    #toggle-button--supportlastpasscom-lastpass-button:hover {
-        /*filter: brightness(-300%);*/
-        -moz-appearance: none !important;
-        background-image: url("file:///home/jaagr/.config/vimperator/icon-lastpass-c.png") !important;
-        box-shadow: none !important;
-        list-style-image: none !important;
-    }
-    #toggle-button--supportlastpasscom-lastpass-button .toolbarbutton-badge-stack {
-        background: transparent none !important;
-    }
-    #toggle-button--supportlastpasscom-lastpass-button:hover .toolbarbutton-badge-stack {
-        background: transparent none !important;
-    }
-    #toggle-button--supportlastpasscom-lastpass-button:hover .toolbarbutton-badge {
-        text-decoration: -moz-none;
-    }
-    #toggle-button--supportlastpasscom-lastpass-button .toolbarbutton-icon {
-        display: none !important;
-    }
-    #toggle-button--supportlastpasscom-lastpass-button .toolbarbutton-badge {
-        -moz-transform: translate(-15px, -8px);
-        background: transparent none !important;
-        box-shadow: none !important;
-        color: rgb(255, 92, 92) !important;
-    }
+  /* Vimperator icon style */
+  #liberator-statusline:not([customizing="true"]) {
+    font-family: monospace !important;
+    font-family: var(--fonts);
+    margin: 0 !important;
+    color: var(--statusbar-fg) !important;
+    font-weight: bold !important;
+    font-size: var(--statusbar-font-size) !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
+  #liberator-statusline > #liberator-status:not([customizing="true"]) :-moz-any(toolbarbutton) {
+    width: 16px !important;
+    height: 14px !important;
+    background-color: transparent !important;
+  }
+  #liberator-status-location {
+    color: var(--statusbar-fg) !important;
+    font-weight: bold !important;
+    font-size: var(--statusbar-font-size) !important;
+  }
+  #liberator-status-bookmark {
+    display: inline-block !important;
+    color: var(--statusbar-bmark-fg) !important;
+    padding-right: 8px !important;
+  }
+  #liberator-status {
+    padding: 0 !important;
+    background-color: transparent !important;
+  }
+  #liberator-status > * {
+    padding: 8px 3px 8px 5px !important;
+    margin: 0 !important;
+  }
+
+  .liberator-container > * {
+    font-family: var(--fonts) !important;
+    font-size: var(--statusbar-font-size) !important;
+  }
+  #liberator-message {
+    height: auto !important;
+    padding: 2px 8px !important;
+    border: 0px none !important;
+  }
+  #liberator-message-toolbar {
+    padding: 0 !important;
+  }
+  #liberator-statusline spacer {
+    outline: none !important;
+    margin: 0 !important;
+  }
+  #liberator-commandline {
+    font-family: var(--fonts) !important;
+    font-size: var(--statusbar-font-size) !important;
+    font-weight: bold !important;
+    padding-left: 0px !important;
+  }
+  #liberator-commandline-command {
+    color: var(--statusbar-cmd-fg) !important;
+  }
+  #liberator-commandline-prompt {
+    padding-right: 8px !important;
+    background-position: center 12px !important;
+    color: var(--statusbar-cmd-prompt-fg) !important;
+    opacity: .6;
+  }
+  #liberator-completions-content,
+  #liberator-multiline-output-content,
+  #liberator-multiline-input {
+    background-color: transparent !important;
+  }
+
+
+  window[sizemode="fullscreen"] #liberator-statusline { display: none !important; }
+  window[sizemode="fullscreen"] #liberator-bottombar  {
+    margin-top: 0px !important;
+    transition: 1s ease !important; transition-delay: .3s !important;
+  }
+
+  /* Tabgroup margin top fix */
+  #tab-view-deck #tab-view { margin: 24px 12px 12px 12px !important; }
+  #tab-view-deck { background: var(--color-bg-light) !important ; }
+
+
+  #xmarks-toolbar {
+    width: 19px;
+    height: 19px;
+    background: transparent url("file:///home/jaagr/.config/vimperator/icon-xmarks.png") no-repeat 50% 50%;
+    background-size: 60%;
+    display: block;
+    margin: 0 5px !important;
+  }
+  #xmarks-toolbar:hover {
+    background-image: url("file:///home/jaagr/.config/vimperator/icon-xmarks-c.png") !important;
+  }
+  #xmarks-toolbar .toolbarbutton-icon {
+    display: none !important;
+  }
+
+  #toggle-button--supportlastpasscom-lastpass-button {
+    width: 19px;
+    height: 19px;
+    background: url("file:///home/jaagr/.config/vimperator/icon-lastpass.png") no-repeat 50% 50%;
+    background-size: 60%;
+    display: block;
+    margin: 0 8px 0 5px !important;
+  }
+  #toggle-button--supportlastpasscom-lastpass-button:hover {
+    /*filter: brightness(-300%);*/
+    -moz-appearance: none !important;
+    background-image: url("file:///home/jaagr/.config/vimperator/icon-lastpass-c.png") !important;
+    box-shadow: none !important;
+    list-style-image: none !important;
+  }
+  #toggle-button--supportlastpasscom-lastpass-button .toolbarbutton-badge-stack {
+    background: transparent none !important;
+  }
+  #toggle-button--supportlastpasscom-lastpass-button:hover .toolbarbutton-badge-stack {
+    background: transparent none !important;
+  }
+  #toggle-button--supportlastpasscom-lastpass-button:hover .toolbarbutton-badge {
+    text-decoration: -moz-none;
+  }
+  #toggle-button--supportlastpasscom-lastpass-button .toolbarbutton-icon {
+    display: none !important;
+  }
+  #toggle-button--supportlastpasscom-lastpass-button .toolbarbutton-badge {
+    -moz-transform: translate(-15px, -8px);
+    background: transparent none !important;
+    box-shadow: none !important;
+    color: #ff5c5c !important;
+  }
 }
 
 /* AGENT_SHEET */
 @-moz-document url-prefix(http://), url-prefix(https://), url-prefix(chrome://liberator/), url-prefix(file:///) {
-    /* R */
-    /*scrollbar[orient="vertical"], scrollbar thumb[orient="vertical"],*/
-    scrollbar[orient="horizontal"], scrollbar thumb[orient="horizontal"] {
-        display: none !important; /* block | none (enable scrollbar) */
-    }
+  /* R */
+  /*scrollbar[orient="vertical"], scrollbar thumb[orient="vertical"],*/
+  scrollbar[orient="horizontal"], scrollbar thumb[orient="horizontal"] {
+    display: none !important; /* block | none (enable scrollbar) */
+  }
 }
 
 /* background color around/behind pictures opened in firefox (require html namespace on top) */
 @-moz-document regexp("(https?://|file:///)(.*)\\.(jpeg|jpg|gif|png|apng|svg|bmp|webm|webp)") {
-    body { background: var(--bg-light) !important; }
-    img.decoded { background-color: transparent !important; }
+  body { background: var(--color-bg-light) !important; }
+  img.decoded { background-color: transparent !important; }
 }
 
-/* About:Blank background */
+/* about:blank background */
 @-moz-document url(about:blank) {
-    html,body { background: var(--bg-light) !important; }
+  html,body { background: var(--color-bg-light) !important; }
+}
+
+/* about:newtab background */
+@-moz-document url(about:newtab) {
+  html,body { background: var(--color-bg-light) !important; }
 }
 
 /* about:stylish-edit toolbar style */
 @-moz-document regexp("about:stylish-edit.*") {
-    #main-area, textbox { background: var(--bg-light) !important; }
-    textbox, grid, columns, rows, separator { border: 0 !important; }
+  #main-area, textbox { background: var(--color-bg-light) !important; }
+  textbox, grid, columns, rows, separator { border: 0 !important; }
 
-    .devtools-toolbarbutton {
-        background: var(--bg-dark) !important;
-        color: var(--fg-light) !important;
-    }
+  .devtools-toolbarbutton {
+    background: var(--color-bg-dark) !important;
+    color: var(--color-fg-light) !important;
+  }
 }
 
-/*----- Fix for white flash on new tab -----*/
-tabbrowser tabpanels, #appcontent > #content { background: var(--bg-light) !important; }
+/* fix flash when opening new tabs */
+browser, browser.display.background_color, tabbrowser tabpanels, #appcontent > #content {
+  background-color: var(--color-bg-light) !important;
+  background-image: none !important;
+}
