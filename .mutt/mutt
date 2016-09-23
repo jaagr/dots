@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+import os, re, sys
+from tempfile import mkstemp
+
+password = os.popen('lpass show --field=app_token outlook.com | tr -d "\n"').read()
+
+configuration_file = '%s/.mutt/muttrc.tpl' % os.environ['HOME']
+mutt_base_dir = os.path.dirname(configuration_file)
+muttrc = '%s/muttrc' % (mutt_base_dir,)
+
+# read current config
+with open(configuration_file) as f:
+    config = f.read()
+
+# replace placeholder with real password
+config = re.sub('PASSWORD', password, config)
+
+# store config in temporary file
+fd, temp_config = mkstemp()
+
+with open(temp_config, 'w') as f:
+    f.write(config)
+
+# symlink the temp file
+status = os.system('ln -sf %s %s' % (temp_config, muttrc))
+
+# run mutt
+status = os.system('/usr/bin/mutt')
+
+# clean up
+os.close(fd)
+os.remove(temp_config)
+
+try:
+    os.remove(muttrc)
+except OSError, e:
+    pass
+
+sys.exit(status)

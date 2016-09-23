@@ -1,0 +1,74 @@
+# vim:ft=muttrc
+
+# # set default
+#   color normal      yellow         default
+#
+# # main colors
+#   color status      black         red
+#   color indicator   brightwhite   magenta
+#   color tree        blue          default
+#   color error       brightred     default
+#   color message     brightyellow  red
+#
+# #
+# # message states
+# #
+# # order matters here since some states override others
+# #
+#
+# # messages to me
+# uncolor index "~P"
+#   color index brightwhite default "~P"
+#
+# # threads containing new messages
+# uncolor index "~(~N)"
+#   color index brightwhite default "~(~N)"
+#
+# # new messages themselves
+# uncolor index "~N"
+#   color index red default "~N"
+#
+# # tagged
+# uncolor index "~T"
+#   color index brightgreen default "~T"
+#
+# # deleted
+# uncolor index "~D"
+#   color index brightred default "~D"
+#
+# # set up the headers
+#   color header     red           default "^from:"
+#   color header     red           default "^to:"
+#   color header     yellow        default "^cc:"
+#   color header     magenta       default "^date:"
+#   color header     brightblue    default "^subject:"
+#
+# # message bodies
+#   color message    red   default
+#   color attachment brightblue    default
+#   color search     red           brightblack
+#   color signature  magenta       default
+#   color tilde      blue          default
+#
+# # urls
+#   color body       red    default "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
+#   color body       red    default "(^|<| )(www|http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
+#
+# # smileys, the right way and the backward-ass euro way
+#   color body       magenta default "(^| )+(|[<>|])[8;:](|[^ ])[)(/|DOPS]( |$)+"
+#   color body       magenta default "(^| )+[)(/|DOPS](|[^ ])[8;:](|[<>|])( |$)+"
+#
+# # *bold*, _underline_, and /italic/
+#   color body       magenta    default "(^| )\\*[^*]+\\*( |$)"
+#   color body       magenta    default "(^| )_[^_]+_( |$)"
+#   color body       magenta    default "(^| )/[^/]+/( |$)"
+#
+# # quote blocks
+#   color quoted     magenta       default
+#   color quoted1    red           default
+#   color quoted2    brightblue    default
+#   color quoted3    magenta       default
+#   color quoted4    red           default
+#   color quoted5    brightblue    default
+#   color quoted6    magenta       default
+#   color quoted7    red           default

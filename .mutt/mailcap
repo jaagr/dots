@@ -1,0 +1,16 @@
+#
+# Mime type handlers
+#
+application/octet-stream; ~/.mutt/contrib/view_attachment.sh %s "-"
+
+# Webpages
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+
+# Images
+image/jpg; ~/.mutt/contrib/view_attachment.sh %s jpg
+image/jpeg; ~/.mutt/contrib/view_attachment.sh %s jpg
+image/png; ~/.mutt/contrib/view_attachment.sh %s png
+image/gif; ~/.mutt/contrib/view_attachment.sh %s gif
+
+# PDF
+application/pdf; ~/.mutt/contrib/view_attachment.sh %s pdf
