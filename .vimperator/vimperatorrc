@@ -29,7 +29,17 @@ hi HintActive background-color: #3970ed; color: #fff;
 
 hi CmdLine color: #000;
 hi -a CmdLine transition: all 0.25s;
-hi -a CmdLine background-color: transparent;
+
+hi CompItem background-color: #fff;
+
+hi StatusLine background-color: #e5e5e5 !important;
+hi InfoMsg background-color: #e5e5e5 !important;
+hi MoreMsg background-color: #e5e5e5 !important;
+hi WarningMsg background-color: #e5e5e5 !important;
+hi Message background-color: #e5e5e5 !important;
+hi Question background-color: #e5e5e5 !important;
+hi Normal background-color: #e5e5e5 !important;
+hi Title background-color: transparent; display: block; padding: 8px 15px;
 
 "
 " Keybindings
@@ -85,8 +95,9 @@ set messagetimeout=2000
 " don't focus any "input" elements automatically when open pages.
 set focuscontent
 
-" autocomplete with smart Firefox stuff and open tabs
-set complete=lt
+" autocomplete buffers, history, some-firefox-thingy and open tabs
+"set complete=lt
+set complete=hblt
 
 " search
 set ignorecase

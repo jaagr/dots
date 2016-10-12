@@ -13,7 +13,7 @@
   --fg-dark: #998;
   --menubar-fg: #fff;
   --menubar-font-size: 8pt;
-  --statusbar-bg: #eee;
+  --statusbar-bg: #e5e5e5;
   --statusbar-fg: #000;
   --statusbar-font-size: 10px;
   --statusbar-outline: #fff;
@@ -613,3 +613,4 @@ browser, browser.display.background_color, tabbrowser tabpanels, #appcontent > #
   background-color: var(--bg-light) !important;
   background-image: none !important;
 }
+
