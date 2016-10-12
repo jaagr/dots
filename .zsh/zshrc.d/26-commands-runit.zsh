@@ -1,3 +1,16 @@
+function svlocal {
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: $0 command service"
+    return
+  fi
+  local args=("${*[@]:1:(-1)}")
+  local service="${LOCAL_VAR}/service/${*##* }"
+  [[ ${#args[@]} -eq 0 ]] && {
+    args+=("status")
+  }
+  sv "${args[@]}" "$service"
+}
+
 function svlogcurrent {
   log=$(ps -C runsvdir -o command --no-heading)
   echo $log
@@ -5,18 +18,18 @@ function svlogcurrent {
 }
 
 function svlogtail {
-  if [ $# = 0 ]; then
-    cat /var/log/sv/*/current | sort -u
+  if [ $# -eq 0 ]; then
+    tail -n5 /var/log/sv/*/current
     tail -Fq -n0 /var/log/sv/*/current | uniq
   else
     old=
     cur=
     for log; do
-      if [ -d /var/log/$log ]; then
-        if ls /var/log/$log/*.[us] >/dev/null 2>&1; then
-          old="$old /var/log/$log/*.[us]"
+      if [ -d /var/log/sv/$log ]; then
+        if ls /var/log/sv/$log/*.[us] >/dev/null 2>&1; then
+          old="$old /var/log/sv/$log/*.[us]"
         fi
-        cur="$cur /var/log/$log/current"
+        cur="$cur /var/log/sv/$log/current"
       else
         echo "no logs for $log" 1>&2
         return 1
@@ -28,8 +41,8 @@ function svlogtail {
 }
 
 function svlogtail-local {
-  if [ $# = 0 ]; then
-    cat $LOCAL_VAR/svlog/*/current | sort -u
+  if [ $# -eq 0 ]; then
+    tail -n5 $LOCAL_VAR/svlog/*/current
     tail -Fq -n0 $LOCAL_VAR/svlog/*/current | uniq
   else
     old=

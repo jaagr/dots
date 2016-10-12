@@ -45,6 +45,10 @@ function zsh-colors {
   done
 }
 
+function font-siji-preview {
+  xfd -fn '-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1' -rows 11 -columns 58
+}
+
 # function xvnc-serve {
 #   $LOCAL_ETC/xorg/xvnc
 #   $LOCAL_ETC/bspwm/bspwmrc

@@ -1,5 +1,5 @@
-unalias dots
-unalias dots-ls-untracked
+[[ "${aliases[dots]}" ]] && unalias dots
+[[ "${aliases[dots-ls-untracked]}" ]] && unalias dots-ls-untracked
 
 function dots {
   # If a git alias is a passed as the first argument
@@ -24,4 +24,3 @@ function dots-ls-untracked {
   }
   dots status -u "$@"
 }
-compdef _git dots-ls-untracked="git-status"

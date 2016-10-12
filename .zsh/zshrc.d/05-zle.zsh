@@ -43,6 +43,14 @@ function zle::redo-cmd {
 
 zle -N zle::redo-cmd
 
+function zle::redo-cmd-if-almost-empty {
+  [[ ${#BUFFER} -gt 2 ]] && return
+  zle up-history
+  zle accept-line
+}
+
+zle -N zle::redo-cmd-if-almost-empty
+
 function zle::redo-cmd-if-empty {
   [[ ${#BUFFER} -gt 0 ]] && return
   zle up-history

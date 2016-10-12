@@ -1,3 +1,5 @@
+echo
+
 # Compile the completion dump to increase startup speed.
 { zcompdump="$ZDOTDIR/.zcompdump"
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
@@ -5,24 +7,17 @@
   fi
 } &!
 
+# Check for package updates
+# if command -v checkforupdates >/dev/null && ! [[ -e /tmp/checkforupdates.lock ]]; then
+#   touch /tmp/checkforupdates.lock
+#   checkforupdates
+# fi
+
 # Launch X at tty1 login
-if ! [[ "$DISPLAY" ]] && [[ "${TTY##*tty}" == "1" ]]; then
-  printf "\n"
-
-  # Check for package updates
-  [[ -x $HOME/bin/checkforupdates ]] && $HOME/bin/checkforupdates
-
-  printf "\n"
-
-  if [[ -x $HOME/bin/logger ]]; then
-    printf "%s" "$($HOME/bin/logger info "Press enter to launch WM (Ctrl-C to skip to terminal)...")"
+if ! [[ "$DISPLAY" ]] && [[ "${TTY##*tty}" == "1" ]] && command -v wm_launcher >/dev/null; then
+  if command -v runlocked >/dev/null; then
+    runlocked wm_launcher
   else
-    printf "%s" "Press enter to launch WM (Ctrl-C to skip to terminal)..."
+    wm_launcher
   fi
-
-  [[ "$X11_INIT" ]] && {
-    read -k 1 && printf "\n" && launch_wm='true'
-  }
 fi
-
-${launch_wm:-false} && $X11_INIT

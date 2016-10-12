@@ -32,7 +32,8 @@ util::vi-bind-ins '^X^E' edit-command-line   # ctrl+x ctrl+e
 util::vi-bind-ins '^r' history-incremental-search-backward
 
 # autoload -U up-line-or-search
-util::vi-bind-ins 'kk' zle::redo-cmd-if-empty  # Tab
+util::vi-bind-ins 'kk' zle::redo-cmd-if-empty
+util::vi-bind-ins 'kj' zle::redo-cmd-if-almost-empty
 
 # Fix keyboard
 bindkey "${terminfo[khome]}" beginning-of-line

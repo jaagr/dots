@@ -3,7 +3,6 @@
 #
 
 setopt sunkeyboardhack
-#setopt complete_aliases
 
 fpath=(
   $ZDOTDIR/functions
@@ -17,9 +16,5 @@ done
 unset rc
 
 prompt jaagr
-
-# compsys initialization
-autoload -Uz compinit
-compinit
 
 # vim:fdm=marker
