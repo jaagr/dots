@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-config=$(ps -C sxhkd -o cmd --no-heading | sed -r 's/.*-c ([^ ]+).*/\1/')
-
-if [[ -z $config ]]; then
-  "Could not get the configuration path" | popup_notification
-  exit 1
-fi

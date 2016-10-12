@@ -136,15 +136,13 @@ super + @button{1-3}
 
 # Reload configuration
 super + Escape
-  $LOCAL_ETC/dunst/bin/reload ; \
+  $LOCAL_ETC/dunst/reload ; \
     sleep 0.1 ; \
-  $LOCAL_ETC/sxhkd/bin/reload && \
-    notify-send -u low "sxhkd reloaded successfully" || \
-    notify-send -u low "failed to reload sxhkd"; \
-  $LOCAL_ETC/bspwm/bin/reload && \
+  $LOCAL_ETC/sxhkd/reload ;  \
+  $LOCAL_ETC/bspwm/reload && \
     notify-send -u low "bspwm reloaded successfully" || \
     notify-send -u low "failed to reload bspwm"; \
-  $LOCAL_ETC/compton/bin/reload && \
+  $LOCAL_ETC/compton/reload && \
     notify-send -u low "compton reloaded successfully" || \
     notify-send -u low "failed to reload compton"; \
   bash -c 'sleep 3 && xdotool click 1' &
@@ -157,7 +155,7 @@ super + shift + Escape
 # Audio {{{
 
 @XF86AudioMute
-  $LOCAL_BIN/toggle_mute
+  $LOCAL_BIN/mute
 
 @XF86Audio{Raise,Lower}Volume
   amixer -q -c 0 set Master playback 1dB{+,-}
@@ -174,11 +172,16 @@ super + shift + Escape
 super + @button{8,9}
   mpc -q {prev,next}
 
+super + {KP_Add,KP_Subtract}
+  $LOCAL_BIN/volume_change {+,-}5
+
 # }}}
 # Application launcher {{{
 
 super + Return
   termite 2>/dev/null
+super + shift + Return
+  urxvt -e zsh
 
 super + d
   $LOCAL_BIN/rofi_run
@@ -220,14 +223,14 @@ super + F8
 
 super + ctrl + shift + r
   $LOCAL_ETC/termite/reload; \
-  $LOCAL_ETC/compton/bin/reload; \
-  $LOCAL_ETC/sxhkd/bin/reload; \
+  $LOCAL_ETC/compton/reload; \
+  $LOCAL_ETC/sxhkd/reload; \
   silent! xrdb -merge -I$LOCAL_ETC/xorg $LOCAL_ETC/xorg/xresources
 
 # Convenient scroll in terminal
 alt + shift + {j,k}
   xmatch -x "termite\([0-9]+\)-\+-zsh\([0-9]+\)" && \
-    xdotool keyup Alt_L j k key Page_{Down,Up} keydown Alt_L
+    xdotool keyup j k key Page_{Down,Up}
 
 super + Pause
   $LOCAL_BIN/random_wallpaper "/storage/media/wallpapers/rave_collection2"
