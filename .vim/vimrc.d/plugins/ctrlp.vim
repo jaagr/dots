@@ -13,7 +13,7 @@ let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_user_command = {
   \ "types": {
-    \ 1: [".git/", "git --git-dir=%s/.git ls-files -oc --exclude-standard"]
+    \ 1: [".git/", "git --git-dir=%s/.git ls-files -oc --exclude-standard | grep -vE '\.(old|bak|tmp)\/'"]
     \ },
   \ "fallback": "$HOME/.vim/bin/ctrlp_fallback %s"
   \ }

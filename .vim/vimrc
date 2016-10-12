@@ -1,12 +1,11 @@
 "
 " Setup vim environment
-
-if &compatible
-  set nocompatible
-endif
+"
+set nocompatible
 
 set runtimepath^=$HOME/.vim
 set runtimepath^=$HOME/.vim/after
+set runtimepath^=$HOME/.vim/autoload
 set runtimepath^=$HOME/.vim/contrib
 set runtimepath^=$HOME/.vim/plugin
 set runtimepath^=/usr/share/vim/vimfiles/eclim
@@ -33,9 +32,9 @@ endif
 
 Plug 'ervandew/supertab'
 
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'zchee/deoplete-clang'
-"Plug 'Rip-Rip/clang_complete'
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'zchee/deoplete-clang'
+" Plug 'Rip-Rip/clang_complete'
 "Plug 'zchee/deoplete-go'
 "Plug 'zchee/deoplete-go', { 'do': 'make'}
 "Plug 'zchee/deoplete-jedi' " python
@@ -97,15 +96,18 @@ Plug 'chrisbra/Colorizer'
 Plug 'ap/vim-css-color'
 Plug 'KabbAmine/vCoolor.vim'
 
-Plug 'MattesGroeger/vim-bookmarks'
+"Plug 'MattesGroeger/vim-bookmarks'
 
 "Plug 'tek/proteome.nvim' (doesn't work - fix the remote host stuff)
 Plug 'amix/vim-zenroom2'
 Plug 'junegunn/goyo.vim'
 Plug 'jaagr/vim-brogrammer-theme'
+Plug 'MvanDiemen/ghostbuster'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'roosta/srcery'
 Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
-Plug 'joshdick/airline-onedark.vim'
+Plug 'delehef/Apprentice'
 
 "Plug 'baeuml/summerfruit256.vim'
 Plug 'chriskempson/base16-vim'
@@ -119,6 +121,21 @@ Plug 'ScrollColors'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'chrisbra/unicode.vim'
 "Plug 'mhinz/vim-startify'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'vhdirk/vim-cmake'
+Plug 'dpwright/vim-tup'
+
+Plug 'lekv/vim-clewn'
+
+"Plug 'vim-scripts/Conque-GDB'
+"Plug 'critiqjo/lldb.nvim'
+
+Plug 'kassio/neoterm'
+
+Plug 'rhysd/vim-clang-format'
+
+"Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 

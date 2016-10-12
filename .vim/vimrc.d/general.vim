@@ -4,6 +4,10 @@
 
 scriptencoding utf-8
 
+if !has('nvim')
+  set nocompatible
+endif
+
 set directory=$XDG_CACHE_HOME/vim
 
 " Allow execution of directory specific .vimrc
@@ -156,3 +160,6 @@ endif
 " Load default tags
 set tags+=$HOME/.vim/tags/c
 set tags+=$HOME/.vim/tags/cpp
+
+" Strip gvim
+set guioptions=ma

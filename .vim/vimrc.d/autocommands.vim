@@ -12,6 +12,12 @@ augroup LocalAutocommands
   " Auto-reload vim configs
   "au BufWritePost .vimrc,vimrc,*vim/configs/?* source %
 
+  " Reload xresources on save
+  au BufWritePost xresources silent! exec '!$LOCAL_ETC/xorg/xrdb_reload'
+
+  " Reload sxhkd on save
+  au BufWritePost sxhkdrc silent! exec '!$LOCAL_ETC/sxhkd/reload'
+
   if !exists("g:rtrim_whitespace_on_save") || g:rtrim_whitespace_on_save == 1
     au BufWritePre * :%s/\s\+$//e
   endif

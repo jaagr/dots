@@ -2,7 +2,9 @@
 " Helper and utility functions
 "
 
+command! Vimrc :execute ':e ~/.vim/vimrc'
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! FormatClang :execute ':ClangFormat'
 
 func! CmdLine(str) " {{{
   exe "menu Foo.Bar :" . a:str
