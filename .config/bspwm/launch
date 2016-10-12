@@ -14,8 +14,7 @@ run_count=0
 while true; do
   run_count=$((run_count+1))
   export BSPWM_COUNTER=$run_count
-  bspwm > "$XDG_CACHE_HOME/bspwm/stdout" 2> "$XDG_CACHE_HOME/bspwm/stderr" || break
-  killall -q bspc
+  bspwm >"$XDG_CACHE_HOME/bspwm/stdout" 2>"$XDG_CACHE_HOME/bspwm/stderr" || break
 done
 
 # Kill off any children

@@ -10,7 +10,7 @@ fi
 killall -q lemonbuddy lemonbar xdrawrect
 
 if [[ -s "$BSPWM_STATE" ]]; then
-  "$LOCAL_ETC/bspwm/bin/restore_state"; exit 0
+  "$LOCAL_ETC/bspwm/restore_state"; exit 0
 fi
 
 # Config vars {{{
@@ -105,8 +105,9 @@ bspc rule -a Pcmanfm "state=floating"
 bspc rule -a Gimp "state=floating"
 bspc rule -a Steam "state=floating"
 bspc rule -a Yad "state=floating"
+bspc rule -a float "state=floating"
 
-bspc config external_rules_command "$LOCAL_ETC/bspwm/bin/external_rules"
+bspc config external_rules_command "$LOCAL_ETC/bspwm/external_rules"
 
 # }}}
 
@@ -131,16 +132,16 @@ function pop_window_state {
 
 # Only create the listener if the termite config uses a background color
 # with an alpha value lower than 1.0
-if egrep -q -o 'background.*rgba\(([0-9,]+){3}.*0?\.[0-9]+\)$' "${XDG_CONFIG_HOME}/termite/config"; then
-  bspc subscribe desktop_layout node_focus | while read -r event; do
-    if [[ $(bspc query -T -d | json layout | tr -d '"') == "monocle" ]]; then
-      bspc query -N -n | pop_window_state _NET_WM_STATE_HIDDEN
-      bspc query -N -n '.local.!focused' | push_window_state _NET_WM_STATE_HIDDEN
-    else
-      bspc query -N -d | pop_window_state _NET_WM_STATE_HIDDEN
-    fi
-  done &
-fi
+#if egrep -q -o 'background.*rgba\(([0-9,]+){3}.*0?\.[0-9]+\)$' "${XDG_CONFIG_HOME}/termite/config"; then
+#  bspc subscribe desktop_layout node_focus | while read -r event; do
+#    if [[ $(bspc query -T -d | json layout | tr -d '"') == "monocle" ]]; then
+#      bspc query -N -n | pop_window_state _NET_WM_STATE_HIDDEN
+#      bspc query -N -n '.local.!focused' | push_window_state _NET_WM_STATE_HIDDEN
+#    else
+#      bspc query -N -d | pop_window_state _NET_WM_STATE_HIDDEN
+#    fi
+#  done &
+#fi
 
 # }}}
 # Event listener :: monocle-to-tiled on window open/close {{{
@@ -160,7 +161,7 @@ fi
 
 # Lemonbuddy {{{
 
-"${XDG_CONFIG_HOME}"/lemonbuddy/launch.sh --kill-all \
+"${XDG_CONFIG_HOME}"/lemonbuddy/launch --kill-all \
   "${lemonbuddy_config:-${XDG_CONFIG_HOME}/lemonbuddy/bspwm.conf}" \
   "${lemonbuddy_bars[*]}"
 

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Runit service
+if sv check "$SVDIR"/bspwm | egrep -q "^ok: run"; then
+  sv restart "$SVDIR"/bspwm >/dev/null
+
+  if ! sv -w3 check "$SVDIR"/bspwm >/dev/null; then
+    exit 1
+  fi
+
+  notify-send -u low "runit: bspwm reloaded successfully"
+
+# Standalone daemon
+else
+  killall -q bspc lemonbuddy lemonbar xdrawrect
+  "$LOCAL_ETC/bspwm/save_state"
+  bspc quit $?
+fi

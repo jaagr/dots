@@ -3,7 +3,9 @@ wid="$1"
 class="$2"
 instance="$3"
 
-if [[ "$class" == "chromium" ]]; then
+if xprop -id "$id" WM_NAME | grep \"floatme\"; then
+  echo "state=floating"
+elif [[ "$class" == "chromium" ]]; then
   role=$(xprop -id "$wid" | awk '/WM_WINDOW_ROLE/ {print $3}' | tr -d '"')
 
   case "$role" in
