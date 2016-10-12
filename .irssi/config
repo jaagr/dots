@@ -128,6 +128,7 @@ aliases = {
   host = "userhost";
   last = "lastlog";
   say = "msg *";
+  users = "names";
   N = "names";
   M = "msg";
   T = "topic";
@@ -438,7 +439,7 @@ settings = {
     recode_fallback = "ISO8859-1";
     recode_transliterate = "yes";
     recode = "yes";
-    timestamp_format = "%H:%M";
+    timestamp_format = "%Y-%m-%d %H:%M";
     settings_autosave = "no";
   };
   "irc/dcc" = {
