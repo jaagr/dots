@@ -1,0 +1,14 @@
+! parkd 
+! dkeg 2015
+
+#define bg   #30292d
+#define fg   #c2b7aa
+#define blk  #332d30
+#define bblk #413c40
+#define red  #89453c
+#define grn  #59713f
+#define ylw  #b29d6a
+#define blu  #464e59
+#define mag  #614e44
+#define cyn  #4f545b
+#define wht  #c2b7aa

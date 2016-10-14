@@ -1,0 +1,14 @@
+! squares 
+! dkeg 2015
+
+#define bg    #231d1c
+#define fg    #bebcbc
+#define blk   #241e1d
+#define bblk  #4c4847
+#define red   #9b5208
+#define grn   #75922c
+#define ylw   #978341
+#define blu   #5e6676
+#define mag   #824219
+#define cyn   #4e7479
+#define wht   #bebcbc

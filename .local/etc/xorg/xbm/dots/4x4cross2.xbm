@@ -1,0 +1,4 @@
+#define 4x4cross2_width 4
+#define 4x4cross2_height 4
+static unsigned char 4x4cross2_bits[] = {
+   0x04, 0x01, 0x08, 0x02 };

@@ -1,0 +1,18 @@
+! -- Title:   owl 
+! -- Author:  dkeg 
+! -- Created: 2016
+#define bg    #2f2b2c
+#define fg    #e5e5e5
+#define blk   #353031
+#define bblk  #434041
+#define red   #5a5a5a
+#define bred  #da5b2c
+#define grn   #656565
+#define bgrn  #da5b2c
+#define ylw   #7f7f7f
+#define bylw  #f7f7f7
+#define blu   #989898
+#define mag   #b1b1b1
+#define cyn   #cacaca
+#define wht   #e5e5e5
+#define bwht  #FFFFFF

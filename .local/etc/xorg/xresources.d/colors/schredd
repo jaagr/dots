@@ -1,0 +1,14 @@
+! dkeg 
+! schredd 
+
+#define bg      #2c2832
+#define fg      #dbd7b8
+#define blk     #332d38
+#define bblk    #6f6b75
+#define red     #bf6257
+#define grn     #82a37c
+#define ylw     #b7a16c
+#define blu     #6d6a80
+#define mag     #825969
+#define cyn     #938e8f
+#define wht     #dbd7b8

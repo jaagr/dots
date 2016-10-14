@@ -1,0 +1,14 @@
+! harbing 
+! dkeg 2015
+
+#define bg   #38302b
+#define fg   #c8b49d
+#define blk  #473d36
+#define bblk #6b635e
+#define red  #bd6151
+#define grn  #6e9383
+#define ylw  #d7b18a
+#define blu  #8a8f94
+#define mag  #bd9a81
+#define cyn  #91a1a5
+#define wht  #c8b49d

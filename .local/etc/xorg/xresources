@@ -2,6 +2,28 @@
 #include "xresources.d/vt100"
 #include "xresources.d/xft"
 #include "xresources.d/xterm"
-!#include "xresources.d/colors/jellybeans"
+
+!#include "xresources.d/contrib/base16/base16-atelierdune.dark"
+!#include "xresources.d/contrib/slate"
+!#include "xresources.d/colors/dkg"
+
+#include "xresources.d/colors/jellybeans"
+!#include "xresources.d/colors/heroku"
+
+! URxvt*font:                    xft:envypn:pixelsize=12:weight=bold
+URxvt*font:                    xft:Hack:size=7:weight=bold
+URxvt*lineSpace:               1
+URxvt*loginShell:              true
+URxvt*termName:                rxvt-256color
+URxvt.clipboard.autocopy:      true
+URxvt.depth:                   32
+URxvt.internalBorder:          25
+URxvt.iso14755:                false
+URxvt.iso14755_52:             false
+URxvt.keysym.Shift-Control-C:  perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:  perl:clipboard:paste
+URxvt.letterSpace:             0
+URxvt.perl-ext-common:         default,clipboard
+URxvt.scrollBar:               false
 
 ! vim:ft=xdefaults

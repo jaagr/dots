@@ -1,0 +1,38 @@
+!Foreground & Background
+*.background:         #121419
+*.foreground:         #999CA1
+
+!Misc
+*.highlightColor:     #757F8E
+*.highlightTextColor: #15171A
+*.cursorColor:        #758A8E
+*.pointerColor:       #999CA1
+*.colorBD:            #B8BCC2
+*.colorUL:            #B59279
+*.underlineColor:     #B6937A
+
+!Black
+*.color0:             #505152
+*.color8:             #7C7D7E
+!Red
+*.color1:             #B63F53
+*.color9:             #E8909B
+!Green
+*.color2:             #51997A
+*.color10:            #9EDCBB
+!Yellow
+*.color3:             #B27B42
+*.color11:            #DCC58F
+!Blue
+*.color4:             #5C95B3
+*.color12:            #A7C8D4
+!Magenta
+*.color5:             #B85A86
+*.color13:            #D9A4C8
+!Cyan
+*.color6:             #83A6A7
+*.color14:            #BBD7D2
+!White
+*.color7:             #A4A6A7
+*.color15:            #E8E6E4
+

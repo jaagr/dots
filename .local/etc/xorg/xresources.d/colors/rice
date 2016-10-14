@@ -1,0 +1,29 @@
+*cursorColor:                         #917154
+*colorIT:                             #E3AB8D
+*colorBD:                             #F0E5DF
+*colorUL:                             #cd546c
+*VT100.colorBDMode:                   true
+*VT100.colorBD:                       red
+*VT100.colorULMode:                   true
+*VT100.colorUL:                       magenta
+*VT100.veryBoldColors:                6
+
+
+*foreground:                          #eddcd3
+*background:                          #181818
+*color0:                              #252525
+*color8:                              #454545
+*color1:                              #CD546C
+*color9:                              #EF545F
+*color2:                              #A5AF86
+*color10:                             #BDC79E
+*color3:                              #CD7860
+*color11:                             #E88773
+*color4:                              #7A9388
+*color12:                             #94B1A3
+*color5:                              #917154
+*color13:                             #989584
+*color6:                              #767D75
+*color14:                             #9DA69E
+*color7:                              #C2C2A8
+*color15:                             #DBDAC1

@@ -1,0 +1,15 @@
+! -- Author:  dkeg
+! -- Created: 2016
+! -- Title:   petal 
+
+#define bg    #24231f
+#define blk   #282622
+#define bblk  #3b3b38
+#define fg    #94936e
+#define red   #785326
+#define grn   #516941
+#define ylw   #827834
+#define blu   #62675f
+#define mag   #6a5632
+#define cyn   #4e5d4d
+#define wht   #94936e

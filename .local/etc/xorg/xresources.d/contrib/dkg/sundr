@@ -1,0 +1,14 @@
+! -- Title:   sundr
+! -- Author:  dkeg
+! -- Created: 2016
+#define bg    #2b2320
+#define blk   #302724
+#define bblk  #403836
+#define fg    #bab1a1
+#define red   #734948
+#define grn   #768157
+#define ylw   #aa9375
+#define blu   #585b63
+#define mag   #6f5a56
+#define cyn   #7d8486
+#define wht   #bab1a1

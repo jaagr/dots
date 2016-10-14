@@ -1,0 +1,15 @@
+! -- Title:     slate
+! -- Author:    dkeg
+! -- Created:   2016
+
+#define bg    #242a2b
+#define blk   #242b2c
+#define bblk  #393f40
+#define fg    #939381
+#define red   #674839
+#define grn   #6e794f
+#define ylw   #8d8150
+#define blu   #3b474e
+#define mag   #554c41
+#define cyn   #495355
+#define wht   #939381

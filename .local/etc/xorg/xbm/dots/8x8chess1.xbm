@@ -1,0 +1,4 @@
+#define 8x8chess1_width 8
+#define 8x8chess1_height 8
+static unsigned char 8x8chess1_bits[] = {
+   0x0f, 0x0f, 0x0f, 0x0f, 0xf0, 0xf0, 0xf0, 0xf0 };

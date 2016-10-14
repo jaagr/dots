@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+source bootstrap.sh
+
+include utils/log.sh
+include utils/log/banner.sh
+
+bootstrap::finish
+
+function main
+{
+  # Make $HOME the session root
+  cd ~ || exit
+
+  # Slam a notice on the wall
+  log::banner 30 " " "41;37"
+  log::banner 30 "Launching X11 at $X11_VT" "41;37"
+  log::banner 30 " " "41;37"
+
+  printf "\n"
+
+  # if ps -C Xorg >/dev/null; then
+  #   vt=${X11_VT##*vt}
+  #   display=${X11_DISPLAY##*:}
+  #   X11_SERVER=${X11_SERVER//$X11_DISPLAY/:$(( $display + 1 ))}
+  #   X11_SERVER=${X11_SERVER//$X11_VT/vt$(( vt - 1 ))}
+  # fi
+
+  # shellcheck disable=SC2086
+  if ! [ -e "${SVDIR}/x11" ] || ! sv check "${SVDIR}/x11" >/dev/null 2>&1; then
+    log::info "Launching standalone X session"
+    $X11_CLIENT -- $X11_SERVER >${XDG_CACHE_HOME}/xorg/init.log 2>&1
+  else
+    log::info "Launching X service unit"
+    sv start ${SVDIR}/x11 >/dev/null
+  fi
+
+  echo -e "\n\033[31;1m-- returning to shell\033[0m"
+}
+
+main "$@"

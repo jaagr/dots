@@ -1,0 +1,14 @@
+! dkeg 2015
+! bulb 
+
+#define bg    #242223
+#define fg    #c3b495
+#define blk   #2a2829
+#define bblk  #4f4e4e
+#define red   #ab6d4e
+#define grn   #88885d
+#define ylw   #c8a168
+#define blu   #45626e
+#define mag   #7c5545
+#define cyn   #456e66
+#define wht   #c3b495

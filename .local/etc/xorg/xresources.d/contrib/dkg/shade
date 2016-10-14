@@ -1,0 +1,14 @@
+! dkeg 
+! shade 
+
+#define bg      #2d2d2d
+#define fg      #f7f7df
+#define blk     #2e2e2e
+#define bblk    #4e4e4e
+#define red     #c77369
+#define grn     #93988a
+#define ylw     #d0c57a
+#define blu     #747f89
+#define mag     #825969
+#define cyn     #938e8f
+#define wht     #f7f7df

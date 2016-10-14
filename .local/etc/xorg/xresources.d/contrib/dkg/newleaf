@@ -1,0 +1,14 @@
+! newleaf 
+! dkeg 2015
+
+#define bg     #1d241a
+#define fg     #bcbebb
+#define blk    #21291d
+#define bblk   #4d534a
+#define red    #c14d38
+#define grn    #a0ce52
+#define ylw    #be9e61
+#define blu    #4c7e89
+#define mag    #814d61
+#define cyn    #79a69d
+#define wht    #bcbebb

@@ -1,0 +1,14 @@
+! -- Title:   urban 
+! -- Author:  original ver dkeg - modified by fs0ciety
+! -- Created: 2016
+#define bg    [92]#312e39
+#define blk   #33303b
+#define fg    #c0a79a
+#define bblk  #4f4b58
+#define red   #87404f
+#define grn   #4c9882
+#define ylw   #71949a
+#define blu   #615772
+#define mag   #783e57
+#define cyn   #554757
+#define wht   #c0a79a

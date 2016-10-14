@@ -1,0 +1,14 @@
+! dkeg 2015
+! branch 
+
+#define bg    #2d1e17
+#define fg    #cfc1a9
+#define blk   #32221a
+#define bblk  #564a45
+#define red   #c2562d
+#define grn   #96a65e
+#define ylw   #d29b5a
+#define blu   #3b8e8c
+#define mag   #c47e5b
+#define cyn   #639a90
+#define wht   #cfc1a9

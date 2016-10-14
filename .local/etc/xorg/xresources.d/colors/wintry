@@ -1,0 +1,14 @@
+! dkeg 2015
+! wintry (mtdt)
+
+#define bg    #37273a
+#define fg    #c3bec3
+#define blk   #453149
+#define bblk  #5e5261
+#define red   #9c595c
+#define grn   #8ba07a
+#define ylw   #b3a67d
+#define blu   #7B6677
+#define mag   #83466D
+#define cyn   #899079
+#define wht   #c3bec3

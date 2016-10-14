@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Replace the fugly cross
+xsetroot -cursor_name left_ptr
+
+# Set root background
+#xsetroot -bitmap xbm/various/aeterna.xbm -bg '#001B49' -fg '#474739'
+xsetroot -solid black
+
+# Merge xresources
+xrdb -merge -I"$X11_HOME" "${X11_HOME}/xresources"
+
+if [ -e "${CURRENT_THEME}/xresources" ]; then
+  xrdb -override "${CURRENT_THEME}/xresources"
+fi

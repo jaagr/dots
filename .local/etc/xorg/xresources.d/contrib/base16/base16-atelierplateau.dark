@@ -1,0 +1,50 @@
+! Base16 Atelier Plateau
+! Scheme: Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/plateau)
+
+#define base00 #1b1818
+#define base01 #292424
+#define base02 #585050
+#define base03 #655d5d
+#define base04 #7e7777
+#define base05 #8a8585
+#define base06 #e7dfdf
+#define base07 #f4ecec
+#define base08 #ca4949
+#define base09 #b45a3c
+#define base0A #a06e3b
+#define base0B #4b8b8b
+#define base0C #5485b6
+#define base0D #7272ca
+#define base0E #8464c4
+#define base0F #bd5187
+
+*foreground:   base05
+*background:   base00
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06

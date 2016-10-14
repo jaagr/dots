@@ -1,8 +1,13 @@
 #!/usr/bin/env sh
-export X11_HOME="$LOCAL_ETC/xorg"
-export X11_INIT="$X11_HOME/init.sh"
+# shellcheck disable=2155
+
+test -n "${LOCAL_ETC}" || . "${HOME}/.profile"
+test -n "${LOCAL_ETC}" || exit 1
+
+export X11_HOME="${LOCAL_ETC}/xorg"
+export X11_INIT="${X11_HOME}/launch"
 
 export X11_DISPLAY=":0"
 export X11_VT="vt12"
-export X11_CLIENT="/usr/bin/xinit $X11_HOME/xsession"
-export X11_SERVER="/usr/bin/Xorg -keeptty $X11_DISPLAY $X11_VT -nolisten TCP"
+export X11_CLIENT="/usr/bin/xinit ${X11_HOME}/xsession"
+export X11_SERVER="/usr/bin/Xorg $X11_DISPLAY $X11_VT -nolisten TCP"

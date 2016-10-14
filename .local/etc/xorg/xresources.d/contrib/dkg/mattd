@@ -1,0 +1,14 @@
+! dkeg 2015
+! mattd
+
+#define bg      #1b1b1a
+#define fg      #b0b0a2
+#define blk     #222221
+#define bblk    #484847
+#define red     #996140
+#define ylw     #9d8554
+#define grn     #799c6a
+#define blu     #5f656a
+#define mag     #7b6064
+#define cyn     #566e6b
+#define wht     #b0b0a2

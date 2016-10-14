@@ -1,0 +1,15 @@
+! -- Author:  dkeg
+! -- Created: 2016
+! -- Title:   book
+
+#define bg    #262429
+#define blk   #363633
+#define bblk  #4a4a47
+#define fg    #c4c3c0
+#define red   #993f3c
+#define grn   #78855e
+#define ylw   #937b5a
+#define blu   #415265
+#define mag   #885458
+#define cyn   #646666
+#define wht    #c4c3c0

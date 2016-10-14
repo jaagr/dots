@@ -1,0 +1,50 @@
+! Base16 Spacemacs
+! Scheme: Nasser Alshammari (https://github.com/nashamri/spacemacs-theme)
+
+#define base00 #1f2022
+#define base01 #282828
+#define base02 #444155
+#define base03 #585858
+#define base04 #b8b8b8
+#define base05 #a3a3a3
+#define base06 #e8e8e8
+#define base07 #f8f8f8
+#define base08 #f2241f
+#define base09 #ffa500
+#define base0A #b1951d
+#define base0B #67b11d
+#define base0C #2d9574
+#define base0D #4f97d7
+#define base0E #a31db1
+#define base0F #b03060
+
+*foreground:   base02
+*background:   base07
+*cursorColor:  base02
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06

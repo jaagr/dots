@@ -1,0 +1,15 @@
+! -- Author:  dkeg
+! -- Created: 2016
+! -- Title:   provrb 
+
+#define bg    #343031
+#define blk   #393637
+#define bblk  #575556
+#define fg    #c0bfbf
+#define red   #654c51
+#define grn   #7f8281
+#define ylw   #8d7766
+#define blu   #5b697e
+#define mag   #7b6b75
+#define cyn   #7d8592
+#define wht   #c0bfbf

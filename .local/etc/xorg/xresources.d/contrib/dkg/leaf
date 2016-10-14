@@ -1,0 +1,14 @@
+! leaf 
+! dkeg 2015
+
+#define bg    #2f3627
+#define fg    #b9bcb7
+#define blk   #353b30
+#define bblk  #6d7267
+#define red   #d06e5c
+#define grn   #abbb52
+#define ylw   #d4b06c
+#define blu   #4c7e89
+#define mag   #814d61
+#define cyn   #79a69d
+#define wht   #b9bcb7

@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+# Sync clipboards (some bad decisions really stick around...)
+autocutsel -fork
+autocutsel -selection PRIMARY -fork

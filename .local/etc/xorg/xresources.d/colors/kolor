@@ -1,0 +1,50 @@
+#define kolorBlack      #262626
+#define kolorDarkGray   #808080
+#define kolorRed        #d75f87
+#define kolorGreen      #87d787
+#define kolorYellow     #d7d787
+#define kolorBlue       #87afff
+#define kolorMagenta    #d787d7
+#define kolorCyan       #5fd7ff
+#define kolorOrange     #d7af87
+#define kolorViolet     #af87ff
+#define kolorBrown      #af8787
+#define kolorLightGray  #c6c6c6
+#define kolorWhite      #e4e4e4
+
+!------------------------------------------------------------------------------
+! General Colors
+
+*foreground:                               kolorWhite
+*background:                               kolorBlack
+
+!black
+*color0:                                   kolorDarkGray
+*color8:                                   kolorDarkGray
+!red
+*color1:                                   kolorRed
+*color9:                                   kolorRed
+!green
+*color2:                                   kolorGreen
+*color10:                                  kolorGreen
+!yellow
+*color3:                                   kolorYellow
+*color11:                                  kolorYellow
+!blue
+*color4:                                   kolorBlue
+*color12:                                  kolorBlue
+!magenta
+*color5:                                   kolorMagenta
+*color13:                                  kolorMagenta
+!cyan
+*color6:                                   kolorCyan
+*color14:                                  kolorCyan
+!white
+*color7:                                   kolorWhite
+*color15:                                  kolorLightGray
+
+
+!------------------------------------------------------------------------------
+! Man pages colors
+
+

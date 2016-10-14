@@ -1,0 +1,15 @@
+! -- Author:  dkeg
+! -- Created: 2016
+! -- Title:   spire 
+
+#define bg    #262f33
+#define fg    #b5b699
+#define blk   #273034
+#define bblk  #464c50
+#define red   #804f4e
+#define grn   #68786c
+#define ylw   #948d65
+#define blu   #475257
+#define mag   #74636a
+#define cyn   #47575f
+#define wht   #b5b699

@@ -1,0 +1,40 @@
+*background:    #151515
+*foreground:    #C7C79D
+
+! black
+*color0:        #222222
+*color8:        #666666
+
+! red
+*color1:        #ca637c
+*color9:        #d9799b
+
+! green
+*color2:        #b7ce42
+*color10:       #cce164
+
+! yellow
+*color3:        #f1ab57
+*color11:       #dbd162
+
+! blue
+*color4:        #66aabb
+*color12:       #aaccbb
+
+! magenta
+*color5:        #9f8fbc
+*color13:       #c2a1ff
+
+! cyan
+*color6:        #7ea79f
+*color14:       #9bc4bd
+
+! white
+*color7:        #C7C79D
+*color15:       #e4e4b9
+
+!Colored man pages
+URxvt.colorIT:  #9f8fbc
+URxvt.colorBD:  #9bc4bd
+URxvt.colorUL:  #b7ce42
+

@@ -1,0 +1,14 @@
+! bark 
+! dkeg 2015
+
+#define bg    #30272b
+#define fg    #bcb8ba
+#define blk   #362c30
+#define bblk  #443c40
+#define red   #925633
+#define grn   #697234
+#define ylw   #978341
+#define blu   #5e6676
+#define mag   #694e63
+#define cyn   #47676e
+#define wht   #bcb8ba

@@ -1,0 +1,14 @@
+! poly 
+! dkeg 2015
+
+#define bg    #1f1a0c
+#define fg    #a5a39d
+#define blk   #252119
+#define bblk  #625e54
+#define red   #a47b3d
+#define grn   #7b9764
+#define ylw   #aead5d
+#define blu   #628e8f
+#define mag   #ad9d52
+#define cyn   #709681
+#define wht   #a5a39d

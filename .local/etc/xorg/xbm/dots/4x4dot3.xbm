@@ -1,0 +1,4 @@
+#define 4x4dot3_width 4
+#define 4x4dot3_height 4
+static unsigned char 4x4dot3_bits[] = {
+   0x00, 0x06, 0x06, 0x00 };

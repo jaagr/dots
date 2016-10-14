@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+# Configure outputs
+if stat -c %N /etc/X11/xorg.conf.d/20-gpu.conf 2>/dev/null | egrep -q "(optimus|nvidia).conf"; then
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
+  xrandr --auto
+elif stat -c %N /etc/X11/xorg.conf.d/20-gpu.conf 2>/dev/null | egrep -q intel.conf && command -v gpu-change >/dev/null; then
+  gpu-change off
+fi
+
+if xrandr --query | grep -q "^HDMI-1 connected"; then
+  xrandr --auto
+  xrandr --output HDMI-1 --auto --above eDP-1 --set audio force-dvi
+fi
+
+# set the screen server to blank at 1h
+xset s 3600 3600
+xset s noblank
+
+# Turn off power management
+xset -dpms

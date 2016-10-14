@@ -1,0 +1,13 @@
+! novmbr 
+
+#define bg    #1f1510
+#define fg    #c7b8ac
+#define blk   #241812
+#define bblk  #4b433f
+#define red   #9f6434
+#define grn   #9dac5f
+#define ylw   #cca75f
+#define blu   #2f7d7c
+#define mag   #b5896e
+#define cyn   #52877f
+#define wht   #c7b8ac

@@ -1,65 +1,23 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-  for f in /etc/X11/xinit/xinitrc.d/*; do
-    [ -s "$f" ] && . "$f"
-  done
-  unset f
+if [ -e "${SVDIR}/x11" ] && sv check "${SVDIR}/x11" >/dev/null 2>&1; then
+  exec 2>&1
+else
+  exec >"${XDG_CACHE_HOME}"/xorg/xsession.log 2>&1
 fi
 
-# shellcheck disable=SC2010
-if ls -l /etc/X11/xorg.conf.d/20-gpu.conf | grep -q /opt/etc/xorg/optimus.conf; then
-  xrandr --setprovideroutputsource modesetting NVIDIA-0
-  xrandr --auto
+for file in ${X11_HOME}/xsession.d/*; do
+  . "$file"
+done
+unset file
+
+if ! [ -e "${SVDIR}/x11" ] || ! sv check "${SVDIR}/x11" >/dev/null 2>&1; then
+  "${XDG_CONFIG_HOME}/dunst/launch" &
+  "${XDG_CONFIG_HOME}/compton/launch" &
+  "${XDG_CONFIG_HOME}/sxhkd/launch" "${XDG_CONFIG_HOME}/sxhkd/sxhkdrc.${X_WM:-bspwm}" &
+
+  exec "${XDG_CONFIG_HOME}/${X_WM:-bspwm}/launch" \
+    >"${XDG_CACHE_HOME}/xorg/wm.log" 2>&1
+else
+  touch /tmp/xsession_runit_loaded
 fi
-
-{ # Set keyboard layout and apply keymap changes
-  "$X11_HOME/xkbmaprc"
-
-  # Remap alt gr solo keypress to something useful
-  xcape -e "Alt_R=Alt_R|Mode_switch"
-
-  # Replace the fugly cross
-  xsetroot -cursor_name left_ptr
-
-  # Merge xresources
-  xrdb -merge -I"$X11_HOME" "$X11_HOME/xresources"
-
-  if [ -e "$CURRENT_THEME/xresources" ]; then
-    xrdb -override "$CURRENT_THEME/xresources"
-  fi
-
-  # set the screen server to blank at 1h
-  xset s 3600 3600
-  xset s noblank
-
-  # Turn off power management
-  xset -dpms
-
-  # Disable HDMI audio
-  xrandr --output HDMI1 --auto --above eDP1
-  xrandr --output HDMI1 --set audio force-dvi
-
-  # Laziness
-  numlockx
-
-  # Sync clipboards (some bad decisions really stick around...)
-  autocutsel -fork
-  autocutsel -selection PRIMARY -fork
-
-  # Set wallpaper
-  if [ -s "$HOME/.fehbg" ]; then
-    "$HOME/.fehbg"
-  elif [ -e "$HOME/.wallpapers/1.png" ]; then
-    feh --bg-center --image-bg black "$HOME/.wallpapers/1.png"
-  fi
-
-  # Launch daemons
-  ( sleep 1; "$LOCAL_ETC"/dunst/init.sh ) &
-  ( sleep 1; "$LOCAL_ETC"/sxhkd/init.sh "$LOCAL_ETC/sxhkd/sxhkdrc.${X_WM:-bspwm}" ) &
-  ( sleep 1; "$LOCAL_ETC"/compton/init.sh ) &
-
-} > "$XDG_CACHE_HOME/xorg/xsession.log" 2>&1
-
-# Launch the window manager
-exec "$LOCAL_ETC/${X_WM:-bspwm}/init.sh" >"$XDG_CACHE_HOME/xorg/wm.log" 2>&1

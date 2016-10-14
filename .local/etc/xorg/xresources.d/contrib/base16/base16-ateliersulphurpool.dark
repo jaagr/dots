@@ -1,0 +1,50 @@
+! Base16 Atelier Sulphurpool
+! Scheme: Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/sulphurpool)
+
+#define base00 #202746
+#define base01 #293256
+#define base02 #5e6687
+#define base03 #6b7394
+#define base04 #898ea4
+#define base05 #979db4
+#define base06 #dfe2f1
+#define base07 #f5f7ff
+#define base08 #c94922
+#define base09 #c76b29
+#define base0A #c08b30
+#define base0B #ac9739
+#define base0C #22a2c9
+#define base0D #3d8fd1
+#define base0E #6679cc
+#define base0F #9c637a
+
+*foreground:   base05
+*background:   base00
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06

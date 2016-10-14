@@ -1,0 +1,14 @@
+! designr
+! dkeg 2015
+
+#define bg    #20292d
+#define fg    #c4c4b5
+#define blk   #2b3135
+#define bblk  #4c5356
+#define red   #a66959
+#define grn   #769070
+#define ylw   #ac8d6e
+#define blu   #607a86
+#define mag   #8a757e
+#define cyn   #60867f
+#define wht   #c4c4b5

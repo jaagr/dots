@@ -1,0 +1,17 @@
+! -- Title:   fendr 
+! -- Author:  dkeg
+! -- Created: 2016
+#define bg    #262c1b
+#define fg    #c1c5bd
+#define blk   #2b321e
+#define bblk  #474c3e
+#define red   #7f5545
+#define grn   #677c54
+#define bgrn  #6b9c25
+#define ylw   #bba772
+#define bylw  #d6caaa
+#define blu   #6e6a5b
+#define mag   #92887e
+#define cyn   #7c7562
+#define wht   #cccdbd
+#define bwht  #e0e1d7

@@ -1,0 +1,14 @@
+! dkeg 2015
+! relax 
+
+#define bg    #312a36
+#define fg    #ccbfb3
+#define blk   #372f3d
+#define bblk  #5a545e
+#define red   #674f4a
+#define grn   #67786d
+#define ylw   #b08960
+#define blu   #5e6d79
+#define mag   #7d6969
+#define cyn   #6a7a76
+#define wht   #ccbfb3

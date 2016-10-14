@@ -1,0 +1,14 @@
+! -- Title:   chaires 
+! -- Author:  dkeg
+! -- Created: 2016
+#define bg    #383844
+#define fg    #c3c3c6
+#define blk   #3d3d49
+#define bblk  #4b4b56
+#define red   #a7664a
+#define grn   #6e8c6e
+#define ylw   #cba264
+#define blu   #535f6b
+#define mag   #775a62
+#define cyn   #576e68
+#define wht   #c3c3c6

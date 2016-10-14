@@ -1,0 +1,62 @@
+! Colors definition {{{
+#define   plain            #f8f6f2
+#define   snow             #ffffff
+#define   coal             #000000
+
+#define   brightgravel     #d9cec3
+#define   lightgravel      #998f84
+#define   gravel           #857f78
+#define   mediumgravel     #666462
+#define   deepgravel       #45413b
+#define   deepergravel     #35322d
+#define   darkgravel       #242321
+#define   blackgravel      #1c1b1a
+#define   blackestgravel   #141413
+
+#define   dalespale        #fade3e
+#define   dirtyblonde      #f4cf86
+#define   taffy            #ff2c4b
+#define   saltwatertaffy   #8cffba
+#define   tardis           #0a9dff
+#define   orange           #ffa724
+#define   lime             #aeee00
+#define   dress            #ff9eb8
+#define   toffee           #b88853
+#define   coffee           #c7915b
+#define   darkroast        #88633f
+! }}}
+
+
+! Resourses {{{
+*background:  blackgravel
+*foreground:  plain
+*cursorColor: lime
+*scrollColor: deepgravel
+*fadeColor:   snow
+*fading:      20
+
+!        black
+*color0:      blackestgravel
+*color8:      coal
+!        red
+*color1:      taffy
+*color9:      taffy
+!        green
+*color2:      lime
+*color10:     lime
+!        yellow
+*color3:      dalespale
+*color11:     orange
+!        blue
+*color4:      tardis
+*color12:     tardis
+!        magenta
+*color5:      dress
+*color13:     dress
+!        cyan
+*color6:      saltwatertaffy
+*color14:     saltwatertaffy
+!        white
+*color7:      brightgravel
+*color15:     snow
+! }}}

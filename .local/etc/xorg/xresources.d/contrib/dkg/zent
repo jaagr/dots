@@ -1,0 +1,15 @@
+! -- Author:  dkeg 
+! -- Title:   zent
+! -- Created: 2016
+
+#define bg    #373737
+#define fg    #b6b6b6
+#define blk   #3e3e3e
+#define bblk  #626262
+#define red   #a67979
+#define grn   #809f7b
+#define ylw   #baad8a
+#define blu   #6d7575
+#define mag   #7d6969
+#define cyn   #7b9899
+#define wht   #b6b6b6

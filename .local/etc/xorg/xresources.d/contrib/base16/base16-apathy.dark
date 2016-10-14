@@ -1,0 +1,50 @@
+! Base16 Apathy
+! Scheme: Jannik Siebert (https://github.com/janniks)
+
+#define base00 #031A16
+#define base01 #0B342D
+#define base02 #184E45
+#define base03 #2B685E
+#define base04 #5F9C92
+#define base05 #81B5AC
+#define base06 #A7CEC8
+#define base07 #D2E7E4
+#define base08 #3E9688
+#define base09 #3E7996
+#define base0A #3E4C96
+#define base0B #883E96
+#define base0C #963E4C
+#define base0D #96883E
+#define base0E #4C963E
+#define base0F #3E965B
+
+*foreground:   base05
+*background:   base00
+*cursorColor:  base05
+
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
+
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06

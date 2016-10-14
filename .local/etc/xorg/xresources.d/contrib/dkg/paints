@@ -1,0 +1,15 @@
+! - Author:   dkeg
+! - Title:    paints 
+! - Created:  2016
+
+#define bg    #352f2f
+#define blk   #3b3535
+#define fg    #c9c8c8
+#define b1l   #4e4949
+#define red   #854340
+#define grn   #668c71
+#define ylw   #b2885d
+#define blu   #41647b
+#define mag   #915556
+#define cyn   #477578
+#define wht   #c9c8c8

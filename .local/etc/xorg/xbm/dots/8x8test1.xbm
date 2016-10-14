@@ -1,0 +1,4 @@
+#define 8x8test1_width 8
+#define 8x8test1_height 8
+static unsigned char 8x8test1_bits[] = {
+   0x0e, 0x2a, 0x0e, 0x2a, 0x0e, 0x2a, 0x0e, 0x2a };

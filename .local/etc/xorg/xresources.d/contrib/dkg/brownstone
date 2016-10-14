@@ -1,0 +1,15 @@
+! -- Title:     brownstone
+! -- Author:    dkeg
+! -- Created:   2016
+
+#define bg    #272825
+#define blk   #282926
+#define bblk  #3c3d3a
+#define fg    #9d9d9c
+#define red   #674839
+#define grn   #6e794f
+#define ylw   #7e744d
+#define blu   #3b474e
+#define mag   #554c41
+#define cyn   #495355
+#define wht   #9d9d9c

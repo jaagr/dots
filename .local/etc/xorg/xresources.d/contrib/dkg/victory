@@ -1,0 +1,14 @@
+! victory 
+! dkeg 2015
+
+#define bg   #2c2c36
+#define fg   #c4c4b5
+#define blk  #363643
+#define bblk #6f707b
+#define red  #9c6647
+#define grn  #708684
+#define ylw  #a29474
+#define blu  #697284
+#define mag  #796a70
+#define cyn  #47676e
+#define wht  #c4c4b5

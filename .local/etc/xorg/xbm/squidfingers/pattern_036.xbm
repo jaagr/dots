@@ -1,0 +1,4 @@
+#define pattern_036_width 7
+#define pattern_036_height 7
+static unsigned char pattern_036_bits[] = {
+   0x71, 0x6e, 0x6a, 0x6e, 0x71, 0x1f, 0x1f };

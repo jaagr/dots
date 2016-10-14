@@ -1,0 +1,14 @@
+! dkeg 2014
+! browntownReload 
+
+#define bg      #242120
+#define fg      #b7afa4
+#define blk     #272625
+#define bblk    #4f4d4c
+#define red     #925633
+#define grn     #757c60
+#define ylw     #987f4b
+#define blu     #515962
+#define mag     #685054
+#define cyn     #506168 
+#define wht     #b7afa4

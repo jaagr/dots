@@ -1,0 +1,14 @@
+! dkeg 2015
+! raiin
+
+#define bg    #23202c
+#define fg    #bfbec3
+#define blk   #272432
+#define bblk  #56525f
+#define red   #af6c69
+#define grn   #7e9c80
+#define ylw   #b29c7c
+#define blu   #637b81
+#define mag   #896e72
+#define cyn   #5a8585 
+#define wht   #bfbec3

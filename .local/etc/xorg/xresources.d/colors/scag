@@ -1,0 +1,14 @@
+! dkeg 2015
+! scag 
+
+#define bg     #252326
+#define fg     #c4bbb0
+#define blk    #1f1d21
+#define bblk   #413f43
+#define red    #93503e 
+#define ylw    #9d8554
+#define grn    #7a8648
+#define blu    #5f656a
+#define mag    #7b6064
+#define cyn    #566e6b
+#define wht    #c4bbb0

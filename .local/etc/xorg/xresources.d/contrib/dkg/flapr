@@ -1,0 +1,15 @@
+! -- Title:     flapr 
+! -- Author:    dkeg
+! -- Created:   2016
+#define bg    #2f2832
+#define fg    #b0a8a8
+#define blk   #353038
+#define bblk  #58525a
+#define red   #885d50
+#define grn   #747965
+#define ylw   #9a8e80
+#define blu   #4a4e5a
+#define mag   #76675b
+#define cyn   #59555c
+#define wht   #b0a8a8
+#define bwht  #FFFFFF

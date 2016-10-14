@@ -1,0 +1,40 @@
+! TABS COLOURS
+! .color0  : #979797
+! .color1  : #000000
+
+! TERMINAL COLOURS
+*foreground: #D3D3D3
+*background: [95]#111111
+!black
+*color0: #181818
+*color8: #181818
+!red
+*color1: #D7D7D7
+*color9: #D7D7D7
+!green
+*color2: #AADB0F
+*color10: #AADB0F
+!yellow
+*color3: #666666
+*color11: #666666
+!blue
+*color4: #FFFFFF
+*color12: #FFFFFF
+!magenta
+*color5: #91BA0D
+*color13: #91BA0D
+!cyan
+*color6: #D4D4D4
+*color14: #D4D4D4
+!white
+*color7: #D3D3D3
+*color15: #D3D3D3
+
+! FONTS
+!*font: xft:lime:size=6:antialias=true
+!*boldFont: xft:lime:size=6:antialias=true
+
+! SETTINGS
+! *scrollColor: #8FF528
+! *troughColor: #222222
+*cursorColor: #D3D3D3

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+xrdb -remove
+xrdb -I"$X11_HOME" "$X11_HOME/xresources"
+
+if [ -e "$CURRENT_THEME/xresources" ]; then
+  xrdb -override "$CURRENT_THEME/xresources"
+fi
+
+notify-send -u low "xrdb reloaded"

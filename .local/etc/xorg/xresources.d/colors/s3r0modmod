@@ -1,0 +1,39 @@
+!! s3r0modmod - dcat
+!! no idea who the original author is, but the previous modification was done
+!! by earsplit
+
+*background:            #08120B
+*foreground:            #c0b18b
+
+! black
+*color0:                #594243
+*color8:                #4A3637
+
+! red
+*color1:                #d17b49
+*color9:                #e0824c
+
+! green
+*color2:                #7b8748
+*color10:               #8d9b53
+
+! yellow
+*color3:                #af865a
+*color11:               #c29565
+
+! blue
+*color4:                #535C5C
+*color12:               #646e6e
+
+! magenta
+*color5:                #775759
+*color13:               #896567
+
+! cyan
+*color6:                #6d715e
+*color14:               #80866f
+
+! white
+*color7:                #c0b18b
+*color15:               #d1c198
+
