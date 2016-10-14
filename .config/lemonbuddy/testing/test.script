@@ -16,10 +16,18 @@ modules-right = intervalscript
 type = custom/script
 exec = xtitle -s
 tail = true
+maxlen = 35
+ellipsis = true
 
 [module/intervalscript]
 type = custom/script
 exec = echo %counter%..
 interval = 1
+
+click-left = echo left %counter%
+click-middle = echo middle %counter%
+click-right = echo right %counter%
+scroll-up = echo scroll up %counter%
+scroll-down = echo scroll down %counter%
 
 ; vim:ft=dosini

@@ -7,8 +7,8 @@ lineheight = 10
 background = #ff184f
 foreground = #fff4fa
 linecolor = #c51850
-offset_x = 850
-offset_y = 450
+offset-x = 850
+offset-y = 450
 
 font-0 = envypn:pixelsize=13;0
 
@@ -34,8 +34,8 @@ icon-seekf = 
 icon-random = 
 icon-repeat = 
 
-toggle_on-foreground = #fba922
-toggle_off-foreground = #66
+toggle-on-foreground = #fba922
+toggle-off-foreground = #66
 
 bar-progress-width = 15
 bar-progress-indicator = 

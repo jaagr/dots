@@ -1,11 +1,11 @@
 ;
-; This config probably contains work-in-progress stuff
-; so it might not work for your version of lemonbuddy
+; This config is used when developing lemonbuddy
+; See [my themes](https://github.com/jaagr/dots/tree/master/.local/etc/themer/themes) instead
 ;
 
 [settings]
-;throttle_ms = 50
-;throttle_limit = 3
+;throttle-ms = 50
+;throttle-limit = 3
 
 [bar/top]
 monitor = eDP-1
@@ -14,44 +14,52 @@ height = 34
 clickareas = 35
 ; locale = sv_SE.UTF-8
 
-background = #aa666600
-foreground = #ff000000
+background = #333333
+foreground = #eeeeee
 linecolor = ${bar/bottom.background}
 
-border-color = #f90
-border-left = 2
+;border-color = #f90
+border-left = 5
 border-left-color = #f90
 border-right = 10
 border-right-color = #f90
-border-top = 5
-border-top-color = #ff0000ff
-border-bottom = 3
-border-bottom-color = #ddff0000
+;border-top = 5
+;border-top-color = #ff0000ff
+;border-bottom = 3
+;border-bottom-color = #ddff0000
+
+spacing = 4
+;spacing = 2
+lineheight = 6
+;padding-left = 2
+;padding-right = 2
+;module-margin-left = 3
+;module-margin-right = 3
+;module-margin-left = 1
+;module-margin-right = 1
+
+; font-0 = envypn-regular:size=10;0
+; font-1 = Siji:pixelsize=10;0
+font-0 = NotoSans-Regular:size=8;0
+font-1 = MaterialIcons:size=10;0
+font-2 = Termsynu:size=8;-1
+font-3 = Unifont:size=6;-3
+font-4 = FontAwesome:size=10;0
+font-5 = MaterialIcons:size=10;0
+
+; modules-left = cpu powermenu mpd
+;modules-left = bspwm
+modules-center = bspwm
+;modules-right = bspwm
+; modules-right = memory volume wireless-network wired-network battery
 
 ; Position of the tray client container
-; Remove the parameter to disable the systray
+; Remove the parameter to disable the tray
 ;
 ; Available positions:
 ;   left
 ;   right
-tray-position = left
-
-spacing = 4
-;spacing = 2
-lineheight = 16
-padding_right = 5
-module_margin_left = 3
-module_margin_right = 3
-;module_margin_left = 1
-;module_margin_right = 1
-
-font-0 = NotoSans-Regular:size=8;0
-font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8;-1
-font-3 = FontAwesome:size=10;0
-
-modules-left = powermenu mpd
-modules-right = volume wireless-network wired-network battery date
+tray-position = right
 
 [bar/bottom]
 monitor = eDP-1
@@ -65,23 +73,22 @@ linecolor = ${bar/top.background}
 
 spacing = 3
 lineheight = 2
-padding_right = 4
-module_margin_left = 0
-module_margin_right = 6
+padding-right = 4
+module-margin-left = 0
+module-margin-right = 6
 
 font-0 = NotoSans-Regular:size=8;0
 font-1 = Unifont:size=6;-3
 font-2 = FontAwesome:size=8;-2
-font-3 = NotoSans-Regular:size=8;-1
-font-4 = MaterialIcons:size=10;-1
-font-5 = Termsynu:size=8;-1
+font-3 = MaterialIcons:size=10;-1
+font-4 = Termsynu:size=8;-1
 
 ; modules-left = bspwm
 ; modules-right = cpu memory
-modules-right = cpu
+modules-right = cpu wireless-network
 
 [bar/external_bottom]
-;inherit_from = bar/bottom
+;inherit-from = bar/bottom
 
 monitor = HDMI-1
 bottom = true
@@ -94,9 +101,9 @@ linecolor = ${bar/bottom.linecolor}
 
 spacing = ${bar/bottom.spacing}
 lineheight = ${bar/bottom.lineheight}
-padding_right = ${bar/bottom.padding_right}
-module_margin_left = ${bar/bottom.module_margin_left}
-module_margin_right = ${bar/bottom.module_margin_right}
+padding-right = ${bar/bottom.padding-right}
+module-margin-left = ${bar/bottom.module-margin-left}
+module-margin-right = ${bar/bottom.module-margin-right}
 
 font-0 = ${bar/bottom.font-0}
 font-1 = ${bar/bottom.font-1}
@@ -130,7 +137,7 @@ bar-empty-foreground = #44
 
 [module/battery]
 type = internal/battery
-full_at = 98
+full-at = 98
 
 format-charging = Charging <animation-charging> <label-charging>
 format-discharging = Discharging <ramp-capacity> <label-discharging>
@@ -158,33 +165,69 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-framerate_ms = 750
+animation-charging-framerate = 750
+
+; [module/bspwm]
+; type = internal/bspwm
+; format = <label-state> <label-mode>
+;
+; ws-icon-0 = term;
+; ws-icon-1 = web;
+; ws-icon-2 = code;
+; ws-icon-3 = music;
+; ws-icon-4 = irssi;
+; ws-icon-default = 
+;
+; label-active = %icon%
+; label-active-background = #3f3f3f
+; label-active-padding = 2
+;
+; label-occupied = %icon%
+; label-occupied-padding = 2
+;
+; label-urgent = %icon%
+; label-urgent-background = #bd2c40
+; label-urgent-padding = 2
+;
+; label-empty = %icon%
+; label-empty-foreground = #444
+; label-empty-padding = 2
+;
+; label-monocle = 
+; label-monocle-padding = 2
+; label-monocle-background = #171717
+; label-monocle-foreground = #fba922
+;
+; label-floating = 
+; label-floating-padding = 2
+; label-floating-background = #171717
+; label-floating-foreground = #fba922
 
 [module/bspwm]
 type = internal/bspwm
 
-workspace_icon-0 = term;
-workspace_icon-1 = web;
-workspace_icon-2 = code;
-workspace_icon-3 = music;
-workspace_icon-4 = irssi;
-workspace_icon-default = 
+ws-icon-0 = term;
+ws-icon-1 = web;
+ws-icon-2 = code;
+ws-icon-3 = music;
+ws-icon-4 = irssi;
+ws-icon-default = 
 
 format = <label-state> <label-mode>
 
-label-dimmed-underline = ${BAR.background}
+; label-dimmed-underline = ${BAR.background}
 
 label-active = %icon%
 label-active-foreground = #fff
 label-active-background = #773f3f3f
-;label-active-underline = #fba922
-label-active-underline = #c9665e
+label-active-underline = #ffa500
 label-active-font = 4
 label-active-padding = 4
 
 label-occupied = %icon%
 label-occupied-foreground = #dd
-label-occupied-underline = #666
+label-occupied-background = #99
+label-occupied-underline = #ff6666
 label-occupied-font = 4
 label-occupied-padding = 4
 
@@ -196,7 +239,8 @@ label-urgent-font = 4
 label-urgent-padding = 4
 
 label-empty = %icon%
-label-empty-foreground = #55
+label-empty-foreground = #44
+label-empty-background = #11
 label-empty-font = 4
 label-empty-padding = 4
 
@@ -233,44 +277,61 @@ label-empty-padding = 1
 
 [module/cpu]
 type = internal/cpu
-interval = 0.5
-format = <label> <ramp-load_per_core>
+interval = 1.0
+format = <label> <bar-load> <ramp-coreload>
 label = CPU
 
-ramp-load_per_core-0 = ▁
-ramp-load_per_core-0-font = 2
-ramp-load_per_core-0-foreground = #aaff77
-ramp-load_per_core-1 = ▂
-ramp-load_per_core-1-font = 2
-ramp-load_per_core-1-foreground = #aaff77
-ramp-load_per_core-2 = ▃
-ramp-load_per_core-2-font = 2
-ramp-load_per_core-2-foreground = #aaff77
-ramp-load_per_core-3 = ▄
-ramp-load_per_core-3-font = 2
-ramp-load_per_core-3-foreground = #aaff77
-ramp-load_per_core-4 = ▅
-ramp-load_per_core-4-font = 2
-ramp-load_per_core-4-foreground = #fba922
-ramp-load_per_core-5 = ▆
-ramp-load_per_core-5-font = 2
-ramp-load_per_core-5-foreground = #fba922
-ramp-load_per_core-6 = ▇
-ramp-load_per_core-6-font = 2
-ramp-load_per_core-6-foreground = #ff5555
-ramp-load_per_core-7 = █
-ramp-load_per_core-7-font = 2
-ramp-load_per_core-7-foreground = #ff5555
+bar-load-width = 30
+bar-load-foreground-0 = #aaff77
+bar-load-foreground-1 = #aaff77
+bar-load-foreground-2 = #fba922
+bar-load-foreground-3 = #ff5555
+bar-load-indicator = |
+bar-load-indicator-font = 6
+bar-load-indicator-foreground = #ff
+bar-load-fill = ─
+bar-load-fill-font = 6
+bar-load-empty = ─
+bar-load-empty-font = 6
+bar-load-empty-foreground = #444444
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
 
 [module/date]
 type = internal/date
 date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
-date_detailed = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 
 [module/memory]
 type = internal/memory
-format = <label> <bar-used>
-label = RAM
+format = <bar-used> <label>
+; label = RAM %gb_used%
+label = %percentage_used% %percentage_free% %gb_used% %gb_free% %gb_total% %mb_used% %mb_free% %mb_total%
+
+interval = 1
 
 bar-used-width = 30
 bar-used-foreground-0 = #aaff77
@@ -288,7 +349,6 @@ bar-used-empty-foreground = #444444
 
 [module/mpd]
 type = internal/mpd
-clickable_progress = true
 format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
 
 label-song-maxlen = 15
@@ -302,8 +362,8 @@ icon-next = 
 icon-random = 
 icon-repeat = 
 
-toggle_on-foreground =
-toggle_off-foreground = #55
+toggle-on-foreground =
+toggle-off-foreground = #55
 
 bar-progress-width = 45
 bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
@@ -321,10 +381,11 @@ bar-progress-empty-foreground = #44
 type = internal/network
 interface = net1
 interval = 3.0
-ping_interval = 10
+ping-interval = 10
+udspeed-minwidth = 3
 
 format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
+label-connected = %essid% %downspeed%
 label-disconnected =    not connected
 label-disconnected-foreground = #66
 
@@ -338,7 +399,7 @@ animation-packetloss-0 = 
 animation-packetloss-0-foreground = #ffa64c
 animation-packetloss-1 = 
 animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate_ms = 500
+animation-packetloss-framerate = 500
 
 [module/wired-network]
 type = internal/network
@@ -350,9 +411,9 @@ label-disconnected-foreground = #66
 
 [module/volume]
 type = internal/volume
-speaker_mixer = Speaker
-headphone_mixer = Headphone
-headphone_control_numid = 9
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
 label-muted =   muted
@@ -376,14 +437,14 @@ menu-0-0-foreground = #fba922
 menu-0-0-exec = bspc quit -1
 menu-0-1 = Reboot
 menu-0-1-foreground = #fba922
-menu-0-1-exec = menu_open-1
+menu-0-1-exec = menu-open-1
 menu-0-2 = Power off
 menu-0-2-foreground = #fba922
-menu-0-2-exec = menu_open-2
+menu-0-2-exec = menu-open-2
 
 menu-1-0 = Cancel
 menu-1-0-foreground = #fba922
-menu-1-0-exec = menu_open-0
+menu-1-0-exec = menu-open-0
 menu-1-1 = Reboot
 menu-1-1-foreground = #fba922
 menu-1-1-exec = sudo reboot
@@ -393,7 +454,7 @@ menu-2-0-foreground = #fba922
 menu-2-0-exec = sudo poweroff
 menu-2-1 = Cancel
 menu-2-1-foreground = #fba922
-menu-2-1-exec = menu_open-0
+menu-2-1-exec = menu-open-0
 
 [module/clock]
 type = internal/date

@@ -6,10 +6,10 @@ foreground = #44000d
 
 spacing = 1
 
-padding_left = 2
-padding_right = 2
-module_margin_left = 0
-module_margin_right = 0
+padding-left = 2
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 0
 
 font-0 = envypn-regular:size=10;0
 font-1 = Siji:pixelsize=10;0
@@ -18,7 +18,7 @@ modules-left = date
 
 [module/date]
 type = internal/date
-date_detailed =  %H:%M:%S
+date-detailed =  %H:%M:%S
 date = %%{T3}%%{F#666}%{F#cc} %Y-%m-%d  %%{F#92f2ba}%%{F#cc} %H:%M%%{T-}
 interval = 5
 

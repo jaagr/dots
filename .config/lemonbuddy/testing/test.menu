@@ -1,0 +1,43 @@
+[bar/test]
+monitor = eDP-1
+
+background = #e7003a
+foreground = #212121
+
+font-0 = tamzen:size=9;0
+font-1 = siji:pixelsize=10;0
+
+modules-center = menu
+
+[module/menu]
+type = custom/menu
+
+label-open = 
+label-close = 
+label-separator = |
+
+menu-0-0 = Action 1
+menu-0-0-foreground = #fff51f
+menu-0-0-exec = echo action 1
+menu-0-1 = Sub-menu 1
+menu-0-1-foreground = #fff51f
+menu-0-1-exec = menu_open-1
+menu-0-2 = Sub-menu 2
+menu-0-2-foreground = #fff51f
+menu-0-2-exec = menu_open-2
+
+menu-1-0 = Cancel
+menu-1-0-foreground = #fff51f
+menu-1-0-exec = menu_open-0
+menu-1-1 = Perform action
+menu-1-1-foreground = #fff51f
+menu-1-1-exec = echo sub-menu action
+
+menu-2-0 = Perform action
+menu-2-0-foreground = #fff51f
+menu-2-0-exec = echo sub-menu action 2
+menu-2-1 = Cancel
+menu-2-1-foreground = #fff51f
+menu-2-1-exec = menu_open-0
+
+; vim:ft=dosini

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+source bootstrap.sh
+
+include utils/log.sh
+
+bootstrap::finish
+
+function main
+{
+  local -a args=()
+
+  IFS=' '
+  args+=($(cat "$XDG_CONFIG_HOME/lemonbuddy/.runargs"))
+
+  log::info "Reloading lemonbuddy instances using:"
+  log::info "launch ${args[*]}"
+
+  "$XDG_CONFIG_HOME/lemonbuddy/launch" -k "${args[@]}"
+}
+
+main "$@"

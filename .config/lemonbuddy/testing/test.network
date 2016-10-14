@@ -7,8 +7,8 @@ lineheight = 10
 background = #ff184f
 foreground = #fff4fa
 linecolor = #c51850
-offset_x = 850
-offset_y = 450
+offset-x = 850
+offset-y = 450
 
 font-0 = envypn:pixelsize=13;0
 
@@ -21,7 +21,7 @@ interface = net1
 
 interval = 2.0
 
-test_connectivity_every_nth_update = 1
+test_connectivity-every-nth-update = 1
 
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>

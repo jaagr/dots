@@ -7,10 +7,10 @@ foreground = #ccfafafa
 linecolor = #666
 
 spacing = 1
-padding_left = 2
-padding_right = 2
-module_margin_left = 1
-module_margin_right = 2
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
 
 font-0 = envypn-regular:size=10;0
 font-1 = Siji:pixelsize=10;0
@@ -22,15 +22,15 @@ modules-left = i3
 type = internal/i3
 format = <label-state>
 
-workspace_icon-0 = term;
-workspace_icon-1 = web;
-workspace_icon-2 = code;
-workspace_icon-3 = music;
-workspace_icon-4 = irssi;
-workspace_icon-default = 
+ws-icon-0 = term;
+ws-icon-1 = web;
+ws-icon-2 = code;
+ws-icon-3 = music;
+ws-icon-4 = irssi;
+ws-icon-default = 
 
-local_workspaces = true
-workspace_name_strip_nchars = 2
+local-workspaces = true
+workspace-name-strip-nchars = 2
 
 label-focused = %index% %icon%
 label-focused-background = #3f3f3f

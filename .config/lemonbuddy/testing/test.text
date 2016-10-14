@@ -1,0 +1,24 @@
+[bar/test]
+monitor = eDP-1
+width = 100%
+height = 30
+dock = true
+lineheight = 10
+background = #ff184f
+foreground = #000000
+linecolor = #c51850
+font-0 = envypn:pixelsize=13;0
+
+modules-center = test
+
+[module/test]
+type = custom/text
+content = ${env:HOME}
+
+click-left = echo left
+click-middle = echo middle
+click-right = echo right
+scroll-up = echo scroll up
+scroll-down = echo scroll down
+
+; vim:ft=dosini
