@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if sv check "$SVDIR"/compton | egrep -q "^ok: run"; then
+  sv restart "$SVDIR"/compton >/dev/null
+
+  if ! sv -w3 check "$SVDIR"/compton >/dev/null; then
+    exit 1
+  fi
+else
+  if ! pidof compton >/dev/null; then
+    exit 1
+  fi
+
+  # pkill -USR1 compton
+
+  # Hard reload to make sure custom theme configs gets procecessed
+  killall compton
+
+  "$LOCAL_ETC/compton/launch" &
+fi

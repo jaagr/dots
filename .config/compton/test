@@ -1,0 +1,10 @@
+backend              = "glx";
+vsync                = "opengl";
+glx-swap-method      = "buffer-age";
+glx-copy-from-front  = false;
+glx-no-rebind-pixmap = true;
+glx-no-stencil       = true;
+paint-on-overlay     = true;
+unredir-if-possible  = true;
+xrender-sync         = true;
+xrender-sync-fence   = true;
