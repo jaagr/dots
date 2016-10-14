@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# WM launcher used at boot
+#   jaagr <c@rlberg.se>
+#
+
+source bootstrap.sh
+
+include utils/log.sh
+include utils/log/defer.sh
+include utils/atexit.sh
+
+bootstrap::finish
+
+function atexit {
+  log::defer::failure "Launching WM" "aborted"
+}
+
+function main
+{
+  local -i status
+
+  log::defer::countdown status 3 "Launching WM in %ss... (esc or q to abort)"
+
+  if [[ $status -eq 1 ]]; then
+    log::defer::failure "Launching WM" "aborted"
+    exit 1
+  elif [[ $status -eq 2 ]]; then
+    log::defer::success "Launching WM" "timer"
+  elif [[ $status -eq 0 ]]; then
+    log::defer::success "Launching WM" "keypress"
+  fi
+
+  echo
+  exec "$X11_INIT"
+}
+
+main "$@"
