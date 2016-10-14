@@ -1,34 +1,44 @@
 #!/usr/bin/env bash
 
+source bootstrap.sh
+
+include utils/lemonbuddy.sh
+include utils/x11.sh
+
+bootstrap::finish
+
 size_border=1
-size_gap=5
+size_gap=0
 
-padding_top=32
-padding_bottom=0
-padding_left=0
-padding_right=0
+padding_top=34
+padding_bottom=8
+padding_left=8
+padding_right=8
 
-color_focused_border="#fba922"
-color_normal_border="#2e2e2e"
-color_active_border="#2e2e2e"
-color_presel_feedback="#aaaaaa"
+color_focused_border="#666666"
+color_normal_border="#333333"
+color_active_border="#333333"
+color_presel_feedback="#333333"
 
 setting_borderless_monocle='false'
+setting_gapless_monocle='true'
 
 lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
 lemonbuddy_bars=(top)
 
-if xrandr | grep -q "HDMI-1 connected"; then
-  lemonbuddy_bars+=(external_bottom)
+if x11::monitor_connected "HDMI-1"; then
+  lemonbuddy_bars+=(bottom)
 fi
 
-theme::post_bspwmrc()
+function theme::post_bspwmrc
 {
-  xdrawrect eDP-1 top 100% 3 0 27 '#ff000000' effectline-top "$(lemonbuddy top -c "$lemonbuddy_config" --print-wmname)" &
+  lemonbuddy::drawline "$lemonbuddy_config" eDP-1 top '#ff131313' &
 
-  if xrandr | grep -q "HDMI-1 connected"; then
-    bspc config -m HDMI-1 top_padding 0
+  if x11::monitor_connected "HDMI-1"; then
+    bspc config -m HDMI-1 top_padding 8
     bspc config -m HDMI-1 bottom_padding $padding_top
-    xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(lemonbuddy external_bottom -c "$lemonbuddy_config" --print-wmname)" &
+    lemonbuddy::drawline "$lemonbuddy_config" HDMI-1 bottom '#ff131313' &
   fi
+
+  xsetroot -bg '#1d1d1d' -fg '#2a2a2a' -bitmap "${CURRENT_THEME}/tile.xbm"
 }

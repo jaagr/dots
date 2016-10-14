@@ -1,0 +1,4 @@
+#define xsetrootbitmap_width 8
+#define xsetrootbitmap_height 8
+static unsigned char xsetrootbitmap_bits[] = {
+   0x80, 0x42, 0x24, 0x08, 0x10, 0x24, 0x42, 0x01};

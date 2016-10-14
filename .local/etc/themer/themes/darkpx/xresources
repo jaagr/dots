@@ -2,7 +2,11 @@
 rofi.font: Fira Mono, Regular, 30
 
 rofi.color-enabled: true
-rofi.color-normal: argb:ee252525 , #d4d4d4 , argb:00000000 , #d4d4d4 , #000000
-rofi.color-urgent: argb:ee252525 , #fba922 , argb:00000000 , #fba922 , #000000
-rofi.color-active: argb:ee252525 , #d4d4d4 , argb:00000000 , #454545 , #000000
-rofi.color-window: argb:ee252525
+rofi.color-normal: argb:dd252525 , #d4d4d4 , argb:00000000 , #d4d4d4 , #000000
+rofi.color-urgent: argb:dd252525 , #fba922 , argb:00000000 , #fba922 , #000000
+rofi.color-active: argb:dd252525 , #d4d4d4 , argb:00000000 , #454545 , #000000
+rofi.color-window: argb:dd252525
+
+xterm*faceName: Fira Mono for Powerline:weight=Bold:size=9
+
+*VT100*internalBorder:  25
