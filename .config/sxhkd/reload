@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if sv check "$SVDIR"/sxhkd | egrep -q "^ok: run"; then
+  sv restart "$SVDIR"/sxhkd >/dev/null
+
+  if ! sv -w3 check "$SVDIR"/sxhkd >/dev/null; then
+    notify-send -u low "runit: sxhkd reloaded successfully"
+  else
+    notify-send -u low "runit: failed to reload sxhkd"
+    exit 1
+  fi
+elif pkill -USR1 sxhkd; then
+  notify-send -u low "sxhkd reloaded"
+else
+  notify-send -u low "failed to reload sxhkd"
+  exit 1
+fi

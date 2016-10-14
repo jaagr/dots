@@ -75,6 +75,8 @@ super + shift + f
   bspc node -t \~fullscreen
 super + ctrl + f
   bspc node -t \~floating
+super + shift + t
+  bspc node -t \~tiled
 
 # Close/kill current window
 super + {_,shift + }q
