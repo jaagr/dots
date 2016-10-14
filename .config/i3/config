@@ -99,11 +99,14 @@ bindsym $win+Shift+Control+j exec --no-startup-id ~/code/github/wmutils-contrib/
 bindsym $win+Shift+Control+k exec --no-startup-id ~/code/github/wmutils-contrib/snap.sh k
 bindsym $win+Shift+Control+l exec --no-startup-id ~/code/github/wmutils-contrib/snap.sh l
 
+bindsym $win+bracketleft workspace prev_on_output
+bindsym $win+bracketright workspace next_on_output
+
 # change focus
-#bindsym $win+h exec --no-startup-id ~/.i3/bin/focus left
-#bindsym $win+j exec --no-startup-id ~/.i3/bin/focus down
-#bindsym $win+k exec --no-startup-id ~/.i3/bin/focus up
-#bindsym $win+l exec --no-startup-id ~/.i3/bin/focus right
+#bindsym $win+h exec --no-startup-id ~/.i3/focus left
+#bindsym $win+j exec --no-startup-id ~/.i3/focus down
+#bindsym $win+k exec --no-startup-id ~/.i3/focus up
+#bindsym $win+l exec --no-startup-id ~/.i3/focus right
 bindsym $win+h focus left
 bindsym $win+j focus down
 bindsym $win+k focus up
@@ -116,11 +119,11 @@ bindsym $win+Shift+k move up
 bindsym $win+Shift+l move right
 
 # split in horizontal orientation
-#bindsym $win+v exec --no-startup-id ~/.i3/bin/focus; split h
+#bindsym $win+v exec --no-startup-id ~/.i3/focus; split h
 bindsym $win+v split h
 
 # split in vertical orientation
-#bindsym $win+c exec --no-startup-id ~/.i3/bin/focus; split v
+#bindsym $win+c exec --no-startup-id ~/.i3/focus; split v
 bindsym $win+c split v
 
 # enter fullscreen mode for the focused container
@@ -144,7 +147,7 @@ bindsym $win+a focus parent
 bindsym $win+d focus child
 
 # locks the screen
-bindsym $win+F12 exec --no-startup-id ~/etc/i3/bin/lock
+bindsym $win+F12 exec --no-startup-id ~/bin/apps/authy
 
 # toggle keyboard map
 bindsym $win+F8 exec --no-startup-id ~/bin/kblayout && killall -USR1 i3status
@@ -174,15 +177,15 @@ bindsym $win+Shift+9 move container to workspace 9.music
 bindsym $win+Shift+0 move container to workspace 0.irssi
 
 # resize the current window to given percentage * 10
-bindsym $win+Control+Shift+1 exec --no-startup-id ~/etc/i3/bin/resize 10
-bindsym $win+Control+Shift+2 exec --no-startup-id ~/etc/i3/bin/resize 20
-bindsym $win+Control+Shift+3 exec --no-startup-id ~/etc/i3/bin/resize 30
-bindsym $win+Control+Shift+4 exec --no-startup-id ~/etc/i3/bin/resize 40
-bindsym $win+Control+Shift+5 exec --no-startup-id ~/etc/i3/bin/resize 50
-bindsym $win+Control+Shift+6 exec --no-startup-id ~/etc/i3/bin/resize 60
-bindsym $win+Control+Shift+7 exec --no-startup-id ~/etc/i3/bin/resize 70
-bindsym $win+Control+Shift+8 exec --no-startup-id ~/etc/i3/bin/resize 80
-bindsym $win+Control+Shift+9 exec --no-startup-id ~/etc/i3/bin/resize 90
+bindsym $win+Control+Shift+1 exec --no-startup-id ~/etc/i3/resize 10
+bindsym $win+Control+Shift+2 exec --no-startup-id ~/etc/i3/resize 20
+bindsym $win+Control+Shift+3 exec --no-startup-id ~/etc/i3/resize 30
+bindsym $win+Control+Shift+4 exec --no-startup-id ~/etc/i3/resize 40
+bindsym $win+Control+Shift+5 exec --no-startup-id ~/etc/i3/resize 50
+bindsym $win+Control+Shift+6 exec --no-startup-id ~/etc/i3/resize 60
+bindsym $win+Control+Shift+7 exec --no-startup-id ~/etc/i3/resize 70
+bindsym $win+Control+Shift+8 exec --no-startup-id ~/etc/i3/resize 80
+bindsym $win+Control+Shift+9 exec --no-startup-id ~/etc/i3/resize 90
 
 bindsym $win+Shift+grave workspace prev_on_output
 bindsym $win+grave workspace next_on_output
