@@ -1,0 +1,24 @@
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+#qutehint {
+  -webkit-transform: translate(-30%, -30%);
+  -webkit-transition: 250ms all;
+  background: #3A68CA;
+  color: #FFF;
+  border-radius: 6px;
+  box-shadow: 0 1px 0px 1px #233F80
+            , inset 0 1px 0px 1px #3BA6EE;
+  font-family: hack, monospace;
+  font-size: 10px;
+  font-weight: 900;
+  opacity: .98;
+  padding: 3px 6px;
+  content: 'kl';
+  display: inline;
+  position: fixed;
+  left: 20%;
+  top: 2%;
+}
