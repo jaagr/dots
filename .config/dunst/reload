@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Runit service
+if sv check "$SVDIR"/dunst | egrep -q "^ok: run"; then
+  sv restart "$SVDIR"/dunst >/dev/null
+
+  if ! sv -w3 check "$SVDIR"/dunst >/dev/null; then
+    exit 1
+  fi
+
+  notify-send -u low "runit: dunst reloaded successfully"
+
+# Standalone daemon
+else
+  if ! pidof dunst >/dev/null; then
+    exit 1
+  fi
+
+  "$LOCAL_ETC"/dunst/launch &
+
+  while (( retries++ < 10 )); do
+    pidof dunst >/dev/null && break
+    sleep 0.01
+  done
+
+  if ! pidof dunst >/dev/null; then
+    exit 1
+  fi
+
+  notify-send -u low "dunst reloaded successfully"
+fi
