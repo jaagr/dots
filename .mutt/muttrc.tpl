@@ -66,11 +66,11 @@ set pipe_decode
 set thorough_search
 set tilde
 
+set move
 set delete
 set quit
 unset confirmappend
 unset mark_old
-unset move
 
 #set pager_context = 3
 #set pager_index_lines = 10

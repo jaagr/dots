@@ -8,7 +8,7 @@ function main {
     unset image
   fi
 
-  xrandr -q | grep "HDMI-1 connected" && externalmon='true'
+  xrandr -q | grep -q "HDMI-1 connected" && externalmon='true'
 
   $externalmon && xrandr --output HDMI-1 --brightness 0
 

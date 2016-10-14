@@ -1,15 +1,14 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-include "/home/jaagr/.gtkrc-2.0"
+include "/home/jaagr/.gtkrc-2.0.mine"
 gtk-theme-name="numix-gtk-theme"
-#gtk-theme-name="Arc-Dark"
-gtk-icon-theme-name="Flattr"
-gtk-font-name="Cantarell 11"
+gtk-icon-theme-name="Arc"
+gtk-font-name="envypn 10"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
-gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
+gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
 gtk-button-images=1
 gtk-menu-images=1
 gtk-enable-event-sounds=1

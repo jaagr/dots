@@ -5,7 +5,7 @@
 
 (protocol-version 20)
 
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/cml-explorer" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/cml-explorer" 1474368364
     (proc-def "plug-in-cml-explorer" 1
          "Create abstract Coupled-Map Lattice patterns"
          "Make an image of Coupled-Map Lattice (CML). CML is a kind of Cellula Automata on continuous (value) domain. In GIMP_RUN_NONINTERACTIVE, the name of a prameter file is passed as the 4th arg. You can control CML_explorer via parameter file."
@@ -22,7 +22,7 @@
         (proc-arg 13 "image" "Input image (not used)")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 4 "parameter-filename" "The name of parameter file. CML_explorer makes an image with its settings.")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/screenshot" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/screenshot" 1474368364
     (proc-def "plug-in-screenshot" 1
          "Create an image from an area of the screen"
          "The plug-in allows to take screenshots of an interactively selected window or of the desktop, either the whole desktop or an interactively selected region. When called non-interactively, it may grab the root window or use the window-id passed as a parameter.  The last four parameters are optional and can be used to specify the corners of the region to be grabbed."
@@ -43,7 +43,7 @@
         (proc-arg 0 "x2" "(optional) Region right x coord")
         (proc-arg 0 "y2" "(optional) Region bottom y coord")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-cube-analyze" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-cube-analyze" 1474368364
     (proc-def "plug-in-ccanalyze" 1
          "Analyze the set of colors in the image"
          "Analyze colorcube and print some information about the current image (also displays a color-histogram)"
@@ -60,7 +60,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "num-colors" "Number of colors in the image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sample-colorize" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sample-colorize" 1474368364
     (proc-def "plug-in-sample-colorize" 1
          "Colorize image using a sample image as a guide"
          "This plug-in colorizes the contents of the specified (gray) layer with the help of a  sample (color) layer. It analyzes all colors in the sample layer. The sample colors are sorted by brightness (== intentisty) and amount and stored in a sample colortable (where brightness is the index) The pixels of the destination layer are remapped with the help of the sample colortable. If use_subcolors is TRUE, the remapping process uses all sample colors of the corresponding brightness-intensity and distributes the subcolors according to their amount in the sample (If the sample has 5 green, 3 yellow, and 1 red pixel of the  intensity value 105, the destination pixels at intensity value 105 are randomly painted in green, yellow and red in a relation of 5:3:1 If use_subcolors is FALSE only one sample color per intensity is used. (green will be used in this example) The brightness intensity value is transformed at the remapping process according to the levels: out_lo, out_hi, in_lo, in_high and gamma The in_low / in_high levels specify an initial mapping of the intensity. The gamma value determines how intensities are interpolated between the in_lo and in_high levels. A gamma value of 1.0 results in linear interpolation. Higher gamma values results in more high-level intensities Lower gamma values results in more low-level intensities The out_low/out_high levels constrain the resulting intensity index The intensity index is used to pick the corresponding color in the sample colortable. If hold_inten is FALSE the picked color is used 1:1 as resulting remap_color. If hold_inten is TRUE The brightness of the picked color is adjusted back to the origial intensity value (only hue and saturation are taken from the picked sample color) (or to the input level, if orig_inten is set FALSE) Works on both Grayscale and RGB image with/without alpha channel. (the image with the dst_drawable is converted to RGB if necessary) The sample_drawable should be of type RGB or RGBA"
@@ -86,7 +86,7 @@
         (proc-arg 3 "gamma" "gamma correction factor (0.1 <= gamma <= 10) where 1.0 is linear")
         (proc-arg 0 "out-low" "lowest sample color intensity (0 <= out_low <= 254)")
         (proc-arg 0 "out-high" "highest sample color intensity (1 <= out_high <= 255)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xmc" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xmc" 1474368364
     (proc-def "file-xmc-load" 1
          "Loads files of X11 Mouse Cursor file format"
          "This plug-in loads X11 Mouse Cursor (XMC) files."
@@ -154,7 +154,7 @@
         (proc-arg 4 "copyright" "Copyright information.")
         (proc-arg 4 "license" "License information.")
         (proc-arg 4 "other" "Other comment.(taken from \"gimp-comment\" parasite)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/cartoon" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/cartoon" 1474368364
     (proc-def "plug-in-cartoon" 1
          "Simulate a cartoon by enhancing edges"
          "Propagates dark values in an image based on each pixel's relative darkness to a neighboring average. The idea behind this filter is to give the look of a black felt pen drawing subsequently shaded with color. This is achieved by darkening areas of the image which are measured to be darker than a neighborhood average. In this way, sufficiently large shifts in intensity are darkened to black. The rate at which they are darkened to black is determined by the second pct_black parameter. The mask_radius parameter controls the size of the pixel neighborhood over which the average intensity is computed and then compared to each pixel in the neighborhood to decide whether or not to darken it to black. Large values for mask_radius result in very thick black areas bordering the shaded regions of color and much less detail for black areas everywhere including inside regions of color. Small values result in more subtle pen strokes and detail everywhere. Small values for the pct_black make the blend from the color regions to the black border lines smoother and the lines themselves thinner and less noticable; larger values achieve the opposite effect."
@@ -172,7 +172,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 3 "mask-radius" "Cartoon mask radius (radius of pixel neighborhood)")
         (proc-arg 3 "pct-black" "Percentage of darkened pixels to set to black (0.0 - 1.0)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/mosaic" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/mosaic" 1474368364
     (proc-def "plug-in-mosaic" 1
          "Convert the image into irregular tiles"
          "Help not yet written for this plug-in"
@@ -200,7 +200,7 @@
         (proc-arg 0 "tile-type" "Tile geometry { SQUARES (0), HEXAGONS (1), OCTAGONS (2), TRIANGLES (3) }")
         (proc-arg 0 "tile-surface" "Surface characteristics { SMOOTH (0), ROUGH (1) }")
         (proc-arg 0 "grout-color" "Grout color (black/white or fore/background) { BW (0), FG-BG (1) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-wmf" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-wmf" 1474368364
     (proc-def "file-wmf-load" 1
          "Loads files in the WMF file format"
          "Loads files in the WMF file format"
@@ -240,7 +240,7 @@
         (proc-arg 13 "image" "Thumbnail image")
         (proc-arg 0 "image-width" "Width of full-sized image")
         (proc-arg 0 "image-height" "Height of full-sized image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-retinex" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-retinex" 1474368364
     (proc-def "plug-in-retinex" 1
          "Enhance contrast using the Retinex method"
          "The Retinex Image Enhancement Algorithm is an automatic image enhancement method that enhances a digital image in terms of dynamic range compression, color independence from the spectral distribution of the scene illuminant, and color/lightness rendition."
@@ -260,7 +260,7 @@
         (proc-arg 0 "nscales" "Number of scales")
         (proc-arg 0 "scales-mode" "Retinex distribution through scales")
         (proc-arg 3 "cvar" "Variance value")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-stretch-hsv" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-stretch-hsv" 1474368364
     (proc-def "plug-in-autostretch-hsv" 1
          "Stretch image contrast to cover the maximum possible range"
          "This simple plug-in does an automatic contrast stretch.  For each channel in the image, it finds the minimum and maximum values... it uses those values to stretch the individual histograms to the full contrast range.  For some images it may do just what you want; for others it may be total crap :).  This version differs from Contrast Autostretch in that it works in HSV space, and preserves hue."
@@ -276,7 +276,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/bump-map" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/bump-map" 1474368364
     (proc-def "plug-in-bump-map" 1
          "Create an embossing effect using a bump map"
          "This plug-in uses the algorithm described by John Schlag, \"Fast Embossing Effects on Raster Image Data\" in Graphics GEMS IV (ISBN 0-12-336155-9). It takes a drawable to be applied as a bump map to another image and produces a nice embossing effect."
@@ -328,7 +328,7 @@
         (proc-arg 0 "compensate" "Compensate for darkening { TRUE, FALSE }")
         (proc-arg 0 "invert" "Invert bumpmap { TRUE, FALSE }")
         (proc-arg 0 "type" "Type of map { LINEAR (0), SPHERICAL (1), SINUSOIDAL (2) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/script-fu" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/script-fu" 1474368364
     (proc-def "extension-script-fu" 2
          "A scheme interpreter for scripting GIMP operations"
          "More help here later"
@@ -395,7 +395,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-NONINTERACTIVE (1) }")
         (proc-arg 4 "code" "The code to evaluate"))
     (locale-def "gimp20-script-fu"))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-jpeg" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-jpeg" 1474368364
     (proc-def "file-jpeg-load" 1
          "loads files in the JPEG file format"
          "loads files in the JPEG file format"
@@ -460,7 +460,7 @@
         (proc-arg 0 "baseline" "Force creation of a baseline JPEG (non-baseline JPEGs can't be read by all decoders) (0/1)")
         (proc-arg 0 "restart" "Interval of restart markers (in MCU rows, 0 = no restart markers)")
         (proc-arg 0 "dct" "DCT method to use { INTEGER (0), FIXED (1), FLOAT (2) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/depth-merge" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/depth-merge" 1474368364
     (proc-def "plug-in-depth-merge" 1
          "Combine two images using depth maps (z-buffers)"
          "Taking as input two full-color, full-alpha images and two corresponding grayscale depth maps, this plug-in combines the images based on which is closer (has a lower depth map value) at each point."
@@ -484,7 +484,7 @@
         (proc-arg 3 "offset" "Depth relative offset")
         (proc-arg 3 "scale1" "Depth relative scale 1")
         (proc-arg 3 "scale2" "Depth relative scale 2")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pdf-save" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pdf-save" 1474368364
     (proc-def "file-pdf-save" 1
          "Save files in PDF format"
          "Saves files in Adobe's Portable Document Format. PDF is designed to be easily processed by a variety of different platforms, and is a distant cousin of PostScript."
@@ -526,7 +526,7 @@
         (proc-arg 0 "apply-masks" "Apply layer masks before saving. TRUE or FALSE (Keeping them will not change the output)")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/metadata" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/metadata" 1474368364
     (proc-def "plug-in-metadata-editor" 1
          "View and edit metadata (EXIF, IPTC, XMP)"
          "View and edit metadata information attached to the current image.  This can include EXIF, IPTC and/or XMP information.  Some or all of this metadata will be saved in the file, depending on the output file format."
@@ -673,7 +673,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 4 "filename" "The name of the file to save the XMP packet in")
         (proc-arg 0 "overwrite" "Overwrite existing file: { FALSE (0), TRUE (1) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pnm" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pnm" 1474368364
     (proc-def "file-pnm-load" 1
          "Loads files in the PNM file format"
          "This plug-in loads files in the various Netpbm portable file formats."
@@ -773,7 +773,7 @@
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "raw" "Specify non-zero for raw output, zero for ascii output")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/plugin-browser" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/plugin-browser" 1474368364
     (proc-def "plug-in-plug-in-details" 1
          "Display information about plug-ins"
          "Allows to browse the plug-in menus system. You can search for plug-in names, sort by name or menu location and you can view a tree representation of the plug-in menus. Can also be of help to find where new plug-ins have installed themselves in the menus."
@@ -787,7 +787,7 @@
          ""
          1 0
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pcx" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pcx" 1474368364
     (proc-def "file-pcx-load" 1
          "Loads files in Zsoft PCX file format"
          "FIXME: write help for pcx_load"
@@ -826,7 +826,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name entered")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lens-flare" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lens-flare" 1474368364
     (proc-def "plug-in-flarefx" 1
          "Add a lens flare effect"
          "Adds a lens flare effects.  Makes your image look like it was snapped with a cheap camera with a lot of lens :)"
@@ -844,7 +844,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "pos-x" "X-position")
         (proc-arg 0 "pos-y" "Y-position")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/iwarp" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/iwarp" 1474368364
     (proc-def "plug-in-iwarp" 1
          "Use mouse control to warp image areas"
          "Interactive warping of the specified drawable"
@@ -860,7 +860,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gradient-flare" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gradient-flare" 1474368364
     (proc-def "plug-in-gflare" 1
          "Produce a lense flare effect using gradients"
          "This plug-in produces a lense flare effect using custom gradients. In interactive call, the user can edit his/her own favorite lense flare (GFlare) and render it. Edited gflare is saved automatically to the folder in gflare-path, if it is defined in gimprc. In non-interactive call, the user can only render one of GFlare which has been stored in gflare-path already."
@@ -887,7 +887,7 @@
         (proc-arg 0 "use-asupsample" "Whether it uses or not adaptive supersampling while rendering (boolean)")
         (proc-arg 0 "asupsample-max-depth" "Max depth for adaptive supersampling")
         (proc-arg 3 "asupsample-threshold" "Threshold for adaptive supersampling")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/checkerboard" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/checkerboard" 1474368364
     (proc-def "plug-in-checkerboard" 1
          "Create a checkerboard pattern"
          "More here later"
@@ -905,7 +905,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "check-mode" "Check mode { REGULAR (0), PSYCHOBILY (1) }")
         (proc-arg 0 "check-size" "Size of the checks")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/despeckle" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/despeckle" 1474368364
     (proc-def "plug-in-despeckle" 1
          "Remove speckle noise from the image"
          "This plug-in selectively performs a median or adaptive box filter on an image."
@@ -925,7 +925,7 @@
         (proc-arg 0 "type" "Filter type { MEDIAN (0), ADAPTIVE (1), RECURSIVE-MEDIAN (2), RECURSIVE-ADAPTIVE (3) }")
         (proc-arg 0 "black" "Black level (-1 to 255)")
         (proc-arg 0 "white" "White level (0 to 256)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-spread" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-spread" 1474368364
     (proc-def "plug-in-spread" 1
          "Move pixels around randomly"
          "Spreads the pixels of the specified drawable.  Pixels are randomly moved to another location whose distance varies from the original by the horizontal and vertical spread amounts "
@@ -943,7 +943,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 3 "spread-amount-x" "Horizontal spread amount (0 <= spread_amount_x <= 200)")
         (proc-arg 3 "spread-amount-y" "Vertical spread amount (0 <= spread_amount_y <= 200)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile" 1474368364
     (proc-def "plug-in-tile" 1
          "Create an array of copies of the image"
          "This function creates a new image with a single layer sized to the specified 'new_width' and 'new_height' parameters.  The specified drawable is tiled into this layer.  The new layer will have the same type as the specified drawable and the new image will have a corresponding base type."
@@ -964,7 +964,7 @@
         (proc-arg 0 "new-image" "Create a new image?")
         (proc-arg 13 "new-image" "Output image (-1 if new-image == FALSE)")
         (proc-arg 14 "new-layer" "Output layer (-1 if new-image == FALSE)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lcms" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lcms" 1474368364
     (proc-def "plug-in-icc-profile-set" 1
          "Set a color profile on the image"
          "This procedure sets an ICC color profile on an image using the 'icc-profile' parasite. It does not do any color conversion."
@@ -1055,7 +1055,7 @@
         (proc-arg 4 "profile-name" "Name")
         (proc-arg 4 "profile-desc" "Description")
         (proc-arg 4 "profile-info" "Info")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xwd" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xwd" 1474368364
     (proc-def "file-xwd-load" 1
          "Loads files in the XWD (X Window Dump) format"
          "Loads files in the XWD (X Window Dump) format. XWD image files are produced by the program xwd. Xwd is an X Window System window dumping utility."
@@ -1094,7 +1094,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/nl-filter" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/nl-filter" 1474368364
     (proc-def "plug-in-nlfilt" 1
          "Nonlinear swiss army knife filter"
          "This is the pnmnlfilt, in gimp's clothing.  See the pnmnlfilt manpage for details."
@@ -1113,7 +1113,7 @@
         (proc-arg 3 "alpha" "The amount of the filter to apply")
         (proc-arg 3 "radius" "The filter radius")
         (proc-arg 0 "filter" "The Filter to Run, 0 - alpha trimmed mean; 1 - optimal estimation (alpha controls noise variance); 2 - edge enhancement")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/crop-auto" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/crop-auto" 1474368364
     (proc-def "plug-in-autocrop" 1
          "Remove empty borders from the image"
          "Crop the active layer of the input \"image\" based on empty borders of the input \"drawable\". The input drawable serves as a base for detecting cropping extents (transparency or background color), and is not necessarily the cropped layer (the current active layer)."
@@ -1144,7 +1144,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/web-browser" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/web-browser" 1474368364
     (proc-def "plug-in-web-browser" 1
          "Open an URL in the user specified web browser"
          "Opens the given URL in the user specified web browser."
@@ -1157,7 +1157,7 @@
          ""
          1 0
         (proc-arg 4 "url" "URL to open")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-to-alpha" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-to-alpha" 1474368364
     (proc-def "plug-in-colortoalpha" 1
          "Convert a specified color to transparency"
          "This replaces as much of a given color as possible in each pixel with a corresponding amount of alpha, then readjusts the color accordingly."
@@ -1175,7 +1175,7 @@
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 10 "color" "Color to remove")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/print" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/print" 1474368364
     (proc-def "file-print-gtk" 1
          "Print the image"
          "Print the image using the GTK+ Print API."
@@ -1190,7 +1190,7 @@
          2 0
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")
         (proc-arg 13 "image" "Image to print")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-glass" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-glass" 1474368364
     (proc-def "plug-in-glasstile" 1
          "Simulate distortion caused by square glass tiles"
          "Divide the image into square glassblocks in which the image is refracted."
@@ -1208,7 +1208,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "tilex" "Tile width (10 - 50)")
         (proc-arg 0 "tiley" "Tile height (10 - 50)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-cel" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-cel" 1474368364
     (proc-def "file-cel-load" 1
          "Loads files in KISS CEL file format"
          "This plug-in loads individual KISS cell files."
@@ -1247,7 +1247,7 @@
         (proc-arg 4 "filename" "Filename to save image to")
         (proc-arg 4 "raw-filename" "Name entered")
         (proc-arg 4 "palette-filename" "Filename to save palette to")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/displace" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/displace" 1474368364
     (proc-def "plug-in-displace" 1
          "Displace pixels as indicated by displacement maps"
          "Displaces the contents of the specified drawable by the amounts specified by 'amount-x' and 'amount-y' multiplied by the luminance of corresponding pixels in the 'displace-map' drawables."
@@ -1291,7 +1291,7 @@
         (proc-arg 16 "displace-map-x" "Displacement map for X or radial direction")
         (proc-arg 16 "displace-map-y" "Displacement map for Y or tangent direction")
         (proc-arg 0 "displace-type" "Edge behavior { WRAP (1), SMEAR (2), BLACK (3) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/softglow" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/softglow" 1474368364
     (proc-def "plug-in-softglow" 1
          "Simulate glow by making highlights intense and fuzzy"
          "Gives an image a softglow effect by intensifying the highlights in the image. This is done by screening a modified version of the drawable with itself. The modified version is desaturated and then a sigmoidal transfer function is applied to force the distribution of intensities into very small and very large only. This desaturated version is then blurred to give it a fuzzy 'vaseline-on-the-lens' effect. The glow radius parameter controls the sharpness of the glow effect. The brightness parameter controls the degree of intensification applied to image highlights. The sharpness parameter controls how defined or alternatively, diffuse, the glow effect should be."
@@ -1310,7 +1310,7 @@
         (proc-arg 3 "glow-radius" "Glow radius (radius in pixels)")
         (proc-arg 3 "brightness" "Glow brightness (0.0 - 1.0)")
         (proc-arg 3 "sharpness" "Glow sharpness (0.0 - 1.0)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/apply-canvas" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/apply-canvas" 1474368364
     (proc-def "plug-in-apply-canvas" 1
          "Add a canvas texture to the image"
          "This function applies a canvas texture map to the drawable."
@@ -1328,7 +1328,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "direction" "Light direction (0 - 3)")
         (proc-arg 0 "depth" "Texture depth (1 - 50)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/film" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/film" 1474368364
     (proc-def "plug-in-film" 1
          "Combine several images on a film strip"
          "Compose several images to a roll film"
@@ -1354,7 +1354,7 @@
         (proc-arg 0 "num-images" "Number of images to be used for film")
         (proc-arg 5 "image-ids" "num-images image IDs to be used for film")
         (proc-arg 13 "new-image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-enhance" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-enhance" 1474368364
     (proc-def "plug-in-color-enhance" 1
          "Stretch color saturation to cover maximum possible range"
          "This simple plug-in does an automatic saturation stretch.  For each channel in the image, it finds the minimum and maximum values... it uses those values to stretch the individual histograms to the full range.  For some images it may do just what you want; for others it may not work that well.  This version differs from Contrast Autostretch in that it works in HSV space, and preserves hue."
@@ -1370,7 +1370,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/red-eye-removal" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/red-eye-removal" 1474368364
     (proc-def "plug-in-red-eye-removal" 1
          "Remove the red eye effect caused by camera flashes"
          "This plug-in removes the red eye effect caused by camera flashes by using a percentage based red color threshold.  Make a selection containing the eyes, and apply the filter while adjusting the threshold to accurately remove the red eyes."
@@ -1387,7 +1387,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "threshold" "Red eye threshold in percent")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/engrave" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/engrave" 1474368364
     (proc-def "plug-in-engrave" 1
          "Simulate an antique engraving"
          "Creates a black-and-white 'engraved' version of an image as seen in old illustrations"
@@ -1405,7 +1405,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "height" "Resolution in pixels")
         (proc-arg 0 "limit" "Limit line width { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/van-gogh-lic" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/van-gogh-lic" 1474368364
     (proc-def "plug-in-lic" 1
          "Special effects that nobody understands"
          "No help yet"
@@ -1421,7 +1421,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lens-distortion" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lens-distortion" 1474368364
     (proc-def "plug-in-lens-distortion" 1
          "Corrects lens distortion"
          "Corrects barrel or pincushion lens distortion."
@@ -1443,7 +1443,7 @@
         (proc-arg 3 "edge-adjust" "Amount of fourth-order distortion")
         (proc-arg 3 "rescale" "Rescale overall image size")
         (proc-arg 3 "brighten" "Adjust brightness in corners")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xjt" 1448177496
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xjt" 1474368364
     (proc-def "file-xjt-load" 1
          "loads files of the jpeg-tar file format"
          "loads files of the jpeg-tar file format"
@@ -1461,7 +1461,7 @@
         (proc-arg 4 "filename" "The name of the file to load")
         (proc-arg 4 "raw-filename" "The name of the file to load")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur-gauss" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur-gauss" 1474368364
     (proc-def "plug-in-gauss" 1
          "Simplest, most commonly used way of blurring"
          "Applies a gaussian blur to the drawable, with specified radius of affect.  The standard deviation of the normal distribution used to modify pixel values is calculated based on the supplied radius.  Horizontal and vertical blurring can be independently invoked by specifying only one to run.  The IIR gaussian blurring works best for large radius values and for images which are not computer-generated."
@@ -1546,7 +1546,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 3 "horizontal" "Horizontal radius of gaussian blur (in pixels, > 0.0)")
         (proc-arg 3 "vertical" "Vertical radius of gaussian blur (in pixels, > 0.0)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-csource" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-csource" 1474368364
     (proc-def "file-csource-save" 1
          "Dump image data in RGB(A) format for C source"
          "CSource cannot be run non-interactively."
@@ -1566,7 +1566,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-seamless" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-seamless" 1474368364
     (proc-def "plug-in-make-seamless" 1
          "Alters edges to make the image seamlessly tileable"
          "This plugin creates a seamless tileable from the input drawable"
@@ -1582,7 +1582,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/fractal-trace" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/fractal-trace" 1474368364
     (proc-def "plug-in-fractal-trace" 1
          "Transform image with the Mandelbrot Fractal"
          "transform image with the Mandelbrot Fractal"
@@ -1604,7 +1604,7 @@
         (proc-arg 3 "ymax" "ymax fractal image delimiter")
         (proc-arg 0 "depth" "Trace depth")
         (proc-arg 0 "outside-type" "Outside type { WRAP (0), TRANS (1), BLACK (2), WHITE (3) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pix" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pix" 1474368364
     (proc-def "file-pix-load" 1
          "loads files of the Alias|Wavefront Pix file format"
          "loads files of the Alias|Wavefront Pix file format"
@@ -1640,7 +1640,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur-motion" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur-motion" 1474368364
     (proc-def "plug-in-mblur" 1
          "Simulate movement using directional blur"
          "This plug-in simulates the effect seen when photographing a moving object at a slow shutter speed. Done by adding multiple displaced copies."
@@ -1680,7 +1680,7 @@
         (proc-arg 0 "angle" "Angle")
         (proc-arg 3 "center-x" "Center X (optional)")
         (proc-arg 3 "center-y" "Center Y (optional)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/wind" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/wind" 1474368364
     (proc-def "plug-in-wind" 1
          "Smear image to give windblown effect"
          "Renders a wind effect."
@@ -1701,7 +1701,7 @@
         (proc-arg 0 "strength" "Controls the extent of the blending > 1")
         (proc-arg 0 "algorithm" "Algorithm { WIND (0), BLAST (1) }")
         (proc-arg 0 "edge" "Edge behavior { BOTH (0), LEADING (1), TRAILING (2) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-fits" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-fits" 1474368364
     (proc-def "file-fits-load" 1
          "load file of the FITS file format"
          "load file of the FITS file format (Flexible Image Transport System)"
@@ -1740,7 +1740,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-rotate" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-rotate" 1474368364
     (proc-def "plug-in-rotate-colormap" 1
          "Replace a range of colors with another"
          "Exchanges two color ranges. Based on code from Pavel Grinfeld (pavel@ml.com). This version written by Sven Anders (anderss@fmi.uni-passau.de)."
@@ -1756,7 +1756,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (used for indexed images)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-mng" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-mng" 1474368364
     (proc-def "file-mng-save" 1
          "Saves images in the MNG file format"
          "This plug-in saves images in the Multiple-image Network Graphics (MNG) format which can be used as a replacement for animated GIFs, and more."
@@ -1788,7 +1788,7 @@
         (proc-arg 0 "gama" "Write gAMA (gamma) chunk")
         (proc-arg 0 "phys" "Write pHYs (image resolution) chunk")
         (proc-arg 0 "time" "Write tIME (creation time) chunk")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-bmp" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-bmp" 1474368364
     (proc-def "file-bmp-load" 1
          "Loads files of Windows BMP file format"
          "Loads files of Windows BMP file format"
@@ -1827,7 +1827,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name entered")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/cubism" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/cubism" 1474368364
     (proc-def "plug-in-cubism" 1
          "Convert the image into randomly rotated square blobs"
          "Help not yet written for this plug-in"
@@ -1846,7 +1846,7 @@
         (proc-arg 3 "tile-size" "Average diameter of each tile (in pixels)")
         (proc-arg 3 "tile-saturation" "Expand tiles by this amount")
         (proc-arg 0 "bg-color" "Background color { BLACK (0), BG (1) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/fractal-explorer" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/fractal-explorer" 1474368364
     (proc-def "plug-in-fractalexplorer" 1
          "Render fractal art"
          "No help yet."
@@ -1881,7 +1881,7 @@
         (proc-arg 2 "greeninvert" "Green inversion mode (1: enabled; 0: disabled)")
         (proc-arg 2 "blueinvert" "Green inversion mode (1: enabled; 0: disabled)")
         (proc-arg 0 "ncolors" "Number of Colors for mapping (2<=ncolors<=8192)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pdf-load" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pdf-load" 1474368364
     (proc-def "file-pdf-load" 1
          "Load file in PDF format"
          "Loads files in Adobe's Portable Document Format. PDF is designed to be easily processed by a variety of different platforms, and is a distant cousin of PostScript."
@@ -1920,7 +1920,7 @@
         (proc-arg 0 "image-height" "Height of full-sized image")
         (proc-arg 0 "image-type" "Image type")
         (proc-arg 0 "num-layers" "Number of pages")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lens-apply" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lens-apply" 1474368364
     (proc-def "plug-in-applylens" 1
          "Simulate an elliptical lens over the image"
          "This plug-in uses Snell's law to draw an ellipsoid lens over the image"
@@ -1940,7 +1940,7 @@
         (proc-arg 0 "keep-surroundings" "Keep lens surroundings { TRUE, FALSE }")
         (proc-arg 0 "set-background" "Set lens surroundings to BG value { TRUE, FALSE }")
         (proc-arg 0 "set-transparent" "Set lens surroundings transparent { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/convolution-matrix" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/convolution-matrix" 1474368364
     (proc-def "plug-in-convmatrix" 1
          "Apply a generic 5x5 convolution matrix"
          ""
@@ -1964,7 +1964,7 @@
         (proc-arg 0 "argc-channels" "The number of elements in following array. Should be always 5.")
         (proc-arg 5 "channels" "Mask of the channels to be filtered")
         (proc-arg 0 "bmode" "Mode for treating image borders { EXTEND (0), WRAP (1), CLEAR (2) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/diffraction" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/diffraction" 1474368364
     (proc-def "plug-in-diffraction" 1
          "Generate diffraction patterns"
          "Help?  What help?  Real men do not need help :-)"
@@ -1992,7 +1992,7 @@
         (proc-arg 3 "brightness" "Brightness and shifting/fattening of contours")
         (proc-arg 3 "scattering" "Scattering (Speed vs. quality)")
         (proc-arg 3 "polarization" "Polarization")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/nova" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/nova" 1474368364
     (proc-def "plug-in-nova" 1
          "Add a starburst to the image"
          "This plug-in produces an effect like a supernova burst. The amount of the light effect is approximately in proportion to 1/r, where r is the distance from the center of the star. It works with RGB*, GRAY* image."
@@ -2014,7 +2014,7 @@
         (proc-arg 0 "radius" "Radius of supernova")
         (proc-arg 0 "nspoke" "Number of spokes")
         (proc-arg 0 "randomhue" "Random hue")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-tga" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-tga" 1474368364
     (proc-def "file-tga-load" 1
          "Loads files of Targa file format"
          "FIXME: write help for tga_load"
@@ -2055,7 +2055,7 @@
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "rle" "Use RLE compression")
         (proc-arg 0 "origin" "Image origin (0 = top-left, 1 = bottom-left)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/crop-zealous" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/crop-zealous" 1474368364
     (proc-def "plug-in-zealouscrop" 1
          "Autocrop unused space from edges and middle"
          ""
@@ -2071,7 +2071,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gradient-map" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gradient-map" 1474368364
     (proc-def "plug-in-gradmap" 1
          "Recolor the image using colors from the active gradient"
          "This plug-in maps the contents of the specified drawable with active gradient. It calculates luminosity of each pixel and replaces the pixel by the sample of active gradient at the position proportional to that luminosity. Complete black pixel becomes the leftmost color of the gradient, and complete white becomes the rightmost. Works on both Grayscale and RGB image with/without alpha channel."
@@ -2102,7 +2102,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gif-save" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gif-save" 1474368364
     (proc-def "file-gif-save" 1
          "saves files in Compuserve GIF file format"
          "Save a file in Compuserve GIF format, with possible animation, transparency, and comment.  To save an animation, operate on a multi-layer file.  The plug-in will intrepret <50% alpha as transparent.  When run non-interactively, the value for the comment is taken from the 'gimp-comment' parasite.  "
@@ -2126,7 +2126,7 @@
         (proc-arg 0 "loop" "(animated gif) loop infinitely")
         (proc-arg 0 "default-delay" "(animated gif) Default delay between framese in milliseconds")
         (proc-arg 0 "default-dispose" "(animated gif) Default disposal type (0=`don't care`, 1=combine, 2=replace)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-dicom" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-dicom" 1474368364
     (proc-def "file-dicom-load" 1
          "loads files of the dicom file format"
          "Load a file in the DICOM standard format.The standard is defined at http://medical.nema.org/. The plug-in currently only supports reading images with uncompressed pixel sections."
@@ -2165,7 +2165,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save")
         (proc-arg 4 "raw-filename" "The name of the file to save")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-sobel" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-sobel" 1474368364
     (proc-def "plug-in-sobel" 1
          "Specialized direction-dependent edge detection"
          "This plugin calculates the gradient with a sobel operator. The user can specify which direction to use. When both directions are used, the result is the RMS of the two gradients; if only one direction is used, the result either the absolut value of the gradient, or 127 + gradient (if the 'keep sign' switch is on). This way, information about the direction of the gradient is preserved. Resulting images are not autoscaled."
@@ -2184,7 +2184,7 @@
         (proc-arg 0 "horizontal" "Sobel in horizontal direction")
         (proc-arg 0 "vertical" "Sobel in vertical direction")
         (proc-arg 0 "keep-sign" "Keep sign of result (one direction only)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/antialias" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/antialias" 1474368364
     (proc-def "plug-in-antialias" 1
          "Antialias using the Scale3X edge-extrapolation algorithm"
          "Help - write me"
@@ -2200,7 +2200,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-svg" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-svg" 1474368364
     (proc-def "file-svg-load" 1
          "Loads files in the SVG file format"
          "Renders SVG files to raster graphics using librsvg."
@@ -2241,7 +2241,7 @@
         (proc-arg 13 "image" "Thumbnail image")
         (proc-arg 0 "image-width" "Width of full-sized image")
         (proc-arg 0 "image-height" "Height of full-sized image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur-gauss-selective" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur-gauss-selective" 1474368364
     (proc-def "plug-in-sel-gauss" 1
          "Blur neighboring pixels, but only in low-contrast areas"
          "This filter functions similar to the regular gaussian blur filter except that neighbouring pixels that differ more than the given maxdelta parameter will not be blended with. This way with the correct parameters, an image can be smoothed out without losing details. However, this filter can be rather slow."
@@ -2259,7 +2259,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 3 "radius" "Radius of gaussian blur (in pixels, > 0.0)")
         (proc-arg 0 "max-delta" "Maximum delta")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sinus" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sinus" 1474368364
     (proc-def "plug-in-sinus" 1
          "Generate complex sinusoidal textures"
          "FIX ME: sinus help"
@@ -2288,7 +2288,7 @@
         (proc-arg 3 "alpha2" "alpha for the second color (used if the drawable has an alpha chanel)")
         (proc-arg 0 "blend" "0= linear, 1= bilinear, 2= sinusoidal")
         (proc-arg 3 "blend-power" "Power used to strech the blend")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-tiff-save" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-tiff-save" 1474368364
     (proc-def "file-tiff-save" 1
          "saves files in the tiff file format"
          "Saves files in the Tagged Image File Format.  The value for the saved comment is taken from the 'gimp-comment' parasite."
@@ -2327,7 +2327,7 @@
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "compression" "Compression type: { NONE (0), LZW (1), PACKBITS (2), DEFLATE (3), JPEG (4), CCITT G3 Fax (5), CCITT G4 Fax (6) }")
         (proc-arg 0 "save-transp-pixels" "Keep the color data masked by an alpha channel intact")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/animation-optimize" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/animation-optimize" 1474368364
     (proc-def "plug-in-animationoptimize" 1
          "Modify image to reduce size when saved as GIF animation"
          "This procedure applies various optimizations to a GIMP layer-based animation in an attempt to reduce the final file size.  If a frame of the animation can use the 'combine' mode, this procedure attempts to maximize the number of ajdacent pixels having the same color, which improves the compression for some image formats such as GIF or MNG."
@@ -2376,7 +2376,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable (unused)")
         (proc-arg 13 "result" "Resulting image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-small" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-small" 1474368364
     (proc-def "plug-in-small-tiles" 1
          "Tile image into smaller versions of the original"
          "More here later"
@@ -2393,7 +2393,7 @@
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "num-tiles" "Number of tiles to make")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/smooth-palette" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/smooth-palette" 1474368364
     (proc-def "plug-in-smooth-palette" 1
          "Derive a smooth color palette from the image"
          "help!"
@@ -2415,7 +2415,7 @@
         (proc-arg 0 "show-image" "Show Image?")
         (proc-arg 13 "new-image" "Output image")
         (proc-arg 14 "new-layer" "Output layer")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/shift" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/shift" 1474368364
     (proc-def "plug-in-shift" 1
          "Shift each row of pixels by a random amount"
          "Shifts the pixels of the specified drawable. Each row will be displaced a random value of pixels."
@@ -2433,7 +2433,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "shift-amount" "shift amount (0 <= shift_amount_x <= 200)")
         (proc-arg 0 "orientation" "vertical, horizontal orientation")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/align-layers" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/align-layers" 1474368364
     (proc-def "plug-in-align-layers" 1
          "Align all visible layers of the image"
          "Align visible layers"
@@ -2451,7 +2451,7 @@
         (proc-arg 16 "drawable" "Input drawable (not used)")
         (proc-arg 0 "link-after-alignment" "Link the visible layers after alignment { TRUE, FALSE }")
         (proc-arg 0 "use-bottom" "use the bottom layer as the base of alignment { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/hot" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/hot" 1474368364
     (proc-def "plug-in-hot" 1
          "Find and fix pixels that may be unsafely bright"
          "hot scans an image for pixels that will give unsave values of chrominance or composite signale amplitude when encoded into an NTSC or PAL signal.  Three actions can be performed on these ``hot'' pixels. (0) reduce luminance, (1) reduce saturation, or (2) Blacken."
@@ -2470,7 +2470,7 @@
         (proc-arg 0 "mode" "Mode { NTSC (0), PAL (1) }")
         (proc-arg 0 "action" "The action to perform")
         (proc-arg 0 "new-layer" "Create a new layer { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/channel-mixer" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/channel-mixer" 1474368364
     (proc-def "plug-in-colors-channel-mixer" 1
          "Alter colors by mixing RGB Channels"
          "This plug-in mixes the RGB channels."
@@ -2496,7 +2496,7 @@
         (proc-arg 3 "br-gain" "Set the red gain for the blue channel")
         (proc-arg 3 "bg-gain" "Set the green gain for the blue channel")
         (proc-arg 3 "bb-gain" "Set the blue gain for the blue channel")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-desktop-link" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-desktop-link" 1474368364
     (proc-def "file-desktop-link-load" 1
          "Follows a link to an image in a .desktop file"
          "Opens a .desktop file and if it is a link, it asks GIMP to open the file the link points to."
@@ -2514,7 +2514,7 @@
         (proc-arg 4 "filename" "The name of the file to load")
         (proc-arg 4 "raw-filename" "The name entered")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/waves" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/waves" 1474368364
     (proc-def "plug-in-waves" 1
          "Distort the image with waves"
          "none yet"
@@ -2535,7 +2535,7 @@
         (proc-arg 3 "wavelength" "The Wavelength of the Waves")
         (proc-arg 0 "type" "Type of waves, black/smeared")
         (proc-arg 0 "reflective" "Use Reflection")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/map-object" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/map-object" 1474368364
     (proc-def "plug-in-map-object" 1
          "Map the image to an object (plane, sphere, box or cylinder)"
          "No help yet"
@@ -2597,7 +2597,7 @@
         (proc-arg 16 "box-right-drawable" "Box right face")
         (proc-arg 16 "cyl-top-drawable" "Cylinder top face (set these to -1 if not used)")
         (proc-arg 16 "cyl-bottom-drawable" "Cylinder bottom face")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-tiff-load" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-tiff-load" 1474368364
     (proc-def "file-tiff-load" 1
          "loads files of the tiff file format"
          "FIXME: write help for tiff_load"
@@ -2617,7 +2617,7 @@
         (proc-arg 4 "filename" "The name of the file to load")
         (proc-arg 4 "raw-filename" "The name of the file to load")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-laplace" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-laplace" 1474368364
     (proc-def "plug-in-laplace" 1
          "High-resolution edge detection"
          "This plugin creates one-pixel wide edges from the image, with the value proportional to the gradient. It uses the Laplace operator (a 3x3 kernel with -8 in the middle). The image has to be laplacered to get useful results, a gauss_iir with 1.5 - 5.0 depending on the noise in the image is best."
@@ -2633,7 +2633,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/deinterlace" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/deinterlace" 1474368364
     (proc-def "plug-in-deinterlace" 1
          "Fix images where every other row is missing"
          "Deinterlace is useful for processing images from video capture cards. When only the odd or even fields get captured, deinterlace can be used to interpolate between the existing fields to correct this."
@@ -2650,7 +2650,7 @@
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "evenodd" "Which lines to keep { KEEP-ODD (0), KEEP-EVEN (1) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/guillotine" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/guillotine" 1474368364
     (proc-def "plug-in-guillotine" 1
          "Slice the image into subimages using guides"
          "This function takes an image and slices it along its guides, creating new images. The original image is not modified."
@@ -2668,7 +2668,7 @@
         (proc-arg 16 "drawable" "Input drawable (unused)")
         (proc-arg 0 "image-count" "Number of images created")
         (proc-arg 5 "image-ids" "Output images")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/video" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/video" 1474368364
     (proc-def "plug-in-video" 1
          "Simulate distortion produced by a fuzzy or low-res monitor"
          "This function simulates the degradation of being on an old low-dotpitch RGB video monitor to the specified drawable."
@@ -2687,7 +2687,7 @@
         (proc-arg 0 "pattern-number" "Type of RGB pattern to use")
         (proc-arg 0 "additive" "Whether the function adds the result to the original image")
         (proc-arg 0 "rotated" "Whether to rotate the RGB pattern by ninety degrees")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-sunras" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-sunras" 1474368364
     (proc-def "file-sunras-load" 1
          "load file of the SunRaster file format"
          "load file of the SunRaster file format"
@@ -2727,7 +2727,7 @@
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "rle" "Specify non-zero for rle output, zero for standard output")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gif-load" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gif-load" 1474368364
     (proc-def "file-gif-load" 1
          "Loads files of Compuserve GIF file format"
          "FIXME: write help for gif_load"
@@ -2764,7 +2764,7 @@
         (proc-arg 13 "image" "Output image")
         (proc-arg 0 "image-width" "Width of full-sized image")
         (proc-arg 0 "image-height" "Height of full-sized image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/value-invert" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/value-invert" 1474368364
     (proc-def "plug-in-vinvert" 1
          "Invert the brightness of each pixel"
          "This function takes an indexed/RGB image and inverts its 'value' in HSV space.  The upshot of this is that the color and saturation at any given point remains the same, but its brightness is effectively inverted.  Quite strange.  Sometimes produces unpleasant color artifacts on images from lossy sources (ie. JPEG)."
@@ -2780,7 +2780,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (used for indexed images)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/maze" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/maze" 1474368364
     (proc-def "plug-in-maze" 1
          "Draw a labyrinth"
          "Generates a maze using either the depth-first search method or Prim's algorithm.  Can make tileable mazes too."
@@ -2803,7 +2803,7 @@
         (proc-arg 0 "seed" "Random Seed")
         (proc-arg 1 "multiple" "Multiple (use 57)")
         (proc-arg 1 "offset" "Offset (use 1)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/ripple" 1448177495
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/ripple" 1474368364
     (proc-def "plug-in-ripple" 1
          "Displace pixels in a ripple pattern"
          "Ripples the pixels of the specified drawable. Each row or column will be displaced a certain number of pixels coinciding with the given wave form"
@@ -2826,7 +2826,7 @@
         (proc-arg 0 "waveform" "Waveform { SAWTOOTH (0), SINE (1) }")
         (proc-arg 0 "antialias" "Antialias { TRUE, FALSE }")
         (proc-arg 0 "tile" "Tileable { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/filter-pack" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/filter-pack" 1474368364
     (proc-def "plug-in-filter-pack" 1
          "Interactively modify the image colors"
          "Interactively modify the image colors."
@@ -2842,7 +2842,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (used for indexed images)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sparkle" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sparkle" 1474368364
     (proc-def "plug-in-sparkle" 1
          "Turn bright spots into starry sparkles"
          "Uses a percentage based luminoisty threhsold to find candidate pixels for adding some sparkles (spikes). "
@@ -2871,7 +2871,7 @@
         (proc-arg 0 "inverse" "Inverse (TRUE/FALSE)")
         (proc-arg 0 "border" "Add border (TRUE/FALSE)")
         (proc-arg 0 "color-type" "Color of sparkles: { NATURAL (0), FOREGROUND (1), BACKGROUND (2) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-faxg3" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-faxg3" 1474368364
     (proc-def "file-faxg3-load" 1
          "loads g3 fax files"
          "This plug-in loads Fax G3 Image files."
@@ -2891,7 +2891,7 @@
         (proc-arg 4 "filename" "The name of the file to load")
         (proc-arg 4 "raw-filename" "The name of the file to load")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-psp" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-psp" 1474368364
     (proc-def "file-psp-load" 1
          "loads images from the Paint Shop Pro PSP file format"
          "This plug-in loads and saves images in Paint Shop Pro's native PSP format. Vector layers aren't handled. Saving isn't yet implemented."
@@ -2911,7 +2911,7 @@
         (proc-arg 4 "filename" "The name of the file to load")
         (proc-arg 4 "raw-filename" "The name of the file to load")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-png" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-png" 1474368364
     (proc-def "file-png-load" 1
          "Loads files in PNG file format"
          "This plug-in loads Portable Network Graphics (PNG) files."
@@ -3038,7 +3038,7 @@
         (proc-arg 0 "time" "Write tIME chunk?")
         (proc-arg 0 "comment" "Write comment?")
         (proc-arg 0 "svtrans" "Preserve color of transparent pixels?")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/colorify" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/colorify" 1474368364
     (proc-def "plug-in-colorify" 1
          "Replace all colors with shades of a specified color"
          "Makes an average of the RGB channels and uses it to set the color"
@@ -3055,7 +3055,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 10 "color" "Color to apply")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-jp2-load" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-jp2-load" 1474368364
     (proc-def "file-jp2-load" 1
          "Loads JPEG 2000 images."
          "The JPEG 2000 image loader."
@@ -3075,7 +3075,7 @@
         (proc-arg 4 "filename" "The name of the file to load.")
         (proc-arg 4 "raw-filename" "The name entered")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lighting" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/lighting" 1474368364
     (proc-def "plug-in-lighting" 1
          "Apply various lighting effects to an image"
          "No help yet"
@@ -3112,7 +3112,7 @@
         (proc-arg 0 "antialiasing" "Apply antialiasing (TRUE/FALSE)")
         (proc-arg 0 "newimage" "Create a new image (TRUE/FALSE)")
         (proc-arg 0 "transparentbackground" "Make background transparent (TRUE/FALSE)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/decompose" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/decompose" 1474368364
     (proc-def "plug-in-decompose" 1
          "Decompose an image into separate colorspace components"
          "This function creates new gray images with different channel information in each of them"
@@ -3154,7 +3154,7 @@
         (proc-arg 13 "new-image" "Output gray image (N/A for single channel extract)")
         (proc-arg 13 "new-image" "Output gray image (N/A for single channel extract)")
         (proc-arg 13 "new-image" "Output gray image (N/A for single channel extract)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blinds" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blinds" 1474368364
     (proc-def "plug-in-blinds" 1
          "Simulate an image painted on window blinds"
          "More here later"
@@ -3174,7 +3174,7 @@
         (proc-arg 0 "num-segments" "Number of segments in blinds")
         (proc-arg 0 "orientation" "The orientation { ORIENTATION-HORIZONTAL (0), ORIENTATION-VERTICAL (1) }")
         (proc-arg 0 "bg-transparent" "Background transparent { FALSE, TRUE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-exchange" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/color-exchange" 1474368364
     (proc-def "plug-in-exchange" 1
          "Swap one color with another"
          "Exchange one color with another, optionally setting a threshold to convert from one shade to another"
@@ -3199,7 +3199,7 @@
         (proc-arg 2 "red-threshold" "Red threshold")
         (proc-arg 2 "green-threshold" "Green threshold")
         (proc-arg 2 "blue-threshold" "Blue threshold")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-randomize" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-randomize" 1474368364
     (proc-def "plug-in-randomize-hurl" 1
          "Completely randomize a fraction of pixels"
          "This plug-in ``hurls'' randomly-valued pixels onto the selection or image.  You may select the percentage of pixels to modify and the number of times to repeat the process."
@@ -3257,7 +3257,7 @@
         (proc-arg 3 "rndm-rcount" "Repeat count (1.0 - 100.0)")
         (proc-arg 0 "randomize" "Use random seed { TRUE, FALSE }")
         (proc-arg 0 "seed" "Seed value (used only if randomize is FALSE)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/whirl-pinch" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/whirl-pinch" 1474368364
     (proc-def "plug-in-whirl-pinch" 1
          "Distort an image by whirling and pinching"
          "Distorts the image by whirling and pinching, which are two common center-based, circular distortions.  Whirling is like projecting the image onto the surface of water in a toilet and flushing.  Pinching is similar to projecting the image onto an elastic surface and pressing or pulling on the center of the surface."
@@ -3276,7 +3276,7 @@
         (proc-arg 3 "whirl" "Whirl angle (degrees)")
         (proc-arg 3 "pinch" "Pinch amount")
         (proc-arg 3 "radius" "Radius (1.0 is the largest circle that fits in the image, and 2.0 goes all the way to the corners)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-ps" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-ps" 1474368364
     (proc-def "file-ps-load" 1
          "load PostScript documents"
          "load PostScript documents"
@@ -3408,7 +3408,7 @@
         (proc-arg 0 "eps-flag" "0: PostScript, 1: Encapsulated PostScript")
         (proc-arg 0 "preview" "0: no preview, >0: max. size of preview")
         (proc-arg 0 "level" "1: PostScript Level 1, 2: PostScript Level 2")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-raw" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-raw" 1474368364
     (proc-def "file-raw-load" 1
          "Load raw images, specifying image information"
          "Load raw images, specifying image information"
@@ -3444,7 +3444,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name entered")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pat" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-pat" 1474368364
     (proc-def "file-pat-load" 1
          "Loads Gimp's .PAT pattern files"
          "The images in the pattern dialog can be loaded directly with this plug-in"
@@ -3484,7 +3484,7 @@
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 4 "description" "Short description of the pattern")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/help-browser" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/help-browser" 1474368364
     (proc-def "extension-gimp-help-browser" 2
          "Browse the GIMP user manual"
          "A small and simple HTML browser optimized for browsing the GIMP user manual."
@@ -3501,7 +3501,7 @@
         (proc-arg 9 "domain-names" "")
         (proc-arg 0 "num-domain-uris" "")
         (proc-arg 9 "domain-uris" "")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/pagecurl" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/pagecurl" 1474368364
     (proc-def "plug-in-pagecurl" 1
          "Curl up one of the image corners"
          "This plug-in creates a pagecurl-effect."
@@ -3522,7 +3522,7 @@
         (proc-arg 0 "orientation" "Vertical (0), Horizontal (1)")
         (proc-arg 0 "shade" "Shade the region under the curl (1) or not (0)")
         (proc-arg 14 "Curl-Layer" "The new layer with the curl.")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-hsv" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-hsv" 1474368364
     (proc-def "plug-in-hsv-noise" 1
          "Randomize hue/saturation/value independently"
          "Scattering pixel values in HSV space"
@@ -3560,7 +3560,7 @@
         (proc-arg 0 "hue-distance" "scattering of hue angle [0,180]")
         (proc-arg 0 "saturation-distance" "distribution distance on saturation axis [0,255]")
         (proc-arg 0 "value-distance" "distribution distance on value axis [0,255]")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/destripe" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/destripe" 1474368364
     (proc-def "plug-in-destripe" 1
          "Remove vertical stripe artifacts from the image"
          "This plug-in tries to remove vertical stripes from an image."
@@ -3577,7 +3577,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "avg-width" "Averaging filter width (default = 36)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/illusion" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/illusion" 1474368364
     (proc-def "plug-in-illusion" 1
          "Superimpose many altered copies of the image"
          "produce illusion"
@@ -3595,7 +3595,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "division" "The number of divisions")
         (proc-arg 0 "type" "Illusion type { TYPE1 (0), TYPE2 (1) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/alien-map" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/alien-map" 1474368364
     (proc-def "plug-in-alienmap2" 1
          "Alter colors in various psychedelic ways"
          "No help yet. Just try it and you'll see!"
@@ -3621,7 +3621,7 @@
         (proc-arg 2 "redmode" "Red/hue application mode { TRUE, FALSE }")
         (proc-arg 2 "greenmode" "Green/saturation application mode { TRUE, FALSE }")
         (proc-arg 2 "bluemode" "Blue/luminance application mode { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-uri" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-uri" 1474368364
     (proc-def "file-uri-load" 1
          "loads files given an URI"
          "Loads a file using the libcurl file transfer library"
@@ -3639,7 +3639,7 @@
         (proc-arg 4 "filename" "The name of the file to load")
         (proc-arg 4 "raw-filename" "The name entered")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/plasma" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/plasma" 1474368364
     (proc-def "plug-in-plasma" 1
          "Create a random plasma texture"
          "More help"
@@ -3657,7 +3657,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "seed" "Random seed")
         (proc-arg 3 "turbulence" "Turbulence of plasma")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/unsharp-mask" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/unsharp-mask" 1474368364
     (proc-def "plug-in-unsharp-mask" 1
          "The most widely useful method for sharpening an image"
          "The unsharp mask is a sharpening filter that works by comparing using the difference of the image and a blurred version of the image.  It is commonly used on photographic images, and is provides a much more pleasing result than the standard sharpen filter."
@@ -3676,7 +3676,7 @@
         (proc-arg 3 "radius" "Radius of gaussian blur (in pixels > 1.0)")
         (proc-arg 3 "amount" "Strength of effect")
         (proc-arg 0 "threshold" "Threshold (0-255)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-html-table" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-html-table" 1474368364
     (proc-def "file-gtm-save" 1
          "GIMP Table Magic"
          "Allows you to draw an HTML table in GIMP. See help for more info."
@@ -3696,7 +3696,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-dog" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-dog" 1474368364
     (proc-def "plug-in-dog" 1
          "Edge detection with control of edge thickness"
          "Applies two Gaussian blurs to the drawable, and subtracts the results.  This is robust and widely used method for detecting edges."
@@ -3716,7 +3716,7 @@
         (proc-arg 3 "outer" "Radius of outer gaussian blur (in pixels, > 0.0)")
         (proc-arg 0 "normalize" "Normalize { TRUE, FALSE }")
         (proc-arg 0 "invert" "Invert { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/imagemap" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/imagemap" 1474368364
     (proc-def "plug-in-imagemap" 1
          "Create a clickable imagemap"
          ""
@@ -3732,7 +3732,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/threshold-alpha" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/threshold-alpha" 1474368364
     (proc-def "plug-in-threshold-alpha" 1
          "Make transparency all-or-nothing"
          ""
@@ -3749,7 +3749,7 @@
         (proc-arg 13 "image" "Input image (not used)")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "threshold" "Threshold")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-glob" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-glob" 1474368364
     (proc-def "file-glob" 1
          "Returns a list of matching filenames"
          "This can be useful in scripts and other plugins (e.g., batch-conversion). See the glob(7) manpage for more info. Note however that this isn't a full-featured glob implementation. It only handles simple patterns like \"/home/foo/bar/*.jpg\"."
@@ -3765,7 +3765,7 @@
         (proc-arg 0 "encoding" "Encoding of the returned names: { UTF-8 (0), filename encoding (1) }")
         (proc-arg 0 "num-files" "The number of returned names")
         (proc-arg 9 "files" "The list of matching names")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/animation-play" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/animation-play" 1474368364
     (proc-def "plug-in-animationplay" 1
          "Preview a GIMP layer-based animation"
          ""
@@ -3781,7 +3781,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable (unused)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/newsprint" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/newsprint" 1474368364
     (proc-def "plug-in-newsprint" 1
          "Halftone the image to give newspaper-like effect"
          "Halftone the image, trading off resolution to represent colors or grey levels using the process described both in the PostScript language definition, and also by Robert Ulichney, \"Digital halftoning\", MIT Press, 1987."
@@ -3809,7 +3809,7 @@
         (proc-arg 3 "blu-ang" "Blue/yellow screen angle (degrees)")
         (proc-arg 0 "blu-spotfn" "Blue/yellow spot function (values as gry-spotfn)")
         (proc-arg 0 "oversample" "how many times to oversample spot fn")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/pixelize" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/pixelize" 1474368364
     (proc-def "plug-in-pixelize" 1
          "Simplify image into an array of solid-colored squares"
          "Pixelize the contents of the specified drawable with specified pixelizing width."
@@ -3842,7 +3842,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "pixel-width" "Pixel width (the decrease in horizontal resolution)")
         (proc-arg 0 "pixel-height" "Pixel height (the decrease in vertical resolution)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/colormap-remap" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/colormap-remap" 1474368364
     (proc-def "plug-in-colormap-remap" 1
          "Rearrange the colormap"
          "This procedure takes an indexed image and lets you alter the positions of colors in the colormap without visually changing the image."
@@ -3877,7 +3877,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 2 "index1" "First index in the colormap")
         (proc-arg 2 "index2" "Second (other) index in the colormap")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-solid" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-solid" 1474368364
     (proc-def "plug-in-solid-noise" 1
          "Create a random cloud-like texture"
          "Generates 2D textures using Perlin's classic solid noise function."
@@ -3899,7 +3899,7 @@
         (proc-arg 0 "detail" "Detail level (0 - 15)")
         (proc-arg 3 "xsize" "Horizontal texture size")
         (proc-arg 3 "ysize" "Vertical texture size")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-ico" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-ico" 1474368364
     (proc-def "file-ico-load" 1
          "Loads files of Windows ICO file format"
          "Loads files of Windows ICO file format"
@@ -3955,7 +3955,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name entered")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/max-rgb" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/max-rgb" 1474368364
     (proc-def "plug-in-max-rgb" 1
          "Reduce image to pure red, green, and blue"
          "There's no help yet."
@@ -3972,7 +3972,7 @@
         (proc-arg 13 "image" "Input image (not used)")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "max-p" "{ MINIMIZE (0), MAXIMIZE (1) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/rotate" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/rotate" 1474368364
     (proc-def "plug-in-rotate" 1
          "Rotates a layer or the whole image by 90, 180 or 270 degrees"
          "This plug-in does rotate the active layer or the whole image clockwise by multiples of 90 degrees. When the whole image is choosen, the image is resized if necessary."
@@ -3989,7 +3989,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "angle" "Angle { 90 (1), 180 (2), 270 (3) } degrees")
         (proc-arg 0 "everything" "Rotate the whole image { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-psd-save" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-psd-save" 1474368364
     (proc-def "file-psd-save" 1
          "saves files in the Photoshop(tm) PSD file format"
          "This filter saves files of Adobe Photoshop(tm) native PSD format.  These files may be of any image type supported by GIMP, with or without layers, layer masks, aux channels and guides."
@@ -4011,7 +4011,7 @@
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "compression" "Compression type: { NONE (0), LZW (1), PACKBITS (2)")
         (proc-arg 0 "fill-order" "Fill Order: { MSB to LSB (0), LSB to MSB (1)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-fli" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-fli" 1474368364
     (proc-def "file-fli-load" 1
          "load FLI-movies"
          "This is an experimantal plug-in to handle FLI movies"
@@ -4066,7 +4066,7 @@
         (proc-arg 0 "width" "Width of one frame")
         (proc-arg 0 "height" "Height of one frame")
         (proc-arg 0 "frames" "Number of Frames")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-header" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-header" 1474368364
     (proc-def "file-header-save" 1
          "saves files as C unsigned character array"
          "FIXME: write help"
@@ -4086,7 +4086,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gih" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gih" 1474368364
     (proc-def "file-gih-load" 1
          "loads images in GIMP brush pipe format"
          "This plug-in loads a GIMP brush pipe as an image."
@@ -4134,7 +4134,7 @@
         (proc-arg 7 "rank" "Ranks of the dimensions")
         (proc-arg 0 "dimension" "Dimension (again)")
         (proc-arg 9 "sel" "Selection modes")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/photocopy" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/photocopy" 1474368364
     (proc-def "plug-in-photocopy" 1
          "Simulate color distortion produced by a copy machine"
          "Propagates dark values in an image based on each pixel's relative darkness to a neighboring average. The idea behind this filter is to give the look of a photocopied version of the image, with toner transfered based on the relative darkness of a particular region. This is achieved by darkening areas of the image which are measured to be darker than a neighborhood average and setting other pixels to white. In this way, sufficiently large shifts in intensity are darkened to black. The rate at which they are darkened to black is determined by the second pct_black parameter. The mask_radius parameter controls the size of the pixel neighborhood over which the average intensity is computed and then compared to each pixel in the neighborhood to decide whether or not to darken it to black. Large values for mask_radius result in very thick black areas bordering the regions of white and much less detail for black areas everywhere including inside regions of color. Small values result in less toner overall and more detail everywhere. Small values for the pct_black make the blend from the white regions to the black border lines smoother and the toner regions themselves thinner and less noticable; larger values achieve the opposite effect."
@@ -4154,7 +4154,7 @@
         (proc-arg 3 "sharpness" "Sharpness (detail level) (0.0 - 1.0)")
         (proc-arg 3 "pct-black" "Percentage of darkened pixels to set to black (0.0 - 1.0)")
         (proc-arg 3 "pct-white" "Percentage of non-darkened pixels left white (0.0 - 1.0)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sharpen" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sharpen" 1474368364
     (proc-def "plug-in-sharpen" 1
          "Make image sharper (less powerful than Unsharp Mask)"
          "This plug-in selectively performs a convolution filter on an image."
@@ -4171,7 +4171,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "percent" "Percent sharpening (default = 10)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-compressor" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-compressor" 1474368364
     (proc-def "file-gz-load" 1
          "loads files compressed with gzip"
          "This procedure loads files in the gzip compressed format."
@@ -4248,7 +4248,7 @@
         (proc-arg 16 "drawable" "Drawable to save")
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name entered")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/curve-bend" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/curve-bend" 1474368364
     (proc-def "plug-in-curve-bend" 1
          "Bend the image using two control curves"
          "This plug-in does bend the active layer If there is a current selection it is copied to floating selection and the curve_bend distortion is done on the floating selection. If work_on_copy parameter is TRUE, the curve_bend distortion is done on a copy of the active layer (or floating selection). The upper and lower edges are bent in shape of 2 spline curves. both (upper and lower) curves are determined by upto 17 points or by 256 Y-Values if curve_type == 1 (freehand mode) If rotation is not 0, the layer is rotated before and rotated back after the bend operation. This enables bending in other directions than vertical. bending usually changes the size of the handled layer. this plugin sets the offsets of the handled layer to keep its center at the same position"
@@ -4297,7 +4297,7 @@
         (proc-arg 0 "total-steps" "total number of steps (# of layers-1 to apply the related plug-in)")
         (proc-arg 3 "current-step" "current (for linear iterations this is the layerstack position, otherwise some value inbetween)")
         (proc-arg 0 "len-struct" "length of stored data structure with id is equal to the plug_in  proc_name")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xbm" 1448177494
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xbm" 1474368364
     (proc-def "file-xbm-load" 1
          "Load a file in X10 or X11 bitmap (XBM) file format"
          "Load a file in X10 or X11 bitmap (XBM) file format.  XBM is a lossless format for flat black-and-white (two color indexed) images."
@@ -4342,7 +4342,7 @@
         (proc-arg 4 "prefix" "Identifier prefix [determined from filename]")
         (proc-arg 0 "write-mask" "(0 = ignore, 1 = save as extra file)")
         (proc-arg 4 "mask-extension" "Extension of the mask file")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-rgb" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/noise-rgb" 1474368364
     (proc-def "plug-in-rgb-noise" 1
          "Distort colors by random amounts"
          "Add normally distributed (zero mean) random values to image channels.  Noise may be additive (uncorrelated) or multiplicative (correlated - also known as speckle noise). For colour images colour channels may be treated together or independently."
@@ -4383,7 +4383,7 @@
         (proc-arg 3 "noise-2" "Noise in the second channel (green, gray_alpha)")
         (proc-arg 3 "noise-3" "Noise in the third channel (blue)")
         (proc-arg 3 "noise-4" "Noise in the fourth channel (alpha)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/jigsaw" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/jigsaw" 1474368364
     (proc-def "plug-in-jigsaw" 1
          "Add a jigsaw-puzzle pattern to the image"
          "Jigsaw puzzle look"
@@ -4404,7 +4404,7 @@
         (proc-arg 0 "style" "The style/shape of the jigsaw puzzle { 0, 1 }")
         (proc-arg 0 "blend-lines" "Number of lines for shading bevels >= 0")
         (proc-arg 3 "blend-amount" "The power of the light highlights 0 =< 5")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gimpressionist" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gimpressionist" 1474368364
     (proc-def "plug-in-gimpressionist" 1
          "Performs various artistic operations"
          "Performs various artistic operations on an image"
@@ -4421,7 +4421,7 @@
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 4 "preset" "Preset Name")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/selection-to-path" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/selection-to-path" 1474368364
     (proc-def "plug-in-sel2path" 1
          "Converts a selection to a path"
          "Converts a selection to a path"
@@ -4470,7 +4470,7 @@
         (proc-arg 2 "subdivide-surround" "subdivide_surround")
         (proc-arg 3 "subdivide-threshold" "subdivide_threshold")
         (proc-arg 2 "tangent-surround" "tangent_surround")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/mail" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/mail" 1474368364
     (proc-def "plug-in-mail-image" 1
          "Send the image by email"
          "You need to have sendmail installed"
@@ -4492,7 +4492,7 @@
         (proc-arg 4 "subject" "The subject")
         (proc-arg 4 "comment" "The Comment")
         (proc-arg 0 "encapsulation" "ignored")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/value-propagate" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/value-propagate" 1474368364
     (proc-def "plug-in-vpropagate" 1
          "Propagate certain colors to neighboring pixels"
          "Propagate values of the layer"
@@ -4556,7 +4556,7 @@
         (proc-arg 0 "direction-mask" "0 <= direction-mask <= 15")
         (proc-arg 0 "lower-limit" "0 <= lower-limit <= 255")
         (proc-arg 0 "upper-limit" "0 <= upper-limit <= 255")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/emboss" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/emboss" 1474368364
     (proc-def "plug-in-emboss" 1
          "Simulate an image created by embossing"
          "Emboss or Bumpmap the given drawable, specifying the angle and elevation for the light source."
@@ -4576,7 +4576,7 @@
         (proc-arg 3 "elevation" "The Elevation Angle (degrees)")
         (proc-arg 0 "depth" "The Filter Width")
         (proc-arg 0 "emboss" "Emboss or Bumpmap")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-sgi" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-sgi" 1474368364
     (proc-def "file-sgi-load" 1
          "Loads files in SGI image file format"
          "This plug-in loads SGI image files."
@@ -4616,7 +4616,7 @@
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "compression" "Compression level (0 = none, 1 = RLE, 2 = ARLE)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/polar-coords" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/polar-coords" 1474368364
     (proc-def "plug-in-polar-coords" 1
          "Convert image to or from polar coordinates"
          "Remaps and image from rectangular coordinates to polar coordinates or vice versa"
@@ -4637,7 +4637,7 @@
         (proc-arg 0 "backwards" "Map backwards { TRUE, FALSE }")
         (proc-arg 0 "inverse" "Map from top { TRUE, FALSE }")
         (proc-arg 0 "polrec" "Polar to rectangular { TRUE, FALSE }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge" 1474368364
     (proc-def "plug-in-edge" 1
          "Several simple methods for detecting edges"
          "Perform edge detection on the contents of the specified drawable.AMOUNT is an arbitrary constant, WRAPMODE is like displace plug-in (useful for tilable image). EDGEMODE sets the kind of matrix transform applied to the pixels, SOBEL was the method used in older versions."
@@ -4656,7 +4656,7 @@
         (proc-arg 3 "amount" "Edge detection amount")
         (proc-arg 0 "wrapmode" "Edge detection behavior { WRAP (1), SMEAR (2), BLACK (3) }")
         (proc-arg 0 "edgemode" "Edge detection algorithm { SOBEL (0), PREWITT (1), GRADIENT (2), ROBERTS (3), DIFFERENTIAL (4), LAPLACE (5) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-neon" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/edge-neon" 1474368364
     (proc-def "plug-in-neon" 1
          "Simulate the glowing boundary of a neon light"
          "This filter works in a manner similar to the edge plug-in, but uses the first derivative of the gaussian operator to achieve resolution independence. The IIR method of calculating the effect is utilized to keep the processing time constant between large and small standard deviations."
@@ -4674,7 +4674,7 @@
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 3 "radius" "Radius of neon effect (in pixels)")
         (proc-arg 3 "amount" "Effect enhancement variable (0.0 - 1.0)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sphere-designer" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/sphere-designer" 1474368364
     (proc-def "plug-in-spheredesigner" 1
          "Create an image of a textured sphere"
          "This plugin can be used to create textured and/or bumpmapped spheres, and uses a small lightweight raytracer to perform the task with good quality"
@@ -4690,7 +4690,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/help" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/help" 1474368364
     (proc-def "extension-gimp-help" 2
          ""
          ""
@@ -4706,7 +4706,7 @@
         (proc-arg 9 "domain-names" "")
         (proc-arg 0 "num-domain-uris" "")
         (proc-arg 9 "domain-uris" "")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/procedure-browser" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/procedure-browser" 1474368364
     (proc-def "plug-in-dbbrowser" 1
          "List available procedures in the PDB"
          ""
@@ -4720,7 +4720,7 @@
          ""
          1 0
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/qbist" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/qbist" 1474368364
     (proc-def "plug-in-qbist" 1
          "Generate a huge variety of abstract patterns"
          "This Plug-in is based on an article by Jörn Loviscach (appeared in c't 10/95, page 326). It generates modern art pictures from a random genetic formula."
@@ -4736,7 +4736,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/border-average" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/border-average" 1474368364
     (proc-def "plug-in-borderaverage" 1
          "Set foreground to the average color of the image border"
          ""
@@ -4755,7 +4755,7 @@
         (proc-arg 0 "thickness" "Border size to take in count")
         (proc-arg 0 "bucket-exponent" "Bits for bucket size (default=4: 16 Levels)")
         (proc-arg 10 "borderaverage" "The average color of the specified border.")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xpm" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-xpm" 1474368364
     (proc-def "file-xpm-load" 1
          "Load files in XPM (X11 Pixmap) format."
          "Load files in XPM (X11 Pixmap) format. XPM is a portable image format designed to be included in C source code. XLib provides utility functions to read this format. Newer code should however be using gdk-pixbuf-csource instead. XPM supports colored images, unlike the XBM format which XPM was designed to replace."
@@ -4795,7 +4795,7 @@
         (proc-arg 4 "filename" "The name of the file to save the image in")
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "threshold" "Alpha threshold (0-255)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gbr" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-gbr" 1474368364
     (proc-def "file-gbr-load" 1
          "Loads GIMP brushes"
          "Loads GIMP brushes (1 or 4 bpp and old .gpb format)"
@@ -4836,7 +4836,7 @@
         (proc-arg 4 "raw-filename" "The name of the file to save the image in")
         (proc-arg 0 "spacing" "Spacing of the brush")
         (proc-arg 4 "description" "Short description of the brush")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/oilify" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/oilify" 1474368364
     (proc-def "plug-in-oilify" 1
          "Smear colors to simulate an oil painting"
          "This function performs the well-known oil-paint effect on the specified drawable."
@@ -4873,7 +4873,7 @@
         (proc-arg 16 "mask-size-map" "Mask size control map")
         (proc-arg 0 "exponent" "Oil paint exponent")
         (proc-arg 16 "exponent-map" "Exponent control map")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/grid" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/grid" 1474368364
     (proc-def "plug-in-grid" 1
          "Draw a grid on the image"
          "Draws a grid using the specified colors. The grid origin is the upper left corner."
@@ -4904,7 +4904,7 @@
         (proc-arg 0 "ioffset" "Intersection Offset  (>= 0)")
         (proc-arg 10 "icolor" "Intersection Colour")
         (proc-arg 2 "iopacity" "Intersection Opacity (0...255)")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gfig" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/gfig" 1474368364
     (proc-def "plug-in-gfig" 1
          "Create geometric shapes"
          "Draw Vector Graphics and paint them onto your images.  Gfig allows you to draw many types of objects including Lines, Circles, Ellipses, Curves, Polygons, pointed stars, Bezier curves, and Spirals.  Objects can be painted using Brushes or other toolsor filled using colours or patterns.  Gfig objects can also be used to create selections.  "
@@ -4921,7 +4921,7 @@
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")
         (proc-arg 0 "dummy" "dummy")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/semi-flatten" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/semi-flatten" 1474368364
     (proc-def "plug-in-semiflatten" 1
          "Replace partial transparency with the current background color"
          "This plugin flattens pixels in an RGBA image that aren't completely transparent against the current GIMP background color"
@@ -4938,7 +4938,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-psd-load" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/file-psd-load" 1474368364
     (proc-def "file-psd-load" 1
          "Loads images from the Photoshop PSD file format"
          "This plug-in loads images in Adobe Photoshop (TM) native PSD format."
@@ -4975,7 +4975,7 @@
         (proc-arg 13 "image" "Thumbnail image")
         (proc-arg 0 "image-width" "Width of full-sized image")
         (proc-arg 0 "image-height" "Height of full-sized image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/web-page" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/web-page" 1474368364
     (proc-def "plug-in-web-page" 1
          "Create an image of a webpage"
          "The plug-in allows you to take a screenshot of a webpage."
@@ -4993,7 +4993,7 @@
         (proc-arg 0 "width" "The width of the screenshot (in pixels)")
         (proc-arg 0 "font-size" "The font size to use in the page (in pt)")
         (proc-arg 13 "image" "Output image")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-stretch" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-stretch" 1474368364
     (proc-def "plug-in-c-astretch" 1
          "Stretch contrast to cover the maximum possible range"
          "This simple plug-in does an automatic contrast stretch.  For each channel in the image, it finds the minimum and maximum values... it uses those values to stretch the individual histograms to the full contrast range.  For some images it may do just what you want; for others it may not work that well."
@@ -5009,7 +5009,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/unit-editor" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/unit-editor" 1474368364
     (proc-def "plug-in-unit-editor" 1
          "Create or alter units used in GIMP"
          "The GIMP unit editor"
@@ -5023,7 +5023,7 @@
          ""
          1 0
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0) }")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/warp" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/warp" 1474368364
     (proc-def "plug-in-warp" 1
          "Twist or smear image in many different ways"
          "Smears an image along vector paths calculated as the gradient of a separate control matrix. The effect can look like brushstrokes of acrylic or watercolor paint, in some cases."
@@ -5053,7 +5053,7 @@
         (proc-arg 0 "vector-map" "Fixed vector control map")
         (proc-arg 3 "vector-scale" "Scaling factor for fixed vector map (0=don't use)")
         (proc-arg 3 "vector-angle" "Angle for fixed vector map")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-normalize" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/contrast-normalize" 1474368364
     (proc-def "plug-in-normalize" 1
          "Stretch brightness values to cover the full range"
          "This plugin performs almost the same operation as the 'contrast autostretch' plugin, except that it won't allow the color channels to normalize independently.  This is actually what most people probably want instead of contrast-autostretch; use c-a only if you wish to remove an undesirable color-tint from a source image which is supposed to contain pure-white and pure-black."
@@ -5069,7 +5069,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/blur" 1474368364
     (proc-def "plug-in-blur" 1
          "Simple blur, fast but not very strong"
          "This plug-in blurs the specified drawable, using a 3x3 blur. Indexed images are not supported."
@@ -5085,7 +5085,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/flame" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/flame" 1474368364
     (proc-def "plug-in-flame" 1
          "Create cosmic recursive fractal flames"
          "Create cosmic recursive fractal flames"
@@ -5101,7 +5101,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image (unused)")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/compose" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/compose" 1474368364
     (proc-def "plug-in-compose" 1
          "Create an image using multiple gray images as color channels"
          "This function creates a new image from multiple gray images"
@@ -5156,7 +5156,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Image to recompose from")
         (proc-arg 16 "drawable" "Not used")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/ifs-compose" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/ifs-compose" 1474368364
     (proc-def "plug-in-ifscompose" 1
          "Create an Iterated Function System (IFS) fractal"
          "Interactively create an Iterated Function System fractal. Use the window on the upper left to adjust the component transformations of the fractal. The operation that is performed is selected by the buttons underneath the window, or from a menu popped up by the right mouse button. The fractal will be rendered with a transparent background if the current image has an alpha channel."
@@ -5172,7 +5172,7 @@
         (proc-arg 0 "run-mode" "The run mode { RUN-INTERACTIVE (0), RUN-NONINTERACTIVE (1) }")
         (proc-arg 13 "image" "Input image")
         (proc-arg 16 "drawable" "Input drawable")))
-(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-paper" 1448177493
+(plug-in-def "/usr/lib/gimp/2.0/plug-ins/tile-paper" 1474368364
     (proc-def "plug-in-papertile" 1
          "Cut image into paper tiles, and slide them"
          "This plug-in cuts an image into paper tiles and slides each paper tile."
