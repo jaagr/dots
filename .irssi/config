@@ -490,7 +490,9 @@ settings = {
 # Hilighting {{{
 
 hilights = (
-  { text = "jaagr"; nick = "yes"; word = "yes"; }
+  { text = "jaagr"; nick = "yes"; word = "yes"; },
+  { text = "lemonbuddy"; nick = "no"; word = "yes"; },
+  { text = "polybar"; nick = "no"; word = "yes"; }
 );
 
 # }}}
