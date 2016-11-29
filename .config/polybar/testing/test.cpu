@@ -1,0 +1,38 @@
+[bar/test]
+monitor = eDP-1
+width = 300
+height = 50
+dock = true
+lineheight = 10
+background = #ff184f
+foreground = #671414
+linecolor = #c51850
+;offset-x = 850
+;offset-y = 450
+font-0 = envypn:pixelsize=13;0
+font-1 = unifont:size=13;0
+
+modules-center = cpu
+
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label> <bar-load>
+label =  %percentage%
+
+bar-load-width = 10
+bar-load-foreground-0 = #c1cb7f
+bar-load-foreground-1 = #d9c37f
+bar-load-foreground-2 = #e4a48a
+bar-load-foreground-3 = #ed9896
+bar-load-indicator = ■
+bar-load-indicator-font = 0
+bar-load-indicator-foreground = #55fdf6e3
+bar-load-fill = ■
+bar-load-fill-font = 0
+bar-load-empty = □
+bar-load-empty-font = 0
+bar-load-empty-foreground = #99586e75
+
+; vim:ft=dosini

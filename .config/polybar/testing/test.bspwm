@@ -1,0 +1,107 @@
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[bar/test]
+monitor = eDP-1
+bottom = true
+
+background = #222222
+foreground = #ccfafafa
+overline-size = 2
+overline-color = #f00
+underline-size = 2
+underline-color = #00f
+
+;lineheight = 2
+spacing = 1
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = envypn-regular:size=10;0
+font-1 = Siji:pixelsize=10;0
+
+modules-left = bspwm2
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-monitor> <label-state> <label-mode>
+
+ws-icon-0 = term;
+ws-icon-1 = web;
+ws-icon-2 = code;
+ws-icon-3 = music;
+ws-icon-4 = irssi;
+ws-icon-default = 
+
+pin-workspaces = false
+;label-monitor-background = #00f
+
+label-active = %icon%
+label-active-background = #3f3f3f
+label-active-padding = 2
+label-active-overline = ${root.overline-color}
+label-active-underline = ${root.underline-color}
+
+label-occupied = %icon%
+label-occupied-padding = 2
+label-occupied-overline = #0f0
+label-occupied-underline = #0f0
+
+label-urgent = %icon%
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+label-urgent-overline = #0f0
+label-urgent-underline = #0f0
+
+label-empty = %icon%
+label-empty-foreground = #444
+label-empty-padding = 2
+label-empty-overline = #0f0
+label-empty-underline = #0f0
+
+label-monocle = 
+label-monocle-padding = 2
+label-monocle-background = #171717
+label-monocle-foreground = #fba922
+
+label-floating = 
+label-floating-padding = 2
+label-floating-background = #171717
+label-floating-foreground = #fba922
+
+
+[module/bspwm2]
+type = internal/bspwm
+; ws-icon-default = _
+format =  <label-state> <label-mode>
+label-monocle = 
+label-monocle-foreground = #ccffffff
+label-monocle-background = #99222222
+
+label-active = %icon%   %name%   %icon%
+label-active-foreground = #ffffffff
+label-active-background = #eeff4444
+label-active-underline = #eeff4444
+label-active-overline = #eeff4444
+
+label-occupied = %icon%   %name%   %icon%
+label-occupied-foreground = #ffff4444
+label-occupied-underline = #ffff4444
+; label-occupied-overline = #ff4444
+
+label-urgent = %icon%   %name%   %icon%
+label-urgent-foreground = #ffff4444
+label-urgent-background = #ffff0000
+label-urgent-underline = #9b0a20
+label-urgent-overline = #ff4444
+
+label-empty = %icon%   %name%   %icon%
+label-empty-foreground = #ee808080
+label-empty-overline = #ee808080
+;label-empty-underline = #0f0
+
+; vim:ft=dosini

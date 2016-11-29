@@ -38,7 +38,7 @@ set $color-medium-gray #777777
 # of the window.
 
 # state                    border              background          text                 indicator
-client.focused             $color-dark-gray    $color-dark-gray    $color-white         $color-medium-gray
+client.focused             $color-dark-gray    #ff0074             $color-white         $color-medium-gray
 client.focused_inactive    $color-black        $color-black        $color-medium-gray   $color-black
 client.unfocused           $color-black        $color-black        $color-dark-gray     $color-black
 client.urgent              $color-alert        $color-alert        $color-black         $color-black
@@ -65,7 +65,7 @@ font pango:Source Code Pro for Powerline, Bold, 10
 #smart_borders on
 
 gaps outer 0
-gaps inner 5
+gaps inner 2
 
 #workspace "2. web" gaps outer 45
 #workspace "9. music" gaps outer 45
@@ -237,5 +237,9 @@ mode "resize" {
 #bindsym $win+Control+r mode "resize"
 
 # }}}
+
+# bar {
+#     status_command i3status
+# }
 
 exec_always --no-startup-id "$LOCAL_ETC/i3/startup.sh"

@@ -5,4 +5,4 @@ fi
 echo "[bspwm/bin/restore_state] Restoring state using snapshot $BSPWM_STATE"
 bspc wm -l "$BSPWM_STATE"
 rm "$BSPWM_STATE"
-source "$LOCAL_ETC/bspwm/bspwmrc"
+. "$LOCAL_ETC/bspwm/bspwmrc"

@@ -1,0 +1,17 @@
+[bar/center]
+monitor = eDP-1
+dock = true
+width = 16%
+height = 75
+offset-x = 42%
+offset-y = 40%
+
+font-0 = fixed:size=10
+
+modules-center = test
+
+[module/test]
+type = custom/text
+content = ${env:HOME}
+
+; vim:ft=dosini

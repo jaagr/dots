@@ -19,9 +19,9 @@ shadow-exclude = [
   "class_g *?= 'presel_feedback'",
   "class_g *?= 'lemonbar'",
   "class_g *?= 'Bspwm'",
-  "name *?= 'lemonbuddy-top_eDP-1'",
-  "name *?= 'lemonbuddy-bottom_eDP-1'",
-  "name *?= 'lemonbuddy-external_bottom_HDMI-1'"
+  "name *?= 'polybar-top_eDP-1'",
+  "name *?= 'polybar-bottom_eDP-1'",
+  "name *?= 'polybar-external_bottom_HDMI-1'"
 ];
 shadow-ignore-shaped = false;
 menu-opacity = 1;

@@ -1,0 +1,55 @@
+[bar/test]
+width = 100%
+height = 20
+monitor = eDP-1
+;offset-x = 30%;
+;dock = true
+bottom = true
+
+background = #880000ff
+foreground = #f9ffff00
+linecolor = #c51850
+
+;font-0 = NotoSans-Regular:size=14:weight=bold
+;font-0 = -*-gohufont-bold-*-*-*-14-*-*-*-*-*-*-*
+;font-0 = -*-gohufont-bold-*-*-*-11-*-*-*-*-*-*-*
+font-0 = -*-gohufont-bold-*-*-*-14-*-*-*-*-*-*-*
+;font-0 = sans:weight=heavy:size=15;0
+;font-0 = MaterialIcons:size=10;0
+;font-0 = Termsyn:pixelsize=14
+;font-1 = Siji:pixelsize=10;0
+;font-0 = FontAwesome:size=10;-8
+
+border-color = #0000ff00
+border-top = 8
+border-left = 8
+border-right-color = #ff0
+border-right = 8
+
+;modules-left =
+modules-left = test
+;modules-center = test2
+; modules-right =
+
+tray-position = right
+
+[module/button-index-fallback]
+type = custom/text
+content = %{A:notify-send -u low test:}foo%{A}
+
+[module/test]
+type = internal/counter
+format = <counter>  %{F#00ff0000}  #00ff0000  %{F#44ffffff}  #44ffffff  %{F#66ffffff}  #66ffffff  %{F#22000000}  #22000000  %{F#44000000}  #44000000  %{F#99000000}  #99000000  %{F#bbff0000}  #bbff0000  %{F#dd221199}  #dd221199  %{F#7711ff22}  #7711ff22  %{F#55ff9988}  #55ff9988  %{F-}
+format-foreground = #4400ffff
+click-left = echo left
+; click-middle = echo middle
+; click-right = echo right
+; scroll-up = echo scroll up
+; scroll-down = echo scroll down
+
+[module/test2]
+type = custom/text
+content = %{F#ff00ff00} #ff00ff00 %{F#33ffffff} #33ffffff %{F#44ff0000} #ffff0000 %{F#dd229911} #dd229911 %{F#55ff9988} #55ff9988 %{F-}
+;content-foreground = #99ff0000
+
+; vim:ft=dosini

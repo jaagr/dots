@@ -1,0 +1,29 @@
+[bar/test]
+;monitor = eDP-1
+monitor = ${env:TEST}
+width = 200
+height = 50
+dock = false
+lineheight = 10
+background = #ff184f
+foreground = #fff4fa
+linecolor = #c51850
+offset-x = 850
+offset-y = 450
+
+font-0 = envypn:pixelsize=13;0
+
+modules-center = battery
+
+
+[module/battery]
+type = internal/battery
+;poll-interval = 5
+
+format-charging = <animation-charging> <label-charging>
+
+animation-charging-0 = 1
+animation-charging-1 = 2
+animation-charging-2 = 3
+animation-charging-foreground = #666
+;animation-charging-framerate = 1050

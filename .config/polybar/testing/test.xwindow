@@ -1,0 +1,22 @@
+[bar/test]
+monitor = eDP1
+bottom = true
+modules-center = xwindow
+; background = #f00
+; foreground = #000
+
+[module/xwindow]
+type = internal/xwindow
+; format-padding = 50
+; format-background = #88ffffff
+; format-foreground = #000
+label = %title%
+
+[module/xworkspaces]
+type = internal/xworkspaces
+; format-padding = 50
+; format-background = #88ffffff
+; format-foreground = #000
+label = %title%
+
+; vim:ft=dosini

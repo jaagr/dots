@@ -1,25 +1,30 @@
-#!/usr/bin/env bash
-wid="$1"
-class="$2"
-instance="$3"
+#!/usr/bin/env sh
 
-if xprop -id "$id" WM_NAME | grep \"floatme\"; then
-  echo "state=floating"
-elif [[ "$class" == "chromium" ]]; then
-  role=$(xprop -id "$wid" | awk '/WM_WINDOW_ROLE/ {print $3}' | tr -d '"')
+main() {
+  wid="$1"
+  class="$2"
+  instance="$3"
 
-  case "$role" in
-    app)
-      echo "state=floating"
-      xwincenter "$(xdo id -a Authy)"
-    ;;
-  esac
-elif [[ "$class" == "Steam" ]]; then
-  echo "state=floating"
-elif [[ "$class" == "Eclipse" ]] || [[ "$class" == "Java" ]]; then
-  wm_type=$(xprop -id "$wid" | awk '/_NET_WM_WINDOW_TYPE_SPLASH/ {print $3}')
-
-  if [[ "$wm_type" == "_NET_WM_WINDOW_TYPE_SPLASH" ]]; then
+  if xprop -id "$wid" WM_NAME 2>/dev/null | grep -q \"floatme\"; then
     echo "state=floating"
+  elif [ "$class" = "chromium" ]; then
+    role=$(xprop -id "$wid" 2>/dev/null | awk '/WM_WINDOW_ROLE/ {print $3}' | tr -d '"')
+
+    case "$role" in
+      app)
+        echo "state=floating"
+        xwincenter "$(xdo id -a Authy)"
+      ;;
+    esac
+  elif [ "$class" = "Steam" ]; then
+    echo "state=floating"
+  elif [ "$class" = "Eclipse" ] || [ "$class" = "Java" ]; then
+    wm_type=$(xprop -id "$wid" | awk '/_NET_WM_WINDOW_TYPE_SPLASH/ {print $3}')
+
+    if [ "$wm_type" = "_NET_WM_WINDOW_TYPE_SPLASH" ]; then
+      echo "state=floating"
+    fi
   fi
-fi
+}
+
+main "$@"

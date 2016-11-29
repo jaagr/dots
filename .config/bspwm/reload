@@ -12,7 +12,7 @@ if sv check "$SVDIR"/bspwm | egrep -q "^ok: run"; then
 
 # Standalone daemon
 else
-  killall -q bspc lemonbuddy lemonbar xdrawrect
+  killall -q bspc polybar lemonbar xdrawrect
   "$LOCAL_ETC/bspwm/save_state"
   bspc quit $?
 fi

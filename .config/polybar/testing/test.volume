@@ -16,10 +16,10 @@ modules-center = volume
 
 [module/volume]
 type = internal/volume
-
+mapped = true
 speaker-mixer = Speaker
 headphone-mixer = Headphone
-headphone-control-numid = 9
+headphone-id = 9
 
 format-volume = <label-volume>
 label-volume = %percentage%

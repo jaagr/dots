@@ -2,24 +2,16 @@
 
 source bootstrap.sh
 
-include utils/lemonbuddy.sh
+include utils/polybar.sh
 
 bootstrap::finish
 
-size_gap=5
-size_border=1
+size_gap=1
+size_border=2
 
-lemonbuddy_config="${XDG_CONFIG_HOME}/lemonbuddy/config.i3"
-lemonbuddy_bars=(top)
-
-if x11::monitor_connected "HDMI-1"; then
-  lemonbuddy_bars+=(external_bottom)
-fi
-
-function theme::pre_startup {
-  :
-}
+polybar_config="$CURRENT_THEME/polybar"
+polybar_bars=(top bottom)
 
 function theme::post_startup {
-  xsetroot -bg '#1d1d1d' -fg '#2a2a2a' -bitmap "${CURRENT_THEME}/tile.xbm"
+  : # xsetroot -bg '#1d1d1d' -fg '#2a2a2a' -bitmap "${CURRENT_THEME}/tile.xbm"
 }

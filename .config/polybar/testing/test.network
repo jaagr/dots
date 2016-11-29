@@ -1,0 +1,51 @@
+[bar/test]
+monitor = eDP-1
+width = 100%
+height = 20
+dock = false
+lineheight = 10
+background = #ff184f
+foreground = #000
+linecolor = #c51850
+;offset-x = 850
+;offset-y = 450
+
+padding-left = 2
+padding-right = 2
+
+font-0 = fixed:size=10
+font-1 = fontawesome:size=10;0
+font-2 = materialicons:size=10;0
+
+modules-center = net-wlan
+modules-right = net-eth
+
+[module/net-wlan]
+type = internal/network
+
+interface = net1
+interval = 2
+;ping-interval = 4
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <label-packetloss> <animation-packetloss>
+
+animation-packetloss-0 = 1
+animation-packetloss-1 = 2
+animation-packetloss-2 = 3
+animation-packetloss-framerate = 500
+label-connected = %ifname%: Connected to %essid% with IP %local_ip% (up: %upspeed%, down: %downspeed%) (%signal% / %quality%)
+label-disconnected = Disconnected
+label-packetloss = Packetloss!
+
+[module/net-eth]
+type = internal/network
+interface = net0
+interval = 2
+
+label-connected =  %ifname%: Connected with IP %local_ip% (linkspeed: %linkspeed%, up: %upspeed%, down: %downspeed%)
+label-disconnected = Wired network disconnected
+label-disconnected-foreground = #66
+
+# vim:ft=dosini

@@ -1,0 +1,27 @@
+[bar/test]
+dock = true
+width = 30%
+height = 75
+offset-x = 35%
+offset-y = 40%
+
+enable-ipc = true
+
+font-0 = fixed:size=10
+
+modules-center = test
+
+[module/float]
+type = custom/text
+content = ${env:HOME}
+
+[module/test]
+type = custom/ipc
+format = <output>
+format-foreground = #f00
+format-background = #fff
+hook-0 = date
+hook-1 = whoami
+hook-2 = echo "%{B#000}Files%{B-} in ${HOME}: $(ls -1a ~ | wc -l)"
+
+; vim:ft=dosini

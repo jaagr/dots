@@ -3,7 +3,7 @@
 size_border=1
 size_gap=5
 
-padding_top=32
+padding_top=0
 padding_bottom=0
 padding_left=0
 padding_right=0
@@ -15,20 +15,18 @@ color_presel_feedback="#555555"
 
 setting_borderless_monocle='false'
 
-lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
-lemonbuddy_bars=(top)
+polybar_config="$CURRENT_THEME/polybar"
+polybar_bars=(top)
 
 if xrandr | grep -q "HDMI-1 connected"; then
-  lemonbuddy_bars+=(external_bottom)
+  polybar_bars+=(external_bottom)
 fi
 
 theme::post_bspwmrc()
 {
-  xdrawrect eDP-1 top 100% 1 0 27 '#ff777777' effectline-top "$(lemonbuddy top -c "$lemonbuddy_config" --print-wmname)" &
+  xdrawrect eDP-1 top 100% 1 0 29 '#ff777777' effectline-top "$(polybar top -c "$polybar_config" --print-wmname)" &
 
   if xrandr | grep -q "HDMI-1 connected"; then
-    bspc config -m HDMI-1 top_padding 0
-    bspc config -m HDMI-1 bottom_padding $padding_top
-    xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(lemonbuddy external_bottom -c "$lemonbuddy_config" --print-wmname)" &
+    xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(polybar external_bottom -c "$polybar_config" --print-wmname)" &
   fi
 }

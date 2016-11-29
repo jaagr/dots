@@ -1,9 +1,11 @@
 font = envypn, regular, 10
+;font = droid sans mono for powerline, 10
+
 
 foreground      = #373b41
 foreground_bold = #373b41
 cursor          = #373b41
-background      = rgba(248, 248, 248, .98)
+background      = rgba(238, 238, 238, .98)
 
 color0  = #1d1f21
 color1  = #CC342B
@@ -20,7 +22,7 @@ color11 = #FBA922
 color12 = #3971ED
 color13 = #A36AC7
 color14 = #3971ED
-color15 = #ffffff
+color15 = #f5f5f5
 
 # 256 color space
 color16 = #F96A38

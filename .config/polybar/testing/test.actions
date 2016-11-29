@@ -16,8 +16,13 @@ border-right = 5
 border-right-color = #3f0079
 
 ; modules-left = test
+modules-left = button-index-fallback
 modules-center = test
 ; modules-right = test test2
+
+[module/button-index-fallback]
+type = custom/text
+content = %{A:notify-send -u low test:}foo%{A}
 
 [module/test]
 type = custom/text

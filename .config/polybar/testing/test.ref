@@ -1,0 +1,23 @@
+[bar/test]
+modules-center = self root BAR env envfallback
+key = ${xrdb:color16:#f90}
+background = #f00
+foreground = #000
+
+[module/self]
+type = custom/text
+content = ${module/self.type}
+[module/root]
+type = custom/text
+content = ${root.foreground}
+[module/BAR]
+type = custom/text
+content = ${root.background}
+[module/env]
+type = custom/text
+content = ${env:HOME}
+[module/envfallback]
+type = custom/text
+content = ${env:NONE:fallback}
+
+; vim:ft=dosini

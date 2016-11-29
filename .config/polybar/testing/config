@@ -86,8 +86,10 @@ font-0 = NotoSans-Regular:size=8;0
 font-1 = MaterialIcons:size=10;0
 font-2 = Termsynu:size=8;-1
 font-3 = FontAwesome:size=10;0
+font-4 = unifont:size=10;0
 
 modules-left = powermenu mpd
+modules-center = cpu
 modules-right = backlight volume wireless-network wired-network battery date
 
 [bar/bottom]
@@ -755,7 +757,7 @@ label-connected =    %{T3}%local_ip%%{T-}
 ;[module/rtorrent]
 ;type = internal/rtorrent
 ;
-;script = /home/jaagr/var/github/jaagr/lemonbuddy/scripts/torrents.sh
+;script = /home/jaagr/var/github/jaagr/polybar/scripts/torrents.sh
 ;rtorrent-session-dir = /home/jaagr/.cache/rtorrent
 ;display-count = 2
 ;title-maxlen = 30
@@ -795,7 +797,7 @@ headphone-mixer = Headphone
 
 ; Use the following command to list available device controls
 ; $ amixer controls | sed -r "/CARD/\!d; s/.*=([0-9]+).*name='([^']+)'.*/printf '%3.0f- %s\n' '\1' '\2'/e" | sort
-headphone-control-numid = 9
+headphone-id = 9
 
 ; Available tags:
 ;   <label-volume> (default)

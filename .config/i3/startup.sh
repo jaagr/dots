@@ -8,7 +8,6 @@ bootstrap::finish
 
 function main
 {
-  killall -q lemonbuddy lemonbar xdrawrect
   ln -fs "$(i3 --get-socketpath)" "${XDG_CONFIG_HOME}/i3/socket"
 
   [[ -e ${CURRENT_THEME}/i3 ]] && source "${CURRENT_THEME}/i3"
@@ -18,9 +17,9 @@ function main
   [[ "$size_gap" ]] && i3-msg gaps outer all set "$size_gap"
   [[ "$size_border" ]] && i3-msg border pixel "$size_border"
 
-  "${XDG_CONFIG_HOME}/lemonbuddy/launch" --kill-all \
-    "${lemonbuddy_config:-${XDG_CONFIG_HOME}/lemonbuddy/config.i3}" \
-    "${lemonbuddy_bars[*]}"
+  "${XDG_CONFIG_HOME}/polybar/launch" --kill-all \
+    "${polybar_config:-${XDG_CONFIG_HOME}/polybar/config.i3}" \
+    "${polybar_bars[*]}"
 
   declare -f theme::post_startup >/dev/null && theme::post_startup
 }

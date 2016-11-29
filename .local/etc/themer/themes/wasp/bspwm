@@ -3,7 +3,7 @@
 source bootstrap.sh
 
 include utils/_.sh
-include utils/lemonbuddy.sh
+include utils/polybar.sh
 include utils/json.sh
 
 bootstrap::finish
@@ -11,7 +11,7 @@ bootstrap::finish
 size_border=1
 size_gap=5
 
-padding_top=32
+padding_top=0
 padding_bottom=0
 padding_left=0
 padding_right=0
@@ -23,18 +23,16 @@ color_presel_feedback="#aaaaaa"
 
 setting_borderless_monocle='false'
 
-lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
-lemonbuddy_bars=(top external_bottom)
+polybar_config="$CURRENT_THEME/polybar"
+polybar_bars=(top external_bottom)
 
 theme::post_bspwmrc()
 {
-  bspc config -m HDMI-1 top_padding 0
-  bspc config -m HDMI-1 bottom_padding $padding_top
-
-  # for b in "${lemonbuddy_bars[@]}"; do
+  :
+  # for b in "${polybar_bars[@]}"; do
   #   _::stdout "Initializing $b"
   #
-  #   [[ "$(xdo id -a "$(lemonbuddy::wm_name "$b" "$lemonbuddy_config")")" ]] || {
+  #   [[ "$(xdo id -a "$(polybar::wm_name "$b" "$polybar_config")")" ]] || {
   #     _::stderr "Failed to get the lemonbar X Window ID"
   #     continue
   #   }
@@ -45,7 +43,7 @@ theme::post_bspwmrc()
   #   esac
   #
   #   # bevel effect lines
-  #   lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#dd424242" 1 100% 0 $offset_y1
-  #   lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#22ffffff" 1 100% 0 $offset_y2
+  #   polybar::drawline "$polybar_config" "$b" "below" "#dd424242" 1 100% 0 $offset_y1
+  #   polybar::drawline "$polybar_config" "$b" "below" "#22ffffff" 1 100% 0 $offset_y2
   # done
 }

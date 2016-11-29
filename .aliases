@@ -19,7 +19,7 @@ alias connect.work="ssh michael@workbox.local"
 alias externalip="curl -s checkip.dyndns.org | sed 's/[^0-9.]//g'"
 alias hardwareinfo="inxi -F"
 
-alias browser.vimb='tabbed -c vimb -e'
+alias browser.vimb='vimb'
 alias browser.qute='qutebrowser'
 alias browser.vimperator='firefox -vimperator "++cmd ''source ${XDG_CONFIG_HOME}/vimperator/vimperatorrc''"'
 alias browser.chromium='chromium'
@@ -27,22 +27,26 @@ alias browser.tor='tor-browser-en'
 
 alias launch.wm='$X11_HOME/launch'
 alias launch.xvnc='$X11_HOME/xvnc'
-alias launch.compton='bash -c "$LOCAL_ETC/compton/launch &"'
+alias launch.compton='bash -c "$LOCAL_ETC/compton/launch"'
 alias launch.sxhkd='bash -c "$LOCAL_ETC/sxhkd/launch &"'
 alias launch.dunst='bash -c "$LOCAL_ETC/dunst/launch &"'
+
+alias lemonbuddy='polybar'
+alias term.polybar='killall polybar'
+alias termkill.polybar='killall -9 polybar'
 
 alias reload.compton='$LOCAL_ETC/compton/reload'
 alias reload.sxhkd='$LOCAL_ETC/sxhkd/reload'
 alias reload.dunst='$LOCAL_ETC/dunst/reload'
 alias reload.bspwm='$LOCAL_ETC/bspwm/reload'
-alias reload.lemonbuddy='$LOCAL_ETC/lemonbuddy/reload'
+alias reload.polybar='$LOCAL_ETC/polybar/reload'
 alias reload.xkbmap='$LOCAL_ETC/xorg/xkbmaprc'
 alias reload.i3='$LOCAL_ETC/i3/reload'
 
 alias goservices='cd $LOCAL_ETC/sv/'
 alias gothemes='cd $LOCAL_ETC/themer/themes'
 alias gobspwm='cd $LOCAL_ETC/bspwm'
-alias golemonbuddy='cd $LOCAL_ETC/lemonbuddy'
+alias gopolybar='cd $LOCAL_ETC/polybar'
 alias gosh='cd $LOCAL_SRC/sh'
 alias gocpp='cd $LOCAL_SRC/cpp'
 alias gomedia='cd /storage/media'
@@ -52,9 +56,12 @@ alias errcompton='vim $XDG_CACHE_HOME/compton/stderr'
 alias erri3='vim $XDG_CACHE_HOME/i3/stderr'
 alias errsxhkd='vim $XDG_CACHE_HOME/sxhkd/stderr'
 
+alias pastebin='curl -F "sprunge=<-" http://sprunge.us'
+alias termite-floating='termite -t floatme'
 alias lpass-login='lpass login $(sudo cat /root/lpass_username)'
 alias xupd="xbps-install -Su"
 alias xquery="xbps-query"
+alias xfiles="xbps-query -f"
 alias xrem="xbps-remove"
 alias xbelongs="xbps-query -o"
 alias xrequiredby="xbps-query -X"
@@ -100,14 +107,17 @@ alias egrepr="egrep -r"
 
 alias ghub='cd $GITHUB_HOME'
 alias ghubl='cd $GITHUB_HOME/jaagr'
-alias ghublemonbuddy='cd $GITHUB_HOME/jaagr/lemonbuddy'
+alias ghubpolybar='cd $GITHUB_HOME/jaagr/polybar'
 alias ghubwmrestack='cd $GITHUB_HOME/jaagr/wmrestack'
 alias ghubbarlib='cd $GITHUB_HOME/jaagr/barlib'
 alias ghubxlib-drawrect='cd $GITHUB_HOME/jaagr/xlib-drawrect'
 
 alias perlcd='cd $PERL_HOME'
 alias cpan="perlcd && perl -MCPAN -e shell"
+alias gdb-run="gdb -ex run -args"
 
+alias cmake-purge="rm -rf CMakeFiles CMakeCache.txt"
+alias cmake-clang="cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
 alias cmake-debug="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cmake-debug-clang="cmake-debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
 alias cmake-debug-gcc="cmake-debug -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"

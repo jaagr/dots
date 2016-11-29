@@ -14,7 +14,9 @@ function main
   fi
 
   if [[ "$1" == "-k" ]] || [[ "$1" == "--kill-all" ]]; then
-    killall -9 -q lemonbuddy lemonbuddy_wrapper lemonbar &>/dev/null ; shift
+    killall -q polybar &>/dev/null ; shift
+    local i=0;
+    while (( ++i < 5 )) && pgrep -x polybar >/dev/null; do sleep 1; done
   fi
 
   local config="$1" ; shift
@@ -29,26 +31,12 @@ function main
       log::err "The bar '${bar}' is not defined in the configuration, skippinng..."; continue
     fi
 
-    log::info "Launching bar '${bar}'"
+    polybar "$bar" -c "$config" -r &
 
-    monitor="$(lemonbuddy "$bar" -c "$config" -d monitor)"
-
-    if ! x11::monitor_connected "$monitor"; then
-      log::err "The bar '${bar}' is configured for disconnected monitor '${monitor}', skipping..."
-      continue
-    fi
-
-    wmname=$(lemonbuddy "$bar" -c "$config" -w)
-
-    if [[ -z "$wmname" ]]; then
-      log::err "Failed to get WM_NAME for the bar '${bar}', skipping..."
-      continue
-    fi
-
-    lemonbuddy "$bar" -c "$config" &
+    log::info "Launched bar '${bar}'"
   done
 
-  echo "$config" "${bars[@]}" > "$XDG_CONFIG_HOME/lemonbuddy/.runargs"
+  echo "$config" "${bars[@]}" > "$XDG_CONFIG_HOME/polybar/.runargs"
 }
 
 main "$@"

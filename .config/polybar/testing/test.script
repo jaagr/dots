@@ -1,0 +1,79 @@
+[bar/test]
+monitor = eDP-1
+width = 100%
+height = 25
+dock = true
+lineheight = 4
+background = #424242
+foreground = #ffffff
+linecolor = #c51850
+font-0 = envypn:pixelsize=13;-3
+font-1 = FontAwesome:size=13;0
+
+;imodules-left = tmp
+;modules-left = spotify
+; modules-left = tailscript tailscript2
+;modules-center = not-a-tailscript
+;modules-right = intervalscript
+;modules-left = tailscript
+modules-center = test dropbox
+; modules-right = intervalscript
+
+[module/test]
+type = custom/script
+exec = echo test %counter% | scroller -c 7
+tail = true
+interval = 0
+
+[module/tailscript]
+type = custom/script
+exec = xtitle -s
+tail = true
+maxlen = 35
+ellipsis = true
+
+[module/tailscript2]
+type = custom/script
+exec = mpc current; mpc idleloop | while read -r line; do mpc current; done
+tail = true
+maxlen = 20
+ellipsis = true
+interval = 1
+
+[module/not-a-tailscript]
+type = custom/script
+exec = mpc status | head -1
+tail = true
+
+[module/intervalscript]
+type = custom/script
+exec = echo %counter%..
+interval = 1
+
+click-left = echo left %counter%
+click-middle = echo middle %counter%
+click-right = echo right %counter%
+scroll-up = echo scroll up %counter%
+scroll-down = echo scroll down %counter%
+
+[module/spotify]
+type = custom/script
+exec = /tmp/script
+interval = 10
+
+[module/tmp]
+type = custom/script
+;exec = bash -c 'date=$(date); count=$(echo "1\n2\n3\n4" | wc -l) && [ $count -gt 0 ] && echo "AUR $count $date"'
+exec = ~/bin/torrents.sh | head -1
+interval = 10
+
+[module/dropbox]
+type = custom/script
+exec = /tmp/dropbox.sh
+format-underline = #458588
+click-left = dropbox start
+;click-left = echo sleeping && sleep 4 & echo sleeping 2
+interval = 2
+format-padding = 2
+
+; vim:ft=dosini

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-killall -q lemonbuddy lemonbar xdrawrect
+killall -q polybar
 i3-msg reload
 "$XDG_CONFIG_HOME"/i3/startup.sh

@@ -7,10 +7,10 @@ if ! bspc wm -g &>/dev/null; then
   exit 1
 fi
 
-killall -q lemonbuddy lemonbar xdrawrect
+killall -q polybar lemonbar xdrawrect
 
 if [[ -s "$BSPWM_STATE" ]]; then
-  "$LOCAL_ETC/bspwm/restore_state"; exit 0
+  exec "$LOCAL_ETC/bspwm/restore_state"; exit 0
 fi
 
 # Config vars {{{
@@ -38,23 +38,36 @@ color_presel_feedback="#888888"
 # General {{{
 
 bspc config split_ratio "${setting_split_ratio:-0.5}"
-bspc config focus_by_distance "${setting_focus_by_distance:-true}"
-bspc config history_aware_focus "${setting_history_aware_focus:-true}"
+#bspc config focus_by_distance "${setting_focus_by_distance:-true}"
+#bspc config history_aware_focus "${setting_history_aware_focus:-true}"
 bspc config focus_follows_pointer "${setting_focus_follows_pointer:-true}"
 bspc config ignore_ewmh_focus "${setting_ignore_ewmh_focus:-true}"
 
 # }}}
 # Monitors and desktops {{{
 
-if bspc query -M -m HDMI-1 >/dev/null; then
-  bspc monitor eDP-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
-  bspc monitor HDMI-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 ws_9 ws_0
+mon_internal="eDP-1"
+mon_external="HDMI-1"
+
+if ! xrandr -q | grep -q "eDP-1"; then
+  mon_internal="eDP1"
+fi
+
+if ! xrandr -q | grep -q "HDMI-1"; then
+  mon_external="HDMI1"
+fi
+
+if bspc monitor $mon_external; then
+  bspc monitor $mon_internal --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
+  bspc monitor $mon_external --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 ws_9 ws_0
 else
-  bspc monitor eDP-1 --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
+  bspc monitor $mon_internal --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
 fi
 
 bspc config pointer_follows_monitor "${setting_pointer_follow_monitor:-true}"
-bspc config remove_unplugged_monitors "${setting_remove_unplugged_monitors:-true}"
+#bspc config remove_unplugged_monitors "${setting_remove_unplugged_monitors:-true}"
+bspc config remove_disabled_monitors "${setting_remove_disabled_monitors:-false}"
+#bspc config merge_overlapping_monitors "${setting_merge_overlapping_monitors:-false}"
 
 # }}}
 # Appearance {{{
@@ -159,11 +172,11 @@ fi
 
 # }}}
 
-# Lemonbuddy {{{
+# Polybar {{{
 
-"${XDG_CONFIG_HOME}"/lemonbuddy/launch --kill-all \
-  "${lemonbuddy_config:-${XDG_CONFIG_HOME}/lemonbuddy/bspwm.conf}" \
-  "${lemonbuddy_bars[*]}"
+"${XDG_CONFIG_HOME}"/polybar/launch --kill-all \
+  "${polybar_config:-${XDG_CONFIG_HOME}/polybar/bspwm.conf}" \
+  "${polybar_bars[*]}"
 
 # }}}
 

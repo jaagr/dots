@@ -3,15 +3,16 @@
 source bootstrap.sh
 
 include utils/_.sh
-include utils/lemonbuddy.sh
 include utils/json.sh
+include utils/polybar.sh
+include utils/x11.sh
 
 bootstrap::finish
 
 size_border=4
 size_gap=10
 
-padding_top=32
+padding_top=0
 padding_bottom=0
 padding_left=0
 padding_right=0
@@ -21,52 +22,35 @@ color_normal_border="#282a37"
 color_active_border="#282a37"
 color_presel_feedback="#9966cc"
 
-lemonbuddy_config="$CURRENT_THEME/lemonbuddy.plain"
-lemonbuddy_bars=(top external_bottom)
+polybar_config="${CURRENT_THEME}/polybar.plain"
+polybar_bars=(top)
 
-theme::post_bspwmrc()
+if x11::monitor_connected "HDMI-1"; then
+  polybar_bars+=(bottom)
+fi
+
+function theme::post_bspwmrc
 {
-  bspc config -m HDMI-1 top_padding 0
-  bspc config -m HDMI-1 bottom_padding $padding_top
+  # main background
+  polybar::drawline "$polybar_config" "$monitor" "$bar" '#dd45485f' -21 21
 
-  for b in "${lemonbuddy_bars[@]}"; do
-    _::stdout "Initializing $b"
+  # bevel effect lines
+  polybar::drawline "$polybar_config" "$monitor" "$bar" '#dd45485f' 23
+  polybar::drawline "$polybar_config" "$monitor" "$bar" '#22ffffff' 24
 
-    [[ "$(xdo id -a "$(lemonbuddy::wm_name "$b" "$lemonbuddy_config")")" ]] || {
-      _::stderr "Failed to get the lemonbar X Window ID"
-      continue
-    }
-
-    # main background
-    lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#ff5f627a" 21 100% 0 0 'true'
-
-    case "$b" in
-      top) local offset_y1=23 offset_y2=24;;
-      external_bottom) local offset_y1=3 offset_y2=2;;
-    esac
-
-    # bevel effect lines
-    lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#dd45485f" 1 100% 0 $offset_y1
-    lemonbuddy::drawline "$lemonbuddy_config" "$b" "below" "#22ffffff" 1 100% 0 $offset_y2
-
-    theme::draw_separators "$b"
-
-    # "$XDG_CONFIG_HOME"/lemonbuddy/bin/autohide setup
-  done
+  theme::draw_separators "$monitor" "$bar"
 }
 
-theme::draw_separators() {
-  local bar="$1"
+# shellcheck disable=2155
+function theme::draw_separators {
+  local monitor="$1"; shift
+  local bar="$1"; shift
   local x_offset="${2:-0}"
   local x_pos=0
   local sep=0
   local step=37
-
-  local lname align monitor
-
-  lname="$(lemonbuddy::wm_name "$bar" "$lemonbuddy_config")"
-  align="$(lemonbuddy::alignment "$bar" "$lemonbuddy_config")"
-  monitor="$(lemonbuddy::monitor "$bar" "$lemonbuddy_config")"
+  local lname="$(polybar::wm_name "$polybar_config" "$bar")"
+  local align="$(polybar::alignment "$polybar_config" "$bar")"
 
   while (( sep++ < 10 )); do
     x_pos=$(( sep * step ))

@@ -1,5 +1,13 @@
 " vim:ft=vim
 set background=light
-let g:base16colorspace=256
-let g:theme_name = 'base16-google'
-let g:airline_theme = 'base16'
+let g:theme_name = 'PaperColor'
+let g:airline_theme = 'silver'
+
+" let g:base16colorspace=256
+" let g:theme_name = 'base16-google-light'
+" let g:airline_theme = 'base16'
+
+" func! g:ThemeHookPost()
+"   set background=light
+"   exec 'colorscheme '. g:theme_name
+" endfunc

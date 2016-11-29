@@ -2,20 +2,20 @@
 
 source bootstrap.sh
 
-include utils/lemonbuddy.sh
+include utils/polybar.sh
 include utils/x11.sh
 
 bootstrap::finish
 
-size_border=1
+size_border=2
 size_gap=0
 
-padding_top=34
+padding_top=8
 padding_bottom=8
 padding_left=8
 padding_right=8
 
-color_focused_border="#666666"
+color_focused_border="#ff0074"
 color_normal_border="#333333"
 color_active_border="#333333"
 color_presel_feedback="#333333"
@@ -23,22 +23,16 @@ color_presel_feedback="#333333"
 setting_borderless_monocle='false'
 setting_gapless_monocle='true'
 
-lemonbuddy_config="$CURRENT_THEME/lemonbuddy"
-lemonbuddy_bars=(top)
+polybar_config="$CURRENT_THEME/polybar"
+polybar_bars=(top bottom)
 
-if x11::monitor_connected "HDMI-1"; then
-  lemonbuddy_bars+=(bottom)
-fi
-
-function theme::post_bspwmrc
-{
-  lemonbuddy::drawline "$lemonbuddy_config" eDP-1 top '#ff131313' &
-
-  if x11::monitor_connected "HDMI-1"; then
-    bspc config -m HDMI-1 top_padding 8
-    bspc config -m HDMI-1 bottom_padding $padding_top
-    lemonbuddy::drawline "$lemonbuddy_config" HDMI-1 bottom '#ff131313' &
-  fi
-
-  xsetroot -bg '#1d1d1d' -fg '#2a2a2a' -bitmap "${CURRENT_THEME}/tile.xbm"
-}
+# function theme::post_bspwmrc
+# {
+#   polybar::drawline "$polybar_config" eDP-1 top '#ff131313' &
+#
+#   if x11::monitor_connected "HDMI-1"; then
+#     polybar::drawline "$polybar_config" HDMI-1 bottom '#ff131313' &
+#   fi
+#
+#   xsetroot -bg '#1d1d1d' -fg '#2a2a2a' -bitmap "${CURRENT_THEME}/tile.xbm"
+# }
