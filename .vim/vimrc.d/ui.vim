@@ -34,10 +34,10 @@ if $TERM == 'linux' && !has('gui')
   hi MatchParen ctermbg=0 ctermfg=2 cterm=bold term=NONE
 elseif &background == 'light'
   hi Conceal ctermbg=NONE ctermfg=254  guibg=NONE guifg=#e4e4e4
-  hi Folded ctermbg=NONE guibg=NONE
+  " hi Folded ctermbg=NONE guibg=NONE
 else
   hi Conceal ctermbg=NONE ctermfg=238 guibg=NONE guifg=#444444
-  hi Folded ctermbg=NONE guibg=NONE
+  " hi Folded ctermbg=NONE guibg=NONE
 endif
 
 if exists('*g:ThemeHookPost')

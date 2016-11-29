@@ -51,6 +51,7 @@ Plug 'tpope/vim-abolish'
 
 " C/C++
 Plug 'octol/vim-cpp-enhanced-highlight'
+" Plug 'derekwyatt/vim-fswitch'
 " Plug 'vim-scripts/OmniCppComplete'
 
 " Plug 'xolox/vim-misc'
@@ -109,6 +110,7 @@ Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'delehef/Apprentice'
 
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
 "Plug 'baeuml/summerfruit256.vim'
 Plug 'chriskempson/base16-vim'
 "Plug 'mkarmona/colorsbox'

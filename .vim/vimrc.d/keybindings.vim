@@ -300,12 +300,30 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " }}}
 " Plugin: a.vim {{{
 
-nnoremap <silent> <leader>a :A<cr>
+"func! AVimBindings()
+"  nmap <silent> <leader>af :A<cr>
+"  nmap <silent> <leader>ao :A<cr>
+"  nmap <silent> <leader>as :AS<cr>
+"  nmap <silent> <leader>av :AV<cr>
+"  nmap <silent> <leader>a] :AN<cr>
+"endfunc
 
 " }}}
 " Plugin: vcoolor.vim {{{
 
 let g:vcoolor_disable_mappings = 1
 let g:vcoolor_map = '<leader>c'
+
+" }}}
+" Plugin: fswitch.vim {{{
+
+"func! FSwitchBindings()
+"  " buffer
+"  nmap <silent> <leader>af :FSHere<cr>
+"  " split below
+"  nmap <silent> <leader>as :FSSplitBelow<cr>
+"  " split right
+"  nmap <silent> <leader>av :FSSplitRight<cr>
+"endfunc
 
 " }}}
