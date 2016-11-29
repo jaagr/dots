@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-#
-# Launcher for Compton compositor
-#
 config="${1:-$LOCAL_ETC/compton/compton.conf}"
 log="${2:-$XDG_CACHE_HOME/compton/log}"
 
@@ -13,4 +10,4 @@ fi
 killall -q compton &> /dev/null
 
 # NOTE: --logpath is used since all output is sent to /dev/null when using --daemon
-exec compton --daemon --config "$config" --logpath "$log"
+exec compton --daemon --config "$config" --logpath "$log" --respect-prop-shadow
