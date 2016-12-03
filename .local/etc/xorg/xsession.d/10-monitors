@@ -4,13 +4,18 @@
 if stat -c %N /etc/X11/xorg.conf.d/20-gpu.conf 2>/dev/null | egrep -q "(optimus|nvidia).conf"; then
   xrandr --setprovideroutputsource modesetting NVIDIA-0
   xrandr --auto
-elif stat -c %N /etc/X11/xorg.conf.d/20-gpu.conf 2>/dev/null | egrep -q intel.conf && command -v gpu-change >/dev/null; then
+elif stat -c %N /etc/X11/xorg.conf.d/20-gpu.conf 2>/dev/null | egrep -q intel.conf && gpu-state; then
   gpu-change off
 fi
 
-if xrandr --query | grep -q "^HDMI-1 connected"; then
-  xrandr --auto
-  xrandr --output HDMI-1 --auto --above eDP-1 --set audio force-dvi
+mon_internal="eDP-1"
+mon_external="HDMI-1"
+
+xrandr -q | grep -q "eDP-1" || mon_internal="eDP1"
+xrandr -q | grep -q "HDMI-1" || mon_external="HDMI1"
+
+if xrandr -q | grep -q "^$mon_external connected"; then
+  xrandr --output $mon_external --auto --above $mon_internal --set audio force-dvi
 fi
 
 # set the screen server to blank at 1h

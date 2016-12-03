@@ -3,15 +3,16 @@
 #include "xresources.d/xft"
 #include "xresources.d/xterm"
 
-!#include "xresources.d/contrib/base16/base16-atelierdune.dark"
+#include "xresources.d/contrib/base16/base16-atelierdune.dark"
 !#include "xresources.d/contrib/slate"
 !#include "xresources.d/colors/dkg"
 
-#include "xresources.d/colors/jellybeans"
+!#include "xresources.d/colors/jellybeans"
 !#include "xresources.d/colors/heroku"
 
 ! URxvt*font:                    xft:envypn:pixelsize=12:weight=bold
-URxvt*font:                    xft:Hack:size=7:weight=bold
+!URxvt*font:                    xft:Hack:size=9:weight=bold
+URxvt*font:                    xft:envypn:size=10
 URxvt*lineSpace:               1
 URxvt*loginShell:              true
 URxvt*termName:                rxvt-256color
