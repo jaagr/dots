@@ -6,7 +6,10 @@ dock = true
 lineheight = 4
 background = #424242
 foreground = #ffffff
-linecolor = #c51850
+underline-size = 4
+underline-color = #c51850
+overline-size = 4
+overline-color = #c51850
 font-0 = envypn:pixelsize=13;-3
 font-1 = FontAwesome:size=13;0
 
@@ -14,9 +17,9 @@ font-1 = FontAwesome:size=13;0
 ;modules-left = spotify
 ; modules-left = tailscript tailscript2
 ;modules-center = not-a-tailscript
-;modules-right = intervalscript
-;modules-left = tailscript
-modules-center = test dropbox
+modules-right = intervalscript
+modules-left = tailscript
+;modules-center = test dropbox
 ; modules-right = intervalscript
 
 [module/test]
@@ -47,9 +50,12 @@ tail = true
 
 [module/intervalscript]
 type = custom/script
-exec = echo %counter%..
+exec = sleep 1; echo $MONITOR %counter%..
 interval = 1
 
+;format = <label>
+label = %output:0:3%
+maxlen = 3
 click-left = echo left %counter%
 click-middle = echo middle %counter%
 click-right = echo right %counter%
