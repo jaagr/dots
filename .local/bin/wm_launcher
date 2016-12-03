@@ -13,7 +13,9 @@ include utils/atexit.sh
 bootstrap::finish
 
 function atexit {
+  ansi::up
   log::defer::failure "Launching WM" "aborted"
+  exit 0
 }
 
 function main
