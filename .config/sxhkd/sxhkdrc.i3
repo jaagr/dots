@@ -58,8 +58,10 @@ ctrl + shift + r
     pgrep sxhkd   && killall -q -USR1 sxhkd   ; \
     xrdb -merge -I$LOCAL_ETC/xorg $LOCAL_ETC/xorg/xresources 2> /dev/null
 
+# Convenient scroll in terminal
 alt + shift + {j,k}
-    xdotool keyup Alt_L keyup j keyup k key Page_{Down,Up} keydown Alt_L
+  xmatch -x "termite\([0-9]+\)-\+-zsh\([0-9]+\)" && \
+    xdotool keyup j k key Page_{Down,Up}
 
 super + shift + KP_{1,2,3,4,6,7,8,9}
     xdotool mousemove_relative -- {-20 20,0 20,20 20,-20 0,20 0,-20 -20,0 -20,20 -20}
