@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
-[ -e "${XDG_CACHE_HOME}/bspwm/stdout" ] && rm "${XDG_CACHE_HOME}/bspwm/stdout"
-[ -e "${XDG_CACHE_HOME}/bspwm/stderr" ] && rm "${XDG_CACHE_HOME}/bspwm/stderr"
-
+mkdir -p "${XDG_CACHE_HOME}"/openbox
+rm "${XDG_CACHE_HOME}"/bspwm/std{out,err} >/dev/null 2>&1
 run_count=0
-
-while true; do
-  timestamp=$(date +'%Y-%m-%d %H:%M:%S')
-  echo "---- STARTUP ${timestamp} ----" >> "${XDG_CACHE_HOME}/bspwm/stdout"
-  echo "---- STARTUP ${timestamp} ----" >> "${XDG_CACHE_HOME}/bspwm/stderr"
-
-  run_count=$((run_count+1))
+while (( ++run_count )); do
+  echo "---- STARTUP $(date +"%Y-%m-%d %H:%M:%S") ----" >> "${XDG_CACHE_HOME}"/bspwm/stdout
+  echo "---- STARTUP $(date +"%Y-%m-%d %H:%M:%S") ----" >> "${XDG_CACHE_HOME}"/bspwm/stderr
   export BSPWM_COUNTER=$run_count
-  bspwm >>"${XDG_CACHE_HOME}/bspwm/stdout" 2>>"${XDG_CACHE_HOME}/bspwm/stderr" || break
+  bspwm >>"${XDG_CACHE_HOME}"/bspwm/stdout 2>>"${XDG_CACHE_HOME}"/bspwm/stderr || break
 done
