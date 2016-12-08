@@ -200,10 +200,6 @@ super + F9
 # }}}
 # Misc {{{
 
-# Toggle keyboard layouts
-super + F8
-  $LOCAL_BIN/kblayout
-
 {shift + ,_} Print
   scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/ ' && notify-send 'Screenshot captured'
   #scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/vault/screenshots/ ' && notify-send 'Screenshot captured'
