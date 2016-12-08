@@ -20,11 +20,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = envypn-regular:size=10;0
-font-1 = Siji:pixelsize=10;0
+; font-0 = envypn-regular:size=10;0
+; font-1 = Siji:pixelsize=10;0
+font-0 = fixed:size=10
+font-1 = fontawesome:size=10;0
+font-2 = materialicons:size=10;0
 
-modules-left = bspwm2
-
+modules-center = bspwm2
+tray-position = left
 
 [module/bspwm]
 type = internal/bspwm
@@ -40,11 +43,11 @@ ws-icon-default = 
 pin-workspaces = false
 ;label-monitor-background = #00f
 
-label-active = %icon%
-label-active-background = #3f3f3f
-label-active-padding = 2
-label-active-overline = ${root.overline-color}
-label-active-underline = ${root.underline-color}
+label-focused = %icon%
+label-focused-background = #3f3f3f
+label-focused-padding = 2
+label-focused-overline = ${root.overline-color}
+label-focused-underline = ${root.underline-color}
 
 label-occupied = %icon%
 label-occupied-padding = 2
@@ -82,11 +85,11 @@ label-monocle = 
 label-monocle-foreground = #ccffffff
 label-monocle-background = #99222222
 
-label-active = %icon%   %name%   %icon%
-label-active-foreground = #ffffffff
-label-active-background = #eeff4444
-label-active-underline = #eeff4444
-label-active-overline = #eeff4444
+label-focused = %icon%   %name%   %icon%
+label-focused-foreground = #ffffffff
+label-focused-background = #eeff4444
+label-focused-underline = #eeff4444
+label-focused-overline = #eeff4444
 
 label-occupied = %icon%   %name%   %icon%
 label-occupied-foreground = #ffff4444

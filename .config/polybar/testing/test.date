@@ -17,9 +17,30 @@ font-1 = Siji:pixelsize=10;0
 modules-left = date
 
 [module/date]
+; type = internal/date
+; interval = 1
+;
+; format = <label>
+; format-alt = <label>
+;
+; date = %%{T2}%%{F#666}%{F#cc} %Y-%m-%d
+; date-alt =  %Y:%m:%d
+;
+; time = %%{F#92f2ba}%%{F#cc} %H:%M%%{T-}
+; time-alt =  %H:%M:%S
+;
+; label = "  %date%       -> %time%  "
+; label-background = #fff
+; label-foreground = #000
 type = internal/date
-date-detailed =  %H:%M:%S
-date = %%{T3}%%{F#666}%{F#cc} %Y-%m-%d  %%{F#92f2ba}%%{F#cc} %H:%M%%{T-}
 interval = 5
+
+label = %date% %time%
+format-prefix = " "
+
+time = %H:%M
+time-alt = %H:%M:%S
+date =
+date-alt = %Y-%m-%d
 
 ; vim:ft=dosini

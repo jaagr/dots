@@ -1,0 +1,16 @@
+[bar/test]
+monitor = eDP-1
+width = 300
+height = 50
+dock = true
+background = #ff184f
+foreground = #671414
+
+modules-center = mem
+
+
+[module/mem]
+type = internal/memory
+label = RAM %gb_used%/%gb_free%
+
+; vim:ft=dosini
