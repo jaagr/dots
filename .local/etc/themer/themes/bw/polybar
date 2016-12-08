@@ -1,0 +1,414 @@
+; This config uses the new syntax (which isn't merged upstream)
+
+[settings]
+throttle-ms = 50
+throttle-limit = 3
+
+[bar/bottom]
+monitor = eDP-1
+bottom = true
+width = 100%
+height = 27
+offset-y = 5
+
+;background = #e21645
+background = #00ffffff
+foreground = #292929
+linecolor = #ff416d
+
+spacing = 3
+lineheight = 2
+padding-right = 4
+module-margin-left = 0
+module-margin-right = 6
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = Unifont:size=6;-3
+font-2 = FontAwesome:size=8;-2
+font-3 = NotoSans-Regular:size=8;-1
+font-4 = MaterialIcons:size=10;-1
+font-5 = Termsynu:size=8;-1
+
+modules-left = bspwm
+modules-right = cpu memory
+
+[module/bspwm]
+type = internal/bspwm
+
+ws-icon-0 = term;
+ws-icon-1 = web;
+ws-icon-2 = code;
+ws-icon-3 = music;
+ws-icon-4 = irssi;
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+;format-background = #3c4556
+;format-overline = #636a78
+;format-padding = 5
+
+;label-dimmed-underline = ${BAR.background}
+
+label-active = %icon%
+label-active-foreground = #fff
+label-active-background = #e21645
+label-active-underline = #b72e4d
+label-active-overline = #b72e4d
+label-active-font = 4
+label-active-padding = 4
+label-active-margin = 1
+
+label-occupied = %icon%
+label-occupied-padding = 4
+label-occupied-margin = 1
+;label-occupied-foreground = #dd
+;label-occupied-background = #636a78
+;label-occupied-underline = #666
+;label-occupied-font = 4
+;label-occupied-padding = 4
+;label-occupied-margin = 1
+
+label-urgent = %icon%
+label-urgent-padding = 4
+label-urgent-margin = 1
+;label-urgent-foreground = #000000
+;label-urgent-background = #bd2c40
+;label-urgent-underline = #9b0a20
+;label-urgent-font = 4
+;label-urgent-padding = 4
+;label-urgent-margin = 1
+
+label-empty = %icon%
+label-empty-padding = 4
+label-empty-margin = 1
+;label-empty-background = #3c4556
+;label-empty-foreground = #55
+;label-empty-overline = #636a78
+;label-empty-font = 4
+;label-empty-padding = 4
+;label-empty-margin = 1
+
+;label-monocle = 
+;label-monocle-overline = ${module/bspwm.label-active-overline}
+;label-monocle-background = #33ffffff
+;label-monocle-padding = 2
+;
+;label-locked = 
+;label-locked-foreground = #bd2c40
+;label-locked-overline = ${module/bspwm.label-monocle-overline}
+;label-locked-padding = ${module/bspwm.label-monocle-padding}
+;
+;label-sticky = 
+;label-sticky-foreground = #fba922
+;label-sticky-overline = ${module/bspwm.label-monocle-overline}
+;label-sticky-padding = ${module/bspwm.label-monocle-padding}
+;
+;label-private = 
+;label-private-foreground = #bd2c40
+;label-private-overline = ${module/bspwm.label-monocle-overline}
+;label-private-padding = ${module/bspwm.label-monocle-padding}
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+
+format = <label> <ramp-load_per_core>
+format-background = #ff3260
+format-foreground = #ffffff
+format-underline = #da375b
+format-padding = 5
+
+label = CPU
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-font = 2
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-font = 2
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-font = 2
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-font = 2
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-font = 2
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-font = 2
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-font = 2
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-font = 2
+ramp-coreload-7-foreground = #ff5555
+
+[module/memory]
+type = internal/memory
+
+format = <label> <bar-used>
+format-background = #ff3260
+format-foreground = #ffffff
+format-underline = #da375b
+format-padding = 5
+
+label = RAM
+
+bar-used-width = 30
+bar-used-foreground-0 = #aaff77
+bar-used-foreground-1 = #aaff77
+bar-used-foreground-2 = #fba922
+bar-used-foreground-3 = #ff5555
+bar-used-indicator = |
+bar-used-indicator-font = 6
+bar-used-indicator-foreground = #ffffff
+bar-used-fill = ─
+bar-used-fill-font = 6
+bar-used-empty = ─
+bar-used-empty-font = 6
+bar-used-empty-foreground = #eeeeee
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d %H:%M
+; date =    %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+; date-detailed = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+
+
+
+
+
+
+[bar/top]
+; monitor = eDP-1
+; width = 100%
+; height = 34
+; clickareas = 35
+;
+; background = #00000000
+; foreground = #ccffffff
+; linecolor = ${bar/bottom.background}
+;
+; spacing = 4
+; ;spacing = 2
+; lineheight = 16
+; padding-right = 5
+; module-margin-left = 3
+; module-margin-right = 3
+; ;module-margin-left = 1
+; ;module-margin-right = 1
+;
+; ;font-0 = envypn:pixelsize=13;0
+; font-0 = NotoSans-Regular:size=8;0
+; font-1 = MaterialIcons:size=10;0
+; font-2 = Termsynu:size=8;-1
+; font-3 = FontAwesome:size=10;0
+;
+; modules-left = powermenu mpd
+; modules-right = volume wireless-network wired-network battery date
+
+[bar/external_bottom]
+;inherit-from = bar/bottom
+
+; monitor = HDMI-1
+; bottom = true
+; width = ${bar/bottom.width}
+; height = ${bar/bottom.height}
+;
+; background = ${bar/bottom.background}
+; foreground = ${bar/bottom.foreground}
+; linecolor = ${bar/bottom.linecolor}
+;
+; spacing = ${bar/bottom.spacing}
+; lineheight = ${bar/bottom.lineheight}
+; padding-right = ${bar/bottom.padding_right}
+; module-margin-left = ${bar/bottom.module_margin_left}
+; module-margin-right = ${bar/bottom.module_margin_right}
+;
+; font-0 = ${bar/bottom.font-0}
+; font-1 = ${bar/bottom.font-1}
+; font-2 = ${bar/bottom.font-2}
+; font-3 = ${bar/bottom.font-3}
+; font-4 = ${bar/bottom.font-4}
+;
+; modules-left = bspwm
+; modules-right = clock
+
+[module/backlight]
+; type = internal/backlight
+; card = intel_backlight
+; format = <ramp> <bar>
+;
+; ramp-0 = 
+; ramp-1 = 
+; ramp-2 = 
+;
+; bar-width = 10
+; bar-format = %{A4:backlight_percentage%__p5:}%{A5:backlight_percentage%__m5:}%{+u}%{+o}%fill%%{-u}%{-o}%indicator%%{+u}%{+o}%empty%%{-u}%{-o}%{A}%{A}
+; bar-indicator = |
+; bar-indicator-foreground = #ff
+; bar-indicator-font = 3
+; bar-fill = █
+; bar-fill-foreground = #bb
+; bar-fill-font = 3
+; bar-empty = █
+; bar-empty-font = 3
+; bar-empty-foreground = #44
+
+[module/battery]
+; type = internal/battery
+; full-at = 98
+;
+; format-charging = Charging <animation-charging> <label-charging>
+; format-discharging = Discharging <ramp-capacity> <label-discharging>
+; format-full = Full <ramp-capacity> <label-full>
+;
+; ramp-capacity-0 = 
+; ramp-capacity-0-foreground = #f53c3c
+; ramp-capacity-1 = 
+; ramp-capacity-1-foreground = #ffa900
+; ramp-capacity-2 = 
+; ramp-capacity-3 = 
+; ramp-capacity-4 = 
+;
+; bar-capacity-width = 10
+; bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
+; bar-capacity-fill = █
+; bar-capacity-fill-foreground = #ddffffff
+; bar-capacity-fill-font = 3
+; bar-capacity-empty = █
+; bar-capacity-empty-font = 3
+; bar-capacity-empty-foreground = #44ffffff
+;
+; animation-charging-0 = 
+; animation-charging-1 = 
+; animation-charging-2 = 
+; animation-charging-3 = 
+; animation-charging-4 = 
+; animation-charging-framerate-ms = 750
+
+[module/bspwm-tmp]
+; type = internal/bspwm
+; format = <label-state>
+;
+; label-active = 
+; label-active-padding = 1
+; label-occupied = 
+; label-occupied-padding = 1
+; label-empty = 
+; label-empty-padding = 1
+
+[module/mpd]
+; type = internal/mpd
+; clickable-progress = true
+; format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+;
+; icon-play = 
+; icon-pause = 
+; icon-stop = 
+; icon-prev = 
+; icon-next = 
+; icon-random = 
+; icon-repeat = 
+;
+; toggle-on-foreground =
+; toggle-off-foreground = #55
+;
+; bar-progress-width = 45
+; bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+; bar-progress-indicator = |
+; bar-progress-indicator-foreground = #ff
+; bar-progress-indicator-font = 3
+; bar-progress-fill = ─
+; bar-progress-fill-foreground = #bb
+; bar-progress-fill-font = 3
+; bar-progress-empty = ─
+; bar-progress-empty-font = 3
+; bar-progress-empty-foreground = #44
+
+[module/wireless-network]
+; type = internal/network
+; interface = net1
+; interval = 3.0
+; ping-interval = 10
+;
+; format-connected = <ramp-signal> <label-connected>
+; label-connected = %essid%
+; label-disconnected =    not connected
+; label-disconnected-foreground = #66
+;
+; ramp-signal-0 = 
+; ramp-signal-1 = 
+; ramp-signal-2 = 
+; ramp-signal-3 = 
+; ramp-signal-4 = 
+;
+; animation-packetloss-0 = 
+; animation-packetloss-0-foreground = #ffa64c
+; animation-packetloss-1 = 
+; animation-packetloss-1-foreground = ${bar/top.foreground}
+; animation-packetloss-framerate-ms = 500
+
+[module/wired-network]
+; type = internal/network
+; interface = net0
+; interval = 3.0
+;
+; label-connected =    %{T3}%local_ip%%{T-}
+; label-disconnected-foreground = #66
+
+[module/volume]
+; type = internal/volume
+; speaker-mixer = Speaker
+; headphone-mixer = Headphone
+; headphone-id = 9
+;
+; format-volume = <ramp-volume> <label-volume>
+; label-muted =   muted
+; label-muted-foreground = #66
+;
+; ramp-volume-0 = 
+; ramp-volume-1 = 
+; ramp-volume-2 = 
+; ramp-volume-3 = 
+
+[module/powermenu]
+; type = custom/menu
+;
+; format-padding = 5
+;
+; label-open = 
+; label-close = 
+;
+; menu-0-0 = Terminate WM
+; menu-0-0-foreground = #fba922
+; menu-0-0-exec = bspc quit -1
+; menu-0-1 = Reboot
+; menu-0-1-foreground = #fba922
+; menu-0-1-exec = menu_open-1
+; menu-0-2 = Power off
+; menu-0-2-foreground = #fba922
+; menu-0-2-exec = menu_open-2
+;
+; menu-1-0 = Cancel
+; menu-1-0-foreground = #fba922
+; menu-1-0-exec = menu_open-0
+; menu-1-1 = Reboot
+; menu-1-1-foreground = #fba922
+; menu-1-1-exec = sudo reboot
+;
+; menu-2-0 = Power off
+; menu-2-0-foreground = #fba922
+; menu-2-0-exec = sudo poweroff
+; menu-2-1 = Cancel
+; menu-2-1-foreground = #fba922
+; menu-2-1-exec = menu_open-0
+
+[module/clock]
+; type = internal/date
+; interval = 5
+; date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+; vim:ft=dosini

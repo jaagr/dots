@@ -1,0 +1,216 @@
+;
+; this config is written for an unreleased version (polybar "wip-lemonbar" branch)
+; it might need some tweaking to run on the latest released version... try for yourself
+;
+
+[bar/top]
+monitor = eDP-1
+width = 100%
+height = 27
+
+background = #222222
+foreground = #ccfafafa
+linecolor = #666
+
+border-bottom = 2
+border-bottom-color = #333333
+
+spacing = 1
+lineheight = 2
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = envypn-regular:size=10;0
+font-1 = Siji:pixelsize=10;0
+font-2 = Termsynu:size=8;0
+
+modules-left = mpd
+modules-center = bspwm
+modules-right = volume wifi battery backlight memory cpu date
+
+
+[bar/external_bottom]
+monitor = HDMI-1
+bottom = true
+width = 100%
+height = ${bar/top.height}
+
+background = ${bar/top.background}
+foreground = ${bar/top.foreground}
+linecolor = ${bar/top.linecolor}
+
+border-top = 2
+border-top-color = #333333
+
+spacing = ${bar/top.spacing}
+lineheight = ${bar/top.lineheight}
+padding-right = ${bar/top.padding_right}
+module-margin-left = ${bar/top.module_margin_left}
+module-margin-right = ${bar/top.module_margin_right}
+
+font-0 = ${bar/top.font-0}
+font-1 = ${bar/top.font-1}
+
+modules-left = bspwm
+modules-right = date
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+
+ws-icon-0 = term;
+ws-icon-1 = web;
+ws-icon-2 = code;
+ws-icon-3 = music;
+ws-icon-4 = irssi;
+ws-icon-default = 
+
+label-active = %icon%
+label-active-background = #3f3f3f
+label-active-padding = 2
+
+label-occupied = %icon%
+label-occupied-padding = 2
+
+label-urgent = %icon%
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = #444
+label-empty-padding = 2
+
+label-monocle = 
+label-monocle-padding = 2
+label-monocle-background = #171717
+label-monocle-foreground = #fba922
+
+label-floating = 
+label-floating-padding = 2
+label-floating-background = #171717
+label-floating-foreground = #fba922
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %{F#666}%{F#ccfafafa} %percentage%
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %{F#666}%{F#ccfafafa} %percentage_used%
+
+
+[module/wifi]
+type = internal/network
+interface = net1
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid% %{F#66}%local_ip%
+label-disconnected = %{F#666}%{F#ccfafafa} not connected
+label-disconnected-foreground = #66
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = #666
+
+
+[module/date]
+type = internal/date
+date = %%{T3}%%{F#666}%{F#ccfafafa} %Y-%m-%d  %%{F#fba922}%%{F#ccfafafa} %H:%M%%{T-}
+interval = 5
+
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp> <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #666
+
+
+[module/volume]
+type = internal/volume
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 9
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%
+label-volume-foreground = ${BAR.foreground}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-foreground = #666
+
+label-muted = %{F#666}%{F#ccfafafa} sound muted
+label-muted-foreground = #99
+
+
+[module/battery]
+type = internal/battery
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = %{F#666}%{F#ccfafafa}  <label-full>
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = #666
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = #666
+animation-charging-framerate = 750
+
+[module/mpd]
+type = internal/mpd
+
+format-online = <label-song>  <label-time>  <bar-progress>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+format-offline = <label-offline>
+format-offline-foreground = #66
+label-offline = mpd is off
+
+icon-prev = 
+icon-seekb = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+icon-seekf = 
+
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground = #fba922
+toggle-off-foreground = #66
+
+bar-progress-width = 15
+bar-progress-indicator = 
+bar-progress-indicator-foreground = #bb
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-foreground = #44
+bar-progress-empty-font = 3
+
+label-time-foreground = #55
+
+; vim:ft=dosini

@@ -1,0 +1,202 @@
+;
+; this config is written for an unreleased version (polybar "2.0-beta" branch)
+; it might need some tweaking to run on the latest released version... try for yourself
+;
+
+[bar/top]
+monitor = eDP-1
+width = 100%
+height = 27
+offset-x = 0
+offset-y = 0
+
+background = #ff3e31a2
+foreground = #7c70da
+linecolor = #1b00f2
+
+;border-bottom = 2
+;border-bottom-color = #1b00f2
+
+spacing = 1
+lineheight = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Commodore 64 Pixelized:size=10;0
+; font-1 = siji:pixelsize=10;-1
+; font-2 = unifont:size=6;-2
+
+modules-left = bspwm
+modules-center = mpd
+modules-right = volume battery memory cpu date
+
+tray-position = right
+
+wm-restack = bspwm
+
+
+[bar/bottom]
+monitor = HDMI-1
+bottom = true
+width = 100%
+height = ${bar/top.height}
+
+background = ${bar/top.background}
+foreground = ${bar/top.foreground}
+linecolor = ${bar/top.linecolor}
+
+;border-top = 2
+;border-top-color = #333
+
+spacing = ${bar/top.spacing}
+lineheight = ${bar/top.lineheight}
+padding-right = ${bar/top.padding-right}
+module-margin-left = 0
+module-margin-right = ${bar/top.module-margin-right}
+
+font-0 = ${bar/top.font-0}
+; font-1 = ${bar/top.font-1}
+; font-2 = ${bar/top.font-2}
+
+modules-left = bspwm
+modules-center = xtitle
+modules-right = date powermenu
+
+wm-restack = ${bar/top.wm-restack}
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+
+ws-icon-default = x
+
+label-active = %index%
+label-active-background = #7c70da
+label-active-foreground = #3e31a2
+label-active-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+label-occupied-foreground = #7c70da
+
+label-urgent = %index%!
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = #5144b4
+label-empty-padding = 2
+
+; label-monocle = 
+; label-monocle-padding = 2
+; label-monocle-background = #171717
+; label-monocle-foreground = #e60053
+
+; label-floating = 
+; label-floating-padding = 2
+; label-floating-background = #171717
+; label-floating-foreground = #e60053
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = CPU %percentage%
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = RAM %percentage_used%
+
+
+[module/volume]
+type = internal/volume
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 9
+
+label-volume = VOL %percentage%
+label-muted = VOL OFF
+
+
+[module/battery]
+type = internal/battery
+full-at = 98
+
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+format-full =
+
+label-charging = BATT %percentage%
+label-discharging = BATT %percentage%
+
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d %H:%M
+interval = 5
+
+
+[module/mpd]
+type = internal/mpd
+
+format-online = %{A1:mpc  toggle:}  <label-time> <label-song>  %{A}
+format-online-background = #7c70da
+format-online-foreground = #3e31a2
+format-online-padding = 3
+
+label-song = %artist% - %title%
+label-song-maxlen = 40
+label-song-ellipsis = true
+
+
+[module/powermenu]
+type = custom/menu
+
+label-open = 
+label-close = 
+label-separator = /
+
+menu-0-0 = Terminate WM
+menu-0-0-foreground = #e60053
+menu-0-0-exec = bspc quit -1
+menu-0-1 = Reboot
+menu-0-1-foreground = #e60053
+menu-0-1-exec = menu-open-1
+menu-0-2 = Power off
+menu-0-2-foreground = #e60053
+menu-0-2-exec = menu-open-2
+
+menu-1-0 = Cancel
+menu-1-0-foreground = #e60053
+menu-1-0-exec = menu-open-0
+menu-1-1 = Reboot
+menu-1-1-foreground = #e60053
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = Power off
+menu-2-0-foreground = #e60053
+menu-2-0-exec = sudo poweroff
+menu-2-1 = Cancel
+menu-2-1-foreground = #e60053
+menu-2-1-exec = menu-open-0
+
+
+[module/xtitle]
+format-backgruond = #ff0000
+type = custom/script
+exec = xtitle -s
+tail = true
+maxlen = 30
+
+
+[module/counter]
+type = internal/counter
+format = <counter>
+interval = 0.1
+
+; vim:ft=dosini
