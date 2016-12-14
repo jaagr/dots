@@ -42,6 +42,7 @@ bspc config split_ratio "${setting_split_ratio:-0.5}"
 #bspc config history_aware_focus "${setting_history_aware_focus:-true}"
 bspc config focus_follows_pointer "${setting_focus_follows_pointer:-true}"
 bspc config ignore_ewmh_focus "${setting_ignore_ewmh_focus:-true}"
+#bspc config pointer_modifier control
 
 # }}}
 # Monitors and desktops {{{
@@ -88,21 +89,6 @@ bspc config normal_border_color $color_normal_border
 bspc config active_border_color $color_active_border
 bspc config focused_border_color $color_focused_border
 bspc config presel_feedback_color $color_presel_feedback
-
-for node in $(bspc query -N); do
-  xprop -id "$node" &>/dev/null || continue
-  bspc config -n "$node" border_width $size_border
-  bspc config -n "$node" window_gap $size_gap
-done ; unset node
-
-for desktop in $(bspc query -D); do
-  bspc config -d "$desktop" border_width $size_border
-  bspc config -d "$desktop" window_gap $size_gap
-done ; unset desktop
-
-for monitor in $(bspc query -M); do
-  bspc config -m "$monitor" border_width $size_border
-done ; unset desktop
 
 if [ -s "$HOME/.fehbg" ]; then
   source "$HOME/.fehbg" 2>/dev/null
