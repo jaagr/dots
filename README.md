@@ -1,4 +1,4 @@
-###### [my themes](https://github.com/jaagr/dots/tree/master/.local/etc/themer/themes)  ──  [lemonbuddy](https://github.com/jaagr/lemonbuddy)  ──  [ca.rlberg.se](https://ca.rlberg.se)
+###### [my themes](https://github.com/jaagr/dots/tree/master/.local/etc/themer/themes)  ──  [polybar](https://github.com/jaagr/polybar)  ──  [ca.rlberg.se](https://ca.rlberg.se)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ##### dotfiles for my local setup
@@ -52,7 +52,7 @@ dots status -u .config/
 
 # Listing files (tracked by git)
 dots ls-files
-dots ls-files .config/lemonbuddy/
+dots ls-files .config/polybar/
 ~~~
 
 #### Replication
