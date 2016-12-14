@@ -1,13 +1,15 @@
 [bar/test]
-;monitor = eDP-1
-monitor = ${env:TEST}
+monitor = eDP-1
+;monitor = ${env:TEST}
 width = 200
 height = 50
-dock = false
-lineheight = 10
+dock = true
 background = #ff184f
 foreground = #fff4fa
-linecolor = #c51850
+underline-color = #c51850
+underline-size = 10
+overline-color = #c51850
+overline-size = 10
 offset-x = 850
 offset-y = 450
 

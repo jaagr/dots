@@ -2,7 +2,7 @@
 monitor = eDP-1
 width = 300
 height = 50
-dock = true
+override-redirect = true
 background = #ff184f
 foreground = #671414
 

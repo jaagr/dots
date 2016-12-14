@@ -8,12 +8,13 @@ bottom = true
 
 background = #880000ff
 foreground = #f9ffff00
-linecolor = #c51850
 
-;font-0 = NotoSans-Regular:size=14:weight=bold
+overline-color = #c51850
+underline-color = #c51850
+
+font-0 = NotoSans-Regular:size=14:weight=bold
+font-1 = -*-gohufont-bold-*-*-*-11-*-*-*-*-*-*-*
 ;font-0 = -*-gohufont-bold-*-*-*-14-*-*-*-*-*-*-*
-;font-0 = -*-gohufont-bold-*-*-*-11-*-*-*-*-*-*-*
-font-0 = -*-gohufont-bold-*-*-*-14-*-*-*-*-*-*-*
 ;font-0 = sans:weight=heavy:size=15;0
 ;font-0 = MaterialIcons:size=10;0
 ;font-0 = Termsyn:pixelsize=14
@@ -39,7 +40,7 @@ content = %{A:notify-send -u low test:}foo%{A}
 
 [module/test]
 type = internal/counter
-format = <counter>  %{F#00ff0000}  #00ff0000  %{F#44ffffff}  #44ffffff  %{F#66ffffff}  #66ffffff  %{F#22000000}  #22000000  %{F#44000000}  #44000000  %{F#99000000}  #99000000  %{F#bbff0000}  #bbff0000  %{F#dd221199}  #dd221199  %{F#7711ff22}  #7711ff22  %{F#55ff9988}  #55ff9988  %{F-}
+format = <counter>  %{F#00ff0000}  #00ff0000  %{F#44ffffff}  #44ffffff  %{F#66ffffff}  #66ffffff  %{F#22000000}  #22000000  %{F#44000000}  #44000000  %{F#99000000}  #99000000  %{F#bbff0000}  #bbff0000  %{F#dd221199}  #dd221199  %{F#ff11ff22}  #ff11ff22  %{F#7711ff22}  #7711ff22  %{F#55ff9988}  #55ff9988  %{F-}
 format-foreground = #4400ffff
 click-left = echo left
 ; click-middle = echo middle

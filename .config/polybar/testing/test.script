@@ -2,8 +2,7 @@
 monitor = eDP-1
 width = 100%
 height = 25
-dock = true
-lineheight = 4
+override-redirect = true
 background = #424242
 foreground = #ffffff
 underline-size = 4
@@ -32,15 +31,11 @@ interval = 0
 type = custom/script
 exec = xtitle -s
 tail = true
-maxlen = 35
-ellipsis = true
 
 [module/tailscript2]
 type = custom/script
 exec = mpc current; mpc idleloop | while read -r line; do mpc current; done
 tail = true
-maxlen = 20
-ellipsis = true
 interval = 1
 
 [module/not-a-tailscript]
@@ -55,7 +50,6 @@ interval = 1
 
 ;format = <label>
 label = %output:0:3%
-maxlen = 3
 click-left = echo left %counter%
 click-middle = echo middle %counter%
 click-right = echo right %counter%

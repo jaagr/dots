@@ -10,6 +10,7 @@ type = internal/xkeyboard
 
 format-spacing = 0
 
+label-layout = %layout% %name% %number%
 label-layout-padding = 2
 label-layout-background = #bc99ed
 label-layout-foreground = #000
