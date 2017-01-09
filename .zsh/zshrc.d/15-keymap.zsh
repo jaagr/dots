@@ -30,6 +30,7 @@ util::vi-bind-ins '^[[1;3D' backward-word    # alt-left
 util::vi-bind-ins 'jj' vi-cmd-mode           # double j
 util::vi-bind-ins '^X^E' edit-command-line   # ctrl+x ctrl+e
 util::vi-bind-ins '^r' history-incremental-search-backward
+util::vi-bind-ins '^f' history-incremental-search-forward
 
 # autoload -U up-line-or-search
 util::vi-bind-ins 'kk' zle::redo-cmd-if-empty
