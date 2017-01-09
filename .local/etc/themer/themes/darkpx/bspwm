@@ -22,6 +22,7 @@ color_presel_feedback="#555555"
 
 setting_borderless_monocle='true'
 setting_gapless_monocle='true'
+setting_single_monocle='false'
 
 polybar_config="$CURRENT_THEME/polybar"
 polybar_bars=(top bottom)
