@@ -4,19 +4,13 @@ bottom = true
 modules-center = xwindow
 ; background = #f00
 ; foreground = #000
+font-0 = NotoSans-Regular:size=11
 
 [module/xwindow]
 type = internal/xwindow
 ; format-padding = 50
 ; format-background = #88ffffff
 ; format-foreground = #000
-label = %title%
-
-[module/xworkspaces]
-type = internal/xworkspaces
-; format-padding = 50
-; format-background = #88ffffff
-; format-foreground = #000
-label = %title%
+label = %title:0:70:...%
 
 ; vim:ft=dosini

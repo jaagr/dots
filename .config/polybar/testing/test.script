@@ -9,21 +9,28 @@ underline-size = 4
 underline-color = #c51850
 overline-size = 4
 overline-color = #c51850
-font-0 = envypn:pixelsize=13;-3
-font-1 = FontAwesome:size=13;0
+font-0 = dina:pixelsize=7
 
 ;imodules-left = tmp
 ;modules-left = spotify
-; modules-left = tailscript tailscript2
-;modules-center = not-a-tailscript
-modules-right = intervalscript
-modules-left = tailscript
+;modules-left = tailscript
+modules-left = tailscript tailscript2
+;modules-left = test
+modules-center = not-a-tailscript blocking-wait
+;modules-center = blocking-wait
+modules-right = test intervalscript
 ;modules-center = test dropbox
 ; modules-right = intervalscript
 
+[module/blocking-wait]
+type = custom/script
+;exec = mpc idleloop
+exec = mpc idleloop
+tail = true
+
 [module/test]
 type = custom/script
-exec = echo test %counter% | scroller -c 7
+exec = echo 􏿽 test %counter% | scroller -p -c 6
 tail = true
 interval = 0
 
@@ -41,15 +48,17 @@ interval = 1
 [module/not-a-tailscript]
 type = custom/script
 exec = mpc status | head -1
-tail = true
+;tail = true
+interval = 1
 
 [module/intervalscript]
 type = custom/script
-exec = sleep 1; echo $MONITOR %counter%..
-interval = 1
+;exec = sleep 1; echo $MONITOR %counter%..
+exec = echo %counter% testing \& testing
+interval = 0.5
 
 ;format = <label>
-label = %output:0:3%
+;label = %output:0:3%
 click-left = echo left %counter%
 click-middle = echo middle %counter%
 click-right = echo right %counter%

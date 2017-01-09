@@ -1,0 +1,11 @@
+[bar/test]
+monitor = ${env:MONITOR:eDP1}
+bottom = true
+modules-center = backlight
+background = #000
+foreground = #fff
+
+[module/backlight]
+type = internal/xbacklight
+
+; vim:ft=dosini

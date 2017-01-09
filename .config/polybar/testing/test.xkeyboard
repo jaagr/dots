@@ -1,9 +1,11 @@
 [bar/test]
 monitor = ${env:MONITOR:eDP1}
 bottom = true
-modules-center = xkeyboard
+modules-right = xkeyboard
 background = #47008b
 foreground = #fff
+
+tray-position = right
 
 [module/xkeyboard]
 type = internal/xkeyboard

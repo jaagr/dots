@@ -1,9 +1,9 @@
 [bar/test]
 monitor = eDP-1
 ;monitor = ${env:TEST}
-width = 200
+width = 400
 height = 50
-dock = true
+override-redirect = true
 background = #ff184f
 foreground = #fff4fa
 underline-color = #c51850
@@ -20,12 +20,26 @@ modules-center = battery
 
 [module/battery]
 type = internal/battery
-;poll-interval = 5
+poll-interval = 1
+time-format = %H:%M:%S
+full-at = 100
+
+format-full = <label-full>
+format-full-prefix = "Full: "
 
 format-charging = <animation-charging> <label-charging>
+format-charging-prefix = "Charging: "
+
+format-discharging = <label-discharging>
+format-discharging-prefix = "Discharging: "
+
+label-charging = %percentage% (remaining time: %time%)
+label-discharging = %percentage% (remaining time: %time%)
 
 animation-charging-0 = 1
 animation-charging-1 = 2
 animation-charging-2 = 3
-animation-charging-foreground = #666
-;animation-charging-framerate = 1050
+animation-charging-foreground = #000
+animation-charging-framerate = 500
+
+# vim:ft=dosini

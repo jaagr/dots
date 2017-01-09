@@ -1,0 +1,30 @@
+[bar/test]
+monitor = ${env:MONITOR:eDP-1}
+width = 280
+height = 30
+offset-x = 820
+override-redirect = true
+
+background = #ff184f
+foreground = #000000
+
+font-0 = Unica:pixelsize=20
+font-1 = FontAwesome:size=21;-2
+
+modules-center = test
+
+[module/test]
+type = custom/text
+content = %{T3}test%{T2}test2%{T3} ✉ 🖳  
+content-font = 2
+
+click-left = notify-send -u low left
+click-middle = notify-send -u low middle
+click-right = notify-send -u low right
+scroll-up = notify-send -u low scrollup
+scroll-down = notify-send -u low scrolldown
+double-click-left = notify-send -u low doubleleft
+double-click-middle = notify-send -u low doublemiddle
+double-click-right = notify-send -u low doubleright
+
+; vim:ft=dosini

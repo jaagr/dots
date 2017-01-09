@@ -1,6 +1,6 @@
 [bar/test]
 monitor = eDP-1
-width = 280
+width = 500
 height = 30
 offset-x = 820
 dock = true
@@ -8,7 +8,9 @@ lineheight = 10
 background = #ff184f
 foreground = #000000
 linecolor = #c51850
-font-0 = envypn:pixelsize=13;0
+font-0 = envypn:pixelsize=13;-3
+font-1 = fixed:pixelsize=8;-4
+font-2 = FontAwesome:size=15;0
 
 modules-center = test
 
@@ -16,7 +18,7 @@ tray-position = right
 
 [module/test]
 type = custom/text
-content = ${env:HOME}
+content = ${env:HOME} %{T1}te%{T3}s%{T-}t %{T0}t%{T-} test
 
 click-left = notify-send -u low left
 click-middle = notify-send -u low middle

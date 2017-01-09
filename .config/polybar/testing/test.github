@@ -1,0 +1,14 @@
+[bar/test]
+monitor = ${env:MONITOR:eDP1}
+bottom = true
+modules-center = github
+background = #00538b
+foreground = #fff
+
+[module/github]
+type = internal/github
+token = ${file:/home/jaagr/.git-token}
+empty-notifications = true
+;token =
+
+; vim:ft=dosini

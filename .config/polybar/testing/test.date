@@ -1,6 +1,10 @@
 [bar/test]
 monitor = eDP-1
 
+override-redirect = true
+width = 1000
+offset-x = 460
+
 background = #ff184f
 foreground = #44000d
 

@@ -2,11 +2,13 @@
 monitor = eDP-1
 width = 100%
 height = 20
-dock = false
-lineheight = 10
+override-redirect = false
 background = #ff184f
 foreground = #000
-linecolor = #c51850
+overline-size = 10
+overline-color = #c51850
+underline-size = 10
+underline-color = #c51850
 ;offset-x = 850
 ;offset-y = 450
 
@@ -27,12 +29,14 @@ mount-0 = /
 mount-1 = /home
 mount-2 = /invalid/mountpoint
 
+remove-unmounted = true
+
 ;fixed-values = true
 ;spacing = 4
 
-label-mounted = %mountpoint%: %percentage_free%
+label-mounted = %mountpoint%: %percentage_used%
 
-label-unmounted = %mountpoint%: not mounted
-label-unmounted-foreground = #55
+;label-unmounted = %mountpoint%: not mounted
+;label-unmounted-foreground = #55
 
 # vim:ft=dosini

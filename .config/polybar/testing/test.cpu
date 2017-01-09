@@ -1,25 +1,26 @@
 [bar/test]
 monitor = eDP-1
-width = 300
+width = 880
 height = 50
-dock = true
-lineheight = 10
+override-redirect = true
 background = #ff184f
 foreground = #671414
-linecolor = #c51850
 ;offset-x = 850
 ;offset-y = 450
-font-0 = envypn:pixelsize=13;0
-font-1 = unifont:size=13;0
 
-modules-center = cpu
+font-0 = DejaVu:size=12;1
+font-1 = MaterialIcons:size=14;0
+font-2 = Termsynu:size=12;-1
+font-3 = Siji:pixelsize=14;0
+
+modules-center = cpu cpu2
 
 
 [module/cpu]
 type = internal/cpu
 interval = 0.5
 format = <label> <bar-load>
-label =  %percentage%
+label = %percentage%
 
 bar-load-width = 10
 bar-load-foreground-0 = #c1cb7f
@@ -34,5 +35,30 @@ bar-load-fill-font = 0
 bar-load-empty = □
 bar-load-empty-font = 0
 bar-load-empty-foreground = #99586e75
+
+
+[module/cpu2]
+type = internal/cpu
+interval = 0.5
+
+format = <label> <ramp-coreload>
+label = %percentage-cores% %percentage-cores% %percentage-core2%
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-foreground = #ff5555
 
 ; vim:ft=dosini

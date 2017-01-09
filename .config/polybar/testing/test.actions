@@ -13,9 +13,9 @@ border-left-color = #3f0079
 border-right = 0
 border-right-color = #3f0079
 
-; modules-left = test
+modules-left = test
 ;modules-left = button-index-fallback
-modules-center = test
+modules-center = test2
 ;modules-right = test test2
 
 tray-position = left
@@ -32,7 +32,7 @@ content = %{A:notify-send -u low\: test: A3:notify-send -u low test: F#000}foo%{
 type = custom/text
 content = ████
 
-click-left = notify-send -u low $(ls $HOME)
+click-left = notify-send -u low "$(ls $HOME)"
 click-right = notify-send -u low $HOME
 ; click-middle = echo middle
 ; click-right = echo right
@@ -42,6 +42,6 @@ click-right = notify-send -u low $HOME
 [module/test2]
 type = custom/text
 content = xxx
-click-left = notify-send -u low test2
+click-left = termite -e tmux &
 
 ; vim:ft=dosini
