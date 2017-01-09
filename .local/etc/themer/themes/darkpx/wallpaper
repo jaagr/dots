@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-#ln -sf "${CURRENT_THEME}/spacesurf.png" "${HOME}/.wallpapers/1.png"
-ln -sf "${CURRENT_THEME}/pixel.png" "${HOME}/.wallpapers/1.png"
-feh --bg-tile "${HOME}/.wallpapers/1.png"
+ln -sf "${CURRENT_THEME}/spacesurf.png" "${HOME}/.wallpapers/1.png"
+feh --bg-fill "${HOME}/.wallpapers/1.png"

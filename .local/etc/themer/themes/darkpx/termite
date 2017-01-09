@@ -1,4 +1,5 @@
-font = envypn, regular, 10
+#font = envypn, regular, 10
+font = Dina, regular 6
 
 foreground      = #d8d8d8
 foreground_bold = #d8d8d8

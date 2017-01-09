@@ -1,18 +1,21 @@
 [colors]
 background = #222
 foreground = #eee
-linecolor = #f66
+linecolor = #fba922
 bordercolor = #333
 accent = #e60053
 
 
 [settings]
 screenchange-reload = true
+;throttle-output-for = 10
+;throttle-output = 5
+;throttle-input-for = 40
 
 
 [global/wm]
-margin-top = 8
-margin-bottom = 8
+margin-top = 0
+margin-bottom = 0
 
 
 [bar/top]
@@ -22,20 +25,12 @@ width = 100%
 height = 24
 ;override-redirect = true
 
-;click-left =
-;click-middle =
-;click-right =
-scroll-up = bspwm-deskprev
-scroll-down = bspwm-desknext
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 underline-size = 1
 underline-color = ${colors.linecolor}
-overline-size = 1
+overline-size = 2
 overline-color = ${colors.linecolor}
 
 border-bottom = 2
@@ -47,9 +42,9 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = tamzen:size=9;0
-font-1 = siji:pixelsize=10;-1
-font-2 = unifont:size=6;-2
+font-0 = dina:pixelsize=9;0
+font-1 = siji:pixelsize=10;1
+font-2 = unifont:size=6;-1
 
 modules-left = bspwm i3
 modules-center = mpd
@@ -58,12 +53,28 @@ modules-right = xkeyboard xbacklight volume wifi battery memory cpu date
 tray-position = right
 tray-padding = 4
 tray-maxsize = 16
-tray-transparent = true
+;tray-transparent = true
 ;tray-detached = true
 ;tray-offset-x = -100
 
 wm-restack = bspwm
 
+;dim-value = 0.2
+
+;click-left =
+;click-middle =
+;click-right =
+scroll-up = bspwm-deskprev
+scroll-down = bspwm-desknext
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+;double-click-left = notify-send -u low doubleclick
+;double-click-right = notify-send -u low doubleclick2
+
+[module/test]
+type = custom/text
+content = Button
+click-left = notify-send test
 
 [bar/bottom]
 inherit = bar/top
@@ -78,12 +89,26 @@ border-top-color = ${colors.bordercolor}
 border-bottom = 0
 
 modules-left = bspwm i3
+;modules-left =
 modules-center = xwindow
-modules-right = fs-root date power-menu
+modules-right = github fs-root date power-menu
 
 wm-restack = ${bar/top.wm-restack}
 
 tray-position = none
+
+
+[module/github]
+type = internal/github
+token = ${file:/home/jaagr/.git-token}
+
+;empty-notifications = true
+
+label = %notifications%
+label-padding = 2
+label-background = #f0c209
+label-foreground = #000
+
 
 
 [module/fs-root]
@@ -103,8 +128,12 @@ format = <label-state> <label-mode>
 
 ws-icon-default = x
 
+inline-mode = true
+
 label-focused = o
-label-focused-background = #ee333333
+label-focused-background = #383838
+label-focused-foreground = #fff
+label-focused-overline = ${colors.linecolor}
 label-focused-underline= #cc333333
 label-focused-padding = 2
 
@@ -135,8 +164,15 @@ label-sticky = sticky
 label-sticky-padding = 1
 label-private = private
 label-private-padding = 1
+;label-pseudotiled = pseudo
+;label-pseudotiled-padding = 2
+;label-pseudotiled-background = #f09
+;label-tiled = tiled
+;label-tiled-padding = 2
+;label-tiled-background = #f90
 
 label-dimmed-background = ${root.background}
+label-dimmed-overline = ${root.background}
 label-dimmed-underline = ${root.background}
 label-dimmed-active-foreground = #f00
 
@@ -145,8 +181,9 @@ label-dimmed-active-foreground = #f00
 type = internal/i3
 index-sort = true
 pin-workspaces = true
-
-enable-scroll = false
+wrapping-scroll = true
+;reverse-scroll = false
+;enable-scroll = false
 
 format = <label-state> <label-mode>
 
@@ -156,18 +193,19 @@ label-mode-background = ${colors.accent}
 
 label-focused = %index%
 label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-foreground = ${module/bspwm.label-focused-foreground}
+label-focused-overline= ${module/bspwm.label-focused-overline}
 label-focused-underline= ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-focused-padding}
+label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 label-urgent = %index%!
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 label-visible = %index%
-label-visible-foreground = ${module/bspwm.label-empty-foreground}
 label-visible-padding = ${module/bspwm.label-empty-padding}
 
 
@@ -190,6 +228,8 @@ interval = 3.0
 ;udspeed-minwidth = 0
 
 format-connected = <ramp-signal> <label-connected>
+;format-underline = #ff0000
+;label-connected = %{O-6 F#666}%{O2 F#cc}%downspeed:8% %quality% %signal%
 label-connected = %{O-6 F#666}%{O2 F#cc}%downspeed:8%
 label-disconnected = %{F#666}%{F#cc} not connected
 label-disconnected-foreground = #66
@@ -221,6 +261,7 @@ interval = 5
 [module/xbacklight]
 type = internal/xbacklight
 format = <ramp> <label>
+format-spacing = 1
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
@@ -230,12 +271,12 @@ label-foreground = ${root.foreground}
 
 [module/volume]
 type = internal/volume
-mapped = true
 speaker-mixer = Speaker
 headphone-mixer = Headphone
 headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
+format-volume-spacing = 1
 label-volume = %percentage%
 label-volume-foreground = ${root.foreground}
 
@@ -373,6 +414,7 @@ type = internal/xkeyboard
 
 blacklist-0 = num lock
 
+;label-layout = %{F#666}%{F#cc} %layout% %name%
 label-layout = %{F#666}%{F#cc} %layout%
 
 label-indicator-padding = 2
