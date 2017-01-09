@@ -200,6 +200,9 @@ super + F9
 # }}}
 # Misc {{{
 
+super + F8
+  xkblayout-state -s +1
+
 {shift + ,_} Print
   scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/ ' && notify-send 'Screenshot captured'
   #scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/vault/screenshots/ ' && notify-send 'Screenshot captured'
