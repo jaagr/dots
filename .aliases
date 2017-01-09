@@ -43,6 +43,7 @@ alias reload.polybar='$LOCAL_ETC/polybar/reload'
 alias reload.xkbmap='$LOCAL_ETC/xorg/xkbmaprc'
 alias reload.i3='$LOCAL_ETC/i3/reload'
 
+alias gosandbox='cd ~/sandbox/c++'
 alias goservices='cd $LOCAL_ETC/sv/'
 alias gothemes='cd $LOCAL_ETC/themer/themes'
 alias gobspwm='cd $LOCAL_ETC/bspwm'
@@ -61,7 +62,7 @@ alias termite-floating='termite -t floatme'
 alias lpass-login='lpass login $(sudo cat /root/lpass_username)'
 alias xupd="xbps-install -Su"
 alias xquery="xbps-query"
-alias xfiles="xbps-query -f"
+alias xfiles='xbps-query -R $(xreposet) -f'
 alias xrem="xbps-remove"
 alias xbelongs="xbps-query -o"
 alias xrequiredby="xbps-query -X"
@@ -115,19 +116,20 @@ alias ghubxlib-drawrect='cd $GITHUB_HOME/jaagr/xlib-drawrect'
 alias perlcd='cd $PERL_HOME'
 alias cpan="perlcd && perl -MCPAN -e shell"
 alias gdb-run="gdb -ex run -args"
+alias cgdb-run="cgdb -ex run -args"
 
+alias cmake-gcc="cmake -G Ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+alias cmake-clang="cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
+alias cmake-debug="cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug"
+alias cmake-debug-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=Debug"
+alias cmake-debug-clang="cmake-clang -DCMAKE_BUILD_TYPE=Debug"
+alias cmake-relwithdebinfo="cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+alias cmake-relwithdebinfo-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+alias cmake-relwithdebinfo-clang="cmake-clang -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+alias cmake-release="cmake -G Ninja -DCMAKE_BUILD_TYPE=Release"
+alias cmake-release-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=Release"
+alias cmake-release-clang="cmake-clang -DCMAKE_BUILD_TYPE=Release"
 alias cmake-purge="rm -rf CMakeFiles CMakeCache.txt"
-alias cmake-clang="cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
-alias cmake-debug="cmake -DCMAKE_BUILD_TYPE=Debug"
-alias cmake-debug-clang="cmake-debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
-alias cmake-debug-gcc="cmake-debug -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
-alias cmake-debug-gcc5="cmake-debug -DCMAKE_C_COMPILER=/usr/local/gcc5/bin/gcc -DCMAKE_CXX_COMPILER=/usr/local/gcc5/bin/g++"
-alias cmake-debug-gcc6="cmake-debug -DCMAKE_C_COMPILER=/usr/local/gcc6/bin/gcc -DCMAKE_CXX_COMPILER=/usr/local/gcc6/bin/g++"
-alias cmake-release="cmake -DCMAKE_BUILD_TYPE=Release"
-alias cmake-release-clang="cmake-release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
-alias cmake-release-gcc="cmake-release -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
-alias cmake-release-gcc5="cmake-release -DCMAKE_C_COMPILER=/usr/local/gcc5/bin/gcc -DCMAKE_CXX_COMPILER=/usr/local/gcc5/bin/g++"
-alias cmake-release-gcc6="cmake-release -DCMAKE_C_COMPILER=/usr/local/gcc6/bin/gcc -DCMAKE_CXX_COMPILER=/usr/local/gcc6/bin/g++"
 #alias cmake-uninstall='if [ -e install_manifest.txt ]; then sudo rm -i -v "$(cat install_manifest.txt)" install_manifest.txt; else echo "Cannot find install_manifest.txt"; fi'
 #alias cmake-clean='test -e ./CMakeCache.txt && rm -rf * && cmake ..'
 
@@ -139,7 +141,7 @@ alias rm="rm -v"
 alias ls="ls --group-directories-first --dereference-command-line-symlink-to-dir --color=auto"
 alias ll="ls --dereference-command-line-symlink-to-dir -lh"
 alias l="ls -la --dereference-command-line-symlink-to-dir"
-alias info="info --vi-keys"
+alias info='info --vi-keys --init-file=${XDG_CONFIG_HOME}/infokey'
 alias pgrep="pgrep -l"
 alias grep="grep -i --color=auto"
 alias egrep="egrep --color=auto"

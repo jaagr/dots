@@ -30,6 +30,9 @@
 /.openshot_qt
 /.lyrics
 /.lpass
+/.git-token
+/.gnupg
+/.gradle
 /unsorted
 /wallpapers
 /.wallpapers
