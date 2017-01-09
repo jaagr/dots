@@ -17,9 +17,11 @@ function main
   [[ "$size_gap" ]] && i3-msg gaps outer all set "$size_gap"
   [[ "$size_border" ]] && i3-msg border pixel "$size_border"
 
-  "${XDG_CONFIG_HOME}/polybar/launch" --kill-all \
-    "${polybar_config:-${XDG_CONFIG_HOME}/polybar/config.i3}" \
-    "${polybar_bars[*]}"
+  killall polybar
+  polybar example -r &
+  # "${XDG_CONFIG_HOME}/polybar/launch" --kill-all \
+  #   "${polybar_config:-${XDG_CONFIG_HOME}/polybar/config.i3}" \
+  #   "${polybar_bars[*]}"
 
   declare -f theme::post_startup >/dev/null && theme::post_startup
 }
