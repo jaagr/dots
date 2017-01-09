@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mkdir -p "${XDG_CACHE_HOME}"/openbox
+mkdir -p "${XDG_CACHE_HOME}"/bspwm
 rm "${XDG_CACHE_HOME}"/bspwm/std{out,err} >/dev/null 2>&1
 run_count=0
 while (( ++run_count )); do
