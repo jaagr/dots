@@ -12,13 +12,14 @@ background = #ccfafafa
 foreground = #222222
 ;background = #000
 ;foreground = #fff
-linecolor = #666
+overline-color = #666
+underline-color = #666
 
 border-bottom = 2
 border-bottom-color = #aadddddd
 
-spacing = 1
-lineheight = 2
+overline-size = 2
+underline-size = 2
 padding-left = 2
 padding-right = 2
 module-margin-left = 1
@@ -41,23 +42,24 @@ tray-spacing = 5
 ;tray-offset-y = 35
 
 [bar/external_bottom]
-monitor = HDMI-1
+monitor = ${env:MONITOR:HDMI-1}
 bottom = true
 width = 100%
 height = ${bar/top.height}
 
 background = ${bar/top.background}
 foreground = ${bar/top.foreground}
-linecolor = ${bar/top.linecolor}
+overline-color = ${bar/top.overline-color}
+underline-color = ${bar/top.underline-color}
 
 border-top = ${bar/top.border-bottom}
 border-top-color = ${bar/top.border-bottom-color}
 
-spacing = ${bar/top.spacing}
-lineheight = ${bar/top.lineheight}
-padding-right = ${bar/top.padding_right}
-module-margin-left = ${bar/top.module_margin_left}
-module-margin-right = ${bar/top.module_margin_right}
+overline-size = ${bar/top.overline-size}
+underline-size = ${bar/top.underline-size}
+padding-right = ${bar/top.padding-right}
+module-margin-left = ${bar/top.module-margin-left}
+module-margin-right = ${bar/top.module-margin-right}
 
 font-0 = ${bar/top.font-0}
 font-1 = ${bar/top.font-1}
@@ -136,7 +138,7 @@ ramp-signal-foreground = #666
 
 [module/date]
 type = internal/date
-date = %%{T3}%%{F#666}%{F#222} %Y-%m-%d  %%{F#ec4834}%%{F#222} %H:%M%%{T-}
+date = %%{F#666}%{F#222} %Y-%m-%d  %%{F#ec4834}%%{F#222} %H:%M
 interval = 5
 
 
@@ -175,7 +177,7 @@ full-at = 98
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-full = %{F#666}%{F#222}  <label-full>
+format-full = %{F#666}%{F#222} <label-full>
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 

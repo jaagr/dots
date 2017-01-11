@@ -36,7 +36,7 @@ overline-color = ${colors.linecolor}
 border-bottom = 2
 border-bottom-color = ${colors.bordercolor}
 
-spacing = 1
+spacing = 0
 padding-left = 0
 padding-right = 2
 module-margin-left = 1
@@ -261,7 +261,6 @@ interval = 5
 [module/xbacklight]
 type = internal/xbacklight
 format = <ramp> <label>
-format-spacing = 1
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
@@ -276,7 +275,6 @@ headphone-mixer = Headphone
 headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-spacing = 1
 label-volume = %percentage%
 label-volume-foreground = ${root.foreground}
 
@@ -321,10 +319,18 @@ animation-charging-foreground = #666
 animation-charging-framerate = 750
 
 
+;[module/battery-multi]
+;type = custom/script
+;exec = "count=$(acpi -b | wc -l); sum=$(acpi -b | egrep -o '[0-9]{1,3}%' | tr -d '%' | xargs -I% echo -n '+%'); echo $(date +%s) Avg capacity: $(( sum / count ))%"
+;exec-if = pgrep -x watch
+;interval = 3
+
+
 [module/mpd]
 type = internal/mpd
 
-format-online = <label-time>  <bar-progress>  <label-song>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
+;format-online = <label-time>  <bar-progress>  <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>
+format-online = <label-time> %{F#22}|%{F-} <label-song> <icon-prev><icon-stop><toggle><icon-next> <icon-repeat><icon-random>
 format-online-background = #ee333333
 format-online-underline = #cc333333
 format-online-padding = 3
@@ -337,13 +343,13 @@ label-offline = mpd is off
 label-song-maxlen = 45
 label-song-ellipsis = true
 
+label-time-foreground = #77
+
 icon-prev = 
-icon-seekb = 
 icon-stop = 
 icon-play = 
 icon-pause = 
 icon-next = 
-icon-seekf = 
 
 icon-random = 
 icon-repeat = 
@@ -351,17 +357,15 @@ icon-repeat = 
 toggle-on-foreground = ${colors.accent}
 toggle-off-foreground = #66
 
-bar-progress-width = 15
-bar-progress-indicator = 
-bar-progress-indicator-foreground = #bb
-bar-progress-fill = ─
-bar-progress-fill-foreground = #bb
-bar-progress-fill-font = 3
-bar-progress-empty = ─
-bar-progress-empty-foreground = #44
-bar-progress-empty-font = 3
-
-label-time-foreground = #77
+;bar-progress-width = 10
+;bar-progress-indicator = 
+;bar-progress-indicator-foreground = #bb
+;bar-progress-fill = ─
+;bar-progress-fill-foreground = #bb
+;bar-progress-fill-font = 3
+;bar-progress-empty = ─
+;bar-progress-empty-foreground = #44
+;bar-progress-empty-font = 3
 
 
 [module/power-menu]
@@ -370,6 +374,7 @@ type = custom/menu
 label-open = 
 label-close = 
 label-separator = /
+label-separator-margin = 1
 
 menu-0-0 = Terminate WM
 menu-0-0-foreground = ${colors.accent}
