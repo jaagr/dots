@@ -24,5 +24,6 @@ format-background = #fff
 hook-0 = date
 hook-1 = whoami
 hook-2 = echo "%{B#000}Files%{B-} in ${HOME}: $(ls -1a ~ | wc -l)"
+initial = 3
 
 ; vim:ft=dosini

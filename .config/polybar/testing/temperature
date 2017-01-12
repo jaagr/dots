@@ -1,0 +1,41 @@
+[bar/test]
+monitor = eDP-1
+width = 500
+height = 30
+offset-x = 820
+override-redirect = true
+overline-size = 5
+underline-size = 5
+background = #6d3eff
+foreground = #fff
+overline-color = #c51850
+underline-color = #c51850
+font-0 = envypn:pixelsize=13
+font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+font-2 = siji:pixelsize=10;0
+
+modules-center = temperature
+
+tray-position = right
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp>x<label>
+format-spacing = 1
+format-underline-size = #f50a4d
+format-warn = <ramp> x y7 <label-warn>
+format-warn-underline = #a07
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = #009
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #025
+
+; vim:ft=dosini

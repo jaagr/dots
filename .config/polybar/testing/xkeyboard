@@ -1,0 +1,42 @@
+[bar/test]
+monitor = ${env:MONITOR:eDP1}
+bottom = true
+;modules-left = xkeyboard
+modules-right = xkeyboard2
+background = #47008b
+foreground = #fff
+
+tray-position = right
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+format = <label-layout> <label-indicator>
+format-spacing = 0
+
+label-layout = %name%
+label-layout-padding = 2
+label-layout-background = #bc99ed
+label-layout-foreground = #000
+
+label-indicator-padding = 2
+label-indicator-background = #8139e8
+; blacklist-0 = num lock
+
+[module/xkeyboard2]
+type = internal/xkeyboard
+
+format = <label-layout> <label-indicator> <label-layout>
+format-spacing = 0
+;format-separator = " "
+
+label-layout = %name%
+label-layout-padding = 2
+label-layout-background = #bc99ed
+label-layout-foreground = #000
+
+label-indicator-padding = 2
+label-indicator-background = #8139e8
+; blacklist-0 = num lock
+
+; vim:ft=dosini

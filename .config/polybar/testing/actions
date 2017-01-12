@@ -32,8 +32,8 @@ content = %{A:notify-send -u low\: test: A3:notify-send -u low test: F#000}foo%{
 type = custom/text
 content = ████
 
-click-left = notify-send -u low "$(ls $HOME)"
-click-right = notify-send -u low $HOME
+click-left = notify-send -u low $HOME
+click-right = notify-send -u low "$(ls $HOME)"
 ; click-middle = echo middle
 ; click-right = echo right
 ; scroll-up = echo scroll up

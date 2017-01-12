@@ -14,23 +14,33 @@ font-0 = dina:pixelsize=7
 ;imodules-left = tmp
 ;modules-left = spotify
 ;modules-left = tailscript
-modules-left = tailscript tailscript2
+;modules-left = tailscript tailscript2
 ;modules-left = test
-modules-center = not-a-tailscript blocking-wait
+;modules-center = not-a-tailscript blocking-wait
 ;modules-center = blocking-wait
-modules-right = test intervalscript
+;modules-right = test cond intervalscript
 ;modules-center = test dropbox
-; modules-right = intervalscript
+;modules-right = intervalscript
+;modules-right = loop
+;modules-right = tail
+modules-center = cond
+modules-right = tail blocking-wait tailscript intervalscript tailscript2
+
+[module/tail]
+type = custom/script
+exec = tail -f /tmp/fifo
+tail = true
+interval = 0
 
 [module/blocking-wait]
 type = custom/script
 ;exec = mpc idleloop
-exec = mpc idleloop
+exec = cat
 tail = true
 
 [module/test]
 type = custom/script
-exec = echo 􏿽 test %counter% | scroller -p -c 6
+exec = echo 􏿽 test %counter% | scroller -p -c 7
 tail = true
 interval = 0
 
@@ -38,6 +48,7 @@ interval = 0
 type = custom/script
 exec = xtitle -s
 tail = true
+interval = 0
 
 [module/tailscript2]
 type = custom/script
@@ -49,13 +60,16 @@ interval = 1
 type = custom/script
 exec = mpc status | head -1
 ;tail = true
-interval = 1
+interval = 2
 
 [module/intervalscript]
 type = custom/script
-;exec = sleep 1; echo $MONITOR %counter%..
-exec = echo %counter% testing \& testing
-interval = 0.5
+label = test
+exec = pgrep -x watch
+interval = 2
+format-underline = #268bd2
+format-prefix = "! "
+format-prefix-foreground = #5b
 
 ;format = <label>
 ;label = %output:0:3%
@@ -84,5 +98,11 @@ click-left = dropbox start
 ;click-left = echo sleeping && sleep 4 & echo sleeping 2
 interval = 2
 format-padding = 2
+
+[module/cond]
+type = custom/script
+exec = echo condition $(date +%s)
+exec-if = pgrep -x watch
+interval = 3
 
 ; vim:ft=dosini
