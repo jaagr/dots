@@ -13,7 +13,7 @@ overline-color = #f00
 underline-size = 2
 underline-color = #00f
 
-;lineheight = 2
+;line-size = 2
 spacing = 1
 padding-left = 2
 padding-right = 2

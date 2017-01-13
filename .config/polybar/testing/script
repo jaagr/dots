@@ -12,7 +12,7 @@ overline-color = #c51850
 font-0 = dina:pixelsize=7
 
 ;imodules-left = tmp
-;modules-left = spotify
+modules-left = spotify
 ;modules-left = tailscript
 ;modules-left = tailscript tailscript2
 ;modules-left = test
@@ -23,8 +23,8 @@ font-0 = dina:pixelsize=7
 ;modules-right = intervalscript
 ;modules-right = loop
 ;modules-right = tail
-modules-center = cond
-modules-right = tail blocking-wait tailscript intervalscript tailscript2
+;modules-center = cond
+;modules-right = tail blocking-wait tailscript intervalscript tailscript2
 
 [module/tail]
 type = custom/script
@@ -81,8 +81,8 @@ scroll-down = echo scroll down %counter%
 
 [module/spotify]
 type = custom/script
-exec = /tmp/script
-interval = 10
+exec = ~/bin/spotify_status.sh >/tmp/spotify.out || exit $?; cat /tmp/spotify.out
+interval = 2
 
 [module/tmp]
 type = custom/script

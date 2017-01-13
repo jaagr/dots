@@ -71,12 +71,12 @@ clickareas = 35
 
 background = #222222
 foreground = #eefafafa
-linecolor = ${bar/top.background}
+line-color = ${bar/top.background}
 
 ;separator = |
 
 spacing = 3
-lineheight = 14
+line-size = 14
 ;padding-left = 5
 ;padding-right = 2
 module-margin-left = 3
@@ -101,10 +101,10 @@ height = 27
 
 background = #111111
 foreground = #ccffffff
-linecolor = ${bar/bottom.background}
+line-color = ${bar/bottom.background}
 
 spacing = 3
-lineheight = 2
+line-size = 2
 ;padding-left = 0
 padding-right = 4
 module-margin-left = 0
@@ -131,10 +131,10 @@ height = 27
 
 background = #111111
 foreground = #ccffffff
-linecolor = ${bar/external_bottom.background}
+line-color = ${bar/external_bottom.background}
 
 spacing = 3
-lineheight = 2
+line-size = 2
 ;padding-left = 0
 padding-right = 3
 module-margin-left = 0

@@ -1,6 +1,6 @@
 [bar/center]
-monitor = eDP-1
-dock = true
+monitor = eDP1
+override-redirect = true
 width = 16%
 height = 75
 offset-x = 42%

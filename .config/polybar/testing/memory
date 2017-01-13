@@ -1,16 +1,36 @@
 [bar/test]
 monitor = eDP-1
-width = 300
-height = 50
 override-redirect = true
-background = #ff184f
-foreground = #671414
 
-modules-center = mem
+width = 500
+height = 50
 
+separator = " | "
+
+font-0 = fixed:pixelsize=10;0
+font-1 = unifont:size=6:heavy:fontformat=truetype;-1
+
+modules-center = mem mem2
 
 [module/mem]
 type = internal/memory
-label = RAM %gb_used%/%gb_free%
+label = RAM %mb_used%/%mb_free% %gb_used%/%gb_free%
+
+[module/mem2]
+type = internal/memory
+format = <label> <bar-used>
+label = RAM %percentage_used% %percentage_free%
+
+bar-used-width = 20
+bar-used-foreground-2 = #0000ff
+bar-used-foreground-3 = #00ff00
+bar-used-foreground-0 = #ff0000
+bar-used-indicator = |
+bar-used-indicator-foreground = #ff
+bar-used-fill = ─
+bar-used-fill-font = 2
+bar-used-empty = ─
+bar-used-empty-font = 2
+bar-used-empty-foreground = #444444
 
 ; vim:ft=dosini

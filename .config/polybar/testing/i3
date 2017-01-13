@@ -4,7 +4,7 @@ bottom = true
 
 background = #222222
 foreground = #ccfafafa
-linecolor = #666
+line-color = #666
 
 spacing = 1
 padding-left = 2

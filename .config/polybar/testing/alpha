@@ -3,7 +3,7 @@ width = 100%
 height = 20
 monitor = eDP-1
 ;offset-x = 30%;
-;dock = true
+;override-redirect = true
 bottom = true
 
 background = #880000ff
