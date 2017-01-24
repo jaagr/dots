@@ -8,7 +8,7 @@ foreground = #fff
 [module/github]
 type = internal/github
 token = ${file:/home/jaagr/.git-token}
-empty-notifications = true
+;empty-notifications = true
 ;token =
 
 ; vim:ft=dosini

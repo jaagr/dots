@@ -19,7 +19,7 @@ label = RAM %mb_used%/%mb_free% %gb_used%/%gb_free%
 [module/mem2]
 type = internal/memory
 format = <label> <bar-used>
-label = RAM %percentage_used% %percentage_free%
+label = RAM %percentage_used%% %percentage_free%%
 
 bar-used-width = 20
 bar-used-foreground-2 = #0000ff

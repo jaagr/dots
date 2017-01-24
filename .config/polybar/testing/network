@@ -35,7 +35,8 @@ animation-packetloss-0 = 1
 animation-packetloss-1 = 2
 animation-packetloss-2 = 3
 animation-packetloss-framerate = 500
-label-connected = %ifname%: Connected to %essid% with IP %local_ip% (up: %upspeed%, down: %downspeed%) (%signal% / %quality%)
+
+label-connected = %ifname%: Connected to %essid% with IP %local_ip% (up: %upspeed%, down: %downspeed%) (%signal%% / %quality%%)
 label-disconnected = Disconnected
 label-packetloss = Packetloss!
 

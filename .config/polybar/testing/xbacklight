@@ -7,5 +7,6 @@ foreground = #fff
 
 [module/backlight]
 type = internal/xbacklight
+label = %percentage%%
 
 ; vim:ft=dosini

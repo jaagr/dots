@@ -11,6 +11,7 @@ enable-ipc = true
 font-0 = fixed:size=10
 
 modules-center = test
+;modules-center = msgtool
 
 [module/float]
 type = custom/text
@@ -25,5 +26,15 @@ hook-0 = date
 hook-1 = whoami
 hook-2 = echo "%{B#000}Files%{B-} in ${HOME}: $(ls -1a ~ | wc -l)"
 initial = 3
+
+[module/msgtool]
+type = custom/ipc
+hook-0 = echo foobar %pid%
+hook-1 = date +%s
+hook-2 = whoami
+initial = 1
+click-left = polybar-msg -p %pid% hook ipc 1
+click-right = polybar-msg -p %pid% hook ipc 2
+double-click-left = polybar-msg -p %pid% hook ipc 3
 
 ; vim:ft=dosini

@@ -31,7 +31,7 @@ remove-unmounted = true
 ;fixed-values = true
 ;spacing = 4
 
-label-mounted = %mountpoint%: %percentage_used% F: %free%, U: %used%, T: %total%
+label-mounted = %mountpoint%: %percentage_free%%/%percentage_used%% F: %free%, U: %used%, T: %total%
 
 ;label-unmounted = %mountpoint%: not mounted
 ;label-unmounted-foreground = #55

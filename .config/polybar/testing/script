@@ -12,7 +12,8 @@ overline-color = #c51850
 font-0 = dina:pixelsize=7
 
 ;imodules-left = tmp
-modules-left = spotify
+modules-left = zscroll
+;modules-left = spotify
 ;modules-left = tailscript
 ;modules-left = tailscript tailscript2
 ;modules-left = test
@@ -25,6 +26,12 @@ modules-left = spotify
 ;modules-right = tail
 ;modules-center = cond
 ;modules-right = tail blocking-wait tailscript intervalscript tailscript2
+
+[module/zscroll]
+type = custom/script
+exec = ~/bin/mpc_scroll.sh
+tail = true
+interval = 0
 
 [module/tail]
 type = custom/script
@@ -81,7 +88,7 @@ scroll-down = echo scroll down %counter%
 
 [module/spotify]
 type = custom/script
-exec = ~/bin/spotify_status.sh >/tmp/spotify.out || exit $?; cat /tmp/spotify.out
+exec = find /
 interval = 2
 
 [module/tmp]

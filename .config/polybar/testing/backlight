@@ -8,5 +8,6 @@ foreground = #fff
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
+label = %percentage%%
 
 ; vim:ft=dosini

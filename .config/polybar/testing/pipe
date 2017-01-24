@@ -1,0 +1,24 @@
+[bar/pipe]
+background = #424242
+foreground = #ffffff
+;modules-left = fifo
+modules-center = ipc
+enable-ipc = true
+
+[module/fifo]
+type = custom/script
+exec = rm /tmp/pipe 2>/dev/null; mkfifo /tmp/pipe && echo initial output >/tmp/pipe & tail -f /tmp/pipe
+tail = true
+click-left = date +%s >/tmp/pipe
+
+[module/ipc]
+type = custom/ipc
+hook-0 = echo foobar %pid%
+hook-1 = date +%s
+hook-2 = whoami
+initial = 1
+click-left = polybar-msg -p %pid% hook ipc 1
+click-right = polybar-msg -p %pid% hook ipc 2
+double-click-left = polybar-msg -p %pid% hook ipc 3
+
+; vim:ft=dosini
