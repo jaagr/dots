@@ -23,7 +23,7 @@ underline-size = 2
 padding-left = 2
 padding-right = 2
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
 font-0 = envypn-regular:size=10;0
 font-1 = Siji:pixelsize=10;0
@@ -109,13 +109,17 @@ label-floating-foreground = #ec4834
 [module/cpu]
 type = internal/cpu
 interval = 2
-label = %{F#666}%{F#222} %percentage%
+format-prefix = " "
+format-prefix-foreground = #666
+label = %percentage%%
 
 
 [module/memory]
 type = internal/memory
 interval = 2
-label = %{F#666}%{F#222} %percentage_used%
+format-prefix = " "
+format-prefix-foreground = #666
+label = %percentage_used%%
 
 
 [module/wifi]
@@ -125,8 +129,11 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid% %{F#66}%local_ip%
-label-disconnected = %{F#666}%{F#222} not connected
-label-disconnected-foreground = #66
+
+format-disconnected-prefix = " "
+format-disconnected-prefix-foreground = #666
+label-disconnected = not connected
+label-disconnected-foreground = #666
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -138,7 +145,13 @@ ramp-signal-foreground = #666
 
 [module/date]
 type = internal/date
-date = %%{F#666}%{F#222} %Y-%m-%d  %%{F#ec4834}%%{F#222} %H:%M
+label = %date%%time%
+format-prefix = " "
+format-prefix-foreground = #ec4834
+date =
+date-alt = "%Y-%m-%d "
+time = %H:%M
+time-alt = %H:%M:%S
 interval = 5
 
 
@@ -158,7 +171,7 @@ headphone-mixer = Headphone
 headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage%
+label-volume = %percentage%%
 label-volume-foreground = ${BAR.foreground}
 
 ramp-volume-0 = 
@@ -167,8 +180,10 @@ ramp-volume-2 = 
 ramp-volume-3 = 
 ramp-volume-foreground = #666
 
-label-muted = %{F#666}%{F#222} sound muted
-label-muted-foreground = #99
+format-muted-prefix = " "
+format-muted-prefix-foreground = #666
+label-muted = sound muted
+label-muted-foreground = #666
 
 
 [module/battery]
@@ -177,7 +192,9 @@ full-at = 98
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-full = %{F#666}%{F#222} <label-full>
+format-full = <label-full>
+format-full-prefix = " "
+format-full-prefix-foreground = #666
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -210,7 +227,7 @@ icon-random = 
 icon-repeat = 
 
 toggle-on-foreground = #ec4834
-toggle-off-foreground = #66
+toggle-off-foreground = #666
 
 bar-progress-width = 15
 bar-progress-indicator = 
