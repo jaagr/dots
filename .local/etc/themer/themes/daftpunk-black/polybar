@@ -72,7 +72,7 @@ font-3 = NotoSans-Regular:size=8;-1
 font-4 = Unifont:size=5;-4
 font-5 = Termsynu:size=7;-3
 
-modules-left = bspwm
+modules-left = bspwm i3
 ;modules-center =
 modules-right = xbacklight cpu memory clock
 ;modules-right = memory
@@ -122,13 +122,13 @@ wm-restack = ${bar/bottom.wm-restack}
 [module/fs-root]
 type = internal/fs
 mount-0 = /
-label-mounted = %{F#e60053}%percentage_used%%{F-} used of %mountpoint%
+label-mounted = %{F#e60053}%percentage_used%%%{F-} used of %mountpoint%
 
 
 [module/xbacklight]
 type = internal/xbacklight
 output = eDP-1
-format = <label> <ramp> <bar>
+format = <ramp> <bar>
 
 ramp-0 = 
 ramp-0-foreground = #666
@@ -202,6 +202,7 @@ label-empty-padding = 4
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
+pin-workspaces = true
 
 ws-icon-0 = term;
 ws-icon-1 = web;
@@ -332,6 +333,8 @@ label-disconnected-foreground = #66
 [module/mpd]
 type = internal/mpd
 format-online = <bar-progress>  <icon-prev> <icon-stop> <toggle> <icon-next>  <label-song>
+format-online-overline = ${root.background}
+format-online-underline = ${root.background}
 format-offline = <label-offline>
 label-offline = mpd is off
 
@@ -371,13 +374,13 @@ date = %%{F#bb}%Y-%m-%d%%{F-}  %%{F#ee}%H:%M%%{F-}
 
 [module/volume]
 type = internal/volume
-;speaker-mixer = Speaker
-;headphone-mixer = Headphone
-;headphone-id = 9
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
 
-label-volume = volume %percentage%
+label-volume = volume %percentage%%
 label-volume-foreground = #ff
 
 label-muted = sound muted
@@ -418,6 +421,7 @@ format-foreground = #fff
 
 label-open = 
 label-close = 
+label-separator = " - "
 
 menu-0-0 = Terminate WM
 menu-0-0-foreground = ${colors.accent}

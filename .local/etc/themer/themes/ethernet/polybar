@@ -97,13 +97,13 @@ label-floating-foreground = #fba922
 [module/cpu]
 type = internal/cpu
 interval = 2
-label = %{F#666}%{F#ccfafafa} %percentage%
+label = %{F#666}%{F#ccfafafa} %percentage%%
 
 
 [module/memory]
 type = internal/memory
 interval = 2
-label = %{F#666}%{F#ccfafafa} %percentage_used%
+label = %{F#666}%{F#ccfafafa} %percentage_used%%
 
 
 [module/wifi]
@@ -147,7 +147,7 @@ headphone-mixer = Headphone
 headphone-id = 9
 
 format-volume = <ramp-volume> <label-volume>
-label-volume = %percentage%
+label-volume = %percentage%%
 label-volume-foreground = ${BAR.foreground}
 
 ramp-volume-0 = 

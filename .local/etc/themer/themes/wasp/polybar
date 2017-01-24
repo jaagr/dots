@@ -168,7 +168,7 @@ speaker-mixer = Speaker
 headphone-mixer = Headphone
 headphone-id = 9
 
-label-volume = volume %percentage%
+label-volume = volume %percentage%%
 label-volume-font = 3
 label-muted = sound muted
 label-muted-font = 3
