@@ -154,7 +154,7 @@ label-focused-overline = ${root.bspwm-focused-overline}
 label-focused-underline = ${root.bspwm-focused-underline}
 label-focused-padding = 2
 
-label-occupied = %{O-1}⏺%{O-1}
+label-occupied = %{O-1}⏺%{O1}
 label-occupied-padding = 2
 
 label-urgent = !
