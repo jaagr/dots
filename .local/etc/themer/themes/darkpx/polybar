@@ -56,7 +56,7 @@ module-margin-right = 2
 
 font-0 = dina:pixelsize=9;1
 font-1 = siji:pixelsize=10;1
-font-2 = unifont:size=6;0
+font-2 = unifont:size=6;1
 
 modules-left = bspwm i3
 modules-center = mpd
@@ -154,7 +154,7 @@ label-focused-overline = ${root.bspwm-focused-overline}
 label-focused-underline = ${root.bspwm-focused-underline}
 label-focused-padding = 2
 
-label-occupied = %{O-1}⏺%{O1}
+label-occupied = %{O-1}⏺%{O-1}
 label-occupied-padding = 2
 
 label-urgent = !
