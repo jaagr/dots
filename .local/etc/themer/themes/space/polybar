@@ -1,30 +1,21 @@
-; [settings]
-; throttle-ms = 50
-; throttle-limit = 3
-
 [bar/top]
 monitor = eDP-1
 width = 100%
 height = 34
-clickareas = 35
 
 background = #00000000
 foreground = #ccffffff
-linecolor = ${bar/bottom.background}
 
-spacing = 4
-;spacing = 2
-lineheight = 16
+line-color = ${bar/bottom.background}
+line-size = 16
+
+spacing = 2
 padding-right = 5
-module-margin-left = 3
-module-margin-right = 3
-;module-margin-left = 1
-;module-margin-right = 1
+module-margin = 4
 
-;font-0 = envypn:pixelsize=13;0
-font-0 = NotoSans-Regular:size=8;0
+font-0 = NotoSans-Regular:size=8;-1
 font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8;-1
+font-2 = Termsynu:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
 
 modules-left = powermenu mpd
@@ -38,54 +29,27 @@ height = 27
 
 background = ${bar/top.background}
 foreground = ${bar/top.foreground}
-linecolor = ${bar/top.background}
+
+line-color = ${bar/top.background}
+line-size = 2
 
 spacing = 3
-lineheight = 2
 padding-right = 4
 module-margin-left = 0
 module-margin-right = 6
 
 font-0 = NotoSans-Regular:size=8;0
-font-1 = Unifont:size=6;-3
+font-1 = unifont:size=6;-3
 font-2 = FontAwesome:size=8;-2
 font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
-font-5 = Termsynu:size=8;-1
+font-5 = Termsynu:size=8:antialias=false;0
 
 modules-left = bspwm
 modules-right = cpu memory
 
-[bar/external_bottom]
-;inherit-from = bar/bottom
-
-monitor = HDMI-1
-bottom = true
-width = ${bar/bottom.width}
-height = ${bar/bottom.height}
-
-background = ${bar/bottom.background}
-foreground = ${bar/bottom.foreground}
-linecolor = ${bar/bottom.linecolor}
-
-spacing = ${bar/bottom.spacing}
-lineheight = ${bar/bottom.lineheight}
-padding-right = ${bar/bottom.padding_right}
-module-margin-left = ${bar/bottom.module_margin_left}
-module-margin-right = ${bar/bottom.module_margin_right}
-
-font-0 = ${bar/bottom.font-0}
-font-1 = ${bar/bottom.font-1}
-font-2 = ${bar/bottom.font-2}
-font-3 = ${bar/bottom.font-3}
-font-4 = ${bar/bottom.font-4}
-
-modules-left = bspwm
-modules-right = clock
-
 [module/backlight]
-type = internal/backlight
-card = intel_backlight
+type = internal/xbacklight
 format = <ramp> <bar>
 
 ramp-0 = 
@@ -93,14 +57,13 @@ ramp-1 = 
 ramp-2 = 
 
 bar-width = 10
-bar-format = %{A4:backlight_percentage%__p5:}%{A5:backlight_percentage%__m5:}%{+u}%{+o}%fill%%{-u}%{-o}%indicator%%{+u}%{+o}%empty%%{-u}%{-o}%{A}%{A}
 bar-indicator = |
-bar-indicator-foreground = #ff
 bar-indicator-font = 3
-bar-fill = █
-bar-fill-foreground = #bb
+bar-indicator-foreground = #ff
+bar-fill = ─
 bar-fill-font = 3
-bar-empty = █
+bar-fill-foreground = #c9665e
+bar-empty = ─
 bar-empty-font = 3
 bar-empty-foreground = #44
 
@@ -153,7 +116,6 @@ label-dimmed-underline = ${BAR.background}
 label-active = %icon%
 label-active-foreground = #fff
 label-active-background = #773f3f3f
-;label-active-underline = #fba922
 label-active-underline = #c9665e
 label-active-font = 4
 label-active-padding = 4
