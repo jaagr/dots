@@ -24,9 +24,10 @@ fi
 
 theme::post_bspwmrc()
 {
-  xdrawrect eDP-1 top 100% 1 0 29 '#ff777777' effectline-top "$(polybar top -c "$polybar_config" --print-wmname)" &
-
-  if xrandr | grep -q "HDMI-1 connected"; then
-    xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(polybar external_bottom -c "$polybar_config" --print-wmname)" &
-  fi
+  :
+  # xdrawrect eDP-1 top 100% 1 0 29 '#ff777777' effectline-top "$(polybar top -c "$polybar_config" --print-wmname)" &
+  #
+  # if xrandr | grep -q "HDMI-1 connected"; then
+  #   xdrawrect HDMI-1 bottom 100% 3 0 27 '#ff000000' effectline-bottom "$(polybar external_bottom -c "$polybar_config" --print-wmname)" &
+  # fi
 }

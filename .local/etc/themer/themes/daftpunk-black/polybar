@@ -24,11 +24,11 @@ padding-right = 0
 module-margin-left = 3
 module-margin-right = 3
 
-font-0 = NotoSans-Regular:size=8;1
-font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8;-1
-font-3 = Siji:pixelsize=10;0
-;font-4 = FontAwesome:size=10;-8
+font-0 = NotoSans-Regular:size=8;0
+font-1 = MaterialIcons:size=10;2
+font-2 = Termsynu:size=8;0
+font-3 = Siji:pixelsize=10;1
+font-4 = FontAwesome:size=10;0
 
 modules-left = powermenu mpd
 modules-center = xwindow
@@ -66,11 +66,11 @@ module-margin-left = 0
 module-margin-right = 6
 
 font-0 = NotoSans-Regular:size=8;0
-font-1 = Unifont:size=5;-3
-font-2 = FontAwesome:size=8;-2
+font-1 = Unifont:size=5;0
+font-2 = FontAwesome:size=8;0
 font-3 = NotoSans-Regular:size=8;-1
-font-4 = Unifont:size=5;-4
-font-5 = Termsynu:size=7;-3
+font-4 = Unifont:size=5;0
+font-5 = Termsynu:size=7;0
 
 modules-left = bspwm i3
 ;modules-center =
@@ -383,6 +383,8 @@ format-volume = <ramp-volume> <label-volume>
 label-volume = volume %percentage%%
 label-volume-foreground = #ff
 
+format-muted-prefix = " "
+format-muted-foreground = #66
 label-muted = sound muted
 label-muted-foreground = #99ffffff
 

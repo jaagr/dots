@@ -1,5 +1,5 @@
 [colors]
-background = #222222
+background = #222
 foreground = #eee
 linecolor = #fba922
 bordercolor = #333
@@ -13,7 +13,7 @@ screenchange-reload = true
 
 ;compositing-background = over
 ;compositing-background = screen
-;compositing-foreground = source
+;compositing-foreground = xor
 ;compositing-foreground = source
 ;compositing-border = over
 
@@ -26,6 +26,7 @@ enable-ipc = true
 monitor = ${env:MONITOR:eDP1}
 width = 100%
 height = 24
+;radius = 5.0
 ;fixed-center = false
 ;override-redirect = true
 
@@ -45,10 +46,12 @@ line-color = ${colors.linecolor}
 underline-size = 1
 overline-size = 2
 
+;border-size = 5
+;border-color = 0
+;border-bottom-size = 0
 border-bottom-size = 2
 border-bottom-color = ${colors.bordercolor}
 
-spacing = 0
 padding-left = 0
 padding-right = 2
 module-margin-left = 1
@@ -59,7 +62,8 @@ font-1 = siji:pixelsize=10;1
 font-2 = unifont:size=6;1
 
 modules-left = bspwm i3
-modules-center = mpd
+;modules-center = mpd
+modules-center = xwindow
 modules-right = xkeyboard xbacklight volume wifi battery memory cpu date
 
 tray-position = right
@@ -67,7 +71,7 @@ tray-padding = 4
 tray-maxsize = 16
 ;tray-transparent = true
 ;tray-detached = true
-;tray-offset-x = -100
+;tray-offset-x = 50
 
 wm-restack = bspwm
 
@@ -92,16 +96,16 @@ inherit = bar/top
 
 enable-ipc = true
 monitor = ${env:MONITOR:HDMI1}
-monitor-fallback = eDP-1
+;monitor-fallback = eDP-1
 bottom = true
 ;override-redirect = true
 
 underline-size = ${bar/top.overline-size}
 overline-size = ${bar/top.underline-size}
 
-border-top-size = 2
-border-top-color = ${colors.bordercolor}
-border-bottom-size = 0
+;border-top-size = 2
+;border-top-color = ${colors.bordercolor}
+;border-bottom-size = 0
 
 modules-left = bspwm i3
 ;modules-left =
@@ -143,10 +147,17 @@ format = <label-state> <label-mode>
 ;format = <label-monitor> <label-state> <label-mode>
 ;pin-workspaces = false
 
+;ws-icon-0 = term;
+;ws-icon-1 = web;
+;ws-icon-2 = code;
+;ws-icon-3 = music;
+;ws-icon-4 = irssi;
+;ws-icon-default = 
 ws-icon-default = x
 
 inline-mode = true
 
+;label-focused = %icon%
 label-focused = o
 label-focused-background = #383838
 label-focused-foreground = #fff
@@ -154,13 +165,16 @@ label-focused-overline = ${root.bspwm-focused-overline}
 label-focused-underline = ${root.bspwm-focused-underline}
 label-focused-padding = 2
 
+;label-occupied = %icon%
 label-occupied = %{O-1}⏺%{O-1}
 label-occupied-padding = 2
 
+;label-urgent = %icon%
 label-urgent = !
 label-urgent-background = #bd2c40
 label-urgent-padding = 2
 
+;label-empty = %icon%
 label-empty = x
 label-empty-foreground = #444
 label-empty-padding = 2
@@ -250,11 +264,11 @@ format-connected-prefix-foreground = #666
 format-connected-prefix-offset = -6
 label-connected = %downspeed:8%
 
-format-disconnected = <label-disconnected>
-format-disconnected-prefix = " "
-format-disconnected-prefix-foreground = #666
-label-disconnected = not connected
-label-disconnected-foreground = #66
+;format-disconnected = <label-disconnected>
+;format-disconnected-prefix = " "
+;format-disconnected-prefix-foreground = #666
+;label-disconnected = not connected
+;label-disconnected-foreground = #999
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -268,11 +282,15 @@ type = internal/network
 interface = net0
 interval = 3.0
 
+format-connected-prefix = " "
+format-connected-prefix-foreground = #666
 label-connected = %local_ip%
-label-connected-font = 3
-label-disconnected = Not connected
-label-disconnected-foreground = #66
-label-disconnected-font = 3
+
+;format-disconnected = <label-disconnected>
+;format-disconnected-prefix = " "
+;format-disconnected-prefix-foreground = #666
+;label-disconnected = not connected
+;label-disconnected-foreground = #999
 
 [module/date]
 type = internal/date
@@ -301,7 +319,7 @@ label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = #66
+format-muted-foreground = #777
 label-muted = sound muted
 
 ramp-volume-0 = 
@@ -312,6 +330,7 @@ ramp-volume-foreground = #666
 
 ramp-headphones-0 = 
 ramp-headphones-1 = 
+ramp-headphones-foreground = #666
 
 [module/battery]
 type = internal/battery
@@ -356,14 +375,14 @@ format-online-underline = #cc333333
 format-online-padding = 3
 
 format-offline = <label-offline>
-format-offline-foreground = #66
+format-offline-foreground = #777
 
 label-offline = mpd is off
 
 label-song-maxlen = 45
 label-song-ellipsis = true
 
-label-time-foreground = #77
+label-time-foreground = #777
 
 icon-prev = 
 icon-stop = 
@@ -375,7 +394,7 @@ icon-random = 
 icon-repeat = 
 
 toggle-on-foreground = ${colors.accent}
-toggle-off-foreground = #66
+toggle-off-foreground = #777
 
 ;bar-progress-width = 10
 ;bar-progress-indicator = 

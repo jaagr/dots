@@ -35,7 +35,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-; font-0 = envypn-regular:size=10;0
+; font-0 = ypn envypn:size=10;0
 font-0 = hack:size=7;1
 font-1 = Siji:pixelsize=10;0
 font-2 = Termsynu:size=8;0

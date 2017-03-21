@@ -1,5 +1,6 @@
-font = envypn, regular, 10
-;font = droid sans mono for powerline, 10
+#font = envypn, regular, 10
+#font = droid sans mono for powerline, 10
+font = Dina, regular 10
 
 
 foreground      = #373b41

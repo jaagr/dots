@@ -23,7 +23,7 @@ module-margin-right = 2
 
 font-0 = NotoSans-Regular:size=8;0
 font-1 = FontAwesome:size=8;-2
-font-2 = envypn-regular:size=10;-1
+font-2 = ypn envypn:size=10;-1
 font-3 = Termsynu:size=8;-1
 font-4 = Unifont:size=6;-3
 

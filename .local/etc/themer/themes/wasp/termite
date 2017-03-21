@@ -1,4 +1,4 @@
-font = envypn, regular, 10
+font = ypn envypn, regular, 10
 
 foreground      = #d8d8d8
 foreground_bold = #d8d8d8

@@ -1,4 +1,4 @@
-font = envypn, regular, 10
+font = ypn envypn, regular, 10
 
 background = rgba(40, 42, 54, .98)
 foreground = #cccccc
