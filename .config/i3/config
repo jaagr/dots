@@ -119,7 +119,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-#bindsym $win+Control+r mode "resize"
+bindsym $win+Control+r mode "resize"
 
 # }}}
 
