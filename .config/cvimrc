@@ -1,5 +1,5 @@
 " Put the following two lines in the cVim options page in Chrome
-let configpath = "/home/jaagr/etc/config/cvimrc"
+let configpath = "/home/jaagr/.config/cvimrc"
 set localconfig " Update settings via local file (and the `:source` command) rather
                 " than the default options page in chrome"
 
