@@ -51,7 +51,7 @@ prompt_jaagr_setup() {
   zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{1}─%f%K{1}%F{0} cmd %f%k%F{1}─%f'
 
   PROMPT='%(?.%F{8}.%F{1})${editor_info:+${(e)editor_info[keymap]:-───────}} %f'
-
+  RPROMPT='%(?..%F{red} %?%f)'
   # Define prompts
   # PROMPT='%(?.%F{8}.%F{red})%~%f ─────'
   # RPROMPT='${git_info[rprompt]}${editor_info[keymap]}%(?..%F{red} %?%f)'
