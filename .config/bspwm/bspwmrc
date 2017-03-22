@@ -58,6 +58,10 @@ if ! xrandr -q | grep -q "HDMI-1"; then
   mon_external="HDMI1"
 fi
 
+if xrandr -q | grep -q "VIRTUAL1 conn"; then
+  mon_external="VIRTUAL1"
+fi
+
 if bspc monitor $mon_external; then
   bspc monitor $mon_internal --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 music irssi
   bspc monitor $mon_external --reset-desktops term web code ws_4 ws_5 ws_6 ws_7 ws_8 ws_9 ws_0
