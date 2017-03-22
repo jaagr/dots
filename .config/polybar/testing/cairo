@@ -1,89 +1,75 @@
+; vim:ft=dosini
 [settings]
-;compositing-background = over
-;compositing-foreground = xor
-;compositing-foreground = source
-;compositing-foreground = overlay
-;compositing-foreground = over (default)
-compositing-background = source
-compositing-border = over
+;compositing-background = dest-over
+;compositing-background = dest-in
 compositing-foreground = source
 
 [bar/test]
 monitor = eDP-1
-override-redirect = true
+;override-redirect = true
 
+background = #82ff8559
+foreground = #ff000000
 ;background = #dd3a8f69
-background = ${xrdb:*color14}
-foreground = #ffffffff
-
+;background = ${xrdb:*color14}
 ;background-0 = #002f714c
 ;background-1 = #ff2f714c
 
-font-0 = envypn:pixelsize=13;0
-font-1 = siji:pixelsize=10;0
-;font-0 = DejaVu Sans:size=15;0
-;font-2 = sans:charset=1f56a:size=15;0
-;font-0 = dejavu:size=20;0
-;font-0 = dejavu:size=25;0
-;font-0 = serif:size=20
-;font-66 = sans:charset=78:size=15
-;font-35 = sans:charset=47:size=15
-; font-1 = Ubuntu Mono:lang=ru:size=12
-; font-2 = DejaVu Sans Mono for Powerline:charset=ffff:size=12
-; font-1 = FontAwesome:size=21;-2
-; font-0 = siji:pixelsize=10;1
-; font-1 = envypn:pixelsize=13
+font-0 = envypn:pixelsize=10
+font-1 = unifont:pixelsize=9
+font-2 = ionicons:pixelsize=38;7
 
-;font-2 = dejavu:size=25;0
-font-2 = FontAwesome:size=15;1
-;font-3 = Symbola:size=18
-; font-3 = :charset=10fffd
-;font-0 = fixed:size=20;0
-
-; height = 25
-; width = 15%
-height = 30
-width = 98%
-offset-x = 1%
+;height = 25
+;width = 15%
+height = 50
+width = 96%
+offset-x = 2%
 offset-y = 10
-radius = 4.0
+;radius = 10.0
 
-module-margin = 1
-padding-left = 2
+modules-left = text1
+;modules-center = text1
+modules-right = text
+
+module-margin = 0
+padding-left = 0
+padding-right = 0
 overline-size = 5
 overline-color = #00f
 underline-size = 5
 underline-color = #00f
 
 ;border-size = 3
-;border-color = #0000ff
-;border-left-size = 100
-; border-bottom-color = #31cc00
-; border-bottom-size = 4
-; border-left-color = #88ffff00
-; border-left-size = 6
-; border-right-color = #ff9900
-; border-right-size = 8
-
-modules-left = text
-modules-center = text script text
-modules-right = text
-;modules-left = text text2 script
-; modules-center = text2
-; modules-right = text script
+border-color = #ff0000ff
+border-top-size = 15
+border-left-size = 90
+border-left-color = #55ffff00
+;border-bottom-color = #31cc00
+;border-bottom-size = 8
+;border-right-color = #ff9900
+;border-right-size = 20
 
 ;tray-position = right
 ;tray-detached = true
-tray-transparent = true
 ;tray-offset-x = 60
-
+;tray-transparent = true
 ;dim-value = 0.8
+
+[module/text1]
+type = custom/text
+;content = "zzzzzzxxxxxzzz"
+content = "%{F#0f0}  %{F-}  %{B#88ff0f90 F#00000000}  %{B- F-}    "
+;content-background = #aa3a8f69
+;content-foreground = #00ffffff
 
 [module/text]
 type = custom/text
+content = %{B#550f300f}English;%{B-} 한국어; English
+;content = ""
+;content = "        %{B#88f90f90}%{B-}    "
+;content = xxy  testing
 ;content = testing
 ;content = xx 🕪 asd
-content = xxy  testing
 ;content = ⿲ 🕪 � ﾷ🕪 🕪 testing 🤓􏿽testing
 ;content = testing  %{O#000000ff +o}cairo%{-o} %{F#330000ff}test%{F-} window
 
@@ -96,4 +82,26 @@ type = custom/script
 exec = date +%s
 ;interval = 1
 
-; vim:ft=dosini
+;
+;font-2 = Ionicons:size=30;5
+;font-1 = siji:pixelsize=10;1
+;font-2 = FontAwesome:size=15;4
+;font-2 = sans:charset=1f56a:size=15;0
+;font-66 = sans:charset=78:size=15
+; font-1 = Ubuntu Mono:lang=ru:size=12
+; font-2 = DejaVu Sans Mono for Powerline:charset=ffff:size=12
+; font-1 = FontAwesome:size=21;-2
+;font-3 = Symbola:size=18
+;font-4 = :charset=10fffd
+;
+;compositing-background = source
+;compositing-background = dest
+;compositing-foreground = xor
+;compositing-foreground = source
+;compositing-foreground = overlay
+;compositing-foreground = over (default)
+;compositing-background = source
+;compositing-border = over
+;compositing-foreground = source
+;compositing-foreground = over
+;compositing-background = source

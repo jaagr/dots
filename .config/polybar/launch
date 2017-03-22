@@ -31,7 +31,7 @@ function main
       log::err "The bar '${bar}' is not defined in the configuration, skippinng..."; continue
     fi
 
-    polybar "$bar" -c "$config" -r &
+    polybar "$bar" -c "$config" -r 2>"$XDG_CACHE_HOME/polybar/stderr" &
 
     log::info "Launched bar '${bar}'"
   done

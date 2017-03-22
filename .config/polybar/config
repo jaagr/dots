@@ -8,52 +8,58 @@
 ;=====================================================
 
 [colors]
+;background = ${xrdb:color0:#222}
 background = #222
 background-alt = #444
+;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #55
+foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[global/wm]
-margin-top = 5
-margin-bottom = 5
+[modules/xmenu]
+menu-0 = item 1;command
+menu-0-0 = sub-item 1.1;command
+menu-0-1 = sub-item 1.2;command
+menu-0-2 = sub-item 1.3;command
+menu-1 = item 2;command
+menu-1-0 = sub-item 2.1;command
+menu-1-1 = sub-item 2.2;command
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
-offset-x = 0
-offset-y = 0
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = false
 
-;background = ${xrdb:color9}
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-overline-size = 2
-overline-color = #f00
-underline-size = 2
-underline-color = #00f
+line-size = 3
+line-color = #f00
 
-border-bottom = 2
-border-bottom-color = #333
+border-size = 4
+border-color = #00000000
 
-spacing = 1
 padding-left = 0
 padding-right = 2
+
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;0
-font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=10;0
+font-0 = fixed:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm i3 xwindow
-modules-center =
-modules-right = backlight volume xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-left = bspwm i3
+modules-center = xwindow
+modules-right = filesystem xbacklight volume xkeyboard memory cpu wlan eth battery temperature date powermenu
 
-tray-position = xright
+tray-position = right
 tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
@@ -69,22 +75,23 @@ tray-padding = 2
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
-
 [module/xwindow]
 type = internal/xwindow
-label = %{o#503896 u#503896 +o +u B#301674}  %title:0:30:...%  %{B- -o -u}
+label = %title:0:30:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-underline = ${colors.secondary}
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
+label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
+label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
@@ -93,17 +100,13 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home
-mount-2 = /invalid/mountpoint
 
-label-mounted = %mountpoint%: %percentage_free%
-
-label-unmounted = %mountpoint%: not mounted
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
-ws-icon-default = x
 
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
@@ -113,7 +116,7 @@ label-focused-padding = 2
 label-occupied = %index%
 label-occupied-padding = 2
 
-label-urgent = %index%
+label-urgent = %index%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -125,60 +128,50 @@ label-empty-padding = 2
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
-;reverse-scroll = false
 wrapping-scroll = false
 
-label-mode = %mode%
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
-label-focused = %index%
+label-focused = F %index%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
-label-unfocused = %index%
+label-unfocused = U %index%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-visible = V %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-background}
+label-visible-padding = ${self.label-focused-padding}
 
-label-visible = %index%
-label-visible-foreground = ${module/bspwm.label-empty-padding}
-label-visible-padding = ${module/bspwm.label-empty-padding}
+label-urgent = %index%!
+label-urgent-background = ${module/bspwm.label-urgent-background}
+label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
 [module/mpd]
 type = internal/mpd
-
-format-online = <label-song>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
-
-label-song-maxlen = 25
-label-song-ellipsis = true
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
 icon-prev = 
-icon-seekb = 
 icon-stop = 
 icon-play = 
 icon-pause = 
 icon-next = 
-icon-seekf = 
 
-icon-random = 
-icon-repeat = 
+label-song-maxlen = 25
+label-song-ellipsis = true
 
-toggle-on-foreground = ${colors.primary}
-toggle-off-foreground = #66
-
-[module/backlight]
+[module/xbacklight]
 type = internal/xbacklight
 
 format = <label> <bar>
 label = BL
 
 bar-width = 10
-bar-indicator = │
+bar-indicator = |
 bar-indicator-foreground = #ff
 bar-indicator-font = 2
 bar-fill = ─
@@ -188,13 +181,18 @@ bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
-label = %percentage%
+label = %percentage%%
 
 [module/memory]
 type = internal/memory
@@ -202,7 +200,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-label = %percentage_used%
+label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
@@ -211,11 +209,13 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-format-disconnected-underline = ${self.format-connected-underline}
-
 label-connected = %essid%
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -231,12 +231,14 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-foreground-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -274,9 +276,8 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = │
+bar-volume-indicator = |
 bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = #ff
 bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
@@ -332,7 +333,9 @@ ramp-foreground = ${colors.foreground-alt}
 [module/powermenu]
 type = custom/menu
 
-label-open =  power
+format-spacing = 1
+
+label-open = 
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
@@ -353,5 +356,16 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
 
 ; vim:ft=dosini

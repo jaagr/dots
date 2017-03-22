@@ -8,7 +8,7 @@ height = 50
 separator = " | "
 
 font-0 = fixed:pixelsize=10;0
-font-1 = unifont:size=6:heavy:fontformat=truetype;-1
+font-1 = unifont:size=6:fontformat=truetype:antialias=false;-1
 
 modules-center = mem mem2
 
