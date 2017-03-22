@@ -10,9 +10,11 @@
 !#include "xresources.d/colors/jellybeans"
 !#include "xresources.d/colors/heroku"
 
-! URxvt*font:                    xft:envypn:pixelsize=12:weight=bold
+!URxvt*font:                    xft:envypn:pixelsize=12:weight=bold
 !URxvt*font:                    xft:Hack:size=9:weight=bold
-URxvt*font:                    xft:envypn:size=10
+!URxvt*font:                    xft:envypn:size=10
+!URxvt*font:                    xft:cure:pixelsize=11
+URxvt*font:                    xft:montecarlo:pixelsize=11
 URxvt*lineSpace:               1
 URxvt*loginShell:              true
 URxvt*termName:                rxvt-256color

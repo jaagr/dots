@@ -11,16 +11,18 @@ fi
 mon_internal="eDP-1"
 mon_external="HDMI-1"
 
-xrandr -q | grep -q "eDP-1" || mon_internal="eDP1"
+xrandr -q | grep -q "eDP-1"  || mon_internal="eDP1"
 xrandr -q | grep -q "HDMI-1" || mon_external="HDMI1"
 
 if xrandr -q | grep -q "^$mon_external connected"; then
-  xrandr --output $mon_external --auto --above $mon_internal --set audio force-dvi
+  # xrandr --output $mon_external --auto --above $mon_internal --set audio force-dvi
+  xrandr --output $mon_external --auto --right-of $mon_internal --rotate right --set audio force-dvi
 fi
 
 # set the screen server to blank at 1h
 xset s 3600 3600
 xset s noblank
+xset s noexpose
 
 # Turn off power management
 xset -dpms

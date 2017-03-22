@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Set keyboard layout and apply keymap changes
-"$X11_HOME"/xkbmaprc
+"$X11_HOME"/xkbmaprc us,se
 
 # Remap alt gr solo keypress to something useful
 xcape -e "Alt_R=Alt_R|Mode_switch"

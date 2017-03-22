@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-setxkbmap -layout "${1:-us}" -model evdev -option "" \
+setxkbmap -layout "${1:-us,se}" -model evdev -option "" \
+  -option grp:win_space_toggle \
   -option terminate:ctrl_alt_bksp \
   -option caps:escape \
   -option altwin:swap_lalt_lwin
