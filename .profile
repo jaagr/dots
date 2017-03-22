@@ -19,9 +19,13 @@ export SVDIR="${LOCAL_VAR}/service"
 export SVROOT="${LOCAL_ETC}/sv"
 export LEMONBUDDY_HOME="${LOCAL_VAR}/github/jaagr/lemonbuddy"
 export POLYBAR_HOME="${XDG_CONFIG_HOME}/polybar"
+export PTEST="${POLYBAR_HOME}/testing"
 export GITHUB_HOME="${LOCAL_VAR}/github"
 export CURRENT_THEME="${LOCAL_ETC}/themer/current"
 export PERL_HOME="${LOCAL_VAR}/perl"
+
+export ARDMK_DIR="${LOCAL_SRC}/arduino/contrib/makefile"
+export ARDUINO_DIR="/usr/lib/arduino"
 
 command -v perl >/dev/null && [ -e "${PERL_HOME}/lib/perl5/local/lib.pm" ] && {
   eval "$(perl -I"${PERL_HOME}/lib/perl5" -Mlocal::lib="${PERL_HOME}")"
