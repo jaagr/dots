@@ -14,20 +14,25 @@ if $TERM == 'linux' && !has('gui')
   let g:base16colorspace=8
 endif
 
-let g:theme_name = 'codeschool'
-let g:airline_theme = 'lucius'
+if $TERM == 'tmux-256color'
+  let g:theme_name = 'burnttoast256'
+  let g:airline_theme = 'base16'
+else
+  let g:theme_name = 'codeschool'
+  let g:airline_theme = 'lucius'
 
-let s:colorsscheme_filename = expand('$CURRENT_THEME/vim')
-if filereadable(s:colorsscheme_filename)
-  exec 'source ' . s:colorsscheme_filename
-endif
+  let s:colorsscheme_filename = expand('$CURRENT_THEME/vim')
+  if filereadable(s:colorsscheme_filename)
+    exec 'source ' . s:colorsscheme_filename
+  endif
 
-exec 'colorscheme '. g:theme_name
+  exec 'colorscheme '. g:theme_name
 
-" Source colorscheme override files
-let s:theme_override=expand('$HOME/.vim/after/colors/'. g:theme_name .'.vim')
-if filereadable(s:theme_override)
-  exec 'source ' . s:theme_override
+  " Source colorscheme override files
+  let s:theme_override=expand('$HOME/.vim/after/colors/'. g:theme_name .'.vim')
+  if filereadable(s:theme_override)
+    exec 'source ' . s:theme_override
+  endif
 endif
 
 if $TERM == 'linux' && !has('gui')
