@@ -13,13 +13,13 @@ def_key "ctrl-n"
   next_screen
 
 def_key "+"
-  run_external_command "$LOCAL_BIN/volume_change +5"
+  run_external_command "$LOCAL_BIN/volume_change +5 >/dev/null"
 def_key "-"
-  run_external_command "$LOCAL_BIN/volume_change -5"
+  run_external_command "$LOCAL_BIN/volume_change -5 >/dev/null"
 def_key "0"
-  run_external_command "$LOCAL_BIN/toggle_mute"
+  run_external_command "$LOCAL_BIN/mute >/dev/null"
 def_key "m"
-  run_external_command "$LOCAL_BIN/toggle_mute"
+  run_external_command "$LOCAL_BIN/mute >/dev/null"
 
 def_command "quit" [deferred]
   quit
