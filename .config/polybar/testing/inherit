@@ -1,0 +1,15 @@
+[bar/main]
+modules-center = text3 text2
+
+[module/text1]
+type = custom/text
+content = ${env:HOME}
+
+[module/text3]
+inherit = module/text2
+content = test
+
+[module/text2]
+inherit = module/text1
+
+; vim:ft=dosini

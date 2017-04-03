@@ -1,0 +1,89 @@
+[colors]
+background = #222
+foreground = #eee
+linecolor = #fba922
+bordercolor = #333
+accent = #e60053
+
+[bar/top]
+enable-ipc = true
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 24
+
+background = #222
+foreground = #eee
+
+line-color = #fba922
+underline-size = 1
+overline-size = 2
+
+border-bottom-size = 2
+border-bottom-color = #333
+
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = dina:pixelsize=9;1
+font-1 = siji:pixelsize=10;1
+font-2 = unifont:size=6;1
+
+modules-left = i3
+modules-center =
+modules-right =
+
+tray-position = right
+tray-padding = 4
+tray-maxsize = 16
+
+scroll-up = bspwm-deskprev
+scroll-down = bspwm-desknext
+
+[bar/bottom]
+inherit = bar/top
+
+enable-ipc = true
+monitor = ${env:MONITOR:HDMI1}
+bottom = true
+
+underline-size = 1
+overline-size = 2
+
+modules-left = i3
+modules-center =
+modules-right =
+
+tray-position = none
+
+[module/i3]
+type = internal/i3
+index-sort = true
+pin-workspaces = true
+wrapping-scroll = true
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+label-focused = %index%
+label-focused-background = #383838
+label-focused-foreground = #fff
+label-focused-overline = #f90
+label-focused-underline = #f90
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+label-visible = %index%
+label-visible-padding = 2
+
+; vim:ft=dosini

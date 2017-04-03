@@ -43,7 +43,8 @@ ws-icon-3 = music;
 ws-icon-4 = irssi;
 ws-icon-default = 
 
-pin-workspaces = false
+;pin-workspaces = false
+;pin-workspaces = true
 ;label-monitor-background = #00f
 
 label-focused = %icon%

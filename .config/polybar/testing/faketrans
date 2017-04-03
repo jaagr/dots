@@ -1,0 +1,17 @@
+[settings]
+compositing-foreground = difference
+;compositing-background = dest-atop
+
+[bar/main]
+;background = #fff
+;background = #99000000
+background = 0
+foreground = #fff
+pseudo-transparency = true
+modules-center = text
+
+[module/text]
+type = custom/text
+content = testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing testing
+
+; vim:ft=dosini

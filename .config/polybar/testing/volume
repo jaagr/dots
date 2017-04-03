@@ -27,7 +27,7 @@ label-volume = %percentage:3%%
 label-muted = MUTE
 format-muted-prefix = " "
 format-muted-prefix-foreground = #00f
-
+;handle-events = false
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 

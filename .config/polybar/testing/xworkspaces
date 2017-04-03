@@ -22,7 +22,7 @@ format = <label-monitor> <label-state>
 ; format-background = #88ffffff
 ; format-foreground = #000
 
-;pin-workspaces = true
+pin-workspaces = true
 
 icon-0 = term;
 icon-1 = web;
