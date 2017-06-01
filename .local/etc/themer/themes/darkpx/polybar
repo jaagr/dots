@@ -165,6 +165,13 @@ label-focused-overline = ${root.bspwm-focused-overline}
 label-focused-underline = ${root.bspwm-focused-underline}
 label-focused-padding = 2
 
+label-focused-occupied = %{O-1}⏺%{O-1}
+label-focused-occupied-background = ${self.label-focused-background}
+label-focused-occupied-foreground = ${self.label-focused-foreground}
+label-focused-occupied-overline = ${self.label-focused-overline}
+label-focused-occupied-underline = ${self.label-focused-underline}
+label-focused-occupied-padding = ${self.label-focused-padding}
+
 ;label-occupied = %icon%
 label-occupied = %{O-1}⏺%{O-1}
 label-occupied-padding = 2
