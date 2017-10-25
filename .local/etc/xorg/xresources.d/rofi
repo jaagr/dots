@@ -15,9 +15,6 @@ rofi.color-window: argb:ffffffff
 ! none, dash, solid
 rofi.separator-style: solid
 
-rofi.kb-remove-word-back: Control+w
-rofi.kb-row-up: Up,Control+n,Control+k
-rofi.kb-row-down: Down,Control+p,Control+j
 rofi.kb-row-tab:
 
 rofi.terminal: zsh
