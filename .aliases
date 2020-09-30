@@ -1,179 +1,178 @@
 #!/usr/bin/env sh
 
-alias quit="exit"
-
-alias dots='git --git-dir=$HOME/.dots.git --work-tree=$HOME'
-alias dots-ls='dots ls-files'
-alias dots-ls-untracked='dots status -u .'
+alias quit="exit" \
+	dots='git --git-dir=$HOME/.dots.git --work-tree=$HOME' \
+	dots-ls='dots ls-files' \
+	dots-ls-untracked='dots status -u .'
 
 if command -v compdef >/dev/null; then
   compdef _git dots="git"
 fi
 
-alias gpu-on="gpu-change on"
-alias gpu-off="gpu-change off"
+alias gpu-on="gpu-change on" \
+	gpu-off="gpu-change off"
 
-alias connect.pi="ssh root@pi.local"
-alias connect.work="ssh michael@workbox.local"
+alias connect.pi="ssh root@pi.local" \
+	connect.work="ssh michael@workbox.local"
 
-alias externalip="curl -s checkip.dyndns.org | sed 's/[^0-9.]//g'"
-alias hardwareinfo="inxi -F"
+alias externalip="curl -s checkip.dyndns.org | sed 's/[^0-9.]//g'" \
+	hardwareinfo="inxi -F"
 
-alias browser.vimb='vimb'
-alias browser.qute='qutebrowser'
-alias browser.vimperator='firefox -vimperator "++cmd ''source ${XDG_CONFIG_HOME}/vimperator/vimperatorrc''"'
-alias browser.chromium='chromium'
-alias browser.tor='tor-browser-en'
+alias browser.vimb='vimb' \
+	browser.qute='qutebrowser' \
+	browser.vimperator='firefox -vimperator "++cmd ''source ${XDG_CONFIG_HOME}/vimperator/vimperatorrc''"' \
+	browser.chromium='chromium' \
+	browser.tor='tor-browser-en'
 
-alias launch.wm='$X11_HOME/launch'
-alias launch.xvnc='$X11_HOME/xvnc'
-alias launch.compton='bash -c "$LOCAL_ETC/compton/launch"'
-alias launch.sxhkd='bash -c "$LOCAL_ETC/sxhkd/launch &"'
-alias launch.dunst='bash -c "$LOCAL_ETC/dunst/launch &"'
+alias launch.wm='$X11_HOME/launch' \
+	launch.xvnc='$X11_HOME/xvnc' \
+	launch.compton='bash -c "$LOCAL_ETC/compton/launch"' \
+	launch.sxhkd='bash -c "$LOCAL_ETC/sxhkd/launch &"' \
+	launch.dunst='bash -c "$LOCAL_ETC/dunst/launch &"'
 
-alias lemonbuddy='polybar'
-alias term.polybar='killall polybar'
-alias termkill.polybar='killall -9 polybar'
+alias lemonbuddy='polybar' \
+	term.polybar='killall polybar' \
+	termkill.polybar='killall -9 polybar'
 
-alias reload.compton='$LOCAL_ETC/compton/reload'
-alias reload.sxhkd='$LOCAL_ETC/sxhkd/reload'
-alias reload.dunst='$LOCAL_ETC/dunst/reload'
-alias reload.bspwm='$LOCAL_ETC/bspwm/reload'
-alias reload.polybar='$LOCAL_ETC/polybar/reload'
-alias reload.xkbmap='$LOCAL_ETC/xorg/xkbmaprc'
-alias reload.i3='$LOCAL_ETC/i3/reload'
+alias reload.compton='$LOCAL_ETC/compton/reload' \
+	reload.sxhkd='$LOCAL_ETC/sxhkd/reload' \
+	reload.dunst='$LOCAL_ETC/dunst/reload' \
+	reload.bspwm='$LOCAL_ETC/bspwm/reload' \
+	reload.polybar='$LOCAL_ETC/polybar/reload' \
+	reload.xkbmap='$LOCAL_ETC/xorg/xkbmaprc' \
+	reload.i3='$LOCAL_ETC/i3/reload'
 
-alias gosandbox='cd ~/sandbox/c++'
-alias goservices='cd $LOCAL_ETC/sv/'
-alias gothemes='cd $LOCAL_ETC/themer/themes'
-alias gobspwm='cd $LOCAL_ETC/bspwm'
-alias gopolybar='cd $LOCAL_ETC/polybar'
-alias gosh='cd $LOCAL_SRC/sh'
-alias gocpp='cd $LOCAL_SRC/cpp'
-alias gomedia='cd /storage/media'
+alias gosandbox='cd ~/sandbox/c++' \
+	goservices='cd $LOCAL_ETC/sv/' \
+	gothemes='cd $LOCAL_ETC/themer/themes' \
+	gobspwm='cd $LOCAL_ETC/bspwm' \
+	gopolybar='cd $LOCAL_ETC/polybar' \
+	gosh='cd $LOCAL_SRC/sh' \
+	gocpp='cd $LOCAL_SRC/cpp' \
+	gomedia='cd /storage/media'
 
-alias errbspwm='vim $XDG_CACHE_HOME/bspwm/stderr'
-alias errcompton='vim $XDG_CACHE_HOME/compton/stderr'
-alias erri3='vim $XDG_CACHE_HOME/i3/stderr'
-alias errsxhkd='vim $XDG_CACHE_HOME/sxhkd/stderr'
+alias errbspwm='vim $XDG_CACHE_HOME/bspwm/stderr' \
+	errcompton='vim $XDG_CACHE_HOME/compton/stderr' \
+	erri3='vim $XDG_CACHE_HOME/i3/stderr' \
+	errsxhkd='vim $XDG_CACHE_HOME/sxhkd/stderr'
 
-alias pastebin='curl -F "sprunge=<-" http://sprunge.us'
-alias termite-floating='termite -t floatme'
-alias lpass-login='lpass login $(sudo cat /root/lpass_username)'
-alias xupd="xbps-install -Su"
-alias xquery="xbps-query"
-alias xfiles='xbps-query -R $(xreposet) -f'
-alias xrem="xbps-remove"
-alias xbelongs="xbps-query -o"
-alias xrequiredby="xbps-query -X"
-alias xlistcontents="xbps-query -f"
-alias xbuild="./xbps-src" ;
-alias xbuild-clean="./xbps-src zap && ./xbps-src binary-bootstrap"
-alias xbuild-test="./xbps-src-testbuild"
-alias xcd='cd $XBPS_DISTDIR'
+alias pastebin='curl -F "sprunge=<-" http://sprunge.us' \
+	termite-floating='termite -t floatme' \
+	lpass-login='lpass login $(sudo cat /root/lpass_username)' \
+	xupd="xbps-install -Su" \
+	xquery="xbps-query" \
+	xfiles='xbps-query -R $(xreposet) -f' \
+	xrem="xbps-remove" \
+	xbelongs="xbps-query -o" \
+	xrequiredby="xbps-query -X" \
+	xlistcontents="xbps-query -f" \
+	xbuild="./xbps-src" ; \
+	xbuild-clean="./xbps-src zap && ./xbps-src binary-bootstrap" \
+	xbuild-test="./xbps-src-testbuild" \
+	xcd='cd $XBPS_DISTDIR'
 
-alias xorglog="vim /var/log/Xorg.0.log"
-alias xorglogbumblebee="vim /var/log/Xorg.8.log"
-alias xorgconf="vim /etc/X11/xorg.conf.d/20-gpu.conf"
-alias xorgconfbumblebee="vim /etc/bumblebee/xorg.conf.nvidia"
+alias xorglog="vim /var/log/Xorg.0.log" \
+	xorglogbumblebee="vim /var/log/Xorg.8.log" \
+	xorgconf="vim /etc/X11/xorg.conf.d/20-gpu.conf" \
+	xorgconfbumblebee="vim /etc/bumblebee/xorg.conf.nvidia"
 
-alias ga="git add"
-alias gd="git diff"
-alias gds="git diff --staged"
-alias gco="git checkout"
-alias gst="git status"
-alias ggpur="git pull --rebase"
-alias grm="git rebase master"
+alias ga="git add" \
+	gd="git diff" \
+	gds="git diff --staged" \
+	gco="git checkout" \
+	gst="git status" \
+	ggpur="git pull --rebase" \
+	grm="git rebase master"
 
 alias hdmi-reload='xrandr --output HDMI-1 --auto --above eDP-1; $XDG_CONFIG_HOME/bspwm/reload'
 
 # TODO: Create a symlink to vim/nvim instead to make
 # sure that the same version is used everywhere
-alias vim="nvim"
-alias vi="nvim"
-alias ncmpcpp='ncmpcpp -b $XDG_CONFIG_HOME/ncmpcpp/bindings'
-alias xrdb-reload='$LOCAL_ETC/xorg/xrdb_reload'
-alias gpg-decrypt-clipboard='xclip -o | gpg --decrypt | xclip'
-alias sudo="sudo"
-alias reboot="sudo reboot"
-alias poweroff="sudo poweroff"
-alias halt="sudo halt"
-alias tv="tvremote"
+alias vim="nvim" \
+	vi="nvim" \
+	ncmpcpp='ncmpcpp -b $XDG_CONFIG_HOME/ncmpcpp/bindings' \
+	xrdb-reload='$LOCAL_ETC/xorg/xrdb_reload' \
+	gpg-decrypt-clipboard='xclip -o | gpg --decrypt | xclip' \
+	sudo="sudo" \
+	reboot="sudo reboot" \
+	poweroff="sudo poweroff" \
+	halt="sudo halt" \
+	tv="tvremote"
 
-alias lemonbar-striptags='sed -u -r "s/%\{[^}]+\}//g"'
-alias lemonbar-striptags-trim='lemonbar-striptags | tr -s " "'
+alias lemonbar-striptags='sed -u -r "s/%\{[^}]+\}//g"' \
+	lemonbar-striptags-trim='lemonbar-striptags | tr -s " "'
 
-alias grepr="grep -r"
-alias egrepr="egrep -r"
+alias grepr="grep -r" \
+	egrepr="egrep -r"
 
-alias ghub='cd $GITHUB_HOME'
-alias ghubl='cd $GITHUB_HOME/jaagr'
-alias ghubpolybar='cd $GITHUB_HOME/jaagr/polybar'
-alias ghubwmrestack='cd $GITHUB_HOME/jaagr/wmrestack'
-alias ghubbarlib='cd $GITHUB_HOME/jaagr/barlib'
-alias ghubxlib-drawrect='cd $GITHUB_HOME/jaagr/xlib-drawrect'
+alias ghub='cd $GITHUB_HOME' \
+	ghubl='cd $GITHUB_HOME/jaagr' \
+	ghubpolybar='cd $GITHUB_HOME/jaagr/polybar' \
+	ghubwmrestack='cd $GITHUB_HOME/jaagr/wmrestack' \
+	ghubbarlib='cd $GITHUB_HOME/jaagr/barlib' \
+	ghubxlib-drawrect='cd $GITHUB_HOME/jaagr/xlib-drawrect'
 
-alias perlcd='cd $PERL_HOME'
-alias cpan="perlcd && perl -MCPAN -e shell"
-alias gdb-run="gdb -ex run -args"
-alias cgdb-run="cgdb -ex run -args"
+alias perlcd='cd $PERL_HOME' \
+	cpan="perlcd && perl -MCPAN -e shell" \
+	gdb-run="gdb -ex run -args" \
+	cgdb-run="cgdb -ex run -args"
 
-alias cmake-gcc="cmake -G Ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
-alias cmake-clang="cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
-alias cmake-debug="cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug"
-alias cmake-debug-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=Debug"
-alias cmake-debug-clang="cmake-clang -DCMAKE_BUILD_TYPE=Debug"
-alias cmake-relwithdebinfo="cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo"
-alias cmake-relwithdebinfo-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=RelWithDebInfo"
-alias cmake-relwithdebinfo-clang="cmake-clang -DCMAKE_BUILD_TYPE=RelWithDebInfo"
-alias cmake-release="cmake -G Ninja -DCMAKE_BUILD_TYPE=Release"
-alias cmake-release-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=Release"
-alias cmake-release-clang="cmake-clang -DCMAKE_BUILD_TYPE=Release"
-alias cmake-purge="rm -rf CMakeFiles CMakeCache.txt"
+alias cmake-gcc="cmake -G Ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++" \
+	cmake-clang="cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++" \
+	cmake-debug="cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug" \
+	cmake-debug-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=Debug" \
+	cmake-debug-clang="cmake-clang -DCMAKE_BUILD_TYPE=Debug" \
+	cmake-relwithdebinfo="cmake -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo" \
+	cmake-relwithdebinfo-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=RelWithDebInfo" \
+	cmake-relwithdebinfo-clang="cmake-clang -DCMAKE_BUILD_TYPE=RelWithDebInfo" \
+	cmake-release="cmake -G Ninja -DCMAKE_BUILD_TYPE=Release" \
+	cmake-release-gcc="cmake-gcc -DCMAKE_BUILD_TYPE=Release" \
+	cmake-release-clang="cmake-clang -DCMAKE_BUILD_TYPE=Release" \
+	cmake-purge="rm -rf CMakeFiles CMakeCache.txt"
 #alias cmake-uninstall='if [ -e install_manifest.txt ]; then sudo rm -i -v "$(cat install_manifest.txt)" install_manifest.txt; else echo "Cannot find install_manifest.txt"; fi'
 #alias cmake-clean='test -e ./CMakeCache.txt && rm -rf * && cmake ..'
 
 # Default command flags
-alias mv="mv -v"
-alias ln="ln -v"
-alias cp="cp -v"
-alias rm="rm -v"
-alias ls="ls --group-directories-first --dereference-command-line-symlink-to-dir --color=auto"
-alias ll="ls --dereference-command-line-symlink-to-dir -lh"
-alias l="ls -la --dereference-command-line-symlink-to-dir"
-alias info='info --vi-keys --init-file=${XDG_CONFIG_HOME}/infokey'
-alias pgrep="pgrep -l"
-alias grep="grep -i --color=auto"
-alias egrep="egrep --color=auto"
+alias mv="mv -v" \
+	ln="ln -v" \
+	cp="cp -v" \
+	rm="rm -v" \
+	ls="ls --group-directories-first --dereference-command-line-symlink-to-dir --color=auto" \
+	ll="ls --dereference-command-line-symlink-to-dir -lh" \
+	l="ls -la --dereference-command-line-symlink-to-dir" \
+	info='info --vi-keys --init-file=${XDG_CONFIG_HOME}/infokey' \
+	pgrep="pgrep -l" \
+	grep="grep -i --color=auto" \
+	egrep="egrep --color=auto"
 
 # Sudo cmds
-alias sv="sudo sv"
-alias lvs="sudo lvs"
-alias vgs="sudo vgs"
-alias lvdisplay="sudo lvdisplay"
-alias vgdisplay="sudo vgdisplay"
-alias xbps-install="sudo xbps-install"
-alias xbps-query="sudo xbps-query"
-alias xbps-remove="sudo xbps-remove"
-alias xbps-pkgdb="sudo xbps-pkgdb"
-alias xbps-reconfigure="sudo xbps-reconfigure"
-alias adb="sudo adb"
+alias sv="sudo sv" \
+	lvs="sudo lvs" \
+	vgs="sudo vgs" \
+	lvdisplay="sudo lvdisplay" \
+	vgdisplay="sudo vgdisplay" \
+	xbps-install="sudo xbps-install" \
+	xbps-query="sudo xbps-query" \
+	xbps-remove="sudo xbps-remove" \
+	xbps-pkgdb="sudo xbps-pkgdb" \
+	xbps-reconfigure="sudo xbps-reconfigure" \
+	adb="sudo adb"
 
 ## svtools
-alias svdisable="sudo -E svdisable"
-alias svenable="sudo -E svenable"
-alias svlist="sudo -E svlist"
-alias svrestart="sudo -E svrestart"
-alias svstart="sudo -E svstart"
-alias svstop="sudo -E svstop"
+alias svdisable="sudo -E svdisable" \
+	svenable="sudo -E svenable" \
+	svlist="sudo -E svlist" \
+	svrestart="sudo -E svrestart" \
+	svstart="sudo -E svstart" \
+	svstop="sudo -E svstop"
 
 # Spelling corrections
-alias vmi="vim"
-alias exi="exit"
-alias exti="exit"
-alias eitx="exit"
-alias eixt="exit"
-alias exiyt="exit"
-alias exity="exit"
+alias vmi="vim" \
+	exi="exit" \
+	exti="exit" \
+	eitx="exit" \
+	eixt="exit" \
+	exiyt="exit" \
+	exity="exit"
 
 # vim:ft=sh
